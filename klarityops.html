@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klarity Ops | BizOps Systems Built in Asana for Scaling E-Commerce Brands</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter', sans-serif;
+  background:#06070f;
+  color:#f4f4ff;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.6;
+  letter-spacing:0.012em;
+}
+h1,h2,h3,h4{
+  font-family:'Manrope', sans-serif;
+  line-height:1.16;
+  letter-spacing:-0.02em;
+  font-weight:600;
+}
+a{text-decoration:none;color:inherit}
+ul,ol{list-style:none}
+button{font-family:'Inter', sans-serif;cursor:pointer;border:none;background:none}
+
+:root{
+  --bg:#06070f;
+  --card:#0c0d1e;
+  --card2:#12132e;
+  --border:rgba(255,255,255,0.08);
+  --border-hi:rgba(99,102,241,0.5);
+  --indigo:#6366f1;
+  --indigo-h:#818cf8;
+  --cyan:#22d3ee;
+  --green:#34d399;
+  --red:#f87171;
+  --text:#ffffff;
+  --muted:rgba(255,255,255,0.75);
+  --dim:rgba(255,255,255,0.5);
+}
+
+@keyframes ambientBreathe {
+  0%, 100% { opacity: 0.6; transform: scale(1) translateX(-50%); }
+  50% { opacity: 0.9; transform: scale(1.1) translateX(-48%); }
+}
+@keyframes ambientBreatheAlt {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.15); }
+}
+@keyframes moveGrid {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(60px); }
+}
+@keyframes glowPulse {
+  0% { box-shadow: 0 4px 20px rgba(99,102,241,0.3); }
+  50% { box-shadow: 0 4px 35px rgba(99,102,241,0.6); }
+  100% { box-shadow: 0 4px 20px rgba(99,102,241,0.3); }
+}
+@keyframes rotateBorder {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes floatMain {
+  0%, 100% { transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(0); }
+  50% { transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(-15px); }
+}
+@keyframes floatCard1 {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-10px) rotate(-1deg); }
+}
+@keyframes floatCard2 {
+  0%, 100% { transform: translateY(0) rotate(3deg); }
+  50% { transform: translateY(-8px) rotate(4deg); }
+}
+@keyframes dragTask {
+  0%, 10% { transform: translate(0, 0) scale(1); border-color: rgba(255,255,255,0.05); background: rgba(255,255,255,0.05); opacity: 1; }
+  20% { transform: translate(5px, -5px) scale(1.05) rotate(3deg); border-color: var(--indigo); background: rgba(99,102,241,0.1); box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 20; }
+  40%, 60% { transform: translate(calc(100% + 1rem), 50px) scale(1) rotate(0deg); border-color: rgba(34,211,238,0.3); background: rgba(34,211,238,0.05); box-shadow: none; z-index: 10; }
+  70% { transform: translate(calc(100% + 1rem + 5px), 45px) scale(1.05) rotate(3deg); border-color: var(--indigo); background: rgba(99,102,241,0.1); box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 20; }
+  85%, 95% { transform: translate(calc(200% + 2rem), 0px) scale(1) rotate(0deg); border-color: rgba(255,255,255,0.05); background: rgba(255,255,255,0.05); opacity: 0.4; box-shadow: none; z-index: 10; }
+  100% { transform: translate(0, 0) scale(1); opacity: 0; }
+}
+.animated-task {
+  animation: dragTask 4s ease-in-out infinite;
+  position: relative; z-index: 10; cursor: grab;
+}
+
+.spin-border-1px, .spin-border-2px {
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0; overflow: hidden;
+  -webkit-mask-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
+  -webkit-mask-clip: content-box, border-box;
+  -webkit-mask-composite: destination-out;
+  mask-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
+  mask-clip: content-box, border-box;
+  mask-composite: exclude;
+}
+.spin-border-1px { top: -1px; left: -1px; right: -1px; bottom: -1px; padding: 1px; }
+.spin-border-2px { top: -2px; left: -2px; right: -2px; bottom: -2px; padding: 2px; }
+.spin-border-1px::before, .spin-border-2px::before {
+  content: ''; position: absolute; top: 50%; left: 50%; width: 1500px; height: 1500px;
+  transform: translate(-50%, -50%);
+  animation: rotateBorder 4s linear infinite;
+}
+.hero-spin::before { background: conic-gradient(from 0deg, transparent 70%, rgba(34,211,238,0.4) 85%, rgba(99,102,241,0.6) 100%); animation-duration: 12s; }
+.hero-spin-rev::before { background: conic-gradient(from 0deg, transparent 70%, rgba(52,211,153,0.4) 85%, rgba(34,211,238,0.6) 100%); animation-duration: 10s; animation-direction: reverse; }
+.bento-spin { opacity: 0.5; transition: opacity 0.3s ease; }
+.bento-card:hover .bento-spin { opacity: 1; }
+.bento-spin::before { background: conic-gradient(from 0deg, transparent 65%, rgba(248,113,113,0.6) 85%, rgba(239,68,68,0.9) 100%); animation-duration: 8s;}
+.layer-spin { opacity: 0.4; transition: opacity 0.4s ease; }
+.layer-box:hover .layer-spin { opacity: 1; }
+.layer-spin::before { background: conic-gradient(from 0deg, transparent 65%, var(--cyan) 85%, var(--indigo) 100%); animation-duration: 14s;}
+
+.bg-layer{ position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden; }
+.bg-layer::before{ content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%); width:1000px;height:700px; background:radial-gradient(ellipse,rgba(99,102,241,.12) 0%,transparent 70%); border-radius:50%; animation: ambientBreathe 10s ease-in-out infinite; }
+.bg-layer::after{ content:'';position:absolute;bottom:-15%;right:-10%; width:600px;height:600px; background:radial-gradient(ellipse,rgba(34,211,238,.07) 0%,transparent 70%); border-radius:50%; animation: ambientBreatheAlt 8s ease-in-out infinite reverse; }
+.grid-wrap { position:fixed;inset:-60px 0 0 0;z-index:0;pointer-events:none; }
+.grid-bg{ width: 100%; height: calc(100% + 60px); background-image: linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px); background-size:60px 60px; animation: moveGrid 15s linear infinite; }
+
+.wrap{max-width:1440px;margin:0 auto;padding:0 1.5rem}
+#pg-main{display:block} #pg-book{display:none} #pg-thanks{display:none}
+
+nav{ position:fixed;top:0;left:0;right:0;z-index:200; background:rgba(6,7,15,.75); backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--border); transition: background 0.3s ease; }
+.nav-in{ display:flex;align-items:center;justify-content:space-between; height:76px;max-width:1440px;margin:0 auto;padding:0 1.5rem; }
+.logo{ font-family:'Manrope',sans-serif;font-size:1.45rem;font-weight:700; color:var(--text); transition: opacity 0.2s, transform 0.2s; }
+.logo:hover { opacity: 0.9; transform: scale(1.02); }
+.logo span{color:var(--indigo-h)}
+.nav-links{display:flex;gap:2.5rem}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--muted);transition:color .2s;}
+.nav-links a:hover{color:var(--text)}
+.btn-nav{ background:var(--indigo);color:#fff; font-size:.9rem;font-weight:500; padding:.65rem 1.5rem;border-radius:10px; box-shadow:0 0 20px rgba(99,102,241,.3); transition:all .3s cubic-bezier(0.4, 0, 0.2, 1); }
+.btn-nav:hover{background:var(--indigo-h);transform:translateY(-2px);box-shadow:0 4px 25px rgba(99,102,241,.6);}
+@media(max-width:768px){.nav-links{display:none}}
+.mob-cta{ display:none;position:fixed;bottom:0;left:0;right:0;z-index:190; padding:1rem 1.5rem;background:rgba(6,7,15,.95);border-top:1px solid var(--border);backdrop-filter:blur(10px); }
+.mob-cta button{ width:100%;background:var(--indigo);color:#fff;font-size:1.05rem;font-weight:600; padding:1rem;border-radius:12px;box-shadow:0 0 20px rgba(99,102,241,.4); }
+@media(max-width:768px){.mob-cta{display:block}}
+
+.btn-p{ display:inline-flex;align-items:center;justify-content:center;gap:.5rem; background:linear-gradient(135deg, var(--indigo) 0%, #4f46e5 100%); color:#fff;font-size:1rem;font-weight:500; padding:.9rem 2.2rem;border-radius:12px; animation: glowPulse 3s infinite; transition:all .3s cubic-bezier(0.4, 0, 0.2, 1); }
+.btn-p:hover{ animation: none; background:linear-gradient(135deg, var(--indigo-h) 0%, var(--indigo) 100%); transform:translateY(-3px) scale(1.02); box-shadow:0 10px 30px rgba(99,102,241,.6); }
+.btn-g{ display:inline-flex;align-items:center;justify-content:center; background:rgba(255,255,255,.03);color:var(--text);font-size:1rem;font-weight:400; padding:.9rem 2.2rem;border-radius:12px;border:1px solid var(--border);transition:all .3s ease; }
+.btn-g:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);transform:translateY(-2px);}
+.btn-lg{padding:1.1rem 2.8rem;font-size:1.1rem;border-radius:14px}
+
+section{padding:7rem 0;position:relative;z-index:1}
+.sh{text-align:center;max-width:1200px;margin:0 auto 4rem}
+.sh h2{font-size:clamp(1.9rem, 3vw, 3.05rem);font-weight:600;margin-bottom:1rem;line-height:1.12;letter-spacing:-0.02em;word-spacing:0.02em;}
+.sh p{font-size:1.1rem;color:var(--muted);letter-spacing:0.012em;word-spacing:0.02em;line-height:1.78;max-width:980px;margin-inline:auto;text-align:center;}
+.lbl{ display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase; color:var(--cyan);margin-bottom:1rem;background: rgba(34, 211, 238, 0.1); padding: 0.4rem 1rem;border-radius: 999px;border: 1px solid rgba(34, 211, 238, 0.2); }
+
+.hero{padding:10rem 0 6rem;position:relative;z-index:1}
+.hero-grid{ display:grid;grid-template-columns:1.15fr 0.85fr;gap:3rem;align-items:center; }
+@media(max-width:968px){.hero-grid{grid-template-columns:1fr;gap:4rem;text-align:center;}}
+.hero-badge{ display:inline-flex;align-items:center;gap:.5rem; border:1px solid rgba(99,102,241,.4); background:rgba(99,102,241,.1);color:var(--indigo-h);font-size:.85rem;font-weight:600; padding:.4rem 1.2rem;border-radius:999px;margin-bottom:1.5rem; box-shadow: 0 0 15px rgba(99,102,241,0.2); transition: box-shadow 0.3s ease; }
+.hero-badge:hover { box-shadow: 0 0 25px rgba(99,102,241,0.4); }
+.hero h1{ font-size:clamp(2.6rem, 4.6vw, 4.25rem); font-weight:600; line-height:1.08; margin-bottom:1.35rem; max-width:11ch; }
+.hero h1 em{ font-style:normal;background:linear-gradient(130deg,var(--indigo-h) 0%,var(--cyan) 100%); -webkit-background-clip:text;-webkit-text-fill-color:transparent; background-clip:text; }
+.hero-sub{font-size:1.1rem;color:var(--muted);margin-bottom:2.5rem;max-width:600px;letter-spacing:0.012em;word-spacing:0.02em;line-height:1.78;}
+@media(max-width:968px){.hero-sub{margin:0 auto 2.2rem;}.hero h1{max-width:none;margin-left:auto;margin-right:auto;}.hero-points{justify-content:center;flex-wrap:wrap}.hero-divider{display:none}.hero-point{min-width:220px;flex:none}}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-points{display:flex;gap:1rem;margin-top:2.1rem;align-items:center;flex-wrap:nowrap}
+.hero-point{display:flex;flex-direction:column;gap:.2rem;min-width:0;flex:1}
+.hero-point strong{font-family:'Manrope',sans-serif;font-size:.98rem;font-weight:600;color:var(--text);letter-spacing:-0.01em}
+.hero-point span{font-size:.84rem;line-height:1.55;color:var(--dim)}
+.hero-divider{width:1px;height:38px;background:var(--border);flex-shrink:0}
+@media(max-width:968px){.hero-btns{justify-content:center;}}
+.hero-visuals { position: relative; width: 100%; height: 420px; perspective: 1000px; }
+@media(max-width:968px){.hero-visuals{max-width: 500px; margin: 0 auto;}}
+
+.kanban-board {
+  position: absolute; top: 5%; right: 0; width: 90%; height: 90%;
+  background: rgba(18, 19, 46, 0.4);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px; padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  animation: floatMain 4s ease-in-out infinite;
+  display: flex; flex-direction: column; z-index: 1;
+}
+.kanban-board > *:not([class*="spin-border"]) { position: relative; z-index: 3; }
+.kb-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); position: relative; z-index: 2;}
+.kb-title { font-weight: 600; font-size: 1.05rem; display:flex; align-items:center; gap:0.5rem;}
+.kb-dot { width:10px; height:10px; background:var(--cyan); border-radius:50%; box-shadow:0 0 10px var(--cyan); }
+.kb-cols { display: flex; gap: 1rem; flex: 1; position: relative; z-index: 2;}
+.kb-col { flex: 1; background: rgba(255,255,255,0.02); border-radius: 12px; padding: 0.8rem; display: flex; flex-direction: column; gap: 0.8rem; }
+.kb-col-title { font-size: 0.75rem; font-weight: 600; color: var(--dim); text-transform: uppercase; letter-spacing: 0.05em; }
+.kb-task { background: rgba(255,255,255,0.05); border-radius: 8px; padding: 0.8rem; border: 1px solid rgba(255,255,255,0.05); }
+.kb-task-line { height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); margin-bottom: 0.5rem; }
+.kb-task-line.short { width: 60%; background: rgba(99,102,241,0.4); }
+.float-card-1 {
+  position: absolute; bottom: 0; left: -5%; width: 240px;
+  background: rgba(18, 19, 46, 0.6);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px; padding: 1.2rem;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 20px rgba(99,102,241,0.15);
+  animation: floatCard1 6s ease-in-out infinite; z-index: 10;
+}
+.float-card-1 > *:not([class*="spin-border"]) { position: relative; z-index: 3; }
+.fc-content { position: relative; z-index: 2; }
+.fc-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
+.fc-tag { font-size: 0.7rem; font-weight: 600; background: rgba(52,211,153,0.15); color: var(--green); padding: 0.2rem 0.6rem; border-radius: 6px; transition: all 0.3s ease; }
+.fc-tag.pending { background: rgba(251,191,36,0.15) !important; color: #fbbf24 !important; }
+.fc-title { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.4rem; }
+.fc-bot { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--muted); }
+.fc-avatar { width: 24px; height: 24px; border-radius: 50%; background: var(--indigo); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: #fff; font-weight: bold;}
+.float-card-2 {
+  position: absolute; top: -5%; right: -5%; width: 200px;
+  background: rgba(18, 19, 46, 0.6);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px; padding: 1.2rem;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+  animation: floatCard2 7s ease-in-out infinite reverse; z-index: 10;
+}
+.float-card-2 > *:not([class*="spin-border"]) { position: relative; z-index: 3; }
+.fc2-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(34,211,238,0.15); color: var(--cyan); display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; }
+.fc2-title { font-weight: 500; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.fc2-stat { font-family: 'Manrope'; font-weight: 700; font-size: 1.35rem; color: #fff; transition: color 0.3s ease; }
+
+.bento-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:1.5rem;max-width:1300px;margin:0 auto;}
+.bento-card{background:var(--card2);border:2px solid rgba(255,255,255,0.03);border-radius:24px;padding:2.5rem;display:flex;flex-direction:column;transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease, border-color 0.4s ease;position: relative;z-index: 1;}
+.bento-card:hover{transform:translateY(-8px);box-shadow: 0 15px 35px rgba(0,0,0,0.4);border-color: transparent;}
+.bento-card > *:not([class*="spin-border"]) { position: relative; z-index: 3; }
+.bento-large{grid-column: span 2;}
+.bento-icon{width:56px;height:56px;border-radius:16px;background:rgba(248,113,113,0.05);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;border:1px solid rgba(248,113,113,0.1);transition: background 0.3s ease, transform 0.3s ease;}
+.bento-card:hover .bento-icon {background: rgba(248,113,113,0.15);border-color: rgba(248,113,113,0.3);transform: scale(1.1) rotate(5deg);}
+.bento-icon i,.bento-icon svg{width:28px;height:28px;color:#f87171; transition: color 0.3s ease;}
+.bento-card:hover .bento-icon i,.bento-card:hover .bento-icon svg { color: #ef4444; }
+.bento-card h3{font-size:1.02rem;font-weight:600;margin-bottom:.7rem;line-height:1.28;letter-spacing:-0.005em;word-spacing:0.02em;}
+.bento-card p{color:var(--muted);font-size:1rem;letter-spacing:0.012em;word-spacing:0.02em;line-height:1.72;}
+@media(max-width:900px){.bento-grid{grid-template-columns:1fr;}.bento-large{grid-column:span 1;}}
+
+.cost-section {padding-bottom: 2rem;position: relative;z-index: 1;}
+.cost-box {background: var(--card2);border: 1px solid rgba(255,255,255,0.05);border-radius: 32px;padding: 4rem;display: grid;grid-template-columns: 0.9fr 1.1fr;gap: 4rem;align-items: center;position: relative;overflow: hidden;box-shadow: 0 20px 40px rgba(0,0,0,0.3);max-width: 1100px;margin: 0 auto;}
+.cost-box::before {content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;background: radial-gradient(circle at center, rgba(99,102,241,0.05), transparent 60%);pointer-events: none;}
+.cost-label {color: #fb7185;font-size: 0.8rem;font-weight: 600;letter-spacing: 0.15em;text-transform: uppercase;margin-bottom: 1.5rem;display: inline-block;}
+.cost-heading {font-size: clamp(2rem, 3.5vw, 2.8rem);font-weight: 600;margin-bottom: 1.5rem;line-height: 1.2;max-width:14ch;}
+.cost-text {color: var(--muted);font-size: 1.1rem;line-height: 1.68;letter-spacing: 0.012em;word-spacing: 0.02em;}
+.cost-list {display: flex;flex-direction: column;gap: 1rem;position: relative;z-index: 2;}
+.cost-item {background: rgba(255,255,255,0.02);border: 1px solid rgba(255,255,255,0.05);border-radius: 16px;padding: 1.2rem 1.5rem;display: flex;align-items: center;gap: 1.2rem;transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;}
+.cost-item:hover {background: rgba(255,255,255,0.04);border-color: rgba(251,113,133,0.28);transform: translateX(10px);}
+.cost-dot {width: 10px; height: 10px;border-radius: 50%;background: #fb7185;box-shadow: 0 0 10px rgba(251,113,133,0.45);flex-shrink: 0;}
+.cost-item-text {font-size: 1rem;color: var(--text);font-weight: 400;line-height: 1.6;letter-spacing: 0.012em;word-spacing: 0.02em;}
+.cost-mark{color:#fb7185;font-weight:600;}
+@media(max-width: 968px) {.cost-box { grid-template-columns: 1fr; padding: 2.5rem; gap: 3rem; }}
+
+.layers-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:1rem;max-width:1300px;margin:0 auto;}
+.layer-box{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:20px;padding:2rem 1.5rem;text-align:center;transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;position: relative;z-index: 1;}
+.layer-box:hover{background: var(--card2);border-color:transparent;transform:translateY(-5px) scale(1.02);box-shadow: 0 10px 25px rgba(0,0,0,0.3);}
+.layer-box > *:not([class*="spin-border"]) { position: relative; z-index: 3; }
+.layer-box i,.layer-box svg{width:36px;height:36px;color:var(--cyan);margin-bottom:1rem;transition: transform 0.3s ease;}
+.layer-box:hover i,.layer-box:hover svg { transform: translateY(-5px); color: var(--indigo-h); }
+.layer-box h3{font-size:.98rem;font-weight:600;margin-bottom:.5rem;line-height:1.35;letter-spacing:0.01em;word-spacing:0.03em;}
+.layer-box p{font-size:.85rem;color:var(--dim);line-height:1.62;letter-spacing:0.018em;word-spacing:0.03em;}
+@media(max-width:968px){.layers-grid{grid-template-columns:repeat(2, 1fr);}}
+@media(max-width:500px){.layers-grid{grid-template-columns:1fr;}}
+
+.proof-wrap{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:2rem;}
+.proof-row{display:grid;grid-template-columns:1fr 1fr;background:var(--card2);border:1px solid var(--border);border-radius:24px;overflow:hidden;transition: transform 0.4s ease, box-shadow 0.4s ease;}
+.proof-row:hover {transform: translateY(-4px);box-shadow: 0 15px 35px rgba(0,0,0,0.3);border-color: rgba(255,255,255,0.15);}
+@media(max-width:768px){.proof-row{grid-template-columns:1fr;}}
+.proof-side{padding:2.5rem; transition: background 0.3s ease;}
+.proof-before{background:rgba(248,113,113,.02);border-right:1px solid var(--border);}
+.proof-after{background:rgba(52,211,153,.02);}
+.proof-row:hover .proof-after { background:rgba(52,211,153,.05); }
+@media(max-width:768px){.proof-before{border-right:none;border-bottom:1px solid var(--border);}}
+.proof-lbl{display:flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;}
+.lbl-red{color:var(--red);}
+.lbl-green{color:var(--green);}
+.proof-text{font-size:1.02rem;color:var(--muted);line-height:1.76;font-weight:400;letter-spacing:0.012em;word-spacing:0.02em;}
+.proof-after .proof-text{color:rgba(255,255,255,0.78);font-weight:400;}
+
+.final-box{background:linear-gradient(135deg,rgba(99,102,241,.1) 0%,rgba(34,211,238,.05) 100%);border:1px solid rgba(99,102,241,.3);border-radius:32px;padding:6rem 2rem;text-align:center;max-width:1300px;margin:0 auto;position: relative;overflow: hidden;box-shadow: 0 20px 50px rgba(0,0,0,0.4);}
+.final-box::before {content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);transform: skewX(-20deg);animation: shine 6s infinite;}
+@keyframes shine {0% { left: -100%; }20% { left: 200%; }100% { left: 200%; }}
+.final-box h2{font-size:clamp(2rem,3.3vw,3rem);font-weight:600;margin-bottom:1.25rem;line-height:1.14;max-width:24ch;margin-left:auto;margin-right:auto;text-align:center}
+.final-box p.final-text {font-size:1.08rem;color:var(--muted);margin-bottom:2.5rem;max-width:760px;margin-left:auto;margin-right:auto;letter-spacing:0.012em;word-spacing:0.02em;line-height:1.82;text-align:center;text-wrap:balance}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;text-align:center;}
+.fc{display:block;margin-top:1rem;font-size:.85rem;color:var(--dim)}
+
+.book-wrap{max-width:980px;margin:8rem auto 4rem;padding:0 1.5rem;text-align:center;}
+.klarity-form{max-width:900px;margin:0 auto;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:2rem;box-shadow:0 20px 50px rgba(0,0,0,.28);text-align:left;}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem 1.2rem;}
+.form-stack{display:flex;flex-direction:column;gap:1rem;margin-top:1rem;}
+.form-group label{display:block;margin-bottom:.55rem;font-size:.92rem;font-weight:500;color:rgba(255,255,255,.88);letter-spacing:.01em;}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);color:#fff;border-radius:16px;padding:.95rem 1rem;font:inherit;outline:none;transition:border-color .2s ease, background .2s ease, box-shadow .2s ease;}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.35)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(99,102,241,.65);background:rgba(255,255,255,.06);box-shadow:0 0 0 4px rgba(99,102,241,.12);}
+.form-group textarea{resize:vertical;min-height:132px;line-height:1.72;letter-spacing:.012em;word-spacing:.02em}
+.form-group select option{background:#0f1323;color:#fff}
+.form-note{margin-top:1.1rem;padding:1rem 1.1rem;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);color:var(--muted);line-height:1.72;}
+.form-actions{margin-top:1.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.form-actions p{color:var(--dim);font-size:.9rem;}
+@media(max-width:768px){.form-grid{grid-template-columns:1fr;}.klarity-form{padding:1.2rem;}.form-actions{flex-direction:column;align-items:stretch;}.form-actions p{text-align:center;}}
+
+.case-study-shell{max-width:1280px;margin:0 auto;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.025));border-radius:32px;padding:2.2rem;box-shadow:0 20px 50px rgba(0,0,0,.28)}
+.case-study-top{display:grid;grid-template-columns:1.2fr .8fr;gap:1.8rem;align-items:start;margin-bottom:1.5rem}
+.case-study-top h3{font-size:1.7rem;font-weight:600;line-height:1.15;margin:.25rem 0 .8rem;letter-spacing:-0.01em;word-spacing:0.02em}
+.case-lead{color:var(--muted);line-height:1.8;max-width:760px}
+.case-mini{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo-h);margin-bottom:.45rem}
+.challenge-card .case-mini{color:var(--red)}
+.build-card .case-mini{color:var(--indigo-h)}
+.case-badges{display:flex;flex-wrap:nowrap;gap:.7rem;justify-content:flex-end}
+.case-badges span{display:inline-flex;align-items:center;padding:.65rem .9rem;border-radius:999px;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.22);color:#dbe7ff;font-size:.82rem;white-space:nowrap}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.25rem}
+.case-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:24px;padding:1.4rem}
+.case-card.challenge-card{border-color:rgba(248,113,113,.22);background:rgba(248,113,113,.05)}
+.case-card.challenge-card li::before{background:var(--red);box-shadow:0 0 10px rgba(248,113,113,.4)}
+.case-card.build-card{border-color:rgba(99,102,241,.18);background:rgba(99,102,241,.05)}
+.case-card ul{display:flex;flex-direction:column;gap:.85rem}
+.case-card li{position:relative;padding-left:1.15rem;color:var(--muted);line-height:1.7}
+.case-card li::before{content:'';position:absolute;left:0;top:.66rem;width:7px;height:7px;border-radius:50%;background:var(--indigo-h);box-shadow:0 0 10px rgba(129,140,248,.45)}
+.metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.25rem}
+.metric-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);border-radius:24px;padding:1.4rem;text-align:center}
+.metric-card strong{display:block;font-family:'Manrope',sans-serif;font-size:2rem;font-weight:700;line-height:1;background:linear-gradient(135deg,var(--indigo-h),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.55rem}
+.metric-card span{display:block;color:var(--muted);line-height:1.65}
+.case-quote{margin-top:1.25rem;border:1px solid rgba(52,211,153,.16);background:rgba(52,211,153,.06);border-radius:24px;padding:1.45rem 1.6rem}
+.case-quote p{color:rgba(255,255,255,.84);line-height:1.8;font-style:italic}
+.case-quote span{display:block;margin-top:.85rem;color:#a7f3d0;font-size:.92rem}
+@media(max-width:920px){.case-study-top,.case-grid,.metrics-row{grid-template-columns:1fr}.case-badges{justify-content:flex-start;flex-wrap:wrap}}
+.ty-wrap{max-width:600px;margin:10rem auto;padding:0 1.5rem;text-align:center;}
+.anim{transition:opacity .8s cubic-bezier(0.2, 0.8, 0.2, 1), transform .8s cubic-bezier(0.2, 0.8, 0.2, 1);}
+.anim.hidden-pre{opacity:0;transform:translateY(40px);}
+.anim.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="bg-layer" aria-hidden="true"></div>
+<div class="grid-wrap" aria-hidden="true"><div class="grid-bg"></div></div>
+
+<nav>
+  <div class="nav-in">
+    <span class="logo" onclick="show('pg-main')" style="cursor:pointer">Klarity<span>Ops.</span></span>
+    <ul class="nav-links">
+      <li><a href="#problem" onclick="show('pg-main')">Problems</a></li>
+      <li><a href="#system" onclick="show('pg-main')">The System</a></li>
+      <li><a href="#proof" onclick="show('pg-main')">Results</a></li>
+      <li><a href="#case-study" onclick="show('pg-main')">Case Study</a></li>
+    </ul>
+    <button class="btn-nav" onclick="show('pg-book')">Book a Free Call</button>
+  </div>
+</nav>
+
+<div class="mob-cta">
+  <button onclick="show('pg-book')">Book a Free Call</button>
+</div>
+
+<div id="pg-main">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-text anim">
+          <div class="hero-badge">
+            <i data-lucide="shield-check" style="width:16px; height:16px;"></i>
+            BizOps systems for scaling D2C & e-commerce teams
+          </div>
+          <h1>Scale without the <em>chaos.</em></h1>
+          <p class="hero-sub">
+            We build your workflows, ownership structure, dashboards, and execution system inside Asana, so your team can run with clarity, accountability, and less follow-up.
+          </p>
+          <div class="hero-btns">
+            <button class="btn-p btn-lg" onclick="show('pg-book')">Book a Free Call</button>
+          </div>
+          <div class="hero-points">
+            <div class="hero-point">
+              <strong>Workflow clarity</strong>
+              <span>Structured execution across teams</span>
+            </div>
+            <div class="hero-divider"></div>
+            <div class="hero-point">
+              <strong>Leadership visibility</strong>
+              <span>Clear priorities, blockers & progress</span>
+            </div>
+            <div class="hero-divider"></div>
+            <div class="hero-point">
+              <strong>Ongoing support</strong>
+              <span>Support beyond setup and rollout</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visuals anim" style="transition-delay: 0.2s;">
+          <div class="kanban-board">
+            <div class="spin-border-1px hero-spin"></div>
+            <div class="kb-header">
+              <div class="kb-title"><div class="kb-dot"></div> Q3 Operations Hub</div>
+              <i data-lucide="more-horizontal" style="color:var(--dim);"></i>
+            </div>
+            <div class="kb-cols">
+              <div class="kb-col">
+                <div class="kb-col-title">To Do</div>
+                <div class="kb-task animated-task">
+                  <div class="kb-task-line"></div>
+                  <div class="kb-task-line short"></div>
+                </div>
+                <div class="kb-task"><div class="kb-task-line short"></div></div>
+              </div>
+              <div class="kb-col">
+                <div class="kb-col-title">In Progress</div>
+                <div class="kb-task" style="border-color:rgba(34,211,238,0.3); background:rgba(34,211,238,0.05);">
+                  <div class="kb-task-line" style="background:rgba(34,211,238,0.4);"></div>
+                  <div class="kb-task-line short" style="background:rgba(34,211,238,0.2);"></div>
+                </div>
+              </div>
+              <div class="kb-col">
+                <div class="kb-col-title">Done</div>
+                <div class="kb-task" style="opacity:0.5;"><div class="kb-task-line"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="float-card-1">
+            <div class="spin-border-1px hero-spin-rev"></div>
+            <div class="fc-content">
+              <div class="fc-top">
+                <span class="fc-tag" id="fc1-tag">Completed</span>
+                <span id="fc1-icon"><i data-lucide="check-circle-2" style="width:16px; color:var(--green);"></i></span>
+              </div>
+              <div class="fc-title">Creative Sync Setup</div>
+              <div class="fc-bot">
+                <div class="fc-avatar">H</div>
+                <span id="fc1-text">Owner assigned</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="float-card-2">
+            <div class="spin-border-1px hero-spin"></div>
+            <div class="fc-content">
+              <div class="fc2-icon"><i data-lucide="zap" style="width:18px;"></i></div>
+              <div class="fc2-title">Team Velocity</div>
+              <div class="fc2-stat" id="velocity-stat">+42%</div>
+              <div style="font-size:0.7rem; color:var(--dim); margin-top:0.2rem;">Since implementation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="problem" style="background:rgba(12, 13, 30, 0.4); border-top:1px solid var(--border);">
+    <div class="wrap">
+      <div class="sh anim">
+        <span class="lbl">The Problem</span>
+        <h2>Execution breaks without structure.</h2>
+        <p>Most teams do not have a people problem. They have a system problem.</p>
+      </div>
+      <div class="bento-grid">
+        <div class="bento-card bento-large anim"><div class="spin-border-2px bento-spin"></div><div class="bento-icon"><i data-lucide="alert-circle"></i></div><h3>Unclear ownership</h3><p>Tasks get delayed, deadlines slip, and accountability breaks because ownership, process structure, and execution rules were never built into the workflow.</p></div>
+        <div class="bento-card anim" style="transition-delay: 0.1s;"><div class="spin-border-2px bento-spin"></div><div class="bento-icon"><i data-lucide="split-square-horizontal"></i></div><h3>No visibility</h3><p>Marketing, operations, and supply chain move separately. Handoffs get missed, priorities drift, and execution breaks under pressure.</p></div>
+        <div class="bento-card anim" style="transition-delay: 0.2s;"><div class="spin-border-2px bento-spin"></div><div class="bento-icon"><i data-lucide="message-square-dashed"></i></div><h3>Scattered execution</h3><p>There is no structured intake, no approval system, and no reliable handoff path. Teams waste time chasing updates instead of executing.</p></div>
+        <div class="bento-card bento-large anim" style="transition-delay: 0.3s;"><div class="spin-border-2px bento-spin"></div><div class="bento-icon"><i data-lucide="eye-off"></i></div><h3>No leadership clarity</h3><p>You still rely on meetings, pings, and manual follow-ups to understand what is moving. Without centralized tracking, leadership never gets clean execution visibility.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cost" class="cost-section">
+    <div class="wrap">
+      <div class="cost-box anim">
+        <div>
+          <span class="cost-label">Cost of Poor Execution</span>
+          <h2 class="cost-heading">Poor structure slows growth.</h2>
+          <p class="cost-text">When execution lives across Slack, memory, and disconnected tools, growth creates more noise instead of more leverage. A weak BizOps layer turns scale into friction.</p>
+        </div>
+        <div class="cost-list">
+          <div class="cost-item anim" style="transition-delay: 0.1s;"><div class="cost-dot"></div><div class="cost-item-text">Missed <span class="cost-mark">deadlines</span> that delay <span class="cost-mark">launches</span> and campaigns</div></div>
+          <div class="cost-item anim" style="transition-delay: 0.15s;"><div class="cost-dot"></div><div class="cost-item-text">Wasted <span class="cost-mark">salaries</span> and contractor hours on preventable <span class="cost-mark">confusion</span></div></div>
+          <div class="cost-item anim" style="transition-delay: 0.2s;"><div class="cost-dot"></div><div class="cost-item-text">Burned <span class="cost-mark">ad spend</span> on untracked or unreviewed <span class="cost-mark">creative output</span></div></div><div class="cost-item-text"><span class="cost-mark">Founder bottlenecks</span> that stop the business from scaling cleanly</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="system">
+    <div class="wrap">
+      <div class="sh anim">
+        <span class="lbl">BizOps in Asana</span>
+        <h2>What we build in Asana.</h2>
+        <p>We do not just set up Asana. We implement the execution structure your business runs on, then support adoption, accountability, and ongoing optimization.</p>
+      </div>
+      <div class="layers-grid">
+        <div class="layer-box anim"><div class="spin-border-1px layer-spin"></div><i data-lucide="paintbrush"></i><h3>1. Creative Workflows</h3><p>Structured intake, approvals, handoffs, and delivery inside Asana.</p></div>
+        <div class="layer-box anim" style="transition-delay: 0.05s;"><div class="spin-border-1px layer-spin"></div><i data-lucide="file-check-2"></i><h3>2. SOP Systems</h3><p>Repeatable operating procedures embedded into execution.</p></div>
+        <div class="layer-box anim" style="transition-delay: 0.1s;"><div class="spin-border-1px layer-spin"></div><i data-lucide="users"></i><h3>3. Ownership Structure</h3><p>Clear owners, responsibilities, and accountability paths.</p></div>
+        <div class="layer-box anim" style="transition-delay: 0.15s;"><div class="spin-border-1px layer-spin"></div><i data-lucide="plug"></i><h3>4. Tool Integration</h3><p>Asana connected as the central execution hub across your stack.</p></div>
+        <div class="layer-box anim" style="transition-delay: 0.2s;"><div class="spin-border-1px layer-spin"></div><i data-lucide="settings-2"></i><h3>5. Workspace Configuration</h3><p>Projects, portfolios, rules, automations, and custom fields configured properly.</p></div>
+        <div class="layer-box anim" style="transition-delay: 0.25s;"><div class="spin-border-1px layer-spin"></div><i data-lucide="target"></i><h3>6. OKRs & Initiative Tracking</h3><p>Goals, priorities, and key initiatives tracked with clarity.</p></div>
+        <div class="layer-box anim" style="transition-delay: 0.3s;"><div class="spin-border-1px layer-spin"></div><i data-lucide="layout-dashboard"></i><h3>7. Leadership Visibility</h3><p>Live dashboards for status, priorities, blockers, and workload visibility.</p></div>
+        <div class="layer-box anim" style="transition-delay: 0.35s;"><div class="spin-border-1px layer-spin"></div><i data-lucide="message-square"></i><h3>8. Communication Flows</h3><p>Slack-to-Asana updates, handoffs, and notifications aligned to execution.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proof" style="background:rgba(12, 13, 30, 0.4); border-top:1px solid var(--border);">
+    <div class="wrap">
+      <div class="sh anim">
+        <span class="lbl">Execution Outcomes</span>
+        <h2>What changes when structure is in place.</h2>
+      </div>
+      <div class="proof-wrap">
+        <div class="proof-row anim">
+          <div class="proof-side proof-before"><div class="proof-lbl lbl-red"><i data-lucide="x-circle" style="width:16px;"></i> Before (Chaos)</div><p class="proof-text">Creative requests lived in Slack, ownership was unclear, and cross-functional execution had no single source of truth.</p></div>
+          <div class="proof-side proof-after"><div class="proof-lbl lbl-green"><i data-lucide="check-circle-2" style="width:16px;"></i> After 90 Days</div><p class="proof-text">Execution moved into Asana with structured workflows, clearer ownership, and stronger leadership visibility across teams.</p></div>
+        </div>
+        <div class="proof-row anim" style="transition-delay: 0.2s;"><div class="proof-side proof-before"><div class="proof-lbl lbl-red"><i data-lucide="x-circle" style="width:16px;"></i> Before (Chaos)</div><p class="proof-text">New team members took too long to ramp, documentation was weak, and tasks had no clear single owner.</p></div><div class="proof-side proof-after"><div class="proof-lbl lbl-green"><i data-lucide="check-circle-2" style="width:16px;"></i> After 90 Days</div><p class="proof-text">SOPs, ownership structure, and repeatable workflows gave leadership cleaner visibility and reduced day-to-day execution drag.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="case-study">
+    <div class="wrap">
+      <div class="sh anim">
+        <span class="lbl" style="color:var(--indigo-h);border-color:rgba(99,102,241,0.25);background:rgba(99,102,241,0.10);">Representative Engagement</span>
+        <h2>How structured BizOps implementation improves execution inside Asana.</h2>
+        <p>A representative engagement based on the kind of structure, visibility, accountability, and cross-functional execution work Klarity Ops implements for scaling brands.</p>
+      </div>
+
+      <div class="case-study-shell anim">
+        <div class="case-study-top">
+          <div>
+            <div class="case-mini">Engagement Type</div>
+            <h3>Growth-stage DTC brand with cross-functional execution complexity</h3>
+            <p class="case-lead">In a typical engagement like this, the business is scaling fast while teams operate in silos across marketing, operations, support, and people functions. Leadership has strategy, but not a single system to execute through.</p>
+          </div>
+          <div class="case-badges">
+            <span>Representative Build</span>
+            <span>Asana System Design</span>
+            <span>Execution Playbooks</span>
+          </div>
+        </div>
+
+        <div class="case-grid">
+          <div class="case-card challenge-card">
+            <div class="case-mini">The Challenge</div>
+            <ul>
+              <li>Limited cross-functional visibility</li>
+              <li>Slow blocker resolution</li>
+              <li>Missed or shifting deadlines</li>
+              <li>Inconsistent product launch timelines</li>
+            </ul>
+          </div>
+
+          <div class="case-card build-card">
+            <div class="case-mini">What Was Built</div>
+            <ul>
+              <li>Centralized BizOps implementation</li>
+              <li>Shared weekly execution rhythm, OKRs, and visibility reviews</li>
+              <li>Asana as the single source of truth for execution</li>
+              <li>Standardized pre-GTM and GTM launch playbooks</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="metrics-row">
+          <div class="metric-card">
+            <strong>66%</strong>
+            <span>reduction in blocker resolution time</span>
+          </div>
+          <div class="metric-card">
+            <strong>37%</strong>
+            <span>increase in on-time delivery</span>
+          </div>
+          <div class="metric-card">
+            <strong>30%</strong>
+            <span>faster time-to-market for new SKUs</span>
+          </div>
+        </div>
+
+        <div class="case-quote">
+          <p>“Before this work, the team had clear goals but lacked the operating structure to execute consistently. Once the system was built, leadership could plan, execute, and review progress with much more confidence.”</p>
+          <span>- Based on client-side feedback from similar engagements</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="final-box anim">
+        <span class="lbl">Build Your BizOps System</span>
+        <h2>Stop relying on follow-ups. Start running on structure.</h2>
+        <p class="final-text">If your business is already using Asana, or trying to, but still lacks structure, visibility, and accountability, Klarity Ops can build the system and support your team beyond setup.</p>
+        <button class="btn-p btn-lg" onclick="show('pg-book')">Book a Free Call <i data-lucide="calendar" style="width:18px; margin-left:8px;"></i></button>
+        <p class="fc" style="margin-top:1.5rem;">30 minutes. No commitment. For scaling e-commerce brands.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span class="logo">Klarity<span>Ops.</span></span>
+      <p class="fc" style="font-size:0.95rem; margin-top:1rem;">BizOps systems, workflow design, and ongoing Asana support for scaling D2C brands.</p>
+      <small class="fc" style="color:var(--dim);">&copy; 2026 Klarity Ops. All rights reserved.</small>
+    </div>
+  </footer>
+</div>
+
+<div id="pg-book">
+  <div class="book-wrap">
+    <button class="btn-g" style="margin-bottom:3rem; border:none; padding:0.5rem 1rem;" onclick="show('pg-main')">
+      <i data-lucide="arrow-left" style="width:18px; margin-right:8px;"></i> Back
+    </button>
+    <div class="sh">
+      <span class="lbl">Free BizOps Strategy Call</span>
+      <h2>Tell us about your operations setup.</h2>
+      <p>Answer a few short questions so we can understand your team, your current Asana setup, your workflows, and your biggest execution bottlenecks before the call.</p>
+    </div>
+
+    <form id="klarity-form" class="klarity-form" onsubmit="handleFormSubmit(event)">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="fullName">Full name</label>
+          <input id="fullName" name="fullName" type="text" placeholder="Huzaifa Farooq" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Work email</label>
+          <input id="email" name="email" type="email" placeholder="you@brand.com" required>
+        </div>
+        <div class="form-group">
+          <label for="brandName">Brand name</label>
+          <input id="brandName" name="brandName" type="text" placeholder="Your brand or company" required>
+        </div>
+        <div class="form-group">
+          <label for="website">Website / store URL</label>
+          <input id="website" name="website" type="url" placeholder="https://yourstore.com">
+        </div>
+        <div class="form-group">
+          <label for="monthlyRevenue">Monthly revenue</label>
+          <select id="monthlyRevenue" name="monthlyRevenue" required>
+            <option value="">Select range</option>
+            <option>Under $50k/month</option>
+            <option>$50k-$150k/month</option>
+            <option>$150k-$500k/month</option>
+            <option>$500k-$2M/month</option>
+            <option>$2M+/month</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="teamSize">Team size</label>
+          <select id="teamSize" name="teamSize" required>
+            <option value="">Select size</option>
+            <option>1-5 people</option>
+            <option>6-15 people</option>
+            <option>16-30 people</option>
+            <option>31-60 people</option>
+            <option>60+ people</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-stack">
+        <div class="form-group">
+          <label for="currentSetup">What best describes your current Asana or workflow setup?</label>
+          <select id="currentSetup" name="currentSetup" required>
+            <option value="">Select one</option>
+            <option>We are already using Asana</option>
+            <option>We have Asana, but barely use it</option>
+            <option>We are using multiple tools with no single system</option>
+            <option>We need help setting up from scratch</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="biggestBottleneck">What is your biggest operational bottleneck right now?</label>
+          <textarea id="biggestBottleneck" name="biggestBottleneck" rows="5" placeholder="Example: creative requests are scattered, launches keep slipping, and nobody has full visibility across teams." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="timeline">When do you want to fix this?</label>
+          <select id="timeline" name="timeline" required>
+            <option value="">Select timeline</option>
+            <option>Immediately</option>
+            <option>Within 30 days</option>
+            <option>Within this quarter</option>
+            <option>Just exploring for now</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-note">
+        On the free call, we'll review your setup, identify the biggest BizOps gaps, and show you where structure, visibility, and ownership need to be built inside Asana.
+      </div>
+
+      <div class="form-actions">
+        <p>This form is styled to match your landing page theme.</p>
+        <button class="btn-p" type="submit">Submit Request</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="pg-thanks" style="min-height:100vh; display:none; align-items:center; justify-content:center;">
+  <div class="ty-wrap">
+    <div style="width:80px; height:80px; background:rgba(52,211,153,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem;">
+      <i data-lucide="check" style="width:40px; height:40px; color:var(--green);"></i>
+    </div>
+    <h2 style="font-size:2.5rem; font-weight:600; margin-bottom:1rem;">Call Scheduled!</h2>
+    <p style="color:var(--muted); margin-bottom:2rem; letter-spacing:0.012em; word-spacing:0.02em; line-height:1.72;">Check your email for the next step. We'll review your current setup before we speak so the conversation stays focused on structure, visibility, and execution improvements.</p>
+    <button class="btn-g" onclick="show('pg-main')">Return to Homepage</button>
+  </div>
+</div>
+
+<script>
+lucide.createIcons();
+
+function show(id){
+  ['pg-main','pg-book','pg-thanks'].forEach(p=>{
+    var el = document.getElementById(p);
+    if(p === id){
+      el.style.display = (p === 'pg-thanks') ? 'flex' : 'block';
+    } else {
+      el.style.display = 'none';
+    }
+  });
+  window.scrollTo({top:0,behavior:'instant'});
+}
+
+function handleFormSubmit(event){
+  event.preventDefault();
+  const form = document.getElementById('klarity-form');
+  if(form && !form.checkValidity()){
+    form.reportValidity();
+    return;
+  }
+  show('pg-thanks');
+}
+
+function runMockupScripts() {
+  const velEl = document.getElementById('velocity-stat');
+  if(velEl) {
+    setInterval(() => {
+      let current = 12;
+      velEl.innerText = '+' + current + '%';
+      velEl.style.color = '#fff';
+      const countInterval = setInterval(() => {
+        current += 1;
+        velEl.innerText = '+' + current + '%';
+        if(current >= 42) {
+          clearInterval(countInterval);
+          velEl.style.color = 'var(--green)';
+        }
+      }, 35);
+    }, 7000);
+  }
+
+  const tag = document.getElementById('fc1-tag');
+  const icon = document.getElementById('fc1-icon');
+  const text = document.getElementById('fc1-text');
+
+  if(tag && icon && text) {
+    setInterval(() => {
+      tag.className = 'fc-tag pending';
+      tag.innerText = 'In Review';
+      icon.innerHTML = '<i data-lucide="clock" style="width:16px; color:#fbbf24;"></i>';
+      text.innerText = 'Assigning owner...';
+      lucide.createIcons();
+      setTimeout(() => {
+        tag.className = 'fc-tag';
+        tag.innerText = 'Completed';
+        icon.innerHTML = '<i data-lucide="check-circle-2" style="width:16px; color:var(--green);"></i>';
+        text.innerText = 'Owner assigned';
+        lucide.createIcons();
+      }, 3000);
+    }, 7000);
+  }
+}
+runMockupScripts();
+
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var items = document.querySelectorAll('.anim');
+  items.forEach(function(el){ el.classList.add('hidden-pre'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var el = entry.target;
+        if(!el.style.transitionDelay){
+          var delay = 0;
+          var parent = el.parentElement;
+          if(parent){
+            var siblings = Array.from(parent.children).filter(c=>c.classList.contains('anim'));
+            delay = Math.min(siblings.indexOf(el) * 0.1, 0.4);
+          }
+          el.style.transitionDelay = delay + 's';
+        }
+        el.classList.remove('hidden-pre');
+        el.classList.add('visible');
+        io.unobserve(el);
+      }
+    });
+  },{threshold:0.1});
+  items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
