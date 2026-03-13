@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Klarity Ops | BizOps Systems Built in Asana for Scaling E-Commerce Brands</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,294 +10,201 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
-/* Base Styles - Desktop untouched */
+/* ============================================================
+   BASE STYLES (Desktop — unchanged from original)
+   ============================================================ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  font-family:'Inter', sans-serif;
-  background:#06070f;
-  color:#f4f4ff;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height:1.6;
-  letter-spacing:0.012em;
-}
-h1,h2,h3,h4{
-  font-family:'Manrope', sans-serif;
-  line-height:1.16;
-  letter-spacing:-0.02em;
-  font-weight:600;
-}
+body{font-family:'Inter',sans-serif;background:#06070f;color:#f4f4ff;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.6;letter-spacing:.012em}
+h1,h2,h3,h4{font-family:'Manrope',sans-serif;line-height:1.16;letter-spacing:-.02em;font-weight:600}
 a{text-decoration:none;color:inherit}
 ul,ol{list-style:none}
-button{font-family:'Inter', sans-serif;cursor:pointer;border:none;background:none}
+button{font-family:'Inter',sans-serif;cursor:pointer;border:none;background:none}
 
 :root{
-  --bg:#06070f;
-  --card:#0c0d1e;
-  --card2:#12132e;
-  --border:rgba(255,255,255,0.08);
-  --border-hi:rgba(99,102,241,0.5);
-  --indigo:#6366f1;
-  --indigo-h:#818cf8;
-  --cyan:#22d3ee;
-  --green:#34d399;
-  --red:#f87171;
-  --text:#ffffff;
-  --muted:rgba(255,255,255,0.75);
-  --dim:rgba(255,255,255,0.5);
+  --bg:#06070f;--card:#0c0d1e;--card2:#12132e;
+  --border:rgba(255,255,255,.08);--border-hi:rgba(99,102,241,.5);
+  --indigo:#6366f1;--indigo-h:#818cf8;--cyan:#22d3ee;--green:#34d399;--red:#f87171;
+  --text:#fff;--muted:rgba(255,255,255,.75);--dim:rgba(255,255,255,.5)
 }
 
-/* Animations */
-@keyframes ambientBreathe {
-  0%, 100% { opacity: 0.6; transform: scale(1) translateX(-50%); }
-  50% { opacity: 0.9; transform: scale(1.1) translateX(-48%); }
-}
-@keyframes ambientBreatheAlt {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.15); }
-}
-@keyframes moveGrid {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(60px); }
-}
-@keyframes glowPulse {
-  0% { box-shadow: 0 4px 20px rgba(99,102,241,0.3); }
-  50% { box-shadow: 0 4px 35px rgba(99,102,241,0.6); }
-  100% { box-shadow: 0 4px 20px rgba(99,102,241,0.3); }
-}
-@keyframes rotateBorder {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-@keyframes floatMain {
-  0%, 100% { transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(0); }
-  50% { transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(-15px); }
-}
-@keyframes floatCard1 {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-10px) rotate(-1deg); }
-}
-@keyframes floatCard2 {
-  0%, 100% { transform: translateY(0) rotate(3deg); }
-  50% { transform: translateY(-8px) rotate(4deg); }
-}
-@keyframes dragTask {
-  0%, 10% { transform: translate(0, 0) scale(1); border-color: rgba(255,255,255,0.05); background: rgba(255,255,255,0.05); opacity: 1; }
-  20% { transform: translate(5px, -5px) scale(1.05) rotate(3deg); border-color: var(--indigo); background: rgba(99,102,241,0.1); box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 20; }
-  40%, 60% { transform: translate(calc(100% + 1rem), 50px) scale(1) rotate(0deg); border-color: rgba(34,211,238,0.3); background: rgba(34,211,238,0.05); box-shadow: none; z-index: 10; }
-  70% { transform: translate(calc(100% + 1rem + 5px), 45px) scale(1.05) rotate(3deg); border-color: var(--indigo); background: rgba(99,102,241,0.1); box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 20; }
-  85%, 95% { transform: translate(calc(200% + 2rem), 0px) scale(1) rotate(0deg); border-color: rgba(255,255,255,0.05); background: rgba(255,255,255,0.05); opacity: 0.4; box-shadow: none; z-index: 10; }
-  100% { transform: translate(0, 0) scale(1); opacity: 0; }
-}
-.animated-task {
-  animation: dragTask 4s ease-in-out infinite;
-  position: relative; z-index: 10; cursor: grab;
-}
+@keyframes ambientBreathe{0%,100%{opacity:.6;transform:scale(1) translateX(-50%)}50%{opacity:.9;transform:scale(1.1) translateX(-48%)}}
+@keyframes ambientBreatheAlt{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.8;transform:scale(1.15)}}
+@keyframes moveGrid{0%{transform:translateY(0)}100%{transform:translateY(60px)}}
+@keyframes glowPulse{0%{box-shadow:0 4px 20px rgba(99,102,241,.3)}50%{box-shadow:0 4px 35px rgba(99,102,241,.6)}100%{box-shadow:0 4px 20px rgba(99,102,241,.3)}}
+@keyframes rotateBorder{0%{transform:translate(-50%,-50%) rotate(0deg)}100%{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes floatMain{0%,100%{transform:perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(0)}50%{transform:perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(-15px)}}
+@keyframes floatCard1{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(-1deg)}}
+@keyframes floatCard2{0%,100%{transform:translateY(0) rotate(3deg)}50%{transform:translateY(-8px) rotate(4deg)}}
+@keyframes dragTask{0%,10%{transform:translate(0,0) scale(1);border-color:rgba(255,255,255,.05);background:rgba(255,255,255,.05);opacity:1}20%{transform:translate(5px,-5px) scale(1.05) rotate(3deg);border-color:var(--indigo);background:rgba(99,102,241,.1);box-shadow:0 10px 20px rgba(0,0,0,.3);z-index:20}40%,60%{transform:translate(calc(100% + 1rem),50px) scale(1) rotate(0deg);border-color:rgba(34,211,238,.3);background:rgba(34,211,238,.05);box-shadow:none;z-index:10}70%{transform:translate(calc(100% + 1rem + 5px),45px) scale(1.05) rotate(3deg);border-color:var(--indigo);background:rgba(99,102,241,.1);box-shadow:0 10px 20px rgba(0,0,0,.3);z-index:20}85%,95%{transform:translate(calc(200% + 2rem),0) scale(1) rotate(0deg);border-color:rgba(255,255,255,.05);background:rgba(255,255,255,.05);opacity:.4;box-shadow:none;z-index:10}100%{transform:translate(0,0) scale(1);opacity:0}}
+.animated-task{animation:dragTask 4s ease-in-out infinite;position:relative;z-index:10;cursor:grab}
 
-.spin-border-1px, .spin-border-2px {
-  position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0; overflow: hidden;
-  -webkit-mask-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
-  -webkit-mask-clip: content-box, border-box;
-  -webkit-mask-composite: destination-out;
-  mask-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
-  mask-clip: content-box, border-box;
-  mask-composite: exclude;
-}
-.spin-border-1px { top: -1px; left: -1px; right: -1px; bottom: -1px; padding: 1px; }
-.spin-border-2px { top: -2px; left: -2px; right: -2px; bottom: -2px; padding: 2px; }
-.spin-border-1px::before, .spin-border-2px::before {
-  content: ''; position: absolute; top: 50%; left: 50%; width: 1500px; height: 1500px;
-  transform: translate(-50%, -50%);
-  animation: rotateBorder 4s linear infinite;
-}
-.hero-spin::before { background: conic-gradient(from 0deg, transparent 70%, rgba(34,211,238,0.4) 85%, rgba(99,102,241,0.6) 100%); animation-duration: 12s; }
-.hero-spin-rev::before { background: conic-gradient(from 0deg, transparent 70%, rgba(52,211,153,0.4) 85%, rgba(34,211,238,0.6) 100%); animation-duration: 10s; animation-direction: reverse; }
-.bento-spin { opacity: 0.5; transition: opacity 0.3s ease; }
-.bento-card:hover .bento-spin { opacity: 1; }
-.bento-spin::before { background: conic-gradient(from 0deg, transparent 65%, rgba(248,113,113,0.6) 85%, rgba(239,68,68,0.9) 100%); animation-duration: 8s;}
-.layer-spin { opacity: 0.4; transition: opacity 0.4s ease; }
-.layer-box:hover .layer-spin { opacity: 1; }
-.layer-spin::before { background: conic-gradient(from 0deg, transparent 65%, var(--cyan) 85%, var(--indigo) 100%); animation-duration: 14s;}
+.spin-border-1px,.spin-border-2px{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;overflow:hidden;-webkit-mask-image:linear-gradient(#fff,#fff),linear-gradient(#fff,#fff);-webkit-mask-clip:content-box,border-box;-webkit-mask-composite:destination-out;mask-image:linear-gradient(#fff,#fff),linear-gradient(#fff,#fff);mask-clip:content-box,border-box;mask-composite:exclude}
+.spin-border-1px{top:-1px;left:-1px;right:-1px;bottom:-1px;padding:1px}
+.spin-border-2px{top:-2px;left:-2px;right:-2px;bottom:-2px;padding:2px}
+.spin-border-1px::before,.spin-border-2px::before{content:'';position:absolute;top:50%;left:50%;width:1500px;height:1500px;transform:translate(-50%,-50%);animation:rotateBorder 4s linear infinite}
+.hero-spin::before{background:conic-gradient(from 0deg,transparent 70%,rgba(34,211,238,.4) 85%,rgba(99,102,241,.6) 100%);animation-duration:12s}
+.hero-spin-rev::before{background:conic-gradient(from 0deg,transparent 70%,rgba(52,211,153,.4) 85%,rgba(34,211,238,.6) 100%);animation-duration:10s;animation-direction:reverse}
+.bento-spin{opacity:.5;transition:opacity .3s ease}
+.bento-card:hover .bento-spin{opacity:1}
+.bento-spin::before{background:conic-gradient(from 0deg,transparent 65%,rgba(248,113,113,.6) 85%,rgba(239,68,68,.9) 100%);animation-duration:8s}
+.layer-spin{opacity:.4;transition:opacity .4s ease}
+.layer-box:hover .layer-spin{opacity:1}
+.layer-spin::before{background:conic-gradient(from 0deg,transparent 65%,var(--cyan) 85%,var(--indigo) 100%);animation-duration:14s}
 
-.bg-layer{ position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden; }
-.bg-layer::before{ content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%); width:1000px;height:700px; background:radial-gradient(ellipse,rgba(99,102,241,.12) 0%,transparent 70%); border-radius:50%; animation: ambientBreathe 10s ease-in-out infinite; }
-.bg-layer::after{ content:'';position:absolute;bottom:-15%;right:-10%; width:600px;height:600px; background:radial-gradient(ellipse,rgba(34,211,238,.07) 0%,transparent 70%); border-radius:50%; animation: ambientBreatheAlt 8s ease-in-out infinite reverse; }
-.grid-wrap { position:fixed;inset:-60px 0 0 0;z-index:0;pointer-events:none; }
-.grid-bg{ width: 100%; height: calc(100% + 60px); background-image: linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px); background-size:60px 60px; animation: moveGrid 15s linear infinite; }
+.bg-layer{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bg-layer::before{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:1000px;height:700px;background:radial-gradient(ellipse,rgba(99,102,241,.12) 0%,transparent 70%);border-radius:50%;animation:ambientBreathe 10s ease-in-out infinite}
+.bg-layer::after{content:'';position:absolute;bottom:-15%;right:-10%;width:600px;height:600px;background:radial-gradient(ellipse,rgba(34,211,238,.07) 0%,transparent 70%);border-radius:50%;animation:ambientBreatheAlt 8s ease-in-out infinite reverse}
+.grid-wrap{position:fixed;inset:-60px 0 0 0;z-index:0;pointer-events:none}
+.grid-bg{width:100%;height:calc(100% + 60px);background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:60px 60px;animation:moveGrid 15s linear infinite}
 
 .wrap{max-width:1440px;margin:0 auto;padding:0 1.5rem}
 .page-view{display:none}
 .page-view.is-active{display:block}
 #pg-thanks.page-view.is-active{display:flex}
 
-nav{ position:fixed;top:0;left:0;right:0;z-index:200; background:rgba(6,7,15,.75); backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--border); transition: background 0.3s ease; }
-.nav-in{ display:flex;align-items:center;justify-content:space-between; height:76px;max-width:1440px;margin:0 auto;padding:0 1.5rem; }
-.logo{ font-family:'Manrope',sans-serif;font-size:1.45rem;font-weight:700; color:var(--text); transition: opacity 0.2s, transform 0.2s; }
-.logo:hover { opacity: 0.9; transform: scale(1.02); }
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(6,7,15,.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:background .3s ease}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:1440px;margin:0 auto;padding:0 1.5rem}
+.logo{font-family:'Manrope',sans-serif;font-size:1.45rem;font-weight:700;color:var(--text);transition:opacity .2s,transform .2s}
+.logo:hover{opacity:.9;transform:scale(1.02)}
 .logo span{color:var(--indigo-h)}
 .nav-links{display:flex;gap:2.5rem}
-.nav-links a{font-size:.9rem;font-weight:500;color:var(--muted);transition:color .2s;}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--muted);transition:color .2s}
 .nav-links a:hover{color:var(--text)}
-.btn-nav{ background:var(--indigo);color:#fff; font-size:.9rem;font-weight:500; padding:.65rem 1.5rem;border-radius:10px; box-shadow:0 0 20px rgba(99,102,241,.3); transition:all .3s cubic-bezier(0.4, 0, 0.2, 1); }
-.btn-nav:hover{background:var(--indigo-h);transform:translateY(-2px);box-shadow:0 4px 25px rgba(99,102,241,.6);}
+.btn-nav{background:var(--indigo);color:#fff;font-size:.9rem;font-weight:500;padding:.65rem 1.5rem;border-radius:10px;box-shadow:0 0 20px rgba(99,102,241,.3);transition:all .3s cubic-bezier(.4,0,.2,1)}
+.btn-nav:hover{background:var(--indigo-h);transform:translateY(-2px);box-shadow:0 4px 25px rgba(99,102,241,.6)}
 
-.mob-cta{display:none !important}
+.mob-cta{display:none}
 
-.btn-p{ display:inline-flex;align-items:center;justify-content:center;gap:.5rem; background:linear-gradient(135deg, var(--indigo) 0%, #4f46e5 100%); color:#fff;font-size:1rem;font-weight:500; padding:.9rem 2.2rem;border-radius:12px; animation: glowPulse 3s infinite; transition:all .3s cubic-bezier(0.4, 0, 0.2, 1); }
-.btn-p:hover{ animation: none; background:linear-gradient(135deg, var(--indigo-h) 0%, var(--indigo) 100%); transform:translateY(-3px) scale(1.02); box-shadow:0 10px 30px rgba(99,102,241,.6); }
+.btn-p{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:linear-gradient(135deg,var(--indigo) 0%,#4f46e5 100%);color:#fff;font-size:1rem;font-weight:500;padding:.9rem 2.2rem;border-radius:12px;animation:glowPulse 3s infinite;transition:all .3s cubic-bezier(.4,0,.2,1)}
+.btn-p:hover{animation:none;background:linear-gradient(135deg,var(--indigo-h) 0%,var(--indigo) 100%);transform:translateY(-3px) scale(1.02);box-shadow:0 10px 30px rgba(99,102,241,.6)}
 .btn-p[disabled]{opacity:.72;cursor:not-allowed;transform:none!important;animation:none;box-shadow:none}
-.btn-g{ display:inline-flex;align-items:center;justify-content:center; background:rgba(255,255,255,.03);color:var(--text);font-size:1rem;font-weight:400; padding:.9rem 2.2rem;border-radius:12px;border:1px solid var(--border);transition:all .3s ease; }
-.btn-g:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);transform:translateY(-2px);}
+.btn-g{display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.03);color:var(--text);font-size:1rem;font-weight:400;padding:.9rem 2.2rem;border-radius:12px;border:1px solid var(--border);transition:all .3s ease}
+.btn-g:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);transform:translateY(-2px)}
 .btn-lg{padding:1.1rem 2.8rem;font-size:1.1rem;border-radius:14px}
 
 section{padding:7rem 0;position:relative;z-index:1}
 .sh{text-align:center;max-width:1200px;margin:0 auto 4rem}
-.sh h2{font-size:clamp(1.9rem, 3vw, 3.05rem);font-weight:600;margin-bottom:1rem;line-height:1.12;letter-spacing:-0.02em;word-spacing:0.02em;}
-.sh p{font-size:1.1rem;color:var(--muted);letter-spacing:0.012em;word-spacing:0.02em;line-height:1.78;max-width:980px;margin-inline:auto;text-align:center;}
-.lbl{ display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase; color:var(--cyan);margin-bottom:1rem;background: rgba(34, 211, 238, 0.1); padding: 0.4rem 1rem;border-radius: 999px;border: 1px solid rgba(34, 211, 238, 0.2); }
+.sh h2{font-size:clamp(1.9rem,3vw,3.05rem);font-weight:600;margin-bottom:1rem;line-height:1.12;letter-spacing:-.02em;word-spacing:.02em}
+.sh p{font-size:1.1rem;color:var(--muted);letter-spacing:.012em;word-spacing:.02em;line-height:1.78;max-width:980px;margin-inline:auto;text-align:center}
+.lbl{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem;background:rgba(34,211,238,.1);padding:.4rem 1rem;border-radius:999px;border:1px solid rgba(34,211,238,.2)}
 
 .hero{padding:10rem 0 6rem;position:relative;z-index:1}
-.hero-grid{ display:grid;grid-template-columns:1.15fr 0.85fr;gap:3rem;align-items:center; }
-.hero-badge{ display:inline-flex;align-items:center;gap:.5rem; border:1px solid rgba(99,102,241,.4); background:rgba(99,102,241,.1);color:var(--indigo-h);font-size:.85rem;font-weight:600; padding:.4rem 1.2rem;border-radius:999px;margin-bottom:1.5rem; box-shadow: 0 0 15px rgba(99,102,241,0.2); transition: box-shadow 0.3s ease; }
-.hero-badge:hover { box-shadow: 0 0 25px rgba(99,102,241,0.4); }
-.hero h1{ font-size:clamp(2.6rem, 4.6vw, 4.25rem); font-weight:600; line-height:1.08; margin-bottom:1.35rem; max-width:11ch; }
-.hero h1 em{ font-style:normal;background:linear-gradient(130deg,var(--indigo-h) 0%,var(--cyan) 100%); -webkit-background-clip:text;-webkit-text-fill-color:transparent; background-clip:text; }
-.hero-sub{font-size:1.1rem;color:var(--muted);margin-bottom:2.5rem;max-width:600px;letter-spacing:0.012em;word-spacing:0.02em;line-height:1.78;}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(99,102,241,.4);background:rgba(99,102,241,.1);color:var(--indigo-h);font-size:.85rem;font-weight:600;padding:.4rem 1.2rem;border-radius:999px;margin-bottom:1.5rem;box-shadow:0 0 15px rgba(99,102,241,.2);transition:box-shadow .3s ease}
+.hero-badge:hover{box-shadow:0 0 25px rgba(99,102,241,.4)}
+.hero h1{font-size:clamp(2.6rem,4.6vw,4.25rem);font-weight:600;line-height:1.08;margin-bottom:1.35rem;max-width:11ch}
+.hero h1 em{font-style:normal;background:linear-gradient(130deg,var(--indigo-h) 0%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.1rem;color:var(--muted);margin-bottom:2.5rem;max-width:600px;letter-spacing:.012em;word-spacing:.02em;line-height:1.78}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
 .hero-points{display:flex;gap:1rem;margin-top:2.1rem;align-items:center;flex-wrap:nowrap}
 .hero-point{display:flex;flex-direction:column;gap:.2rem;min-width:0;flex:1}
-.hero-point strong{font-family:'Manrope',sans-serif;font-size:.98rem;font-weight:600;color:var(--text);letter-spacing:-0.01em}
+.hero-point strong{font-family:'Manrope',sans-serif;font-size:.98rem;font-weight:600;color:var(--text);letter-spacing:-.01em}
 .hero-point span{font-size:.84rem;line-height:1.55;color:var(--dim)}
 .hero-divider{width:1px;height:38px;background:var(--border);flex-shrink:0}
-.hero-visuals { position: relative; width: 100%; height: 420px; perspective: 1000px; }
+.hero-point-icon{display:none}
+.hero-visuals{position:relative;width:100%;height:420px;perspective:1000px}
 
-.kanban-board {
-  position: absolute; top: 5%; right: 0; width: 90%; height: 90%;
-  background: rgba(18, 19, 46, 0.4);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 20px; padding: 1.5rem;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-  animation: floatMain 4s ease-in-out infinite;
-  display: flex; flex-direction: column; z-index: 1;
-}
-.kanban-board > *:not([class*="spin-border"]) { position: relative; z-index: 3; }
-.kb-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); position: relative; z-index: 2;}
-.kb-title { font-weight: 600; font-size: 1.05rem; display:flex; align-items:center; gap:0.5rem;}
-.kb-dot { width:10px; height:10px; background:var(--cyan); border-radius:50%; box-shadow:0 0 10px var(--cyan); }
-.kb-cols { display: flex; gap: 1rem; flex: 1; position: relative; z-index: 2;}
-.kb-col { flex: 1; background: rgba(255,255,255,0.02); border-radius: 12px; padding: 0.8rem; display: flex; flex-direction: column; gap: 0.8rem; }
-.kb-col-title { font-size: 0.75rem; font-weight: 600; color: var(--dim); text-transform: uppercase; letter-spacing: 0.05em; }
-.kb-task { background: rgba(255,255,255,0.05); border-radius: 8px; padding: 0.8rem; border: 1px solid rgba(255,255,255,0.05); }
-.kb-task-line { height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); margin-bottom: 0.5rem; }
-.kb-task-line.short { width: 60%; background: rgba(99,102,241,0.4); }
-.float-card-1 {
-  position: absolute; bottom: 0; left: -5%; width: 240px;
-  background: rgba(18, 19, 46, 0.6);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 16px; padding: 1.2rem;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 20px rgba(99,102,241,0.15);
-  animation: floatCard1 6s ease-in-out infinite; z-index: 10;
-}
-.float-card-1 > *:not([class*="spin-border"]) { position: relative; z-index: 3; }
-.fc-content { position: relative; z-index: 2; }
-.fc-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
-.fc-tag { font-size: 0.7rem; font-weight: 600; background: rgba(52,211,153,0.15); color: var(--green); padding: 0.2rem 0.6rem; border-radius: 6px; transition: all 0.3s ease; }
-.fc-tag.pending { background: rgba(251,191,36,0.15) !important; color: #fbbf24 !important; }
-.fc-title { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.4rem; }
-.fc-bot { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--muted); }
-.fc-avatar { width: 24px; height: 24px; border-radius: 50%; background: var(--indigo); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: #fff; font-weight: bold;}
-.float-card-2 {
-  position: absolute; top: -5%; right: -5%; width: 200px;
-  background: rgba(18, 19, 46, 0.6);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 16px; padding: 1.2rem;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-  animation: floatCard2 7s ease-in-out infinite reverse; z-index: 10;
-}
-.float-card-2 > *:not([class*="spin-border"]) { position: relative; z-index: 3; }
-.fc2-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(34,211,238,0.15); color: var(--cyan); display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; }
-.fc2-title { font-weight: 500; font-size: 0.9rem; margin-bottom: 0.3rem; }
-.fc2-stat { font-family: 'Manrope'; font-weight: 700; font-size: 1.35rem; color: #fff; transition: color 0.3s ease; }
+.kanban-board{position:absolute;top:5%;right:0;width:90%;height:90%;background:rgba(18,19,46,.4);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:1.5rem;box-shadow:0 20px 40px rgba(0,0,0,.5);animation:floatMain 4s ease-in-out infinite;display:flex;flex-direction:column;z-index:1}
+.kanban-board>*:not([class*="spin-border"]){position:relative;z-index:3}
+.kb-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:1px solid var(--border);position:relative;z-index:2}
+.kb-title{font-weight:600;font-size:1.05rem;display:flex;align-items:center;gap:.5rem}
+.kb-dot{width:10px;height:10px;background:var(--cyan);border-radius:50%;box-shadow:0 0 10px var(--cyan)}
+.kb-cols{display:flex;gap:1rem;flex:1;position:relative;z-index:2}
+.kb-col{flex:1;background:rgba(255,255,255,.02);border-radius:12px;padding:.8rem;display:flex;flex-direction:column;gap:.8rem}
+.kb-col-title{font-size:.75rem;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.05em}
+.kb-task{background:rgba(255,255,255,.05);border-radius:8px;padding:.8rem;border:1px solid rgba(255,255,255,.05)}
+.kb-task-line{height:6px;border-radius:3px;background:rgba(255,255,255,.1);margin-bottom:.5rem}
+.kb-task-line.short{width:60%;background:rgba(99,102,241,.4)}
+.float-card-1{position:absolute;bottom:0;left:-5%;width:240px;background:rgba(18,19,46,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.2rem;box-shadow:0 15px 35px rgba(0,0,0,.6),0 0 20px rgba(99,102,241,.15);animation:floatCard1 6s ease-in-out infinite;z-index:10}
+.float-card-1>*:not([class*="spin-border"]){position:relative;z-index:3}
+.fc-content{position:relative;z-index:2}
+.fc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.fc-tag{font-size:.7rem;font-weight:600;background:rgba(52,211,153,.15);color:var(--green);padding:.2rem .6rem;border-radius:6px;transition:all .3s ease}
+.fc-tag.pending{background:rgba(251,191,36,.15)!important;color:#fbbf24!important}
+.fc-title{font-weight:500;font-size:.95rem;margin-bottom:.4rem}
+.fc-bot{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--muted)}
+.fc-avatar{width:24px;height:24px;border-radius:50%;background:var(--indigo);display:flex;align-items:center;justify-content:center;font-size:.6rem;color:#fff;font-weight:700}
+.float-card-2{position:absolute;top:-5%;right:-5%;width:200px;background:rgba(18,19,46,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.2rem;box-shadow:0 15px 35px rgba(0,0,0,.6);animation:floatCard2 7s ease-in-out infinite reverse;z-index:10}
+.float-card-2>*:not([class*="spin-border"]){position:relative;z-index:3}
+.fc2-icon{width:32px;height:32px;border-radius:8px;background:rgba(34,211,238,.15);color:var(--cyan);display:flex;align-items:center;justify-content:center;margin-bottom:.8rem}
+.fc2-title{font-weight:500;font-size:.9rem;margin-bottom:.3rem}
+.fc2-stat{font-family:'Manrope';font-weight:700;font-size:1.35rem;color:#fff;transition:color .3s ease}
 
-.bento-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:1.5rem;max-width:1300px;margin:0 auto;}
-.bento-card{background:var(--card2);border:2px solid rgba(255,255,255,0.03);border-radius:24px;padding:2.5rem;display:flex;flex-direction:column;transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease, border-color 0.4s ease;position: relative;z-index: 1;}
-.bento-card:hover{transform:translateY(-8px);box-shadow: 0 15px 35px rgba(0,0,0,0.4);border-color: transparent;}
-.bento-card > *:not([class*="spin-border"]) { position: relative; z-index: 3; }
-.bento-large{grid-column: span 2;}
-.bento-icon{width:56px;height:56px;border-radius:16px;background:rgba(248,113,113,0.05);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;border:1px solid rgba(248,113,113,0.1);transition: background 0.3s ease, transform 0.3s ease;}
-.bento-card:hover .bento-icon {background: rgba(248,113,113,0.15);border-color: rgba(248,113,113,0.3);transform: scale(1.1) rotate(5deg);}
-.bento-icon i,.bento-icon svg{width:28px;height:28px;color:#f87171; transition: color 0.3s ease;}
-.bento-card:hover .bento-icon i,.bento-card:hover .bento-icon svg { color: #ef4444; }
-.bento-card h3{font-size:1.02rem;font-weight:600;margin-bottom:.7rem;line-height:1.28;letter-spacing:-0.005em;word-spacing:0.02em;}
-.bento-card p{color:var(--muted);font-size:1rem;letter-spacing:0.012em;word-spacing:0.02em;line-height:1.72;}
+.bento-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1300px;margin:0 auto}
+.bento-card{background:var(--card2);border:2px solid rgba(255,255,255,.03);border-radius:24px;padding:2.5rem;display:flex;flex-direction:column;transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s ease,border-color .4s ease;position:relative;z-index:1}
+.bento-card:hover{transform:translateY(-8px);box-shadow:0 15px 35px rgba(0,0,0,.4);border-color:transparent}
+.bento-card>*:not([class*="spin-border"]){position:relative;z-index:3}
+.bento-large{grid-column:span 2}
+.bento-icon{width:56px;height:56px;border-radius:16px;background:rgba(248,113,113,.05);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;border:1px solid rgba(248,113,113,.1);transition:background .3s ease,transform .3s ease}
+.bento-card:hover .bento-icon{background:rgba(248,113,113,.15);border-color:rgba(248,113,113,.3);transform:scale(1.1) rotate(5deg)}
+.bento-icon i,.bento-icon svg{width:28px;height:28px;color:#f87171;transition:color .3s ease}
+.bento-card:hover .bento-icon i,.bento-card:hover .bento-icon svg{color:#ef4444}
+.bento-card h3{font-size:1.02rem;font-weight:600;margin-bottom:.7rem;line-height:1.28;letter-spacing:-.005em;word-spacing:.02em}
+.bento-card p{color:var(--muted);font-size:1rem;letter-spacing:.012em;word-spacing:.02em;line-height:1.72}
 
-.cost-section {padding-bottom: 2rem;position: relative;z-index: 1;}
-.cost-box {background: var(--card2);border: 1px solid rgba(255,255,255,0.05);border-radius: 32px;padding: 4rem;display: grid;grid-template-columns: 0.9fr 1.1fr;gap: 4rem;align-items: center;position: relative;overflow: hidden;box-shadow: 0 20px 40px rgba(0,0,0,0.3);max-width: 1100px;margin: 0 auto;}
-.cost-box::before {content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;background: radial-gradient(circle at center, rgba(99,102,241,0.05), transparent 60%);pointer-events: none;}
-.cost-label {color: #fb7185;font-size: 0.8rem;font-weight: 600;letter-spacing: 0.15em;text-transform: uppercase;margin-bottom: 1.5rem;display: inline-block;}
-.cost-heading {font-size: clamp(2rem, 3.5vw, 2.8rem);font-weight: 600;margin-bottom: 1.5rem;line-height: 1.2;max-width:14ch;}
-.cost-text {color: var(--muted);font-size: 1.1rem;line-height: 1.68;letter-spacing: 0.012em;word-spacing: 0.02em;}
-.cost-list {display: flex;flex-direction: column;gap: 1rem;position: relative;z-index: 2;}
-.cost-item {background: rgba(255,255,255,0.02);border: 1px solid rgba(255,255,255,0.05);border-radius: 16px;padding: 1.2rem 1.5rem;display: flex;align-items: center;gap: 1.2rem;transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;}
-.cost-item:hover {background: rgba(255,255,255,0.04);border-color: rgba(251,113,133,0.28);transform: translateX(10px);}
-.cost-dot {width: 10px; height: 10px;border-radius: 50%;background: #fb7185;box-shadow: 0 0 10px rgba(251,113,133,0.45);flex-shrink: 0;}
-.cost-item-text {font-size: 1rem;color: var(--text);font-weight: 400;line-height: 1.6;letter-spacing: 0.012em;word-spacing: 0.02em;}
-.cost-mark{color:#fb7185;font-weight:600;}
+.cost-section{padding-bottom:2rem;position:relative;z-index:1}
+.cost-box{background:var(--card2);border:1px solid rgba(255,255,255,.05);border-radius:32px;padding:4rem;display:grid;grid-template-columns:.9fr 1.1fr;gap:4rem;align-items:center;position:relative;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.3);max-width:1100px;margin:0 auto}
+.cost-box::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at center,rgba(99,102,241,.05),transparent 60%);pointer-events:none}
+.cost-label{color:#fb7185;font-size:.8rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.5rem;display:inline-block}
+.cost-heading{font-size:clamp(2rem,3.5vw,2.8rem);font-weight:600;margin-bottom:1.5rem;line-height:1.2;max-width:14ch}
+.cost-text{color:var(--muted);font-size:1.1rem;line-height:1.68;letter-spacing:.012em;word-spacing:.02em}
+.cost-list{display:flex;flex-direction:column;gap:1rem;position:relative;z-index:2}
+.cost-item{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1.2rem;transition:transform .3s ease,background .3s ease,border-color .3s ease}
+.cost-item:hover{background:rgba(255,255,255,.04);border-color:rgba(251,113,133,.28);transform:translateX(10px)}
+.cost-dot{width:10px;height:10px;border-radius:50%;background:#fb7185;box-shadow:0 0 10px rgba(251,113,133,.45);flex-shrink:0}
+.cost-item-text{font-size:1rem;color:var(--text);font-weight:400;line-height:1.6;letter-spacing:.012em;word-spacing:.02em}
+.cost-mark{color:#fb7185;font-weight:600}
 
-.layers-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:1rem;max-width:1300px;margin:0 auto;}
-.layer-box{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:20px;padding:2rem 1.5rem;text-align:center;transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;position: relative;z-index: 1;}
-.layer-box:hover{background: var(--card2);border-color:transparent;transform:translateY(-5px) scale(1.02);box-shadow: 0 10px 25px rgba(0,0,0,0.3);}
-.layer-box > *:not([class*="spin-border"]) { position: relative; z-index: 3; }
-.layer-box i,.layer-box svg{width:36px;height:36px;color:var(--cyan);margin-bottom:1rem;transition: transform 0.3s ease;}
-.layer-box:hover i,.layer-box:hover svg { transform: translateY(-5px); color: var(--indigo-h); }
-.layer-box h3{font-size:.98rem;font-weight:600;margin-bottom:.5rem;line-height:1.35;letter-spacing:0.01em;word-spacing:0.03em;}
-.layer-box p{font-size:.85rem;color:var(--dim);line-height:1.62;letter-spacing:0.018em;word-spacing:0.03em;}
+.layers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:1300px;margin:0 auto}
+.layer-box{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:20px;padding:2rem 1.5rem;text-align:center;transition:transform .3s ease,box-shadow .3s ease,background .3s ease,border-color .3s ease;position:relative;z-index:1}
+.layer-box:hover{background:var(--card2);border-color:transparent;transform:translateY(-5px) scale(1.02);box-shadow:0 10px 25px rgba(0,0,0,.3)}
+.layer-box>*:not([class*="spin-border"]){position:relative;z-index:3}
+.layer-box i,.layer-box svg{width:36px;height:36px;color:var(--cyan);margin-bottom:1rem;transition:transform .3s ease}
+.layer-box:hover i,.layer-box:hover svg{transform:translateY(-5px);color:var(--indigo-h)}
+.layer-box h3{font-size:.98rem;font-weight:600;margin-bottom:.5rem;line-height:1.35;letter-spacing:.01em;word-spacing:.03em}
+.layer-box p{font-size:.85rem;color:var(--dim);line-height:1.62;letter-spacing:.018em;word-spacing:.03em}
 
-.proof-wrap{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:2rem;}
-.proof-row{display:grid;grid-template-columns:1fr 1fr;background:var(--card2);border:1px solid var(--border);border-radius:24px;overflow:hidden;transition: transform 0.4s ease, box-shadow 0.4s ease;}
-.proof-row:hover {transform: translateY(-4px);box-shadow: 0 15px 35px rgba(0,0,0,0.3);border-color: rgba(255,255,255,0.15);}
-.proof-side{padding:2.5rem; transition: background 0.3s ease;}
-.proof-before{background:rgba(248,113,113,.02);border-right:1px solid var(--border);}
-.proof-after{background:rgba(52,211,153,.02);}
-.proof-row:hover .proof-after { background:rgba(52,211,153,.05); }
-.proof-lbl{display:flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;}
-.lbl-red{color:var(--red);}
-.lbl-green{color:var(--green);}
-.proof-text{font-size:1.02rem;color:var(--muted);line-height:1.76;font-weight:400;letter-spacing:0.012em;word-spacing:0.02em;}
-.proof-after .proof-text{color:rgba(255,255,255,0.78);font-weight:400;}
+.proof-wrap{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:2rem}
+.proof-row{display:grid;grid-template-columns:1fr 1fr;background:var(--card2);border:1px solid var(--border);border-radius:24px;overflow:hidden;transition:transform .4s ease,box-shadow .4s ease}
+.proof-row:hover{transform:translateY(-4px);box-shadow:0 15px 35px rgba(0,0,0,.3);border-color:rgba(255,255,255,.15)}
+.proof-side{padding:2.5rem;transition:background .3s ease}
+.proof-before{background:rgba(248,113,113,.02);border-right:1px solid var(--border)}
+.proof-after{background:rgba(52,211,153,.02)}
+.proof-row:hover .proof-after{background:rgba(52,211,153,.05)}
+.proof-lbl{display:flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
+.lbl-red{color:var(--red)}
+.lbl-green{color:var(--green)}
+.proof-text{font-size:1.02rem;color:var(--muted);line-height:1.76;font-weight:400;letter-spacing:.012em;word-spacing:.02em}
+.proof-after .proof-text{color:rgba(255,255,255,.78);font-weight:400}
 
-.final-box{background:linear-gradient(135deg,rgba(99,102,241,.1) 0%,rgba(34,211,238,.05) 100%);border:1px solid rgba(99,102,241,.3);border-radius:32px;padding:6rem 2rem;text-align:center;max-width:1300px;margin:0 auto;position: relative;overflow: hidden;box-shadow: 0 20px 50px rgba(0,0,0,0.4);}
-.final-box::before {content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);transform: skewX(-20deg);animation: shine 6s infinite;}
-@keyframes shine {0% { left: -100%; }20% { left: 200%; }100% { left: 200%; }}
+.final-box{background:linear-gradient(135deg,rgba(99,102,241,.1) 0%,rgba(34,211,238,.05) 100%);border:1px solid rgba(99,102,241,.3);border-radius:32px;padding:6rem 2rem;text-align:center;max-width:1300px;margin:0 auto;position:relative;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.final-box::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.05),transparent);transform:skewX(-20deg);animation:shine 6s infinite}
+@keyframes shine{0%{left:-100%}20%{left:200%}100%{left:200%}}
 .final-box h2{font-size:clamp(2rem,3.3vw,3rem);font-weight:600;margin-bottom:1.25rem;line-height:1.14;max-width:24ch;margin-left:auto;margin-right:auto;text-align:center}
-.final-box p.final-text {font-size:1.08rem;color:var(--muted);margin-bottom:2.5rem;max-width:760px;margin-left:auto;margin-right:auto;letter-spacing:0.012em;word-spacing:0.02em;line-height:1.82;text-align:center;text-wrap:balance}
-footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;text-align:center;}
+.final-box p.final-text{font-size:1.08rem;color:var(--muted);margin-bottom:2.5rem;max-width:760px;margin-left:auto;margin-right:auto;letter-spacing:.012em;word-spacing:.02em;line-height:1.82;text-align:center;text-wrap:balance}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;text-align:center}
 .fc{display:block;margin-top:1rem;font-size:.85rem;color:var(--dim)}
 
-.book-wrap{max-width:980px;margin:8rem auto 4rem;padding:0 1.5rem;text-align:center;}
-.klarity-form{max-width:900px;margin:0 auto;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:2rem;box-shadow:0 20px 50px rgba(0,0,0,.28);text-align:left;}
-.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem 1.2rem;}
-.form-stack{display:flex;flex-direction:column;gap:1rem;margin-top:1rem;}
-.form-group label{display:block;margin-bottom:.55rem;font-size:.92rem;font-weight:500;color:rgba(255,255,255,.88);letter-spacing:.01em;}
-.form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);color:#fff;border-radius:16px;padding:.95rem 1rem;font:inherit;outline:none;transition:border-color .2s ease, background .2s ease, box-shadow .2s ease;}
+.book-wrap{max-width:980px;margin:8rem auto 4rem;padding:0 1.5rem;text-align:center}
+.klarity-form{max-width:900px;margin:0 auto;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:2rem;box-shadow:0 20px 50px rgba(0,0,0,.28);text-align:left}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem 1.2rem}
+.form-stack{display:flex;flex-direction:column;gap:1rem;margin-top:1rem}
+.form-group label{display:block;margin-bottom:.55rem;font-size:.92rem;font-weight:500;color:rgba(255,255,255,.88);letter-spacing:.01em}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);color:#fff;border-radius:16px;padding:.95rem 1rem;font:inherit;outline:none;transition:border-color .2s ease,background .2s ease,box-shadow .2s ease}
 .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.35)}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(99,102,241,.65);background:rgba(255,255,255,.06);box-shadow:0 0 0 4px rgba(99,102,241,.12);}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(99,102,241,.65);background:rgba(255,255,255,.06);box-shadow:0 0 0 4px rgba(99,102,241,.12)}
 .form-group textarea{resize:vertical;min-height:132px;line-height:1.72;letter-spacing:.012em;word-spacing:.02em}
 .form-group select option{background:#0f1323;color:#fff}
-.form-note{margin-top:1.1rem;padding:1rem 1.1rem;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);color:var(--muted);line-height:1.72;}
-.form-actions{margin-top:1.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
-.form-actions p{color:var(--dim);font-size:.9rem;}
+.form-note{margin-top:1.1rem;padding:1rem 1.1rem;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);color:var(--muted);line-height:1.72}
+.form-actions{margin-top:1.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.form-actions p{color:var(--dim);font-size:.9rem}
 
 .case-study-shell{max-width:1280px;margin:0 auto;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.025));border-radius:32px;padding:2.2rem;box-shadow:0 20px 50px rgba(0,0,0,.28)}
 .case-study-top{display:grid;grid-template-columns:1.2fr .8fr;gap:1.8rem;align-items:start;margin-bottom:1.5rem}
-.case-study-top h3{font-size:1.7rem;font-weight:600;line-height:1.15;margin:.25rem 0 .8rem;letter-spacing:-0.01em;word-spacing:0.02em}
+.case-study-top h3{font-size:1.7rem;font-weight:600;line-height:1.15;margin:.25rem 0 .8rem;letter-spacing:-.01em;word-spacing:.02em}
 .case-section-title{font-size:clamp(1.7rem,2.4vw,2.2rem)!important;line-height:1.2!important;max-width:1000px;margin-left:auto;margin-right:auto;text-align:center}
-.case-desc{max-width:1000px;margin:0.7rem 0 0;color:var(--muted);line-height:1.6;letter-spacing:0.01em;word-spacing:0.02em;text-align:left}
+.case-desc{max-width:1000px;margin:.7rem 0 0;color:var(--muted);line-height:1.6;letter-spacing:.01em;word-spacing:.02em;text-align:left}
 .case-lead{color:var(--muted);line-height:1.8;max-width:760px}
 .case-mini{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo-h);margin-bottom:.45rem}
 .challenge-card .case-mini{color:var(--red)}
@@ -319,21 +226,20 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;te
 .case-quote{margin-top:1.25rem;border:1px solid rgba(52,211,153,.16);background:rgba(52,211,153,.06);border-radius:24px;padding:1.45rem 1.6rem}
 .case-quote p{color:rgba(255,255,255,.84);line-height:1.8;font-style:italic}
 .case-quote span{display:block;margin-top:.85rem;color:#a7f3d0;font-size:.92rem}
-.ty-wrap{max-width:600px;margin:10rem auto;padding:0 1.5rem;text-align:center;}
-.anim{transition:opacity .8s cubic-bezier(0.2, 0.8, 0.2, 1), transform .8s cubic-bezier(0.2, 0.8, 0.2, 1);} 
+.ty-wrap{max-width:600px;margin:10rem auto;padding:0 1.5rem;text-align:center}
+.anim{transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
 
-/* Tablets - Keeping original structural tablet queries intact */
 @media(max-width:968px){
-  .hero-grid{grid-template-columns:1fr;gap:3rem;text-align:center;}
+  .hero-grid{grid-template-columns:1fr;gap:3rem;text-align:center}
   .hero-sub{margin:0 auto 2rem;max-width:92%}
-  .hero h1{max-width:none;margin-left:auto;margin-right:auto;letter-spacing:-0.03em}
+  .hero h1{max-width:none;margin-left:auto;margin-right:auto;letter-spacing:-.03em}
   .hero-points{justify-content:center;flex-wrap:wrap;gap:.8rem}
   .hero-divider{display:none}
   .hero-point{min-width:170px;flex:none}
-  .hero-btns{justify-content:center;}
-  .hero-visuals{max-width: 500px; margin: 0 auto;}
-  .cost-box { grid-template-columns: 1fr; padding: 2.5rem; gap: 3rem; }
-  .layers-grid{grid-template-columns:repeat(2, 1fr);}
+  .hero-btns{justify-content:center}
+  .hero-visuals{max-width:500px;margin:0 auto}
+  .cost-box{grid-template-columns:1fr;padding:2.5rem;gap:3rem}
+  .layers-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:920px){
   .case-study-top,.case-grid,.metrics-row{grid-template-columns:1fr}
@@ -342,149 +248,193 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;te
   .case-study-top h3{font-size:1.25rem;line-height:1.2}
 }
 @media(max-width:900px){
-  .bento-grid{grid-template-columns:1fr;}
-  .bento-large{grid-column:span 1;}
+  .bento-grid{grid-template-columns:1fr}
+  .bento-large{grid-column:span 1}
 }
 
-/* * ====================================================================
- * MOBILE UI - PRODUCTION LEVEL UPGRADE
- * ==================================================================== 
- */
+/* ============================================================
+   MOBILE — FINAL FIXED VERSION (≤ 768px)
+   ============================================================ */
 @media(max-width:768px){
-  /* Spacing & Nav */
-  section { padding: 4.5rem 0; }
-  .wrap { padding: 0 1.25rem; }
-  .nav-in { height: 70px; padding: 0 1.25rem; }
-  .logo { font-size: 1.35rem; letter-spacing: -0.02em; }
-  .btn-nav { padding: 0.75rem 1.1rem; font-size: 0.9rem; border-radius: 10px; }
-  .nav-links { display: none; }
-  
-  /* Buttons */
-  .btn-lg {
-    width: 100%; max-width: 100%; padding: 1.1rem 1.5rem;
-    font-size: 1.05rem; font-weight: 600; justify-content: center;
-    border-radius: 14px;
+  body{padding-bottom:0}
+
+  .mob-cta{
+    display:flex !important;
+    position:fixed;
+    bottom:0;left:0;right:0;
+    z-index:300;
+    padding:.9rem 1.15rem calc(.9rem + env(safe-area-inset-bottom,0px));
+    background:rgba(6,7,15,.94);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-top:1px solid rgba(99,102,241,.22);
+    box-shadow:0 -6px 30px rgba(0,0,0,.55)
   }
-
-  /* Typography Defaults for Sections (Editorial Left Alignment) */
-  .sh { margin: 0 auto 2.5rem; text-align: left; }
-  .sh h2 {
-    font-size: clamp(1.9rem, 9vw, 2.4rem); line-height: 1.15;
-    letter-spacing: -0.03em; word-spacing: 0; margin-bottom: 1rem;
-    text-align: left;
+  .mob-cta a{
+    display:flex;align-items:center;justify-content:center;
+    width:100%;
+    padding:1rem 1.5rem;
+    background:linear-gradient(135deg,var(--indigo) 0%,#4f46e5 100%);
+    color:#fff;
+    font-family:'Manrope',sans-serif;
+    font-size:1.05rem;font-weight:700;
+    border-radius:14px;
+    letter-spacing:-.01em;
+    box-shadow:0 4px 22px rgba(99,102,241,.48);
+    transition:transform .18s ease,box-shadow .18s ease;
+    min-height:54px;
+    -webkit-tap-highlight-color:transparent
   }
-  .sh p {
-    font-size: 1.05rem; line-height: 1.65; max-width: 100%;
-    letter-spacing: -0.005em; text-align: left; color: var(--muted);
-  }
-  .lbl { margin-bottom: 1.25rem; }
+  .mob-cta a:active{transform:scale(.965);box-shadow:0 2px 10px rgba(99,102,241,.3)}
 
-  /* Hero Section */
-  .hero { padding: 7rem 0 4rem; }
-  .hero-badge {
-    font-size: 0.8rem; padding: 0.5rem 1.1rem; gap: 0.5rem;
-    white-space: normal; text-align: left; display: inline-flex;
-    line-height: 1.4; border-radius: 100px;
-  }
-  .hero h1 {
-    font-size: clamp(2.4rem, 11vw, 3.2rem);
-    line-height: 1.1; letter-spacing: -0.04em;
-    margin-bottom: 1.25rem; font-weight: 700; text-align: left;
-  }
-  .hero-sub {
-    font-size: 1.05rem; line-height: 1.6; max-width: 100%;
-    letter-spacing: -0.005em; margin-bottom: 2rem; text-align: left;
-  }
-  .hero-points {
-    display: flex; flex-direction: column; gap: 1.25rem;
-    margin-top: 2rem; text-align: left; align-items: flex-start;
-  }
-  .hero-point { width: 100%; flex-direction: row; align-items: flex-start; gap: 1rem; }
-  .hero-point strong { font-size: 1.05rem; line-height: 1.3; letter-spacing: -0.01em; color: var(--text); }
-  .hero-point span { font-size: 0.9rem; line-height: 1.5; color: var(--dim); }
+  body.booking-open .mob-cta,
+  body.thanks-open .mob-cta{display:none !important}
 
-  /* Hero Visuals */
-  .hero-visuals { height: 320px; margin-top: 1rem; perspective: 1000px; }
-  .kanban-board { width: 100%; padding: 1.25rem; }
-  .float-card-1 { width: 175px; left: -5px; bottom: -15px; padding: 1rem; border-radius: 14px; }
-  .float-card-2 { width: 155px; right: -5px; top: -10px; padding: 1rem; border-radius: 14px; }
-  .fc-title { font-size: 0.85rem; }
-  .fc2-stat { font-size: 1.25rem; }
+  #pg-main{padding-bottom:calc(86px + env(safe-area-inset-bottom,0px))}
+  #pg-book,#pg-thanks{padding-bottom:0}
 
-  /* Bento Grid */
-  .bento-grid { gap: 1.25rem; }
-  .bento-card { padding: 1.75rem 1.5rem; border-radius: 20px; }
-  .bento-card h3 { font-size: 1.2rem; line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 0.6rem; }
-  .bento-card p { font-size: 1.02rem; line-height: 1.6; letter-spacing: -0.005em; }
-  .bento-icon { width: 48px; height: 48px; margin-bottom: 1.25rem; border-radius: 14px; }
-  .bento-icon i, .bento-icon svg { width: 24px; height: 24px; }
+  section{padding:4rem 0}
+  .wrap{padding:0 1.15rem}
+  html{scroll-padding-top:74px}
 
-  /* Cost Section */
-  .cost-box { padding: 2.25rem 1.5rem; border-radius: 20px; gap: 2rem; }
-  .cost-heading { font-size: clamp(2rem, 9vw, 2.5rem); line-height: 1.15; letter-spacing: -0.03em; }
-  .cost-text { font-size: 1.05rem; line-height: 1.65; }
-  .cost-item { padding: 1.15rem; border-radius: 16px; gap: 1rem; }
-  .cost-item-text { font-size: 1rem; line-height: 1.55; }
+  .nav-in{height:64px;padding:0 1.15rem}
+  .logo{font-size:1.28rem;letter-spacing:-.025em}
+  .nav-links,.btn-nav{display:none}
 
-  /* Layers Grid */
-  .layers-grid { gap: 1.25rem; }
-  .layer-box { padding: 1.75rem 1.5rem; border-radius: 18px; text-align: left; display: flex; flex-direction: column; align-items: flex-start; }
-  .layer-box h3 { font-size: 1.1rem; line-height: 1.3; letter-spacing: -0.015em; margin-bottom: 0.4rem; }
-  .layer-box p { font-size: 0.95rem; line-height: 1.6; }
-  .layer-box i, .layer-box svg { margin-bottom: 1.25rem; }
+  .hero-grid{gap:2rem;text-align:left}
+  .hero h1,.hero-sub,.hero-badge{margin-left:0;margin-right:0}
 
-  /* Proof Wrap */
-  .proof-wrap { gap: 1.25rem; }
-  .proof-row { grid-template-columns: 1fr; }
-  .proof-before { border-right: none; border-bottom: 1px solid var(--border); }
-  .proof-side { padding: 1.75rem 1.5rem; }
-  .proof-text { font-size: 1.05rem; line-height: 1.65; }
+  .sh{margin:0 0 2.25rem;text-align:left}
+  .sh h2{font-size:clamp(1.7rem,8.5vw,2.2rem);line-height:1.2;letter-spacing:-.038em;margin-bottom:.8rem;text-align:left}
+  .sh p{font-size:.98rem;line-height:1.68;color:var(--muted);max-width:100%;text-align:left;letter-spacing:-.005em}
+  .lbl{font-size:.68rem;margin-bottom:.8rem;padding:.32rem .85rem}
 
-  /* Case Study */
-  .case-study-shell { padding: 1.75rem 1.5rem; border-radius: 20px; }
-  .case-study-top h3 { font-size: 1.45rem; line-height: 1.25; letter-spacing: -0.02em; margin-top: 0.5rem; }
-  .case-section-title { font-size: 1.85rem!important; line-height: 1.15!important; letter-spacing: -0.03em; text-align: left; }
-  .case-desc { font-size: 1.05rem; }
-  .case-badges { flex-wrap: wrap; margin-top: 1rem; }
-  .case-badges span { font-size: 0.85rem; padding: 0.5rem 0.85rem; }
-  .case-card { padding: 1.5rem; border-radius: 18px; }
+  .hero{padding:6rem 0 3.5rem}
+  .hero-badge{font-size:.77rem;padding:.48rem 1rem;line-height:1.45;white-space:normal;text-align:left;margin-bottom:1.15rem;border-radius:100px;max-width:90%;display:inline-flex}
+  .hero h1{font-size:clamp(2.3rem,10.5vw,3rem);line-height:1.15;letter-spacing:-.047em;margin-bottom:1.05rem;font-weight:700;text-align:left;max-width:none}
+  .hero-sub{font-size:.98rem;line-height:1.66;max-width:100%;letter-spacing:-.006em;margin:0;text-align:left;color:rgba(255,255,255,.66)}
+  .hero-btns{display:none}
 
-  /* Final Box */
-  .final-box { padding: 3.5rem 1.5rem; border-radius: 20px; text-align: left; }
-  .final-box h2 { font-size: clamp(2.1rem, 10vw, 2.8rem); line-height: 1.1; letter-spacing: -0.04em; max-width: 100%; text-align: left; margin-left: 0; margin-right: 0; }
-  .final-box p.final-text { font-size: 1.05rem; line-height: 1.65; max-width: 100%; margin-bottom: 2rem; text-align: left; margin-left: 0; margin-right: 0; }
+  .hero-points{display:flex;flex-direction:column;gap:0;margin-top:1.6rem;padding:1.1rem 1.15rem;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:16px;align-items:flex-start}
+  .hero-point{display:flex;flex-direction:row;align-items:flex-start;gap:.9rem;width:100%;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.052);min-width:0;flex:none}
+  .hero-point:last-child{border-bottom:none;padding-bottom:0}
+  .hero-point:first-child{padding-top:0}
+  .hero-point-icon{display:flex !important;width:30px;height:30px;border-radius:9px;background:rgba(99,102,241,.14);border:1px solid rgba(99,102,241,.22);align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+  .hero-point strong{font-size:.93rem;line-height:1.38;letter-spacing:-.015em;color:var(--text);display:block;margin-bottom:.14rem}
+  .hero-point span{font-size:.82rem;line-height:1.5;color:var(--dim);display:block}
+  .hero-divider{display:none}
 
-  /* Forms */
-  .klarity-form { padding: 1.5rem; border-radius: 20px; }
-  .form-grid { grid-template-columns: 1fr; }
-  .form-group label { font-size: 0.95rem; margin-bottom: 0.6rem; }
-  .form-group input, .form-group select, .form-group textarea { padding: 1.1rem 1.1rem; font-size: 1rem; border-radius: 12px; }
-  .form-note { padding: 1.1rem; font-size: 0.95rem; line-height: 1.6; }
-  .form-actions { flex-direction: column; align-items: stretch; }
-  .form-actions p { text-align: center; }
+  .hero-visuals{height:285px;margin-top:1.85rem;perspective:700px}
+  .kanban-board{width:100%;left:0;right:0;top:9%;height:80%;padding:.95rem;border-radius:15px}
+  .kb-header{margin-bottom:.65rem;padding-bottom:.55rem}
+  .kb-title{font-size:.82rem;gap:.38rem}
+  .kb-dot{width:7px;height:7px}
+  .kb-cols{gap:.55rem}
+  .kb-col{padding:.55rem;gap:.55rem;border-radius:8px}
+  .kb-col-title{font-size:.62rem}
+  .kb-task{padding:.55rem;border-radius:5px}
+  .kb-task-line{height:5px;margin-bottom:.3rem}
 
-  .fc { font-size: 0.8rem; }
+  .float-card-1{width:148px;left:-6px;bottom:-10px;padding:.8rem;border-radius:12px}
+  .float-card-2{width:135px;right:-6px;top:-10px;padding:.8rem;border-radius:12px}
+  .fc-title{font-size:.8rem;margin-bottom:.28rem}
+  .fc-tag{font-size:.62rem;padding:.15rem .45rem}
+  .fc-bot{font-size:.7rem;gap:.38rem}
+  .fc-avatar{width:18px;height:18px;font-size:.52rem}
+  .fc2-icon{width:24px;height:24px;border-radius:6px;margin-bottom:.45rem}
+  .fc2-icon svg,.fc2-icon i{width:13px;height:13px}
+  .fc2-title{font-size:.78rem;margin-bottom:.22rem}
+  .fc2-stat{font-size:1.15rem}
+
+  .bento-grid{gap:.9rem}
+  .bento-card{padding:1.45rem 1.3rem;border-radius:18px}
+  .bento-icon{width:44px;height:44px;border-radius:13px;margin-bottom:.95rem}
+  .bento-icon i,.bento-icon svg{width:22px;height:22px}
+  .bento-card h3{font-size:1.08rem;line-height:1.34;letter-spacing:-.022em;margin-bottom:.5rem}
+  .bento-card p{font-size:.93rem;line-height:1.65;letter-spacing:-.005em}
+
+  .cost-section{padding-bottom:0}
+  .cost-box{grid-template-columns:1fr;padding:1.65rem 1.3rem;border-radius:20px;gap:1.65rem}
+  .cost-label{margin-bottom:.7rem}
+  .cost-heading{font-size:clamp(1.8rem,8.5vw,2.3rem);line-height:1.18;letter-spacing:-.042em;margin-bottom:.8rem;max-width:100%}
+  .cost-text{font-size:.96rem;line-height:1.65;letter-spacing:-.005em}
+  .cost-list{gap:.7rem}
+  .cost-item{padding:.95rem 1rem;border-radius:13px;gap:.8rem;min-height:52px;align-items:flex-start}
+  .cost-item-text{font-size:.93rem;line-height:1.55}
+  .cost-dot{width:8px;height:8px;margin-top:.42rem}
+
+  .layers-grid{grid-template-columns:1fr 1fr;gap:.8rem}
+  .layer-box{padding:1.3rem 1.1rem;border-radius:16px;text-align:left;display:flex;flex-direction:column;align-items:flex-start}
+  .layer-box i,.layer-box svg{width:26px;height:26px;margin-bottom:.8rem}
+  .layer-box h3{font-size:.92rem;line-height:1.38;letter-spacing:-.015em;margin-bottom:.32rem}
+  .layer-box p{font-size:.8rem;line-height:1.58;color:var(--dim)}
+
+  .proof-wrap{gap:.9rem}
+  .proof-row{grid-template-columns:1fr;border-radius:18px}
+  .proof-before{border-right:none;border-bottom:1px solid var(--border)}
+  .proof-side{padding:1.4rem 1.3rem}
+  .proof-lbl{font-size:.7rem;margin-bottom:.7rem}
+  .proof-text{font-size:.95rem;line-height:1.68}
+
+  .case-study-shell{padding:1.4rem 1.2rem;border-radius:18px}
+  .case-study-top h3{font-size:1.28rem;line-height:1.28;letter-spacing:-.025em;margin-top:.45rem}
+  .case-section-title{font-size:1.7rem!important;line-height:1.2!important;letter-spacing:-.038em;text-align:left}
+  .case-desc{font-size:.95rem;line-height:1.65}
+  .case-lead{font-size:.95rem;line-height:1.7}
+  .case-badges{flex-wrap:wrap;margin-top:.8rem;gap:.5rem;justify-content:flex-start}
+  .case-badges span{font-size:.76rem;padding:.42rem .72rem;white-space:normal}
+  .case-card{padding:1.2rem;border-radius:16px}
+  .case-card li{font-size:.93rem;line-height:1.65}
+  .case-quote{padding:1.15rem 1.2rem;border-radius:15px}
+  .case-quote p{font-size:.93rem;line-height:1.72}
+  .case-quote span{font-size:.83rem}
+
+  .final-box{padding:2.8rem 1.3rem;border-radius:20px;text-align:left}
+  .final-box h2{font-size:clamp(1.85rem,9.5vw,2.55rem);line-height:1.16;letter-spacing:-.047em;max-width:100%;text-align:left;margin-left:0;margin-right:0;margin-bottom:.9rem}
+  .final-box p.final-text{font-size:.96rem;line-height:1.68;max-width:100%;margin-bottom:0;text-align:left;margin-left:0;margin-right:0}
+  .final-box .btn-p,.final-box .fc{display:none}
+
+  footer{padding:2.25rem 0}
+  footer .logo{font-size:1.18rem}
+  .fc{font-size:.78rem}
+
+  .book-wrap{margin:5rem auto 2rem;padding:0 1.15rem;text-align:left}
+  .book-wrap .sh{text-align:left;margin-bottom:1.65rem}
+  .book-wrap .sh h2,.book-wrap .sh p{text-align:left}
+  .book-wrap .btn-g{margin-bottom:1.75rem;font-size:.88rem;padding:.55rem .9rem}
+  .klarity-form{padding:1.3rem 1.1rem;border-radius:20px}
+  .form-grid{grid-template-columns:1fr;gap:.8rem}
+  .form-stack{gap:.8rem;margin-top:.8rem}
+  .form-group label{font-size:.88rem;margin-bottom:.48rem;color:rgba(255,255,255,.9)}
+  .form-group input,.form-group select,.form-group textarea{padding:1.05rem 1rem;font-size:1rem;border-radius:13px;min-height:52px;-webkit-appearance:none;appearance:none}
+  .form-group textarea{min-height:116px}
+  .form-note{padding:.95rem 1.05rem;font-size:.88rem;line-height:1.65;border-radius:14px;margin-top:.8rem}
+  .form-actions{flex-direction:column;align-items:stretch;gap:.8rem;margin-top:.95rem}
+  .form-actions p{text-align:center;font-size:.8rem}
+  .form-actions .btn-p{width:100%;padding:1.1rem 1.5rem;font-size:1.05rem;font-weight:700;border-radius:14px;justify-content:center;min-height:54px;display:flex}
+
+  .ty-wrap{margin:7.5rem auto 3rem}
 }
 
-@media(max-width:500px){
-  .layers-grid{grid-template-columns:1fr;}
+@media(max-width:480px){
+  .layers-grid{grid-template-columns:1fr;gap:.7rem}
+  .layer-box{flex-direction:row;align-items:flex-start;gap:.9rem;padding:1.05rem .95rem}
+  .layer-box i,.layer-box svg{margin-bottom:0;flex-shrink:0;width:22px;height:22px;margin-top:3px}
 }
 
-.anim.hidden-pre{opacity:0;transform:translateY(40px);}
-.anim.visible{opacity:1;transform:translateY(0);}
-
-h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
+.anim.hidden-pre{opacity:0;transform:translateY(40px)}
+.anim.visible{opacity:1;transform:translateY(0)}
+h1,h2,h3,h4,h5,h6{text-transform:capitalize}
 </style>
 </head>
 <body>
 
-<!-- Background Layers -->
 <div class="bg-layer" aria-hidden="true"></div>
 <div class="grid-wrap" aria-hidden="true"><div class="grid-bg"></div></div>
 
 <nav>
   <div class="nav-in">
-    <a class="logo" href="#home" style="cursor:pointer">Klarity<span>Ops.</span></a>
+    <a class="logo" href="#home">Klarity<span>Ops.</span></a>
     <ul class="nav-links">
       <li><a href="#problem">Problems</a></li>
       <li><a href="#system">The System</a></li>
@@ -496,7 +446,7 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
 </nav>
 
 <div class="mob-cta">
-  <a href="#book">Book a Free Call</a>
+  <a href="#book">Book a Free Call &rarr;</a>
 </div>
 
 <div id="pg-main" class="page-view is-active">
@@ -505,8 +455,8 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
       <div class="hero-grid">
         <div class="hero-text anim">
           <div class="hero-badge">
-            <i data-lucide="shield-check" style="width:16px; height:16px;"></i>
-            BizOps systems for scaling D2C & e-commerce teams
+            <i data-lucide="shield-check" style="width:16px;height:16px;"></i>
+            BizOps systems for scaling D2C &amp; e-commerce teams
           </div>
           <h1>Scale without the <em>chaos.</em></h1>
           <p class="hero-sub">
@@ -517,23 +467,38 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
           </div>
           <div class="hero-points">
             <div class="hero-point">
-              <strong>Workflow clarity</strong>
-              <span>Structured execution across teams</span>
+              <div class="hero-point-icon">
+                <i data-lucide="git-branch" style="width:14px;height:14px;color:var(--indigo-h);"></i>
+              </div>
+              <div>
+                <strong>Workflow clarity</strong>
+                <span>Structured execution across teams</span>
+              </div>
             </div>
             <div class="hero-divider"></div>
             <div class="hero-point">
-              <strong>Leadership visibility</strong>
-              <span>Clear priorities, blockers & progress</span>
+              <div class="hero-point-icon">
+                <i data-lucide="eye" style="width:14px;height:14px;color:var(--indigo-h);"></i>
+              </div>
+              <div>
+                <strong>Leadership visibility</strong>
+                <span>Clear priorities, blockers &amp; progress</span>
+              </div>
             </div>
             <div class="hero-divider"></div>
             <div class="hero-point">
-              <strong>Ongoing support</strong>
-              <span>Support beyond setup and rollout</span>
+              <div class="hero-point-icon">
+                <i data-lucide="headphones" style="width:14px;height:14px;color:var(--indigo-h);"></i>
+              </div>
+              <div>
+                <strong>Ongoing support</strong>
+                <span>Support beyond setup and rollout</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="hero-visuals anim" style="transition-delay: 0.2s;">
+        <div class="hero-visuals anim" style="transition-delay:.2s">
           <div class="kanban-board">
             <div class="spin-border-1px hero-spin"></div>
             <div class="kb-header">
@@ -551,14 +516,14 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
               </div>
               <div class="kb-col">
                 <div class="kb-col-title">In Progress</div>
-                <div class="kb-task" style="border-color:rgba(34,211,238,0.3); background:rgba(34,211,238,0.05);">
-                  <div class="kb-task-line" style="background:rgba(34,211,238,0.4);"></div>
-                  <div class="kb-task-line short" style="background:rgba(34,211,238,0.2);"></div>
+                <div class="kb-task" style="border-color:rgba(34,211,238,.3);background:rgba(34,211,238,.05)">
+                  <div class="kb-task-line" style="background:rgba(34,211,238,.4)"></div>
+                  <div class="kb-task-line short" style="background:rgba(34,211,238,.2)"></div>
                 </div>
               </div>
               <div class="kb-col">
                 <div class="kb-col-title">Done</div>
-                <div class="kb-task" style="opacity:0.5;"><div class="kb-task-line"></div></div>
+                <div class="kb-task" style="opacity:.5"><div class="kb-task-line"></div></div>
               </div>
             </div>
           </div>
@@ -568,7 +533,7 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
             <div class="fc-content">
               <div class="fc-top">
                 <span class="fc-tag" id="fc1-tag">Completed</span>
-                <span id="fc1-icon"><i data-lucide="check-circle-2" style="width:16px; color:var(--green);"></i></span>
+                <span id="fc1-icon"><i data-lucide="check-circle-2" style="width:16px;color:var(--green);"></i></span>
               </div>
               <div class="fc-title">Creative Sync Setup</div>
               <div class="fc-bot">
@@ -584,7 +549,7 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
               <div class="fc2-icon"><i data-lucide="zap" style="width:18px;"></i></div>
               <div class="fc2-title">Team Velocity</div>
               <div class="fc2-stat" id="velocity-stat">+42%</div>
-              <div style="font-size:0.7rem; color:var(--dim); margin-top:0.2rem;">Since implementation</div>
+              <div style="font-size:.7rem;color:var(--dim);margin-top:.2rem">Since implementation</div>
             </div>
           </div>
         </div>
@@ -592,7 +557,7 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
     </div>
   </section>
 
-  <section id="problem" style="background:rgba(12, 13, 30, 0.4); border-top:1px solid var(--border);">
+  <section id="problem" style="background:rgba(12,13,30,.4);border-top:1px solid var(--border)">
     <div class="wrap">
       <div class="sh anim">
         <span class="lbl">The Problem</span>
@@ -601,9 +566,9 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
       </div>
       <div class="bento-grid">
         <div class="bento-card bento-large anim"><div class="spin-border-2px bento-spin"></div><div class="bento-icon"><i data-lucide="alert-circle"></i></div><h3>Unclear ownership</h3><p>Tasks get delayed, deadlines slip, and accountability breaks because ownership, process structure, and execution rules were never built into the workflow.</p></div>
-        <div class="bento-card anim" style="transition-delay: 0.1s;"><div class="spin-border-2px bento-spin"></div><div class="bento-icon"><i data-lucide="split-square-horizontal"></i></div><h3>No visibility</h3><p>Marketing, operations, and supply chain move separately. Handoffs get missed, priorities drift, and execution breaks under pressure.</p></div>
-        <div class="bento-card anim" style="transition-delay: 0.2s;"><div class="spin-border-2px bento-spin"></div><div class="bento-icon"><i data-lucide="message-square-dashed"></i></div><h3>Scattered execution</h3><p>There is no structured intake, no approval system, and no reliable handoff path. Teams waste time chasing updates instead of executing.</p></div>
-        <div class="bento-card bento-large anim" style="transition-delay: 0.3s;"><div class="spin-border-2px bento-spin"></div><div class="bento-icon"><i data-lucide="eye-off"></i></div><h3>No leadership clarity</h3><p>You still rely on meetings, pings, and manual follow-ups to understand what is moving. Without centralized tracking, leadership never gets clean execution visibility.</p></div>
+        <div class="bento-card anim" style="transition-delay:.1s"><div class="spin-border-2px bento-spin"></div><div class="bento-icon"><i data-lucide="split-square-horizontal"></i></div><h3>No visibility</h3><p>Marketing, operations, and supply chain move separately. Handoffs get missed, priorities drift, and execution breaks under pressure.</p></div>
+        <div class="bento-card anim" style="transition-delay:.2s"><div class="spin-border-2px bento-spin"></div><div class="bento-icon"><i data-lucide="message-square-dashed"></i></div><h3>Scattered execution</h3><p>There is no structured intake, no approval system, and no reliable handoff path. Teams waste time chasing updates instead of executing.</p></div>
+        <div class="bento-card bento-large anim" style="transition-delay:.3s"><div class="spin-border-2px bento-spin"></div><div class="bento-icon"><i data-lucide="eye-off"></i></div><h3>No leadership clarity</h3><p>You still rely on meetings, pings, and manual follow-ups to understand what is moving. Without centralized tracking, leadership never gets clean execution visibility.</p></div>
       </div>
     </div>
   </section>
@@ -617,9 +582,9 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
           <p class="cost-text">When execution lives across Slack, memory, and disconnected tools, growth creates more noise instead of more leverage. A weak BizOps layer turns scale into friction.</p>
         </div>
         <div class="cost-list">
-          <div class="cost-item anim" style="transition-delay: 0.1s;"><div class="cost-dot"></div><div class="cost-item-text">Missed <span class="cost-mark">deadlines</span> that delay <span class="cost-mark">launches</span> and campaigns</div></div>
-          <div class="cost-item anim" style="transition-delay: 0.15s;"><div class="cost-dot"></div><div class="cost-item-text">Wasted <span class="cost-mark">salaries</span> and contractor hours on preventable <span class="cost-mark">confusion</span></div></div>
-          <div class="cost-item anim" style="transition-delay: 0.2s;"><div class="cost-dot"></div><div class="cost-item-text">Burned <span class="cost-mark">ad spend</span> on untracked or unreviewed <span class="cost-mark">creative output</span></div></div>
+          <div class="cost-item anim" style="transition-delay:.1s"><div class="cost-dot"></div><div class="cost-item-text">Missed <span class="cost-mark">deadlines</span> that delay <span class="cost-mark">launches</span> and campaigns</div></div>
+          <div class="cost-item anim" style="transition-delay:.15s"><div class="cost-dot"></div><div class="cost-item-text">Wasted <span class="cost-mark">salaries</span> and contractor hours on preventable <span class="cost-mark">confusion</span></div></div>
+          <div class="cost-item anim" style="transition-delay:.2s"><div class="cost-dot"></div><div class="cost-item-text">Burned <span class="cost-mark">ad spend</span> on untracked or unreviewed <span class="cost-mark">creative output</span></div></div>
         </div>
       </div>
     </div>
@@ -633,19 +598,19 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
         <p>We do not just set up Asana. We implement the execution structure your business runs on, then support adoption, accountability, and ongoing optimization.</p>
       </div>
       <div class="layers-grid">
-        <div class="layer-box anim"><div class="spin-border-1px layer-spin"></div><i data-lucide="paintbrush"></i><h3>1. Creative Workflows</h3><p>Structured intake, approvals, handoffs, and delivery inside Asana.</p></div>
-        <div class="layer-box anim" style="transition-delay: 0.05s;"><div class="spin-border-1px layer-spin"></div><i data-lucide="file-check-2"></i><h3>2. SOP Systems</h3><p>Repeatable operating procedures embedded into execution.</p></div>
-        <div class="layer-box anim" style="transition-delay: 0.1s;"><div class="spin-border-1px layer-spin"></div><i data-lucide="users"></i><h3>3. Ownership Structure</h3><p>Clear owners, responsibilities, and accountability paths.</p></div>
-        <div class="layer-box anim" style="transition-delay: 0.15s;"><div class="spin-border-1px layer-spin"></div><i data-lucide="plug"></i><h3>4. Tool Integration</h3><p>Asana connected as the central execution hub across your stack.</p></div>
-        <div class="layer-box anim" style="transition-delay: 0.2s;"><div class="spin-border-1px layer-spin"></div><i data-lucide="settings-2"></i><h3>5. Workspace Configuration</h3><p>Projects, portfolios, rules, automations, and custom fields configured properly.</p></div>
-        <div class="layer-box anim" style="transition-delay: 0.25s;"><div class="spin-border-1px layer-spin"></div><i data-lucide="target"></i><h3>6. OKRs & Initiative Tracking</h3><p>Goals, priorities, and key initiatives tracked with clarity.</p></div>
-        <div class="layer-box anim" style="transition-delay: 0.3s;"><div class="spin-border-1px layer-spin"></div><i data-lucide="layout-dashboard"></i><h3>7. Leadership Visibility</h3><p>Live dashboards for status, priorities, blockers, and workload visibility.</p></div>
-        <div class="layer-box anim" style="transition-delay: 0.35s;"><div class="spin-border-1px layer-spin"></div><i data-lucide="message-square"></i><h3>8. Communication Flows</h3><p>Slack-to-Asana updates, handoffs, and notifications aligned to execution.</p></div>
+        <div class="layer-box anim"><div class="spin-border-1px layer-spin"></div><i data-lucide="paintbrush"></i><div><h3>1. Creative Workflows</h3><p>Structured intake, approvals, handoffs, and delivery inside Asana.</p></div></div>
+        <div class="layer-box anim" style="transition-delay:.05s"><div class="spin-border-1px layer-spin"></div><i data-lucide="file-check-2"></i><div><h3>2. SOP Systems</h3><p>Repeatable operating procedures embedded into execution.</p></div></div>
+        <div class="layer-box anim" style="transition-delay:.1s"><div class="spin-border-1px layer-spin"></div><i data-lucide="users"></i><div><h3>3. Ownership Structure</h3><p>Clear owners, responsibilities, and accountability paths.</p></div></div>
+        <div class="layer-box anim" style="transition-delay:.15s"><div class="spin-border-1px layer-spin"></div><i data-lucide="plug"></i><div><h3>4. Tool Integration</h3><p>Asana connected as the central execution hub across your stack.</p></div></div>
+        <div class="layer-box anim" style="transition-delay:.2s"><div class="spin-border-1px layer-spin"></div><i data-lucide="settings-2"></i><div><h3>5. Workspace Configuration</h3><p>Projects, portfolios, rules, automations, and custom fields configured properly.</p></div></div>
+        <div class="layer-box anim" style="transition-delay:.25s"><div class="spin-border-1px layer-spin"></div><i data-lucide="target"></i><div><h3>6. OKRs &amp; Initiative Tracking</h3><p>Goals, priorities, and key initiatives tracked with clarity.</p></div></div>
+        <div class="layer-box anim" style="transition-delay:.3s"><div class="spin-border-1px layer-spin"></div><i data-lucide="layout-dashboard"></i><div><h3>7. Leadership Visibility</h3><p>Live dashboards for status, priorities, blockers, and workload visibility.</p></div></div>
+        <div class="layer-box anim" style="transition-delay:.35s"><div class="spin-border-1px layer-spin"></div><i data-lucide="message-square"></i><div><h3>8. Communication Flows</h3><p>Slack-to-Asana updates, handoffs, and notifications aligned to execution.</p></div></div>
       </div>
     </div>
   </section>
 
-  <section id="proof" style="background:rgba(12, 13, 30, 0.4); border-top:1px solid var(--border);">
+  <section id="proof" style="background:rgba(12,13,30,.4);border-top:1px solid var(--border)">
     <div class="wrap">
       <div class="sh anim">
         <span class="lbl">Execution Outcomes</span>
@@ -656,7 +621,10 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
           <div class="proof-side proof-before"><div class="proof-lbl lbl-red"><i data-lucide="x-circle" style="width:16px;"></i> Before (Chaos)</div><p class="proof-text">Creative requests lived in Slack, ownership was unclear, and cross-functional execution had no single source of truth.</p></div>
           <div class="proof-side proof-after"><div class="proof-lbl lbl-green"><i data-lucide="check-circle-2" style="width:16px;"></i> After 90 Days</div><p class="proof-text">Execution moved into Asana with structured workflows, clearer ownership, and stronger leadership visibility across teams.</p></div>
         </div>
-        <div class="proof-row anim" style="transition-delay: 0.2s;"><div class="proof-side proof-before"><div class="proof-lbl lbl-red"><i data-lucide="x-circle" style="width:16px;"></i> Before (Chaos)</div><p class="proof-text">New team members took too long to ramp, documentation was weak, and tasks had no clear single owner.</p></div><div class="proof-side proof-after"><div class="proof-lbl lbl-green"><i data-lucide="check-circle-2" style="width:16px;"></i> After 90 Days</div><p class="proof-text">SOPs, ownership structure, and repeatable workflows gave leadership cleaner visibility and reduced day-to-day execution drag.</p></div></div>
+        <div class="proof-row anim" style="transition-delay:.2s">
+          <div class="proof-side proof-before"><div class="proof-lbl lbl-red"><i data-lucide="x-circle" style="width:16px;"></i> Before (Chaos)</div><p class="proof-text">New team members took too long to ramp, documentation was weak, and tasks had no clear single owner.</p></div>
+          <div class="proof-side proof-after"><div class="proof-lbl lbl-green"><i data-lucide="check-circle-2" style="width:16px;"></i> After 90 Days</div><p class="proof-text">SOPs, ownership structure, and repeatable workflows gave leadership cleaner visibility and reduced day-to-day execution drag.</p></div>
+        </div>
       </div>
     </div>
   </section>
@@ -664,10 +632,9 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
   <section id="case-study">
     <div class="wrap">
       <div class="sh anim">
-        <span class="lbl" style="color:var(--indigo-h);border-color:rgba(99,102,241,0.25);background:rgba(99,102,241,0.10);">Representative Engagement</span>
+        <span class="lbl" style="color:var(--indigo-h);border-color:rgba(99,102,241,.25);background:rgba(99,102,241,.10)">Representative Engagement</span>
         <h2 class="case-section-title">How Klarity Ops structures execution in Asana.</h2>
       </div>
-
       <div class="case-study-shell anim">
         <div class="case-study-top">
           <div>
@@ -682,7 +649,6 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
             <span>Execution Playbooks</span>
           </div>
         </div>
-
         <div class="case-grid">
           <div class="case-card challenge-card">
             <div class="case-mini">The Challenge</div>
@@ -692,7 +658,6 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
               <li>Inconsistent launch coordination</li>
             </ul>
           </div>
-
           <div class="case-card build-card">
             <div class="case-mini">What Was Built</div>
             <ul>
@@ -702,9 +667,8 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
             </ul>
           </div>
         </div>
-
         <div class="case-quote">
-          <p>“Once the system was structured properly, the team had clearer ownership, better visibility, and much less day-to-day confusion around execution.”</p>
+          <p>"Once the system was structured properly, the team had clearer ownership, better visibility, and much less day-to-day confusion around execution."</p>
           <span>- Based on feedback from similar client engagements</span>
         </div>
       </div>
@@ -717,8 +681,8 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
         <span class="lbl">Build Your BizOps System</span>
         <h2>Stop relying on follow-ups. Start running on structure.</h2>
         <p class="final-text">If your business is already using Asana, or trying to, but still lacks structure, visibility, and accountability, Klarity Ops can build the system and support your team beyond setup.</p>
-        <a class="btn-p btn-lg" href="#book">Book a Free Call <i data-lucide="calendar" style="width:18px; margin-left:8px;"></i></a>
-        <p class="fc" style="margin-top:1.5rem;">30 minutes. No commitment. For scaling e-commerce brands.</p>
+        <a class="btn-p btn-lg" href="#book">Book a Free Call <i data-lucide="calendar" style="width:18px;margin-left:8px;"></i></a>
+        <p class="fc" style="margin-top:1.5rem">30 minutes. No commitment. For scaling e-commerce brands.</p>
       </div>
     </div>
   </section>
@@ -726,21 +690,22 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
   <footer>
     <div class="wrap">
       <span class="logo">Klarity<span>Ops.</span></span>
-      <p class="fc" style="font-size:0.95rem; margin-top:1rem;">BizOps systems, workflow design, and ongoing Asana support for scaling D2C brands.</p>
-      <small class="fc" style="color:var(--dim);">&copy; 2026 Klarity Ops. All rights reserved.</small>
+      <p class="fc" style="font-size:.95rem;margin-top:1rem">BizOps systems, workflow design, and ongoing Asana support for scaling D2C brands.</p>
+      <small class="fc" style="color:var(--dim)">&copy; 2026 Klarity Ops. All rights reserved.</small>
     </div>
   </footer>
 </div>
 
 <div id="pg-book" class="page-view">
   <div class="book-wrap">
-    <a class="btn-g" style="margin-bottom:3rem; border:none; padding:0.5rem 1rem;" href="#home"><i data-lucide="arrow-left" style="width:18px; margin-right:8px;"></i> Back</a>
+    <a class="btn-g" style="margin-bottom:3rem;border:none;padding:.5rem 1rem" href="#home">
+      <i data-lucide="arrow-left" style="width:18px;margin-right:8px;"></i> Back
+    </a>
     <div class="sh">
       <span class="lbl">Free BizOps Strategy Call</span>
       <h2>Tell us about your operations setup.</h2>
       <p>Answer a few short questions so we can understand your team, your current Asana setup, your workflows, and your biggest execution bottlenecks before the call.</p>
     </div>
-
     <form id="klarity-form" class="klarity-form" onsubmit="handleFormSubmit(event)">
       <div class="form-grid">
         <div class="form-group">
@@ -782,7 +747,6 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
           </select>
         </div>
       </div>
-
       <div class="form-stack">
         <div class="form-group">
           <label for="currentSetup">What best describes your current Asana or workflow setup?</label>
@@ -794,12 +758,10 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
             <option>We need help setting up from scratch</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="biggestBottleneck">What is your biggest operational bottleneck right now?</label>
           <textarea id="biggestBottleneck" name="biggestBottleneck" rows="5" placeholder="Example: creative requests are scattered, launches keep slipping, and nobody has full visibility across teams." required></textarea>
         </div>
-
         <div class="form-group">
           <label for="timeline">When do you want to fix this?</label>
           <select id="timeline" name="timeline" required>
@@ -811,26 +773,24 @@ h1, h2, h3, h4, h5, h6 { text-transform: capitalize; }
           </select>
         </div>
       </div>
-
       <div class="form-note">
         On the free call, we'll review your setup, identify the biggest BizOps gaps, and show you where structure, visibility, and ownership need to be built inside Asana.
       </div>
-
       <div class="form-actions">
-        <p>This form is styled to match your landing page theme.</p>
+        <p>30 minutes. No commitment required.</p>
         <button class="btn-p" id="submitBtn" type="submit">Submit Request</button>
       </div>
     </form>
   </div>
 </div>
 
-<div id="pg-thanks" class="page-view" style="min-height:100vh; align-items:center; justify-content:center;">
+<div id="pg-thanks" class="page-view" style="min-height:100vh;align-items:center;justify-content:center">
   <div class="ty-wrap">
-    <div style="width:80px; height:80px; background:rgba(52,211,153,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem;">
-      <i data-lucide="check" style="width:40px; height:40px; color:var(--green);"></i>
+    <div style="width:80px;height:80px;background:rgba(52,211,153,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem">
+      <i data-lucide="check" style="width:40px;height:40px;color:var(--green);"></i>
     </div>
-    <h2 style="font-size:2.5rem; font-weight:600; margin-bottom:1rem;">Call Scheduled!</h2>
-    <p style="color:var(--muted); margin-bottom:2rem; letter-spacing:0.012em; word-spacing:0.02em; line-height:1.72;">Check your email for the next step. We'll review your current setup before we speak so the conversation stays focused on structure, visibility, and execution improvements.</p>
+    <h2 style="font-size:2.5rem;font-weight:600;margin-bottom:1rem">Call Scheduled!</h2>
+    <p style="color:var(--muted);margin-bottom:2rem;letter-spacing:.012em;word-spacing:.02em;line-height:1.72">Check your email for the next step. We'll review your current setup before we speak so the conversation stays focused on structure, visibility, and execution improvements.</p>
     <a class="btn-g" href="#home">Return to Homepage</a>
   </div>
 </div>
@@ -840,172 +800,137 @@ lucide.createIcons();
 
 function show(id){
   ['pg-main','pg-book','pg-thanks'].forEach(function(p){
-    var el = document.getElementById(p);
+    var el=document.getElementById(p);
     if(!el) return;
     el.classList.remove('is-active');
-    el.hidden = true;
-    el.style.display = 'none';
+    el.hidden=true;el.style.display='none';
   });
-
-  var active = document.getElementById(id);
+  var active=document.getElementById(id);
   if(active){
-    active.hidden = false;
+    active.hidden=false;
     active.classList.add('is-active');
-    active.style.display = (id === 'pg-thanks') ? 'flex' : 'block';
+    active.style.display=(id==='pg-thanks')?'flex':'block';
   }
-
   document.body.classList.remove('booking-open','thanks-open');
-  if(id === 'pg-book') document.body.classList.add('booking-open');
-  if(id === 'pg-thanks') document.body.classList.add('thanks-open');
-
-  window.scrollTo(0, 0);
+  if(id==='pg-book') document.body.classList.add('booking-open');
+  if(id==='pg-thanks') document.body.classList.add('thanks-open');
+  window.scrollTo(0,0);
 }
 
 async function handleFormSubmit(event){
   event.preventDefault();
-
-  const form = document.getElementById('klarity-form');
-  const websiteInput = document.getElementById('website');
-  const submitBtn = document.getElementById('submitBtn');
-  const defaultBtnText = submitBtn ? submitBtn.textContent : 'Submit Request';
-
-  if(submitBtn){
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Submitting...';
-  }
-
+  const form=document.getElementById('klarity-form');
+  const websiteInput=document.getElementById('website');
+  const submitBtn=document.getElementById('submitBtn');
+  const defaultBtnText=submitBtn?submitBtn.textContent:'Submit Request';
+  if(submitBtn){submitBtn.disabled=true;submitBtn.textContent='Submitting...';}
   if(websiteInput){
-    const rawValue = websiteInput.value.trim();
-    if(rawValue && !/^https?:\/\//i.test(rawValue)){
-      websiteInput.value = 'https://' + rawValue;
-    }
+    const rawValue=websiteInput.value.trim();
+    if(rawValue&&!/^https?:\/\//i.test(rawValue)) websiteInput.value='https://'+rawValue;
   }
-
-  if(form && !form.checkValidity()){
+  if(form&&!form.checkValidity()){
     form.reportValidity();
-    if(submitBtn){
-      submitBtn.disabled = false;
-      submitBtn.textContent = defaultBtnText;
-    }
+    if(submitBtn){submitBtn.disabled=false;submitBtn.textContent=defaultBtnText;}
     return;
   }
-
-  const payload = {
-    fullName: document.getElementById('fullName').value.trim(),
-    email: document.getElementById('email').value.trim(),
-    brandName: document.getElementById('brandName').value.trim(),
-    website: document.getElementById('website').value.trim(),
-    monthlyRevenue: document.getElementById('monthlyRevenue').value,
-    teamSize: document.getElementById('teamSize').value,
-    currentSetup: document.getElementById('currentSetup').value,
-    biggestBottleneck: document.getElementById('biggestBottleneck').value.trim(),
-    timeline: document.getElementById('timeline').value
+  const payload={
+    fullName:document.getElementById('fullName').value.trim(),
+    email:document.getElementById('email').value.trim(),
+    brandName:document.getElementById('brandName').value.trim(),
+    website:document.getElementById('website').value.trim(),
+    monthlyRevenue:document.getElementById('monthlyRevenue').value,
+    teamSize:document.getElementById('teamSize').value,
+    currentSetup:document.getElementById('currentSetup').value,
+    biggestBottleneck:document.getElementById('biggestBottleneck').value.trim(),
+    timeline:document.getElementById('timeline').value
   };
-
-  const fullName = encodeURIComponent(payload.fullName);
-  const email = encodeURIComponent(payload.email);
-  const bookingUrl = `https://thexponent.neetocal.com/discovery-call?name=${fullName}&email=${email}`;
-
-  try {
-    // API Call
-    await fetch('https://script.google.com/macros/s/AKfycbx0QbhMiJfHxfd3g6AssZZ-mDCbJnSEf6ViPBtAEJriBhjNSkQ758HxY9R7OXTLoP7W/exec', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'text/plain;charset=utf-8'
-      },
-      body: JSON.stringify(payload)
+  const fullName=encodeURIComponent(payload.fullName);
+  const email=encodeURIComponent(payload.email);
+  const bookingUrl=`https://thexponent.neetocal.com/discovery-call?name=${fullName}&email=${email}`;
+  try{
+    await fetch('https://script.google.com/macros/s/AKfycbx0QbhMiJfHxfd3g6AssZZ-mDCbJnSEf6ViPBtAEJriBhjNSkQ758HxY9R7OXTLoP7W/exec',{
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(payload)
     });
-  } catch (error) {
-    console.error('Google Sheets webhook error:', error);
-  }
-
-  window.location.href = bookingUrl;
+  }catch(error){console.error('Google Sheets webhook error:',error);}
+  window.location.href=bookingUrl;
 }
 
-function runMockupScripts() {
-  const velEl = document.getElementById('velocity-stat');
-  if(velEl) {
-    setInterval(() => {
-      let current = 12;
-      velEl.innerText = '+' + current + '%';
-      velEl.style.color = '#fff';
-      const countInterval = setInterval(() => {
-        current += 1;
-        velEl.innerText = '+' + current + '%';
-        if(current >= 42) {
-          clearInterval(countInterval);
-          velEl.style.color = 'var(--green)';
-        }
-      }, 35);
-    }, 7000);
+function runMockupScripts(){
+  const velEl=document.getElementById('velocity-stat');
+  if(velEl){
+    setInterval(()=>{
+      let current=12;
+      velEl.innerText='+'+current+'%';
+      velEl.style.color='#fff';
+      const ci=setInterval(()=>{
+        current+=1;velEl.innerText='+'+current+'%';
+        if(current>=42){clearInterval(ci);velEl.style.color='var(--green)';}
+      },35);
+    },7000);
   }
-
-  const tag = document.getElementById('fc1-tag');
-  const icon = document.getElementById('fc1-icon');
-  const text = document.getElementById('fc1-text');
-
-  if(tag && icon && text) {
-    setInterval(() => {
-      tag.className = 'fc-tag pending';
-      tag.innerText = 'In Review';
-      icon.innerHTML = '<i data-lucide="clock" style="width:16px; color:#fbbf24;"></i>';
-      text.innerText = 'Assigning owner...';
-      lucide.createIcons();
-      setTimeout(() => {
-        tag.className = 'fc-tag';
-        tag.innerText = 'Completed';
-        icon.innerHTML = '<i data-lucide="check-circle-2" style="width:16px; color:var(--green);"></i>';
-        text.innerText = 'Owner assigned';
-        lucide.createIcons();
-      }, 3000);
-    }, 7000);
+  const tag=document.getElementById('fc1-tag');
+  const icon=document.getElementById('fc1-icon');
+  const text=document.getElementById('fc1-text');
+  if(tag&&icon&&text){
+    setInterval(()=>{
+      tag.className='fc-tag pending';tag.innerText='In Review';
+      icon.innerHTML='<i data-lucide="clock" style="width:16px;color:#fbbf24;"></i>';
+      text.innerText='Assigning owner...';lucide.createIcons();
+      setTimeout(()=>{
+        tag.className='fc-tag';tag.innerText='Completed';
+        icon.innerHTML='<i data-lucide="check-circle-2" style="width:16px;color:var(--green);"></i>';
+        text.innerText='Owner assigned';lucide.createIcons();
+      },3000);
+    },7000);
   }
 }
 runMockupScripts();
 
 function routeFromHash(){
-  var hash = (window.location.hash || '#home').toLowerCase();
-
-  if(hash === '#book'){
-    show('pg-book');
-    return;
-  }
-
-  if(hash === '#thanks'){
-    show('pg-thanks');
-    return;
-  }
-
+  var hash=(window.location.hash||'#home').toLowerCase();
+  if(hash==='#book'){show('pg-book');return;}
+  if(hash==='#thanks'){show('pg-thanks');return;}
   show('pg-main');
-}
 
-window.addEventListener('hashchange', routeFromHash);
+  const sectionHashes=['#problem','#cost','#system','#proof','#case-study'];
+  if(sectionHashes.includes(hash)){
+    requestAnimationFrame(()=>{
+      const target=document.querySelector(hash);
+      if(target){
+        const top=target.getBoundingClientRect().top + window.pageYOffset - 74;
+        window.scrollTo({top,behavior:'smooth'});
+      }
+    });
+  }
+}
+window.addEventListener('hashchange',routeFromHash);
 routeFromHash();
 
 (function(){
   if(!('IntersectionObserver' in window)) return;
-  var items = document.querySelectorAll('.anim');
-  items.forEach(function(el){ el.classList.add('hidden-pre'); });
-  var io = new IntersectionObserver(function(entries){
+  var items=document.querySelectorAll('.anim');
+  items.forEach(function(el){el.classList.add('hidden-pre');});
+  var io=new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       if(entry.isIntersecting){
-        var el = entry.target;
+        var el=entry.target;
         if(!el.style.transitionDelay){
-          var delay = 0;
-          var parent = el.parentElement;
+          var delay=0,parent=el.parentElement;
           if(parent){
-            var siblings = Array.from(parent.children).filter(c=>c.classList.contains('anim'));
-            delay = Math.min(siblings.indexOf(el) * 0.1, 0.4);
+            var siblings=Array.from(parent.children).filter(c=>c.classList.contains('anim'));
+            delay=Math.min(siblings.indexOf(el)*.1,.4);
           }
-          el.style.transitionDelay = delay + 's';
+          el.style.transitionDelay=delay+'s';
         }
         el.classList.remove('hidden-pre');
         el.classList.add('visible');
         io.unobserve(el);
       }
     });
-  },{threshold:0.1});
-  items.forEach(function(el){ io.observe(el); });
+  },{threshold:.1});
+  items.forEach(function(el){io.observe(el);});
 })();
 </script>
 </body>
