@@ -126,7 +126,9 @@ button{font-family:'Inter', sans-serif;cursor:pointer;border:none;background:non
 .grid-bg{ width: 100%; height: calc(100% + 60px); background-image: linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px); background-size:60px 60px; animation: moveGrid 15s linear infinite; }
 
 .wrap{max-width:1440px;margin:0 auto;padding:0 1.5rem}
-#pg-main{display:block} #pg-book{display:none} #pg-thanks{display:none}
+.page-view{display:none}
+.page-view.is-active{display:block}
+#pg-thanks.page-view.is-active{display:flex}
 
 nav{ position:fixed;top:0;left:0;right:0;z-index:200; background:rgba(6,7,15,.75); backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--border); transition: background 0.3s ease; }
 .nav-in{ display:flex;align-items:center;justify-content:space-between; height:76px;max-width:1440px;margin:0 auto;padding:0 1.5rem; }
@@ -140,6 +142,8 @@ nav{ position:fixed;top:0;left:0;right:0;z-index:200; background:rgba(6,7,15,.75
 .btn-nav:hover{background:var(--indigo-h);transform:translateY(-2px);box-shadow:0 4px 25px rgba(99,102,241,.6);}
 @media(max-width:768px){.nav-links{display:none}}
 .mob-cta{ display:none;position:fixed;bottom:0;left:0;right:0;z-index:190; padding:1rem 1.5rem;background:rgba(6,7,15,.95);border-top:1px solid var(--border);backdrop-filter:blur(10px); }
+body.booking-open .mob-cta,
+body.thanks-open .mob-cta{display:none !important;}
 .mob-cta button{ width:100%;background:var(--indigo);color:#fff;font-size:1.05rem;font-weight:600; padding:1rem;border-radius:12px;box-shadow:0 0 20px rgba(99,102,241,.4); }
 @media(max-width:768px){.mob-cta{display:block}}
 
@@ -304,6 +308,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;te
 .case-study-shell{max-width:1280px;margin:0 auto;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.025));border-radius:32px;padding:2.2rem;box-shadow:0 20px 50px rgba(0,0,0,.28)}
 .case-study-top{display:grid;grid-template-columns:1.2fr .8fr;gap:1.8rem;align-items:start;margin-bottom:1.5rem}
 .case-study-top h3{font-size:1.7rem;font-weight:600;line-height:1.15;margin:.25rem 0 .8rem;letter-spacing:-0.01em;word-spacing:0.02em}
+.case-section-title{font-size:clamp(1.7rem,2.4vw,2.35rem)!important;line-height:1.18!important;max-width:16ch;margin-left:auto;margin-right:auto}
+.case-desc{max-width:700px;margin:1rem 0 0;color:var(--muted);line-height:1.78;letter-spacing:0.012em;word-spacing:0.02em}
 .case-lead{color:var(--muted);line-height:1.8;max-width:760px}
 .case-mini{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo-h);margin-bottom:.45rem}
 .challenge-card .case-mini{color:var(--red)}
@@ -325,7 +331,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;te
 .case-quote{margin-top:1.25rem;border:1px solid rgba(52,211,153,.16);background:rgba(52,211,153,.06);border-radius:24px;padding:1.45rem 1.6rem}
 .case-quote p{color:rgba(255,255,255,.84);line-height:1.8;font-style:italic}
 .case-quote span{display:block;margin-top:.85rem;color:#a7f3d0;font-size:.92rem}
-@media(max-width:920px){.case-study-top,.case-grid,.metrics-row{grid-template-columns:1fr}.case-badges{justify-content:flex-start;flex-wrap:wrap}}
+@media(max-width:920px){.case-study-top,.case-grid,.metrics-row{grid-template-columns:1fr}.case-badges{justify-content:flex-start;flex-wrap:wrap}.case-section-title{font-size:1.7rem!important;line-height:1.24!important}.case-desc{max-width:100%;margin:.9rem 0 0}}
 .ty-wrap{max-width:600px;margin:10rem auto;padding:0 1.5rem;text-align:center;}
 .anim{transition:opacity .8s cubic-bezier(0.2, 0.8, 0.2, 1), transform .8s cubic-bezier(0.2, 0.8, 0.2, 1);}
 .anim.hidden-pre{opacity:0;transform:translateY(40px);}
@@ -339,22 +345,22 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;te
 
 <nav>
   <div class="nav-in">
-    <span class="logo" onclick="show('pg-main')" style="cursor:pointer">Klarity<span>Ops.</span></span>
+    <a class="logo" href="#home" style="cursor:pointer">Klarity<span>Ops.</span></a>
     <ul class="nav-links">
-      <li><a href="#problem" onclick="show('pg-main')">Problems</a></li>
-      <li><a href="#system" onclick="show('pg-main')">The System</a></li>
-      <li><a href="#proof" onclick="show('pg-main')">Results</a></li>
-      <li><a href="#case-study" onclick="show('pg-main')">Case Study</a></li>
+      <li><a href="#problem">Problems</a></li>
+      <li><a href="#system">The System</a></li>
+      <li><a href="#proof">Results</a></li>
+      <li><a href="#case-study">Case Study</a></li>
     </ul>
-    <button class="btn-nav" onclick="show('pg-book')">Book a Free Call</button>
+    <a class="btn-nav" href="#book">Book a Free Call</a>
   </div>
 </nav>
 
 <div class="mob-cta">
-  <button onclick="show('pg-book')">Book a Free Call</button>
+  <a href="#book">Book a Free Call</a>
 </div>
 
-<div id="pg-main">
+<div id="pg-main" class="page-view is-active">
   <section class="hero">
     <div class="wrap">
       <div class="hero-grid">
@@ -368,7 +374,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;te
             We build your workflows, ownership structure, dashboards, and execution system inside Asana, so your team can run with clarity, accountability, and less follow-up.
           </p>
           <div class="hero-btns">
-            <button class="btn-p btn-lg" onclick="show('pg-book')">Book a Free Call</button>
+            <a class="btn-p btn-lg" href="#book">Book a Free Call</a>
           </div>
           <div class="hero-points">
             <div class="hero-point">
@@ -474,7 +480,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;te
         <div class="cost-list">
           <div class="cost-item anim" style="transition-delay: 0.1s;"><div class="cost-dot"></div><div class="cost-item-text">Missed <span class="cost-mark">deadlines</span> that delay <span class="cost-mark">launches</span> and campaigns</div></div>
           <div class="cost-item anim" style="transition-delay: 0.15s;"><div class="cost-dot"></div><div class="cost-item-text">Wasted <span class="cost-mark">salaries</span> and contractor hours on preventable <span class="cost-mark">confusion</span></div></div>
-          <div class="cost-item anim" style="transition-delay: 0.2s;"><div class="cost-dot"></div><div class="cost-item-text">Burned <span class="cost-mark">ad spend</span> on untracked or unreviewed <span class="cost-mark">creative output</span></div></div><div class="cost-item-text"><span class="cost-mark">Founder bottlenecks</span> that stop the business from scaling cleanly</div></div>
+          <div class="cost-item anim" style="transition-delay: 0.2s;"><div class="cost-dot"></div><div class="cost-item-text">Burned <span class="cost-mark">ad spend</span> on untracked or unreviewed <span class="cost-mark">creative output</span></div></div>
         </div>
       </div>
     </div>
@@ -520,16 +526,17 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;te
     <div class="wrap">
       <div class="sh anim">
         <span class="lbl" style="color:var(--indigo-h);border-color:rgba(99,102,241,0.25);background:rgba(99,102,241,0.10);">Representative Engagement</span>
-        <h2>How structured BizOps implementation improves execution inside Asana.</h2>
-        <p>A representative engagement based on the kind of structure, visibility, accountability, and cross-functional execution work Klarity Ops implements for scaling brands.</p>
+        <h2 class="case-section-title">How Klarity Ops structures execution in Asana.</h2>
+        
       </div>
 
       <div class="case-study-shell anim">
         <div class="case-study-top">
           <div>
             <div class="case-mini">Engagement Type</div>
-            <h3>Growth-stage DTC brand with cross-functional execution complexity</h3>
-            <p class="case-lead">In a typical engagement like this, the business is scaling fast while teams operate in silos across marketing, operations, support, and people functions. Leadership has strategy, but not a single system to execute through.</p>
+            <h3>Growth-stage DTC brand with scaling complexity</h3>
+            <p class="case-lead">The business was growing, but execution was spread across teams without one clear system for ownership, visibility, and follow-through.</p>
+            <p class="case-desc">A simplified example of how Klarity Ops helps scaling brands bring structure, visibility, and accountability into day-to-day execution inside Asana.</p>
           </div>
           <div class="case-badges">
             <span>Representative Build</span>
@@ -543,41 +550,24 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;te
             <div class="case-mini">The Challenge</div>
             <ul>
               <li>Limited cross-functional visibility</li>
-              <li>Slow blocker resolution</li>
               <li>Missed or shifting deadlines</li>
-              <li>Inconsistent product launch timelines</li>
+              <li>Inconsistent launch coordination</li>
             </ul>
           </div>
 
           <div class="case-card build-card">
             <div class="case-mini">What Was Built</div>
             <ul>
-              <li>Centralized BizOps implementation</li>
-              <li>Shared weekly execution rhythm, OKRs, and visibility reviews</li>
-              <li>Asana as the single source of truth for execution</li>
-              <li>Standardized pre-GTM and GTM launch playbooks</li>
+              <li>Centralized execution system inside Asana</li>
+              <li>Shared weekly visibility and accountability rhythm</li>
+              <li>Standardized launch and handoff workflows</li>
             </ul>
           </div>
         </div>
 
-        <div class="metrics-row">
-          <div class="metric-card">
-            <strong>66%</strong>
-            <span>reduction in blocker resolution time</span>
-          </div>
-          <div class="metric-card">
-            <strong>37%</strong>
-            <span>increase in on-time delivery</span>
-          </div>
-          <div class="metric-card">
-            <strong>30%</strong>
-            <span>faster time-to-market for new SKUs</span>
-          </div>
-        </div>
-
         <div class="case-quote">
-          <p>“Before this work, the team had clear goals but lacked the operating structure to execute consistently. Once the system was built, leadership could plan, execute, and review progress with much more confidence.”</p>
-          <span>- Based on client-side feedback from similar engagements</span>
+          <p>“Once the system was structured properly, the team had clearer ownership, better visibility, and much less day-to-day confusion around execution.”</p>
+          <span>- Based on feedback from similar client engagements</span>
         </div>
       </div>
     </div>
@@ -589,7 +579,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;te
         <span class="lbl">Build Your BizOps System</span>
         <h2>Stop relying on follow-ups. Start running on structure.</h2>
         <p class="final-text">If your business is already using Asana, or trying to, but still lacks structure, visibility, and accountability, Klarity Ops can build the system and support your team beyond setup.</p>
-        <button class="btn-p btn-lg" onclick="show('pg-book')">Book a Free Call <i data-lucide="calendar" style="width:18px; margin-left:8px;"></i></button>
+        <a class="btn-p btn-lg" href="#book">Book a Free Call <i data-lucide="calendar" style="width:18px; margin-left:8px;"></i></a>
         <p class="fc" style="margin-top:1.5rem;">30 minutes. No commitment. For scaling e-commerce brands.</p>
       </div>
     </div>
@@ -604,11 +594,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;te
   </footer>
 </div>
 
-<div id="pg-book">
+<div id="pg-book" class="page-view">
   <div class="book-wrap">
-    <button class="btn-g" style="margin-bottom:3rem; border:none; padding:0.5rem 1rem;" onclick="show('pg-main')">
-      <i data-lucide="arrow-left" style="width:18px; margin-right:8px;"></i> Back
-    </button>
+    <a class="btn-g" style="margin-bottom:3rem; border:none; padding:0.5rem 1rem;" href="#home"><i data-lucide="arrow-left" style="width:18px; margin-right:8px;"></i> Back</a>
     <div class="sh">
       <span class="lbl">Free BizOps Strategy Call</span>
       <h2>Tell us about your operations setup.</h2>
@@ -631,7 +619,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;te
         </div>
         <div class="form-group">
           <label for="website">Website / store URL</label>
-          <input id="website" name="website" type="url" placeholder="https://yourstore.com">
+          <input id="website" name="website" type="text" placeholder="yourstore.com">
         </div>
         <div class="form-group">
           <label for="monthlyRevenue">Monthly revenue</label>
@@ -698,14 +686,14 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;te
   </div>
 </div>
 
-<div id="pg-thanks" style="min-height:100vh; display:none; align-items:center; justify-content:center;">
+<div id="pg-thanks" class="page-view" style="min-height:100vh; align-items:center; justify-content:center;">
   <div class="ty-wrap">
     <div style="width:80px; height:80px; background:rgba(52,211,153,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem;">
       <i data-lucide="check" style="width:40px; height:40px; color:var(--green);"></i>
     </div>
     <h2 style="font-size:2.5rem; font-weight:600; margin-bottom:1rem;">Call Scheduled!</h2>
     <p style="color:var(--muted); margin-bottom:2rem; letter-spacing:0.012em; word-spacing:0.02em; line-height:1.72;">Check your email for the next step. We'll review your current setup before we speak so the conversation stays focused on structure, visibility, and execution improvements.</p>
-    <button class="btn-g" onclick="show('pg-main')">Return to Homepage</button>
+    <a class="btn-g" href="#home">Return to Homepage</a>
   </div>
 </div>
 
@@ -713,25 +701,46 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0;te
 lucide.createIcons();
 
 function show(id){
-  ['pg-main','pg-book','pg-thanks'].forEach(p=>{
+  ['pg-main','pg-book','pg-thanks'].forEach(function(p){
     var el = document.getElementById(p);
-    if(p === id){
-      el.style.display = (p === 'pg-thanks') ? 'flex' : 'block';
-    } else {
-      el.style.display = 'none';
-    }
+    if(!el) return;
+    el.classList.remove('is-active');
+    el.hidden = true;
+    el.style.display = 'none';
   });
-  window.scrollTo({top:0,behavior:'instant'});
+
+  var active = document.getElementById(id);
+  if(active){
+    active.hidden = false;
+    active.classList.add('is-active');
+    active.style.display = (id === 'pg-thanks') ? 'flex' : 'block';
+  }
+
+  document.body.classList.remove('booking-open','thanks-open');
+  if(id === 'pg-book') document.body.classList.add('booking-open');
+  if(id === 'pg-thanks') document.body.classList.add('thanks-open');
+
+  window.scrollTo(0, 0);
 }
 
 function handleFormSubmit(event){
   event.preventDefault();
   const form = document.getElementById('klarity-form');
+  const websiteInput = document.getElementById('website');
+
+  if(websiteInput){
+    const rawValue = websiteInput.value.trim();
+    if(rawValue && !/^https?:\/\//i.test(rawValue)){
+      websiteInput.value = 'https://' + rawValue;
+    }
+  }
+
   if(form && !form.checkValidity()){
     form.reportValidity();
     return;
   }
-  show('pg-thanks');
+
+  window.location.hash = '#thanks';
 }
 
 function runMockupScripts() {
@@ -774,6 +783,25 @@ function runMockupScripts() {
   }
 }
 runMockupScripts();
+
+function routeFromHash(){
+  var hash = (window.location.hash || '#home').toLowerCase();
+
+  if(hash === '#book'){
+    show('pg-book');
+    return;
+  }
+
+  if(hash === '#thanks'){
+    show('pg-thanks');
+    return;
+  }
+
+  show('pg-main');
+}
+
+window.addEventListener('hashchange', routeFromHash);
+routeFromHash();
 
 (function(){
   if(!('IntersectionObserver' in window)) return;
