@@ -99,54 +99,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* --- 3D HERO ANIMATIONS FOR KANBAN & LOGOS --- */
-        @keyframes floatMain {
-            0%, 100% { transform: perspective(1000px) rotateY(-4deg) rotateX(2deg) translateY(0); }
-            50% { transform: perspective(1000px) rotateY(-4deg) rotateX(2deg) translateY(-10px); }
-        }
-        @keyframes floatCard1 {
-            0%, 100% { transform: translateY(0) rotate(-1deg); }
-            50% { transform: translateY(-8px) rotate(0deg); }
-        }
-        @keyframes floatCard2 {
-            0%, 100% { transform: translateY(0) rotate(1deg); }
-            50% { transform: translateY(-8px) rotate(2deg); }
-        }
-        
-        .animated-main { animation: floatMain 6s ease-in-out infinite; }
-        .animated-node-1 { animation: floatCard1 5s ease-in-out infinite; }
-        .animated-node-2 { animation: floatCard2 6.5s ease-in-out infinite reverse; }
-
-        /* Smooth Drag Task Animation */
-        @keyframes dragTask {
-            0%, 10% { transform: translate(0, 0) scale(1); border-color: #334155; background: #0f172a; opacity: 1; box-shadow: 0 1px 3px rgba(0,0,0,0.2); z-index: 10;}
-            20% { transform: translate(5px, -5px) scale(1.05) rotate(3deg); border-color: #10b981; background: #0f172a; box-shadow: 0 15px 30px -5px rgba(0,0,0,0.4); z-index: 20; }
-            40%, 60% { transform: translate(110%, 45px) scale(1) rotate(0deg); border-color: #0f766e; background: #042f2e; box-shadow: 0 1px 3px rgba(0,0,0,0.2); z-index: 10; }
-            70% { transform: translate(115%, 40px) scale(1.05) rotate(3deg); border-color: #10b981; background: #0f172a; box-shadow: 0 15px 30px -5px rgba(0,0,0,0.4); z-index: 20; }
-            85%, 95% { transform: translate(220%, 0) scale(1) rotate(0deg); border-color: #334155; background: #0f172a; opacity: 0.6; box-shadow: none; z-index: 10; }
-            100% { transform: translate(0, 0) scale(1); opacity: 0; }
-        }
-        .animated-task { animation: dragTask 4.5s ease-in-out infinite; position: relative; z-index: 10; cursor: grab; }
-
-        /* Rotating Border Effect */
-        @keyframes rotateBorder {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-        .spin-border-1px {
-            position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0; overflow: hidden;
-            -webkit-mask-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
-            -webkit-mask-clip: content-box, border-box;
-            -webkit-mask-composite: destination-out;
-            mask-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
-            mask-clip: content-box, border-box;
-            mask-composite: exclude;
-            top: -1px; left: -1px; right: -1px; bottom: -1px; padding: 1px;
-        }
-        .spin-border-1px::before { content: ''; position: absolute; top: 50%; left: 50%; width: 500px; height: 500px; transform: translate(-50%, -50%); animation: rotateBorder 4s linear infinite; }
-        .hero-spin::before { background: conic-gradient(from 0deg, transparent 70%, rgba(16,185,129,0.4) 85%, rgba(4,120,87,0.6) 100%); animation-duration: 8s; }
-        .hero-spin-rev::before { background: conic-gradient(from 0deg, transparent 70%, rgba(52,211,153,0.4) 85%, rgba(16,185,129,0.6) 100%); animation-duration: 6s; animation-direction: reverse; }
-
+        /* Subtle Pulse for Background Orbs */
         @keyframes subtlePulse {
             0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.08; }
             50% { transform: translateX(-50%) scale(1.05); opacity: 0.15; }
@@ -158,73 +111,6 @@
         /* Hover Glow */
         .hover-glow { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
         .hover-glow:hover { transform: translateY(-4px); border-color: #99f6e4; box-shadow: 0 10px 25px -5px rgba(15, 118, 110, 0.15); }
-
-        /* --- BULLETPROOF RESPONSIVE HERO WRAPPER --- */
-        /* Ensures cards never cut off on any screen size */
-        .hero-visuals-wrapper {
-            position: relative;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 420px; /* Default Desktop */
-        }
-        .hero-visuals {
-            position: relative;
-            width: 500px; /* Fixed Base Size */
-            height: 420px; /* Fixed Base Size */
-            flex-shrink: 0;
-            transform-origin: center;
-        }
-        .hero-visuals > * { position: absolute; z-index: 5; }
-        
-        @media (max-width: 1024px) {
-            .hero-visuals { transform: scale(0.9); }
-            .hero-visuals-wrapper { height: 380px; }
-        }
-        @media (max-width: 768px) {
-            .hero-visuals { transform: scale(0.85); transform-origin: top center; }
-            .hero-visuals-wrapper { height: 360px; margin-top: 1rem; }
-        }
-        @media (max-width: 640px) {
-            .hero-visuals { transform: scale(0.7); transform-origin: top center; }
-            .hero-visuals-wrapper { height: 300px; margin-top: 1rem; }
-        }
-        @media (max-width: 480px) {
-            .hero-visuals { transform: scale(0.62); transform-origin: top center; }
-            .hero-visuals-wrapper { height: 260px; margin-top: 1rem; }
-        }
-        @media (max-width: 380px) {
-            .hero-visuals { transform: scale(0.55); transform-origin: top center; }
-            .hero-visuals-wrapper { height: 230px; margin-top: 1rem; }
-        }
-
-        /* Dark Kanban Board Base Styles */
-        .kanban-board { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 360px; height: 320px; background: rgba(15,23,42,0.95); backdrop-filter: blur(20px); border: 1px solid #1e293b; border-radius: 24px; padding: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3); display: flex; flex-direction: column; z-index: 10; }
-        .kb-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid #1e293b; }
-        .kb-title { font-weight: 700; font-size: 1.05rem; display: flex; align-items: center; gap: 0.5rem; color: #f8fafc; }
-        .kb-dot { width: 10px; height: 10px; background: #14b8a6; border-radius: 50%; box-shadow: 0 0 10px rgba(20,184,166,0.4); }
-        .kb-cols { display: flex; gap: 1rem; flex: 1; position: relative; }
-        .kb-col { flex: 1; background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 0.8rem; display: flex; flex-direction: column; gap: 0.8rem; }
-        .kb-col-title { font-size: 0.75rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
-        .kb-task { background: #0f172a; border-radius: 8px; padding: 0.8rem; border: 1px solid #334155; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-        .kb-task-line { height: 6px; border-radius: 3px; background: #334155; margin-bottom: 0.5rem; }
-        .kb-task-line.short { width: 60%; background: #475569; }
-
-        /* Dark Floating Cards */
-        .float-card-1 { bottom: 5%; left: 0; width: 240px; background: rgba(15,23,42,0.98); backdrop-filter: blur(16px); border: 1px solid #334155; border-radius: 16px; padding: 1.2rem; box-shadow: 0 15px 35px rgba(0,0,0,0.4); z-index: 20; }
-        .fc-content { position: relative; z-index: 2; }
-        .fc-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
-        .fc-tag { font-size: 0.7rem; font-weight: 600; background: rgba(52,211,153,0.15); color: #34d399; padding: 0.2rem 0.6rem; border-radius: 6px; transition: all 0.3s ease; }
-        .fc-tag.pending { background: rgba(251,191,36,0.15) !important; color: #fbbf24 !important; }
-        .fc-title { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.4rem; color: #f8fafc; }
-        .fc-bot { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: #94a3b8; }
-        .fc-avatar { width: 24px; height: 24px; border-radius: 50%; background: #0f766e; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: #f8fafc; font-weight: 800; }
-        
-        .float-card-2 { top: 5%; right: 0; width: 200px; background: rgba(15,23,42,0.98); backdrop-filter: blur(16px); border: 1px solid #334155; border-radius: 16px; padding: 1.2rem; box-shadow: 0 15px 35px rgba(0,0,0,0.4); z-index: 20; }
-        .fc2-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(56,189,248,0.15); color: #38bdf8; display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; }
-        .fc2-title { font-weight: 500; font-size: 0.9rem; margin-bottom: 0.3rem; color: #f8fafc; }
-        .fc2-stat { font-family: 'Manrope'; font-weight: 700; font-size: 1.35rem; color: #34d399; transition: color 0.3s ease; }
 
         /* Input fields focus style */
         .input-surface {
@@ -251,6 +137,57 @@
         
         #booking-modal.show { opacity: 1; pointer-events: auto; }
         #booking-modal.show .modal-content { transform: scale(1); }
+
+
+        /* Social proof marquee */
+        .proof-marquee {
+            overflow: hidden;
+            position: relative;
+        }
+        .proof-marquee::before,
+        .proof-marquee::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 72px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .proof-marquee::before {
+            left: 0;
+            background: linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0) 100%);
+        }
+        .proof-marquee::after {
+            right: 0;
+            background: linear-gradient(to left, #ffffff 0%, rgba(255,255,255,0) 100%);
+        }
+        .proof-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: proofTicker 22s linear infinite;
+        }
+        .proof-marquee-group {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        .proof-marquee-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            white-space: nowrap;
+            padding: 0 0.25rem;
+        }
+        .proof-marquee:hover .proof-marquee-track {
+            animation-play-state: paused;
+        }
+        @keyframes proofTicker {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
     </style>
 </head>
 <body class="bg-[#fafafa] text-slate-600 font-sans antialiased selection:bg-brand-500 selection:text-white relative">
@@ -267,7 +204,6 @@
                 <a href="#pricing" class="text-slate-600 hover:text-brand-600 transition-colors">Pricing</a>
                 <a href="#faq" class="text-slate-600 hover:text-brand-600 transition-colors">FAQ</a>
             </div>
-            <!-- Updated to Gradient Button -->
             <button onclick="openModal()" class="hidden md:inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white gradient-bg rounded-lg shadow-md transition-all hover:-translate-y-0.5">
                 Book Ops Diagnostic
             </button>
@@ -283,156 +219,104 @@
     <!-- ============================================== -->
     <main id="pg-main" class="page-view is-active">
         
-        <!-- Hero Section -->
-        <section id="home" class="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden bg-[#fafafa] border-b border-slate-200">
+        <!-- Hero Section (Centered without Visuals) -->
+        <section id="home" class="relative pt-40 pb-24 md:pt-48 md:pb-32 overflow-hidden bg-[#fafafa] border-b border-slate-200 flex flex-col items-center justify-center text-center">
             
             <!-- Center Glow/Orb -->
-            <div class="absolute top-[0%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] gradient-bg rounded-full blur-[100px] opacity-10 pointer-events-none animate-pulse-slow"></div>
+            <div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] gradient-bg rounded-full blur-[100px] opacity-10 pointer-events-none animate-pulse-slow"></div>
 
-            <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="flex flex-col lg:flex-row items-center gap-4 lg:gap-12">
-                    
-                    <!-- Left: Hero Text -->
-                    <div class="text-center lg:text-left z-10 w-full lg:w-[50%]">
-                        
-                        <!-- Combined Trust Badges (Side by Side) -->
-                        <div class="reveal flex flex-wrap items-center gap-3 mb-8 justify-center lg:justify-start">
-                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-700 text-[11px] font-bold tracking-widest shadow-sm uppercase">
-                                <i data-lucide="shield-check" class="w-4 h-4 text-brand-600"></i> Ops for $1M-$5M D2C
-                            </div>
-                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#fef4f4] border border-[#e5d5d5] text-[#3d3d3d] text-[11px] font-bold tracking-widest shadow-sm uppercase">
-                                <div class="relative w-[10px] h-[10px] flex-shrink-0">
-                                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[4px] h-[4px] rounded-full bg-[#f06a6a]"></div>
-                                    <div class="absolute bottom-0 left-0 w-[4px] h-[4px] rounded-full bg-[#f06a6a]"></div>
-                                    <div class="absolute bottom-0 right-0 w-[4px] h-[4px] rounded-full bg-[#f06a6a]"></div>
-                                </div>
-                                Asana Solutions Partner
-                            </div>
-                        </div>
-                        
-                        <h1 class="reveal delay-100 font-heading text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-normal mb-6 leading-[1.1]">
-                            Stop being the system.<br class="hidden md:block">
-                            <span class="gradient-text">Start running one.</span>
-                        </h1>
-                        
-                        <p class="reveal delay-200 text-lg md:text-xl text-slate-500 mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                            In 30 days, we extract scaling e-commerce founders from day-to-day chaos by building a bulletproof operating architecture natively inside Asana.
-                        </p>
-                        
-                        <div class="reveal delay-300 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full sm:w-auto">
-                            <!-- Gradient CTA -->
-                            <button onclick="openModal()" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-white gradient-bg rounded-xl shadow-lg transition-all hover:-translate-y-1">
-                                Book Free Diagnostic
-                            </button>
-                            <a href="#solution" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-slate-700 bg-white border border-slate-300 rounded-xl hover:bg-slate-50 transition-all hover:-translate-y-1 shadow-sm">
-                                See The Architecture
-                            </a>
-                        </div>
+            <div class="max-w-4xl mx-auto px-6 relative z-10 flex flex-col items-center">
+                
+                <!-- Combined Trust Badges -->
+                <div class="reveal flex flex-wrap items-center justify-center gap-3 mb-8">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-700 text-[11px] font-bold tracking-widest shadow-sm uppercase">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-brand-600"></i> Ops for $1M-$5M D2C
                     </div>
-
-                    <!-- Right: Advanced System Visualization -->
-                    <div class="reveal delay-200 flex w-full lg:w-[50%] justify-center lg:justify-end overflow-hidden pt-10 lg:pt-0">
-                        <div class="hero-visuals-wrapper">
-                            <div class="hero-visuals">
-                                
-                                <!-- Main Kanban Interface (Dark Theme) -->
-                                <div class="kanban-board animated-main">
-                                    <div class="spin-border-1px hero-spin rounded-3xl" style="border-radius: 24px;"></div>
-                                    <div class="kb-header relative z-10">
-                                      <div class="kb-title"><div class="kb-dot"></div> Exec Dashboard</div>
-                                      <i data-lucide="more-horizontal" style="color:#64748b;"></i>
-                                    </div>
-                                    <div class="kb-cols relative z-10">
-                                      <!-- Col 1 -->
-                                      <div class="kb-col relative z-0">
-                                        <div class="kb-col-title">Requests</div>
-                                        <!-- The Animated Dragging Task -->
-                                        <div class="kb-task animated-task">
-                                          <div class="kb-task-line" style="background:#f43f5e"></div>
-                                          <div class="kb-task-line short"></div>
-                                        </div>
-                                        <div class="kb-task"><div class="kb-task-line short" style="background:#eab308"></div></div>
-                                      </div>
-                                      <!-- Col 2 -->
-                                      <div class="kb-col relative z-0">
-                                        <div class="kb-col-title">In Review</div>
-                                        <div class="kb-task border-brand-300 bg-[#042f2e] shadow-sm">
-                                          <div class="kb-task-line" style="background:#2dd4bf"></div>
-                                          <div class="kb-task-line short" style="background:#5eead4"></div>
-                                        </div>
-                                      </div>
-                                      <!-- Col 3 -->
-                                      <div class="kb-col relative z-0">
-                                        <div class="kb-col-title">Live</div>
-                                        <div class="kb-task" style="opacity:.6"><div class="kb-task-line" style="background:#3b82f6"></div></div>
-                                      </div>
-                                    </div>
-                                </div>
-
-                                <!-- Floating Badges (Dark Theme) -->
-                                
-                                <!-- Float Card 1: Workflow Completed -->
-                                <div class="float-card-1 animated-node-1 hover-glow cursor-default">
-                                    <div class="spin-border-1px hero-spin-rev rounded-2xl" style="border-radius: 16px;"></div>
-                                    <div class="fc-content">
-                                      <div class="fc-top">
-                                        <span class="fc-tag" id="fc1-tag">Completed</span>
-                                        <span id="fc1-icon"><i data-lucide="check-circle-2" style="width:16px;color:#34d399;"></i></span>
-                                      </div>
-                                      <div class="fc-title">Launch Workflow</div>
-                                      <div class="fc-bot">
-                                        <div class="fc-avatar">KO</div>
-                                        <span id="fc1-text">Owner assigned</span>
-                                      </div>
-                                    </div>
-                                </div>
-
-                                <!-- Float Card 2: Team Visibility -->
-                                <div class="float-card-2 animated-node-2 hover-glow cursor-default">
-                                    <div class="spin-border-1px hero-spin rounded-2xl" style="border-radius: 16px;"></div>
-                                    <div class="fc-content">
-                                      <div class="fc2-icon"><i data-lucide="zap" style="width:18px;"></i></div>
-                                      <div class="fc2-title">Team Visibility</div>
-                                      <div class="fc2-stat" id="velocity-stat">+42%</div>
-                                      <div style="font-size:.7rem;color:#94a3b8;margin-top:.2rem">Better operational clarity</div>
-                                    </div>
-                                </div>
-
-                            </div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#fef4f4] border border-[#e5d5d5] text-[#3d3d3d] text-[11px] font-bold tracking-widest shadow-sm uppercase">
+                        <div class="relative w-[10px] h-[10px] flex-shrink-0">
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[4px] h-[4px] rounded-full bg-[#f06a6a]"></div>
+                            <div class="absolute bottom-0 left-0 w-[4px] h-[4px] rounded-full bg-[#f06a6a]"></div>
+                            <div class="absolute bottom-0 right-0 w-[4px] h-[4px] rounded-full bg-[#f06a6a]"></div>
                         </div>
+                        Asana Solutions Partner
                     </div>
+                </div>
+                
+                <h1 class="reveal delay-100 font-heading text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-normal mb-6 leading-[1.1]">
+                    Stop being the system.<br class="hidden md:block">
+                    <span class="gradient-text">Start running one.</span>
+                </h1>
+                
+                <p class="reveal delay-200 text-lg md:text-xl text-slate-500 mb-10 leading-relaxed max-w-2xl mx-auto">
+                    In 30 days, we extract scaling e-commerce founders from day-to-day chaos by building a bulletproof operating architecture natively inside Asana.
+                </p>
+                
+                <div class="reveal delay-300 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+                    <button onclick="openModal()" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-white gradient-bg rounded-xl shadow-lg transition-all hover:-translate-y-1">
+                        Book Free Diagnostic
+                    </button>
+                    <a href="#solution" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-slate-700 bg-white border border-slate-300 rounded-xl hover:bg-slate-50 transition-all hover:-translate-y-1 shadow-sm">
+                        See The Architecture
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Social Proof Banner (White Background) -->
+        <!-- Social Proof Banner (Animated Ticker) -->
         <div class="reveal border-b border-slate-200 bg-white shadow-sm relative z-10">
-            <div class="max-w-7xl mx-auto px-6 py-6">
-                <!-- 2x2 grid for mobile, single line on desktop -->
-                <div class="grid grid-cols-2 lg:flex lg:justify-between items-center gap-y-6 gap-x-4 text-xs sm:text-sm font-semibold text-slate-500">
-                    <div class="flex items-center justify-center lg:justify-start gap-2.5">
-                        <div class="w-8 h-8 rounded-full bg-[#fafafa] flex items-center justify-center border border-slate-200 shrink-0">
-                            <i data-lucide="clock" class="w-4 h-4 text-brand-600"></i>
-                        </div> 
-                        <span class="leading-tight">30-Day Turnaround</span>
+            <div class="proof-marquee py-5">
+                <div class="proof-marquee-track text-xs sm:text-sm font-semibold text-slate-500">
+                    <div class="proof-marquee-group" aria-hidden="false">
+                        <div class="proof-marquee-item">
+                            <div class="w-8 h-8 rounded-full bg-[#fafafa] flex items-center justify-center border border-slate-200 shrink-0">
+                                <i data-lucide="clock" class="w-4 h-4 text-brand-600"></i>
+                            </div>
+                            <span class="leading-tight">30-Day Turnaround</span>
+                        </div>
+                        <div class="proof-marquee-item">
+                            <div class="w-8 h-8 rounded-full bg-[#fafafa] flex items-center justify-center border border-slate-200 shrink-0">
+                                <i data-lucide="layout" class="w-4 h-4 text-brand-600"></i>
+                            </div>
+                            <span class="leading-tight">Built Native in Asana</span>
+                        </div>
+                        <div class="proof-marquee-item">
+                            <div class="w-8 h-8 rounded-full bg-[#fafafa] flex items-center justify-center border border-slate-200 shrink-0">
+                                <i data-lucide="users" class="w-4 h-4 text-brand-600"></i>
+                            </div>
+                            <span class="leading-tight">Done-For-You Training</span>
+                        </div>
+                        <div class="proof-marquee-item">
+                            <div class="w-8 h-8 rounded-full bg-[#fafafa] flex items-center justify-center border border-slate-200 shrink-0">
+                                <i data-lucide="shield-check" class="w-4 h-4 text-brand-600"></i>
+                            </div>
+                            <span class="leading-tight">Zero Tool Disruption</span>
+                        </div>
                     </div>
-                    <div class="flex items-center justify-center lg:justify-start gap-2.5">
-                        <div class="w-8 h-8 rounded-full bg-[#fafafa] flex items-center justify-center border border-slate-200 shrink-0">
-                            <i data-lucide="layout" class="w-4 h-4 text-brand-600"></i>
-                        </div> 
-                        <span class="leading-tight">Built Native in Asana</span>
-                    </div>
-                    <div class="flex items-center justify-center lg:justify-start gap-2.5">
-                        <div class="w-8 h-8 rounded-full bg-[#fafafa] flex items-center justify-center border border-slate-200 shrink-0">
-                            <i data-lucide="users" class="w-4 h-4 text-brand-600"></i>
-                        </div> 
-                        <span class="leading-tight">Done-For-You Training</span>
-                    </div>
-                    <div class="flex items-center justify-center lg:justify-start gap-2.5">
-                        <div class="w-8 h-8 rounded-full bg-[#fafafa] flex items-center justify-center border border-slate-200 shrink-0">
-                            <i data-lucide="shield-check" class="w-4 h-4 text-brand-600"></i>
-                        </div> 
-                        <span class="leading-tight">Zero Tool Disruption</span>
+                    <div class="proof-marquee-group" aria-hidden="true">
+                        <div class="proof-marquee-item">
+                            <div class="w-8 h-8 rounded-full bg-[#fafafa] flex items-center justify-center border border-slate-200 shrink-0">
+                                <i data-lucide="clock" class="w-4 h-4 text-brand-600"></i>
+                            </div>
+                            <span class="leading-tight">30-Day Turnaround</span>
+                        </div>
+                        <div class="proof-marquee-item">
+                            <div class="w-8 h-8 rounded-full bg-[#fafafa] flex items-center justify-center border border-slate-200 shrink-0">
+                                <i data-lucide="layout" class="w-4 h-4 text-brand-600"></i>
+                            </div>
+                            <span class="leading-tight">Built Native in Asana</span>
+                        </div>
+                        <div class="proof-marquee-item">
+                            <div class="w-8 h-8 rounded-full bg-[#fafafa] flex items-center justify-center border border-slate-200 shrink-0">
+                                <i data-lucide="users" class="w-4 h-4 text-brand-600"></i>
+                            </div>
+                            <span class="leading-tight">Done-For-You Training</span>
+                        </div>
+                        <div class="proof-marquee-item">
+                            <div class="w-8 h-8 rounded-full bg-[#fafafa] flex items-center justify-center border border-slate-200 shrink-0">
+                                <i data-lucide="shield-check" class="w-4 h-4 text-brand-600"></i>
+                            </div>
+                            <span class="leading-tight">Zero Tool Disruption</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -441,11 +325,12 @@
         <!-- The Problem Section (Grey Background) -->
         <section id="problem" class="py-24 md:py-32 bg-[#fafafa]">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="max-w-3xl mb-16 mx-auto text-center md:text-left md:mx-0">
+                <!-- Power Heading Replaced -->
+                <div class="max-w-3xl mb-16 mx-auto text-center">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
-                        The Real Pain
+                        The Scaling Trap
                     </div>
-                    <h2 class="reveal font-heading text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-normal">Your team is busy.<br class="hidden md:block">Your system is broken.</h2>
+                    <h2 class="reveal font-heading text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-normal">You don't have a team problem.<br class="hidden md:block">You have a system problem.</h2>
                     <p class="reveal delay-100 text-lg text-slate-500">These are the exact problems scaling operators, founders, and team leads say when execution feels messy, Asana adoption is weak, and leadership still cannot see what is actually moving.</p>
                 </div>
 
@@ -1190,40 +1075,6 @@
         lucide.createIcons();
 
         // ----------------------------------------------------
-        // HERO MOCKUP DYNAMIC SCRIPTS
-        // ----------------------------------------------------
-        function runMockupScripts(){
-          const velEl=document.getElementById('velocity-stat');
-          if(velEl){
-            setInterval(()=>{
-              let current=12;
-              velEl.innerText='+'+current+'%';
-              velEl.style.color='#94a3b8'; 
-              const ci=setInterval(()=>{
-                current+=1;velEl.innerText='+'+current+'%';
-                if(current>=42){clearInterval(ci);velEl.style.color='#34d399';} 
-              },35);
-            },7000);
-          }
-          const tag=document.getElementById('fc1-tag');
-          const icon=document.getElementById('fc1-icon');
-          const text=document.getElementById('fc1-text');
-          if(tag&&icon&&text){
-            setInterval(()=>{
-              tag.className='fc-tag pending';tag.innerText='In Review';
-              icon.innerHTML='<i data-lucide="clock" style="width:16px;color:#fbbf24;"></i>';
-              text.innerText='Assigning owner...';lucide.createIcons();
-              setTimeout(()=>{
-                tag.className='fc-tag';tag.innerText='Completed';
-                icon.innerHTML='<i data-lucide="check-circle-2" style="width:16px;color:#34d399;"></i>';
-                text.innerText='Owner assigned';lucide.createIcons();
-              },3000);
-            },7000);
-          }
-        }
-        runMockupScripts();
-
-        // ----------------------------------------------------
         // MULTI-STEP MODAL LOGIC
         // ----------------------------------------------------
         let currentStep = 1;
@@ -1351,7 +1202,7 @@
             const email = encodeURIComponent(payload.email);
             const bookingUrl = `https://thexponent.neetocal.com/discovery-call?name=${fullName}&email=${email}`;
             
-            fetch('https://script.google.com/macros/s/AKfycbx0QbhMiJfHxfd3g6AssZZ-mDCbJnSEf6ViPBtAEJriBhjNSkQ758HxY9R7OXTLoP7W/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbx0QbhMossZZ-mDCbJnSEf6ViPBtAEJriBhjNSkQ758HxY9R7OXTLoP7W/exec', {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: {'Content-Type': 'text/plain;charset=utf-8'},
