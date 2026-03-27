@@ -67,39 +67,72 @@
         .delay-200 { transition-delay: 200ms; }
         .delay-300 { transition-delay: 300ms; }
 
-        /* --- Gradient Backgrounds aur Text --- */
+        /* --- Fluid Animated Gradient Backgrounds aur Text --- */
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .gradient-bg {
-            background: linear-gradient(135deg, #1d4ed8 0%, #0f766e 100%); 
+            background: linear-gradient(135deg, #1d4ed8, #0f766e, #1d4ed8); 
+            background-size: 200% 200%;
+            animation: gradientMove 6s ease infinite;
         }
         .gradient-bg:hover {
-            background: linear-gradient(135deg, #1e40af 0%, #115e59 100%); 
+            background: linear-gradient(135deg, #1e40af, #115e59, #1e40af); 
+            background-size: 200% 200%;
         }
         .gradient-text {
-            background: linear-gradient(135deg, #1d4ed8 0%, #0f766e 100%);
+            background: linear-gradient(135deg, #1d4ed8, #0f766e, #1d4ed8);
+            background-size: 200% 200%;
+            animation: gradientMove 6s ease infinite;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         .gradient-border-wrap {
-            background: linear-gradient(135deg, #1d4ed8 0%, #0f766e 100%);
+            background: linear-gradient(135deg, #1d4ed8, #0f766e, #1d4ed8);
+            background-size: 200% 200%;
+            animation: gradientMove 6s ease infinite;
         }
-        /* Lighter Gradient for Circles to maintain consistency */
+        /* Lighter Gradient for Circles */
         .gradient-light-bg {
             background: linear-gradient(135deg, #eff6ff 0%, #f0fdfa 100%);
         }
 
-        /* --- Hero Floating Animations --- */
+        /* --- Subtle Premium Animations --- */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-12px); }
         }
         .animate-float {
-            animation: float 5s ease-in-out infinite;
+            animation: float 6s ease-in-out infinite;
         }
         .float-delay-1 { animation-delay: 1s; }
         .float-delay-2 { animation-delay: 2.5s; }
         .float-delay-3 { animation-delay: 1.5s; }
         .float-delay-4 { animation-delay: 3s; }
+
+        @keyframes subtlePulse {
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.08; }
+            50% { transform: translateX(-50%) scale(1.05); opacity: 0.15; }
+        }
+        .animate-pulse-slow {
+            animation: subtlePulse 8s ease-in-out infinite;
+        }
+
+        @keyframes borderBreathe {
+            0%, 100% { border-color: #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+            50% { border-color: #5eead4; box-shadow: 0 10px 25px -5px rgba(20, 184, 166, 0.15); }
+        }
+        .hover-glow {
+            transition: transform 0.3s ease;
+        }
+        .hover-glow:hover {
+            transform: translateY(-4px);
+            animation: borderBreathe 2.5s ease-in-out infinite;
+        }
 
         /* Input fields focus style */
         .input-surface {
@@ -157,9 +190,12 @@
     <!-- ============================================== -->
     <main id="pg-main" class="page-view is-active">
         
-        <!-- Hero Section (Restored Visualized Grid) -->
+        <!-- Hero Section (Visualized Grid with Animations) -->
         <section id="home" class="relative pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden bg-white border-b border-slate-200">
-            <div class="max-w-7xl mx-auto px-6">
+            <!-- Background subtle pulsing orb -->
+            <div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] gradient-bg rounded-full blur-[100px] animate-pulse-slow pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
                 <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
                     
                     <!-- Hero Text (Left) -->
@@ -175,10 +211,10 @@
                             In 30 days, we extract scaling e-commerce founders from day-to-day chaos by building a bulletproof operating architecture natively inside Asana.
                         </p>
                         <div class="reveal delay-300 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                            <button onclick="openModal()" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-white gradient-bg rounded-xl shadow-lg transition-all hover:-translate-y-1">
+                            <button onclick="openModal()" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-white gradient-bg rounded-xl shadow-lg transition-all hover:-translate-y-1 hover:shadow-brand-500/30">
                                 Book Free Diagnostic
                             </button>
-                            <a href="#solution" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-slate-700 bg-white border border-slate-300 rounded-xl hover:bg-slate-50 transition-all hover:-translate-y-1 shadow-sm">
+                            <a href="#solution" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-slate-700 bg-white border border-slate-300 rounded-xl hover:bg-slate-50 transition-all hover:-translate-y-1 shadow-sm hover:shadow-md">
                                 See The Architecture
                             </a>
                         </div>
@@ -186,12 +222,8 @@
 
                     <!-- Lightweight Visuals (Right) - Asana, Slack, Dashboards Floating Nodes -->
                     <div class="reveal delay-200 hidden lg:flex relative w-full h-[450px] items-center justify-center ml-auto">
-                        
-                        <!-- Center Glow/Orb -->
-                        <div class="absolute w-64 h-64 gradient-bg rounded-full blur-[80px] opacity-20"></div>
-
                         <!-- Central Hub -->
-                        <div class="relative z-10 bg-white border border-slate-200 p-6 rounded-2xl shadow-xl flex flex-col items-center justify-center gap-3 animate-float w-40">
+                        <div class="relative z-10 bg-white border border-slate-200 p-6 rounded-2xl shadow-xl flex flex-col items-center justify-center gap-3 animate-float w-40 hover-glow">
                             <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center shadow-md">
                                 <i data-lucide="layers" class="w-7 h-7 text-white"></i>
                             </div>
@@ -199,7 +231,7 @@
                         </div>
 
                         <!-- Node 1: Asana Workflows -->
-                        <div class="absolute top-[10%] left-[5%] bg-white border border-slate-200 p-4 rounded-2xl shadow-lg flex items-center gap-4 animate-float float-delay-1">
+                        <div class="absolute top-[10%] left-[5%] bg-white border border-slate-200 p-4 rounded-2xl shadow-lg flex items-center gap-4 animate-float float-delay-1 hover-glow cursor-default">
                             <div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center text-rose-500 border border-rose-100">
                                 <!-- Simple Asana SVG representation -->
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -213,7 +245,7 @@
                         </div>
 
                         <!-- Node 2: Slack Integration -->
-                        <div class="absolute bottom-[15%] left-[5%] bg-white border border-slate-200 p-4 rounded-2xl shadow-lg flex items-center gap-4 animate-float float-delay-2">
+                        <div class="absolute bottom-[15%] left-[5%] bg-white border border-slate-200 p-4 rounded-2xl shadow-lg flex items-center gap-4 animate-float float-delay-2 hover-glow cursor-default">
                             <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 border border-indigo-100">
                                 <i data-lucide="hash" class="w-5 h-5"></i>
                             </div>
@@ -224,7 +256,7 @@
                         </div>
 
                         <!-- Node 3: Live Dashboards -->
-                        <div class="absolute top-[20%] right-[0%] bg-white border border-slate-200 p-4 rounded-2xl shadow-lg flex items-center gap-4 animate-float float-delay-3">
+                        <div class="absolute top-[20%] right-[0%] bg-white border border-slate-200 p-4 rounded-2xl shadow-lg flex items-center gap-4 animate-float float-delay-3 hover-glow cursor-default">
                             <div class="w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center text-brand-600 border border-brand-100">
                                 <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
                             </div>
@@ -235,7 +267,7 @@
                         </div>
 
                         <!-- Node 4: Time Tracking -->
-                        <div class="absolute bottom-[25%] right-[5%] bg-white border border-slate-200 p-4 rounded-2xl shadow-lg flex items-center gap-4 animate-float float-delay-4">
+                        <div class="absolute bottom-[25%] right-[5%] bg-white border border-slate-200 p-4 rounded-2xl shadow-lg flex items-center gap-4 animate-float float-delay-4 hover-glow cursor-default">
                             <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-500 border border-amber-100">
                                 <i data-lucide="clock" class="w-5 h-5"></i>
                             </div>
@@ -244,7 +276,6 @@
                                 <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">Efficiency</div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -255,27 +286,27 @@
             <div class="max-w-7xl mx-auto px-6 py-6">
                 <!-- 2x2 grid for mobile, single line on desktop -->
                 <div class="grid grid-cols-2 lg:flex lg:justify-between items-center gap-y-6 gap-x-4 text-xs sm:text-sm font-semibold text-slate-500">
-                    <div class="flex items-center justify-center lg:justify-start gap-2.5">
-                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 shrink-0">
-                            <i data-lucide="clock" class="w-4 h-4 text-brand-600"></i>
+                    <div class="flex items-center justify-center lg:justify-start gap-2.5 group">
+                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 shrink-0 transition-all duration-300 group-hover:border-brand-300 group-hover:shadow-sm">
+                            <i data-lucide="clock" class="w-4 h-4 text-brand-600 transition-transform group-hover:-rotate-12 group-hover:scale-110"></i>
                         </div> 
                         <span class="leading-tight">30-Day Turnaround</span>
                     </div>
-                    <div class="flex items-center justify-center lg:justify-start gap-2.5">
-                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 shrink-0">
-                            <i data-lucide="layout" class="w-4 h-4 text-brand-600"></i>
+                    <div class="flex items-center justify-center lg:justify-start gap-2.5 group">
+                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 shrink-0 transition-all duration-300 group-hover:border-brand-300 group-hover:shadow-sm">
+                            <i data-lucide="layout" class="w-4 h-4 text-brand-600 transition-transform group-hover:scale-110"></i>
                         </div> 
                         <span class="leading-tight">Built Native in Asana</span>
                     </div>
-                    <div class="flex items-center justify-center lg:justify-start gap-2.5">
-                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 shrink-0">
-                            <i data-lucide="users" class="w-4 h-4 text-brand-600"></i>
+                    <div class="flex items-center justify-center lg:justify-start gap-2.5 group">
+                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 shrink-0 transition-all duration-300 group-hover:border-brand-300 group-hover:shadow-sm">
+                            <i data-lucide="users" class="w-4 h-4 text-brand-600 transition-transform group-hover:scale-110"></i>
                         </div> 
                         <span class="leading-tight">Done-For-You Training</span>
                     </div>
-                    <div class="flex items-center justify-center lg:justify-start gap-2.5">
-                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 shrink-0">
-                            <i data-lucide="shield-check" class="w-4 h-4 text-brand-600"></i>
+                    <div class="flex items-center justify-center lg:justify-start gap-2.5 group">
+                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 shrink-0 transition-all duration-300 group-hover:border-brand-300 group-hover:shadow-sm">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-brand-600 transition-transform group-hover:scale-110"></i>
                         </div> 
                         <span class="leading-tight">Zero Tool Disruption</span>
                     </div>
@@ -287,29 +318,28 @@
         <section id="problem" class="py-24 md:py-32">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="max-w-3xl mb-16 mx-auto text-center md:text-left md:mx-0">
-                    <!-- Added br class to prevent awkward mobile wrapping -->
                     <h2 class="reveal font-heading text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-normal">You haven't built a company.<br class="hidden md:block">You've built a trap.</h2>
                     <p class="reveal delay-100 text-lg text-slate-500">Growth has introduced complexity. But instead of systems scaling, everything still relies on your memory, Slack messages, and weekend hours.</p>
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Problem Cards (Light Visuals) -->
-                    <div class="reveal delay-100 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-6 border border-brand-100">
+                    <!-- Problem Cards with Hover Glow -->
+                    <div class="reveal delay-100 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover-glow cursor-default group">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-6 border border-brand-100 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
                             <i data-lucide="smartphone-nfc" class="w-6 h-6 text-brand-600"></i>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-3 font-heading">The "Always On" Trap</h3>
                         <p class="text-slate-500 text-sm leading-relaxed mb-4">9 PM WhatsApp notifications for trivial issues. You haven't taken a real holiday without your laptop in over two years. Everything escalates to you by default.</p>
                     </div>
-                    <div class="reveal delay-200 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-6 border border-brand-100">
+                    <div class="reveal delay-200 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover-glow cursor-default group">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-6 border border-brand-100 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
                             <i data-lucide="eye-off" class="w-6 h-6 text-brand-600"></i>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-3 font-heading">Execution is Blind</h3>
                         <p class="text-slate-500 text-sm leading-relaxed mb-4">You only find out about missed deadlines after the damage is done. You make financial and hiring decisions based on gut feel, not real-time project data.</p>
                     </div>
-                    <div class="reveal delay-300 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow md:col-span-2 lg:col-span-1">
-                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-6 border border-brand-100">
+                    <div class="reveal delay-300 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover-glow cursor-default md:col-span-2 lg:col-span-1 group">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-6 border border-brand-100 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
                             <i data-lucide="ghost" class="w-6 h-6 text-brand-600"></i>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-3 font-heading">The Asana Graveyard</h3>
@@ -329,7 +359,7 @@
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
                     <div class="reveal text-center md:text-left">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-bold uppercase tracking-widest mb-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
                             Proven at Scale
                         </div>
                         <h2 class="font-heading text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight tracking-normal">How we built a unified OS for a 7-figure D2C brand.</h2>
@@ -338,32 +368,29 @@
                     </div>
                     
                     <div class="grid sm:grid-cols-2 gap-4">
-                        <div class="reveal delay-100 bg-[#fafafa] border border-slate-200 rounded-2xl p-6 shadow-sm">
-                            <div class="w-10 h-10 rounded-full gradient-light-bg flex items-center justify-center mb-4 border border-brand-100"><i data-lucide="timer" class="w-5 h-5 text-brand-600"></i></div>
+                        <div class="reveal delay-100 bg-[#fafafa] border border-slate-200 rounded-2xl p-6 shadow-sm hover-glow cursor-default group">
+                            <div class="w-10 h-10 rounded-full gradient-light-bg flex items-center justify-center mb-4 border border-brand-100 transition-transform duration-500 group-hover:scale-110"><i data-lucide="timer" class="w-5 h-5 text-brand-600"></i></div>
                             <div class="text-4xl font-extrabold font-heading mb-2 gradient-text">66%</div>
                             <div class="text-sm text-slate-900 font-bold mb-3">Reduction in block time</div>
                             <div class="text-xs text-slate-500 mb-4">Time to resolve issues dropped from 72hrs to 24hrs.</div>
-                            <!-- Visual Progress Bar -->
                             <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
                                 <div class="gradient-bg h-full w-[66%]"></div>
                             </div>
                         </div>
-                        <div class="reveal delay-200 bg-[#fafafa] border border-slate-200 rounded-2xl p-6 shadow-sm">
-                            <div class="w-10 h-10 rounded-full gradient-light-bg flex items-center justify-center mb-4 border border-brand-100"><i data-lucide="calendar-check" class="w-5 h-5 text-brand-600"></i></div>
+                        <div class="reveal delay-200 bg-[#fafafa] border border-slate-200 rounded-2xl p-6 shadow-sm hover-glow cursor-default group">
+                            <div class="w-10 h-10 rounded-full gradient-light-bg flex items-center justify-center mb-4 border border-brand-100 transition-transform duration-500 group-hover:scale-110"><i data-lucide="calendar-check" class="w-5 h-5 text-brand-600"></i></div>
                             <div class="text-4xl font-extrabold font-heading mb-2 gradient-text">37%</div>
                             <div class="text-sm text-slate-900 font-bold mb-3">Increase in on-time delivery</div>
                             <div class="text-xs text-slate-500 mb-4">Cross-functional projects finally hit their deadlines.</div>
-                            <!-- Visual Progress Bar -->
                             <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
                                 <div class="gradient-bg h-full w-[37%]"></div>
                             </div>
                         </div>
-                        <div class="reveal delay-300 bg-[#fafafa] border border-slate-200 rounded-2xl p-6 shadow-sm sm:col-span-2">
-                            <div class="w-10 h-10 rounded-full gradient-light-bg flex items-center justify-center mb-4 border border-brand-100"><i data-lucide="rocket" class="w-5 h-5 text-brand-600"></i></div>
+                        <div class="reveal delay-300 bg-[#fafafa] border border-slate-200 rounded-2xl p-6 shadow-sm sm:col-span-2 hover-glow cursor-default group">
+                            <div class="w-10 h-10 rounded-full gradient-light-bg flex items-center justify-center mb-4 border border-brand-100 transition-transform duration-500 group-hover:scale-110"><i data-lucide="rocket" class="w-5 h-5 text-brand-600"></i></div>
                             <div class="text-4xl font-extrabold font-heading mb-2 gradient-text">30%</div>
                             <div class="text-sm text-slate-900 font-bold mb-3">Faster time-to-market</div>
                             <div class="text-xs text-slate-500 mb-4">Standardized GTM playbooks accelerated new SKU launches across the board.</div>
-                            <!-- Visual Progress Bar -->
                             <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
                                 <div class="gradient-bg h-full w-[30%]"></div>
                             </div>
@@ -377,70 +404,69 @@
         <section id="solution" class="py-24 md:py-32">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center max-w-3xl mx-auto mb-20">
-                    <!-- Added br class to prevent awkward mobile wrapping -->
                     <h2 class="reveal font-heading text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-normal">We don't sell templates. <br class="hidden md:block">We build architecture.</h2>
                     <p class="reveal delay-100 text-lg text-slate-500">The 8 core deliverables every Independence Sprint client receives—built directly into your Asana workspace to create true operational independence.</p>
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="reveal delay-100 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
-                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                    <div class="reveal delay-100 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover-glow cursor-default group">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
                             <i data-lucide="pen-tool" class="w-6 h-6 text-brand-600"></i>
                         </div>
                         <h3 class="text-slate-900 font-bold mb-2">1. Creative Workflows</h3>
                         <p class="text-sm text-slate-500">Intake forms, brief templates, and approval flows. Zero missed briefs.</p>
                     </div>
                     
-                    <div class="reveal delay-200 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
-                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                    <div class="reveal delay-200 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover-glow cursor-default group">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
                             <i data-lucide="file-text" class="w-6 h-6 text-brand-600"></i>
                         </div>
                         <h3 class="text-slate-900 font-bold mb-2">2. SOP Library</h3>
                         <p class="text-sm text-slate-500">Documented, step-by-step processes for every repeating workflow.</p>
                     </div>
                     
-                    <div class="reveal delay-300 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
-                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                    <div class="reveal delay-300 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover-glow cursor-default group">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
                             <i data-lucide="users-2" class="w-6 h-6 text-brand-600"></i>
                         </div>
                         <h3 class="text-slate-900 font-bold mb-2">3. Team Directory</h3>
                         <p class="text-sm text-slate-500">Roles, responsibilities, and ownership perfectly mapped in one place.</p>
                     </div>
                     
-                    <div class="reveal delay-400 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
-                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                    <div class="reveal delay-400 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover-glow cursor-default group">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
                             <i data-lucide="blocks" class="w-6 h-6 text-brand-600"></i>
                         </div>
                         <h3 class="text-slate-900 font-bold mb-2">4. Tools Catalog</h3>
                         <p class="text-sm text-slate-500">Every tool documented, connected, and integrated with Asana as the hub.</p>
                     </div>
                     
-                    <div class="reveal delay-100 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
-                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                    <div class="reveal delay-100 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover-glow cursor-default group">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
                             <i data-lucide="settings" class="w-6 h-6 text-brand-600"></i>
                         </div>
                         <h3 class="text-slate-900 font-bold mb-2">5. Workspace Config</h3>
                         <p class="text-sm text-slate-500">Portfolios, templates, rules, and logic that your teams will actually use.</p>
                     </div>
                     
-                    <div class="reveal delay-200 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
-                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                    <div class="reveal delay-200 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover-glow cursor-default group">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
                             <i data-lucide="target" class="w-6 h-6 text-brand-600"></i>
                         </div>
                         <h3 class="text-slate-900 font-bold mb-2">6. OKRs & Initiatives</h3>
                         <p class="text-sm text-slate-500">Company objectives tracked inside Asana. Everyone knows the goal.</p>
                     </div>
                     
-                    <div class="reveal delay-300 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
-                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                    <div class="reveal delay-300 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover-glow cursor-default group">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
                             <i data-lucide="layout-dashboard" class="w-6 h-6 text-brand-600"></i>
                         </div>
                         <h3 class="text-slate-900 font-bold mb-2">7. Goal Dashboards</h3>
                         <p class="text-sm text-slate-500">Live project status and KPIs. No more status update meetings.</p>
                     </div>
                     
-                    <div class="reveal delay-400 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
-                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                    <div class="reveal delay-400 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover-glow cursor-default group">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
                             <i data-lucide="message-square" class="w-6 h-6 text-brand-600"></i>
                         </div>
                         <h3 class="text-slate-900 font-bold mb-2">8. Slack Integration</h3>
@@ -460,24 +486,24 @@
 
                 <div class="grid md:grid-cols-3 gap-8 relative">
                     <!-- Connecting Line -->
-                    <div class="hidden md:block absolute top-[3.5rem] left-[15%] right-[15%] h-px bg-slate-100 z-0"></div>
+                    <div class="hidden md:block absolute top-[3.5rem] left-[15%] right-[15%] h-px bg-slate-200 z-0"></div>
 
                     <!-- Step 1 -->
-                    <div class="reveal delay-100 relative bg-white border border-slate-200 rounded-2xl p-8 z-10 shadow-sm">
-                        <div class="w-14 h-14 rounded-full gradient-light-bg border border-brand-100 flex items-center justify-center text-brand-700 font-bold font-heading text-xl mb-6 mx-auto md:mx-0 shadow-sm">1</div>
+                    <div class="reveal delay-100 relative bg-white border border-slate-200 rounded-2xl p-8 z-10 shadow-sm hover-glow cursor-default group">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg border border-brand-100 flex items-center justify-center text-brand-700 font-bold font-heading text-xl mb-6 mx-auto md:mx-0 shadow-sm transition-transform duration-500 group-hover:scale-110">1</div>
                         <h3 class="text-xl font-bold text-slate-900 mb-3 text-center md:text-left">Audit The Chaos</h3>
                         <p class="text-slate-500 text-sm leading-relaxed text-center md:text-left">We map your active workstreams, discover ownership gaps, and identify exactly where escalations are breaking your operations.</p>
                     </div>
                     <!-- Step 2 -->
-                    <div class="reveal delay-200 relative bg-white border border-slate-200 rounded-2xl p-8 z-10 shadow-sm">
-                        <div class="w-14 h-14 rounded-full gradient-light-bg border border-brand-100 flex items-center justify-center text-brand-700 font-bold font-heading text-xl mb-6 mx-auto md:mx-0 shadow-sm">2</div>
+                    <div class="reveal delay-200 relative bg-white border border-slate-200 rounded-2xl p-8 z-10 shadow-sm hover-glow cursor-default group">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg border border-brand-100 flex items-center justify-center text-brand-700 font-bold font-heading text-xl mb-6 mx-auto md:mx-0 shadow-sm transition-transform duration-500 group-hover:scale-110">2</div>
                         <h3 class="text-xl font-bold text-slate-900 mb-3 text-center md:text-left">Build The System</h3>
                         <p class="text-slate-500 text-sm leading-relaxed text-center md:text-left">We engineer your strategic goals, workflow architecture, and leadership dashboards directly inside your Asana workspace.</p>
                     </div>
                     <!-- Step 3 -->
-                    <div class="reveal delay-300 relative bg-white border border-slate-200 rounded-2xl p-8 z-10 shadow-sm">
+                    <div class="reveal delay-300 relative bg-white border border-slate-200 rounded-2xl p-8 z-10 shadow-sm hover-glow cursor-default group">
                         <!-- Active Step Highlight -->
-                        <div class="w-14 h-14 rounded-full gradient-bg border-2 border-transparent flex items-center justify-center text-white font-bold font-heading text-xl mb-6 mx-auto md:mx-0 shadow-md">3</div>
+                        <div class="w-14 h-14 rounded-full gradient-bg border-2 border-transparent flex items-center justify-center text-white font-bold font-heading text-xl mb-6 mx-auto md:mx-0 shadow-md transition-transform duration-500 group-hover:scale-110">3</div>
                         <h3 class="text-xl font-bold text-slate-900 mb-3 text-center md:text-left">Train The Team</h3>
                         <p class="text-slate-500 text-sm leading-relaxed text-center md:text-left">We run live onboarding, hand over your custom Operations Playbook, and show you exactly how to step out of the middle.</p>
                     </div>
@@ -492,12 +518,12 @@
                     <h2 class="reveal font-heading text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-normal">Why Klarity Ops wins.</h2>
                 </div>
                 
-                <div class="reveal bg-white border border-slate-200 shadow-sm rounded-2xl overflow-x-auto no-scrollbar p-0">
+                <div class="reveal bg-white border border-slate-200 shadow-sm rounded-2xl overflow-x-auto no-scrollbar p-0 hover-glow">
                     <table class="w-full text-left border-collapse min-w-[700px]">
                         <thead>
                             <tr>
                                 <th class="p-6 text-slate-500 font-bold uppercase tracking-wider text-xs border-b border-slate-100">Features</th>
-                                <th class="p-6 bg-brand-50 text-slate-900 font-extrabold font-heading border-b border-brand-100 text-base">Klarity Ops Sprint</th>
+                                <th class="p-6 bg-brand-50/50 text-slate-900 font-extrabold font-heading border-b border-brand-100 text-base">Klarity Ops Sprint</th>
                                 <th class="p-6 text-slate-500 font-bold uppercase tracking-wider text-xs border-b border-slate-100">Fractional COO</th>
                                 <th class="p-6 text-slate-500 font-bold uppercase tracking-wider text-xs border-b border-slate-100">Generic Templates</th>
                             </tr>
@@ -505,7 +531,7 @@
                         <tbody class="text-sm">
                             <tr>
                                 <td class="p-6 border-b border-slate-100 text-slate-700 font-medium">Solves founder dependency?</td>
-                                <td class="p-6 bg-brand-50 text-slate-900 font-bold border-b border-brand-100">
+                                <td class="p-6 bg-brand-50/50 text-slate-900 font-bold border-b border-brand-100">
                                     <div class="flex items-center gap-3">
                                         <div class="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center shrink-0"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-700"></i></div> 
                                         Yes, by design
@@ -513,18 +539,20 @@
                                 </td>
                                 <td class="p-6 border-b border-slate-100 text-slate-500">
                                     <div class="flex items-center gap-3">
-                                        <i data-lucide="minus-circle" class="w-4 h-4 text-slate-400"></i> Partially
+                                        <div class="w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center shrink-0"><i data-lucide="minus" class="w-3.5 h-3.5 text-slate-400"></i></div> 
+                                        Partially
                                     </div>
                                 </td>
                                 <td class="p-6 border-b border-slate-100 text-slate-500">
                                     <div class="flex items-center gap-3">
-                                        <i data-lucide="x-circle" class="w-4 h-4 text-slate-400"></i> No
+                                        <div class="w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center shrink-0"><i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i></div> 
+                                        No
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="p-6 border-b border-slate-100 text-slate-700 font-medium">Implements directly inside tools?</td>
-                                <td class="p-6 bg-brand-50 text-slate-900 font-bold border-b border-brand-100">
+                                <td class="p-6 bg-brand-50/50 text-slate-900 font-bold border-b border-brand-100">
                                     <div class="flex items-center gap-3">
                                         <div class="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center shrink-0"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-700"></i></div> 
                                         Yes
@@ -532,18 +560,20 @@
                                 </td>
                                 <td class="p-6 border-b border-slate-100 text-slate-500">
                                     <div class="flex items-center gap-3">
-                                        <i data-lucide="x-circle" class="w-4 h-4 text-slate-400"></i> No (They advise)
+                                        <div class="w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center shrink-0"><i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i></div> 
+                                        No (They advise)
                                     </div>
                                 </td>
                                 <td class="p-6 border-b border-slate-100 text-slate-500">
                                     <div class="flex items-center gap-3">
-                                        <i data-lucide="minus-circle" class="w-4 h-4 text-slate-400"></i> Yes, but generic
+                                        <div class="w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center shrink-0"><i data-lucide="minus" class="w-3.5 h-3.5 text-slate-400"></i></div> 
+                                        Yes, but generic
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="p-6 border-b border-slate-100 text-slate-700 font-medium">Leaves a permanent system?</td>
-                                <td class="p-6 bg-brand-50 text-slate-900 font-bold border-b border-brand-100">
+                                <td class="p-6 bg-brand-50/50 text-slate-900 font-bold border-b border-brand-100">
                                     <div class="flex items-center gap-3">
                                         <div class="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center shrink-0"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-700"></i></div> 
                                         Yes
@@ -551,18 +581,20 @@
                                 </td>
                                 <td class="p-6 border-b border-slate-100 text-slate-500">
                                     <div class="flex items-center gap-3">
-                                        <i data-lucide="x-circle" class="w-4 h-4 text-slate-400"></i> No (They leave)
+                                        <div class="w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center shrink-0"><i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i></div> 
+                                        No (They leave)
                                     </div>
                                 </td>
                                 <td class="p-6 border-b border-slate-100 text-slate-500">
                                     <div class="flex items-center gap-3">
-                                        <i data-lucide="x-circle" class="w-4 h-4 text-slate-400"></i> No (Zero adoption)
+                                        <div class="w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center shrink-0"><i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i></div> 
+                                        No (Zero adoption)
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="p-6 text-slate-700 font-medium">Average Cost</td>
-                                <td class="p-6 bg-brand-50 text-slate-900 font-extrabold text-base">
+                                <td class="p-6 bg-brand-50/50 text-slate-900 font-extrabold text-base rounded-br-2xl">
                                     $3,500 <span class="text-xs text-brand-700 font-medium">/ ONE-TIME</span>
                                 </td>
                                 <td class="p-6 text-slate-500">$5k-$10k <span class="text-xs">/ MO</span></td>
@@ -584,7 +616,7 @@
 
                 <div class="grid lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto pt-8">
                     <!-- Tier 1 -->
-                    <div class="reveal delay-100 flex flex-col bg-[#fafafa] border border-slate-200 rounded-2xl p-8 shadow-sm">
+                    <div class="reveal delay-100 flex flex-col bg-[#fafafa] border border-slate-200 rounded-2xl p-8 shadow-sm hover-glow">
                         <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center mb-4 border border-slate-300"><i data-lucide="search" class="w-5 h-5 text-slate-600"></i></div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2 font-heading">The Ops Diagnostic</h3>
                         <div class="text-4xl font-heading font-extrabold text-slate-900 mb-2">$750</div>
@@ -600,8 +632,10 @@
                     </div>
 
                     <!-- Tier 2 (Popular) -->
-                    <div class="reveal delay-200 transform lg:-translate-y-6 relative">
-                        <div class="rounded-2xl gradient-border-wrap p-[2px] shadow-[0_20px_40px_-15px_rgba(15,118,110,0.3)] h-full">
+                    <div class="reveal delay-200 transform lg:-translate-y-6 relative hover-glow rounded-2xl">
+                        <!-- Subtle background pulse behind popular card -->
+                        <div class="absolute inset-0 gradient-bg rounded-2xl blur-md opacity-20 animate-pulse-slow z-0"></div>
+                        <div class="rounded-2xl gradient-border-wrap p-[2px] shadow-[0_20px_40px_-15px_rgba(15,118,110,0.3)] h-full relative z-10">
                             <div class="flex flex-col p-8 pt-10 h-full bg-white rounded-[14px] relative z-10">
                                 <div class="w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center mb-4 border border-brand-100"><i data-lucide="rocket" class="w-5 h-5 text-brand-600"></i></div>
                                 <h3 class="text-xl font-bold text-slate-900 mb-2 font-heading mt-2">Independence Sprint</h3>
@@ -616,16 +650,16 @@
                                     <li class="flex items-start gap-3 text-sm text-slate-900 font-semibold"><i data-lucide="check" class="w-5 h-5 text-brand-600 shrink-0"></i> Live Team Training & Handover</li>
                                     <li class="flex items-start gap-3 text-sm text-slate-900 font-semibold"><i data-lucide="check" class="w-5 h-5 text-brand-600 shrink-0"></i> 30-Day Check-in & Optimization</li>
                                 </ul>
-                                <button onclick="openModal()" class="block w-full py-3 px-4 gradient-bg text-white text-center rounded-xl font-bold transition-colors shadow-md">Start the Sprint</button>
+                                <button onclick="openModal()" class="block w-full py-3 px-4 gradient-bg text-white text-center rounded-xl font-bold transition-all shadow-md hover:shadow-lg">Start the Sprint</button>
                             </div>
                         </div>
-                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 gradient-bg text-white text-[10px] font-extrabold uppercase tracking-widest py-1.5 px-4 rounded-full z-20">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 gradient-bg text-white text-[10px] font-extrabold uppercase tracking-widest py-1.5 px-4 rounded-full z-20 shadow-sm">
                             Most Popular
                         </div>
                     </div>
 
                     <!-- Tier 3 -->
-                    <div class="reveal delay-300 flex flex-col bg-[#fafafa] border border-slate-200 rounded-2xl p-8 shadow-sm">
+                    <div class="reveal delay-300 flex flex-col bg-[#fafafa] border border-slate-200 rounded-2xl p-8 shadow-sm hover-glow">
                         <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center mb-4 border border-slate-300"><i data-lucide="building-2" class="w-5 h-5 text-slate-600"></i></div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2 font-heading">Enterprise Scaling</h3>
                         <div class="text-4xl font-heading font-extrabold text-slate-900 mb-2">$5,000+</div>
@@ -650,7 +684,7 @@
                 <h2 class="reveal font-heading text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center tracking-normal">Frequently Asked Questions</h2>
                 
                 <div class="space-y-4">
-                    <details class="reveal delay-100 group bg-white border border-slate-200 shadow-sm rounded-2xl [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+                    <details class="reveal delay-100 group bg-white border border-slate-200 shadow-sm rounded-2xl hover-glow [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                         <summary class="flex items-center justify-between p-6 font-bold text-slate-900 transition-colors">
                             Is this for my stage of business?
                             <span class="relative ml-1.5 h-5 w-5 flex-shrink-0 text-slate-400 group-open:text-brand-600">
@@ -662,7 +696,7 @@
                             If you are a scaling e-com brand doing $1M–$5M with 8-20 people, and you are the bottleneck, yes. If you are under $500k in revenue, you likely need a virtual assistant to take on basic tasks, not a systemic overhaul yet.
                         </div>
                     </details>
-                    <details class="reveal delay-200 group bg-white border border-slate-200 shadow-sm rounded-2xl [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+                    <details class="reveal delay-200 group bg-white border border-slate-200 shadow-sm rounded-2xl hover-glow [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                         <summary class="flex items-center justify-between p-6 font-bold text-slate-900 transition-colors">
                             What if my team refuses to use it?
                             <span class="relative ml-1.5 h-5 w-5 flex-shrink-0 text-slate-400 group-open:text-brand-600">
@@ -674,7 +708,7 @@
                             Tool adoption fails when systems are confusing or add friction. We design the architecture around how your team already communicates (e.g., deep Slack integrations) so updating tasks feels natural. We also lead the live training to ensure zero confusion on day one.
                         </div>
                     </details>
-                    <details class="reveal delay-300 group bg-white border border-slate-200 shadow-sm rounded-2xl [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+                    <details class="reveal delay-300 group bg-white border border-slate-200 shadow-sm rounded-2xl hover-glow [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                         <summary class="flex items-center justify-between p-6 font-bold text-slate-900 transition-colors">
                             Why shouldn't I just hire a Fractional COO?
                             <span class="relative ml-1.5 h-5 w-5 flex-shrink-0 text-slate-400 group-open:text-brand-600">
@@ -694,6 +728,9 @@
         <section class="py-24 md:py-32 bg-white border-y border-slate-200">
             <div class="max-w-5xl mx-auto px-6">
                 <div class="reveal relative bg-slate-900 rounded-2xl p-10 md:p-20 text-center overflow-hidden shadow-2xl">
+                    <!-- Subtle pulsing ambient glow in CTA background -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] gradient-bg rounded-full blur-[100px] opacity-20 animate-pulse-slow pointer-events-none"></div>
+                    
                     <div class="relative z-10 max-w-2xl mx-auto">
                         <h2 class="font-heading text-4xl md:text-5xl font-bold text-white mb-6 tracking-normal">Stop managing. Start scaling.</h2>
                         <p class="text-lg text-slate-300 mb-10">Get your time back. Make your business sellable. Kill the 9 PM emergency WhatsApp thread for good.</p>
@@ -894,24 +931,20 @@
         const modal = document.getElementById('booking-modal');
         
         function openModal() {
-            // Reset to step 1 on open
             currentStep = 1;
             updateStepView();
-            // Show modal
             modal.style.display = 'flex';
-            // Slight delay to trigger opacity transition
             setTimeout(() => modal.classList.add('show'), 10);
             window.location.hash = '#book';
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             modal.classList.remove('show');
             setTimeout(() => {
                 modal.style.display = 'none';
-            }, 300); // matches transition duration
+            }, 300);
             
-            // Remove #book from URL without scrolling
             if(window.location.hash === '#book') {
                 history.pushState('', document.title, window.location.pathname + window.location.search);
             }
@@ -919,17 +952,14 @@
         }
 
         function updateStepView() {
-            // Update Indicator & Progress
             document.getElementById('step-indicator').innerText = `Step ${currentStep} of ${totalSteps}`;
             document.getElementById('progress-bar').style.width = `${(currentStep / totalSteps) * 100}%`;
 
-            // Hide all steps, show active
             for(let i = 1; i <= totalSteps; i++) {
                 document.getElementById(`step-${i}`).classList.remove('active');
             }
             document.getElementById(`step-${currentStep}`).classList.add('active');
 
-            // Update buttons
             const btnBack = document.getElementById('btn-back');
             const btnNext = document.getElementById('btn-next');
             const btnSubmit = document.getElementById('btn-submit');
@@ -961,7 +991,7 @@
                 if(!input.checkValidity()) {
                     input.reportValidity();
                     isValid = false;
-                    break; // Stop checking and show first error
+                    break;
                 }
             }
             return isValid;
@@ -979,13 +1009,11 @@
             updateStepView();
         }
 
-        // Close modal when clicking outside content
         modal.addEventListener('click', function(e) {
             if(e.target === modal) {
                 closeModal();
             }
         });
-
 
         // ----------------------------------------------------
         // WEBHOOK & REDIRECT LOGIC
@@ -993,12 +1021,11 @@
         function handleFormSubmit(event){
             event.preventDefault();
             
-            if(!validateCurrentStep()) return; // Final check
+            if(!validateCurrentStep()) return;
 
             const websiteInput = document.getElementById('website');
             const submitBtn = document.getElementById('btn-submit');
             
-            // Loading state
             submitBtn.disabled = true;
             submitBtn.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Redirecting...`;
             submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
@@ -1024,7 +1051,6 @@
             const email = encodeURIComponent(payload.email);
             const bookingUrl = `https://thexponent.neetocal.com/discovery-call?name=${fullName}&email=${email}`;
             
-            // Send to Webhook -> Redirect
             fetch('https://script.google.com/macros/s/AKfycbx0QbhMiJfHxfd3g6AssZZ-mDCbJnSEf6ViPBtAEJriBhjNSkQ758HxY9R7OXTLoP7W/exec', {
                 method: 'POST',
                 mode: 'no-cors',
@@ -1037,12 +1063,10 @@
                 window.location.href = bookingUrl;
             });
             
-            // Safety fallback timeout to redirect if fetch hangs
             setTimeout(() => {
                 window.location.href = bookingUrl;
             }, 2500);
         }
-
 
         // ----------------------------------------------------
         // SCROLL REVEAL & ROUTING
@@ -1068,7 +1092,6 @@
         }
         window.addEventListener('hashchange', routeFromHash);
         
-        // Init reveals
         document.addEventListener('DOMContentLoaded', () => {
             const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
             const observer = new IntersectionObserver((entries, observer) => {
@@ -1083,7 +1106,6 @@
             const revealElements = document.querySelectorAll('.reveal');
             revealElements.forEach((el) => observer.observe(el));
             
-            // Check initial hash
             routeFromHash();
         });
     </script>
