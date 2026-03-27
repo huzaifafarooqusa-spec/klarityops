@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Klarity Ops | The Operational Independence Sprint</title>
+    <meta name="description" content="We extract scaling e-commerce founders from day-to-day chaos by building a bulletproof operating system inside Asana.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Manrope', 'sans-serif'],
+                    },
+                    colors: {
+                        /* Brand color palette */
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6', 
+                            600: '#0f766e', 
+                            700: '#115e59',
+                            800: '#134e4a',
+                            900: '#042f2e',
+                        },
+                        slate: {
+                            850: '#151e2e',
+                        }
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* --- Scroll Reveals ki styling --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* --- Gradient Backgrounds aur Text --- */
+        .gradient-bg {
+            background: linear-gradient(135deg, #1d4ed8 0%, #0f766e 100%); 
+        }
+        .gradient-bg:hover {
+            background: linear-gradient(135deg, #1e40af 0%, #115e59 100%); 
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #1d4ed8 0%, #0f766e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-border-wrap {
+            background: linear-gradient(135deg, #1d4ed8 0%, #0f766e 100%);
+        }
+        /* Lighter Gradient for Circles to maintain consistency */
+        .gradient-light-bg {
+            background: linear-gradient(135deg, #eff6ff 0%, #f0fdfa 100%);
+        }
+
+        /* --- Hero Floating Animations --- */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+        .float-delay-1 { animation-delay: 1s; }
+        .float-delay-2 { animation-delay: 2.5s; }
+        .float-delay-3 { animation-delay: 1.5s; }
+        .float-delay-4 { animation-delay: 3s; }
+
+        /* Input fields focus style */
+        .input-surface {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+        .input-surface:focus {
+            background-color: #ffffff;
+            border-color: #0f766e;
+            box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.1);
+        }
+
+        /* Views / Pages styling */
+        .page-view { display: block; animation: fadeIn 0.4s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Modal & Step Animations */
+        .modal-step { display: none; }
+        .modal-step.active { display: block; animation: slideUp 0.4s ease forwards; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        
+        #booking-modal.show { opacity: 1; pointer-events: auto; }
+        #booking-modal.show .modal-content { transform: scale(1); }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-slate-600 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#home" class="font-heading font-extrabold text-xl text-slate-900 tracking-tight">
+                Klarity<span class="text-brand-600">Ops.</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#problem" class="text-slate-600 hover:text-brand-600 transition-colors">The Problem</a>
+                <a href="#solution" class="text-slate-600 hover:text-brand-600 transition-colors">How It Works</a>
+                <a href="#pricing" class="text-slate-600 hover:text-brand-600 transition-colors">Pricing</a>
+                <a href="#faq" class="text-slate-600 hover:text-brand-600 transition-colors">FAQ</a>
+            </div>
+            <button onclick="openModal()" class="hidden md:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white gradient-bg rounded-lg shadow-md transition-all hover:-translate-y-0.5">
+                Book Ops Diagnostic
+            </button>
+            <!-- Mobile Menu Icon -->
+            <button class="md:hidden text-slate-600 hover:text-brand-600">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ============================================== -->
+    <!-- MAIN LANDING PAGE VIEW -->
+    <!-- ============================================== -->
+    <div id="pg-main" class="page-view">
+        
+        <!-- Hero Section -->
+        <section id="home" class="relative pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden bg-white border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Hero Text (Left) -->
+                    <div class="text-center lg:text-left z-10">
+                        <div class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-slate-700 text-xs font-bold tracking-widest mb-8 shadow-sm uppercase">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-brand-600"></i> Ops for $1M-$5M D2C Brands
+                        </div>
+                        <h1 class="reveal delay-100 font-heading text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight mb-6 leading-[1.1]">
+                            Stop being the system.<br>
+                            <span class="gradient-text">Start running one.</span>
+                        </h1>
+                        <p class="reveal delay-200 text-lg md:text-xl text-slate-500 mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                            In 30 days, we extract scaling e-commerce founders from day-to-day chaos by building a bulletproof operating architecture natively inside Asana.
+                        </p>
+                        <div class="reveal delay-300 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <button onclick="openModal()" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-white gradient-bg rounded-xl shadow-lg transition-all hover:-translate-y-1">
+                                Book Free Diagnostic
+                            </button>
+                            <a href="#solution" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-slate-700 bg-white border border-slate-300 rounded-xl hover:bg-slate-50 transition-all hover:-translate-y-1 shadow-sm">
+                                See The Architecture
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Lightweight Visuals (Right) - Asana, Slack, Dashboards Floating Nodes -->
+                    <div class="reveal delay-200 hidden lg:flex relative w-full h-[450px] items-center justify-center ml-auto">
+                        
+                        <!-- Center Glow/Orb -->
+                        <div class="absolute w-64 h-64 gradient-bg rounded-full blur-[80px] opacity-20"></div>
+
+                        <!-- Central Hub -->
+                        <div class="relative z-10 bg-white border border-slate-200 p-6 rounded-2xl shadow-xl flex flex-col items-center justify-center gap-3 animate-float w-40">
+                            <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center shadow-md">
+                                <i data-lucide="layers" class="w-7 h-7 text-white"></i>
+                            </div>
+                            <div class="text-sm font-bold text-slate-900 text-center leading-tight">Klarity OS<br><span class="text-[10px] text-slate-400 font-normal">Central Hub</span></div>
+                        </div>
+
+                        <!-- Node 1: Asana Workflows -->
+                        <div class="absolute top-[10%] left-[5%] bg-white border border-slate-200 p-4 rounded-2xl shadow-lg flex items-center gap-4 animate-float float-delay-1">
+                            <div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center text-rose-500 border border-rose-100">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="7" r="4"/><circle cx="5" cy="18" r="4"/><circle cx="19" cy="18" r="4"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-800">Asana Workflows</div>
+                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">Project Mgmt</div>
+                            </div>
+                        </div>
+
+                        <!-- Node 2: Slack Integration -->
+                        <div class="absolute bottom-[15%] left-[5%] bg-white border border-slate-200 p-4 rounded-2xl shadow-lg flex items-center gap-4 animate-float float-delay-2">
+                            <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 border border-indigo-100">
+                                <i data-lucide="hash" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-800">Slack Comms</div>
+                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">Integration</div>
+                            </div>
+                        </div>
+
+                        <!-- Node 3: Live Dashboards -->
+                        <div class="absolute top-[20%] right-[0%] bg-white border border-slate-200 p-4 rounded-2xl shadow-lg flex items-center gap-4 animate-float float-delay-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center text-brand-600 border border-brand-100">
+                                <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-800">Live Dashboards</div>
+                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">Visibility</div>
+                            </div>
+                        </div>
+
+                        <!-- Node 4: Time Tracking -->
+                        <div class="absolute bottom-[25%] right-[5%] bg-white border border-slate-200 p-4 rounded-2xl shadow-lg flex items-center gap-4 animate-float float-delay-4">
+                            <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-500 border border-amber-100">
+                                <i data-lucide="clock" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-800">Time Tracking</div>
+                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">Efficiency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof Banner -->
+        <div class="reveal border-b border-slate-200 bg-[#fafafa] shadow-sm relative z-10">
+            <div class="max-w-7xl mx-auto px-6 py-6">
+                <!-- Converted to 2x2 grid for mobile, single line on desktop -->
+                <div class="grid grid-cols-2 lg:flex lg:justify-between items-center gap-y-6 gap-x-4 text-xs sm:text-sm font-semibold text-slate-500">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 shrink-0">
+                            <i data-lucide="clock" class="w-4 h-4 text-brand-600"></i>
+                        </div> 
+                        <span class="leading-tight">30-Day Turnaround</span>
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 shrink-0">
+                            <i data-lucide="layout" class="w-4 h-4 text-brand-600"></i>
+                        </div> 
+                        <span class="leading-tight">Built Native in Asana</span>
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 shrink-0">
+                            <i data-lucide="users" class="w-4 h-4 text-brand-600"></i>
+                        </div> 
+                        <span class="leading-tight">Done-For-You Training</span>
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 shrink-0">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-brand-600"></i>
+                        </div> 
+                        <span class="leading-tight">Zero Tool Disruption</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Problem Section -->
+        <section id="problem" class="py-24 md:py-32">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-3xl mb-16">
+                    <h2 class="reveal font-heading text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">You haven't built a company.<br>You've built a trap.</h2>
+                    <p class="reveal delay-100 text-lg text-slate-500">Growth has introduced complexity. But instead of systems scaling, everything still relies on your memory, Slack messages, and weekend hours.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Problem Cards (Light Visuals) -->
+                    <div class="reveal delay-100 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-6 border border-brand-100">
+                            <i data-lucide="smartphone-nfc" class="w-6 h-6 text-brand-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 font-heading">The "Always On" Trap</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">9 PM WhatsApp notifications for trivial issues. You haven't taken a real holiday without your laptop in over two years. Everything escalates to you by default.</p>
+                    </div>
+                    <div class="reveal delay-200 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-6 border border-brand-100">
+                            <i data-lucide="eye-off" class="w-6 h-6 text-brand-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 font-heading">Execution is Blind</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">You only find out about missed deadlines after the damage is done. You make financial and hiring decisions based on gut feel, not real-time project data.</p>
+                    </div>
+                    <div class="reveal delay-300 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow md:col-span-2 lg:col-span-1">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-6 border border-brand-100">
+                            <i data-lucide="ghost" class="w-6 h-6 text-brand-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 font-heading">The Asana Graveyard</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">You pay for Asana, but projects still live in Slack. Every new hire takes weeks to figure out what they're supposed to do because nothing is documented.</p>
+                    </div>
+                </div>
+
+                <div class="reveal delay-200 mt-10 bg-white border border-slate-200 rounded-2xl p-8 text-center shadow-sm">
+                    <p class="text-xl md:text-2xl font-heading font-medium text-slate-900 italic">"My team is busy, but I have no idea if we're making actual progress."</p>
+                    <p class="text-sm font-bold text-slate-400 mt-4 uppercase tracking-widest">— Real feedback from a 7-figure DTC founder</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Study / Proof -->
+        <section class="py-24 bg-white border-y border-slate-200">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="reveal">
+                        <!-- Branded Accent Pill -->
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-bold uppercase tracking-widest mb-6">
+                            Proven at Scale
+                        </div>
+                        <h2 class="font-heading text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">How we built a unified OS for a 7-figure D2C brand.</h2>
+                        <p class="text-slate-500 mb-6 leading-relaxed">As they scaled rapidly, Marketing, Ops, and CX worked in disconnected silos. Blocker resolution took an average of 72 hours. Launches were consistently delayed.</p>
+                        <p class="text-slate-500 leading-relaxed">We installed a centralized execution hub in Asana, standardized their GTM playbooks, and created an automated reporting rhythm.</p>
+                    </div>
+                    
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="reveal delay-100 bg-[#fafafa] border border-slate-200 rounded-2xl p-6 shadow-sm">
+                            <div class="w-10 h-10 rounded-full gradient-light-bg flex items-center justify-center mb-4 border border-brand-100"><i data-lucide="timer" class="w-5 h-5 text-brand-600"></i></div>
+                            <div class="text-4xl font-extrabold font-heading mb-2 gradient-text">66%</div>
+                            <div class="text-sm text-slate-900 font-bold mb-3">Reduction in block time</div>
+                            <div class="text-xs text-slate-500 mb-4">Time to resolve issues dropped from 72hrs to 24hrs.</div>
+                            <!-- Visual Progress Bar -->
+                            <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                                <div class="gradient-bg h-full w-[66%]"></div>
+                            </div>
+                        </div>
+                        <div class="reveal delay-200 bg-[#fafafa] border border-slate-200 rounded-2xl p-6 shadow-sm">
+                            <div class="w-10 h-10 rounded-full gradient-light-bg flex items-center justify-center mb-4 border border-brand-100"><i data-lucide="calendar-check" class="w-5 h-5 text-brand-600"></i></div>
+                            <div class="text-4xl font-extrabold font-heading mb-2 gradient-text">37%</div>
+                            <div class="text-sm text-slate-900 font-bold mb-3">Increase in on-time delivery</div>
+                            <div class="text-xs text-slate-500 mb-4">Cross-functional projects finally hit their deadlines.</div>
+                            <!-- Visual Progress Bar -->
+                            <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                                <div class="gradient-bg h-full w-[37%]"></div>
+                            </div>
+                        </div>
+                        <div class="reveal delay-300 bg-[#fafafa] border border-slate-200 rounded-2xl p-6 shadow-sm sm:col-span-2">
+                            <div class="w-10 h-10 rounded-full gradient-light-bg flex items-center justify-center mb-4 border border-brand-100"><i data-lucide="rocket" class="w-5 h-5 text-brand-600"></i></div>
+                            <div class="text-4xl font-extrabold font-heading mb-2 gradient-text">30%</div>
+                            <div class="text-sm text-slate-900 font-bold mb-3">Faster time-to-market</div>
+                            <div class="text-xs text-slate-500 mb-4">Standardized GTM playbooks accelerated new SKU launches across the board.</div>
+                            <!-- Visual Progress Bar -->
+                            <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                                <div class="gradient-bg h-full w-[30%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Solution / Deliverables -->
+        <section id="solution" class="py-24 md:py-32">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <h2 class="reveal font-heading text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">We don't sell templates. <br>We build architecture.</h2>
+                    <p class="reveal delay-100 text-lg text-slate-500">The 8 core deliverables every Independence Sprint client receives—built directly into your Asana workspace to create true operational independence.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="reveal delay-100 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                            <i data-lucide="pen-tool" class="w-6 h-6 text-brand-600"></i>
+                        </div>
+                        <h3 class="text-slate-900 font-bold mb-2">1. Creative Workflows</h3>
+                        <p class="text-sm text-slate-500">Intake forms, brief templates, and approval flows. Zero missed briefs.</p>
+                    </div>
+                    
+                    <div class="reveal delay-200 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                            <i data-lucide="file-text" class="w-6 h-6 text-brand-600"></i>
+                        </div>
+                        <h3 class="text-slate-900 font-bold mb-2">2. SOP Library</h3>
+                        <p class="text-sm text-slate-500">Documented, step-by-step processes for every repeating workflow.</p>
+                    </div>
+                    
+                    <div class="reveal delay-300 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                            <i data-lucide="users-2" class="w-6 h-6 text-brand-600"></i>
+                        </div>
+                        <h3 class="text-slate-900 font-bold mb-2">3. Team Directory</h3>
+                        <p class="text-sm text-slate-500">Roles, responsibilities, and ownership perfectly mapped in one place.</p>
+                    </div>
+                    
+                    <div class="reveal delay-400 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                            <i data-lucide="blocks" class="w-6 h-6 text-brand-600"></i>
+                        </div>
+                        <h3 class="text-slate-900 font-bold mb-2">4. Tools Catalog</h3>
+                        <p class="text-sm text-slate-500">Every tool documented, connected, and integrated with Asana as the hub.</p>
+                    </div>
+                    
+                    <div class="reveal delay-100 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                            <i data-lucide="settings" class="w-6 h-6 text-brand-600"></i>
+                        </div>
+                        <h3 class="text-slate-900 font-bold mb-2">5. Workspace Config</h3>
+                        <p class="text-sm text-slate-500">Portfolios, templates, rules, and logic that your teams will actually use.</p>
+                    </div>
+                    
+                    <div class="reveal delay-200 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                            <i data-lucide="target" class="w-6 h-6 text-brand-600"></i>
+                        </div>
+                        <h3 class="text-slate-900 font-bold mb-2">6. OKRs & Initiatives</h3>
+                        <p class="text-sm text-slate-500">Company objectives tracked inside Asana. Everyone knows the goal.</p>
+                    </div>
+                    
+                    <div class="reveal delay-300 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                            <i data-lucide="layout-dashboard" class="w-6 h-6 text-brand-600"></i>
+                        </div>
+                        <h3 class="text-slate-900 font-bold mb-2">7. Goal Dashboards</h3>
+                        <p class="text-sm text-slate-500">Live project status and KPIs. No more status update meetings.</p>
+                    </div>
+                    
+                    <div class="reveal delay-400 bg-white border border-slate-200 shadow-sm rounded-2xl p-6 hover:-translate-y-1 transition-transform">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg flex items-center justify-center mb-5 border border-brand-100">
+                            <i data-lucide="message-square" class="w-6 h-6 text-brand-600"></i>
+                        </div>
+                        <h3 class="text-slate-900 font-bold mb-2">8. Slack Integration</h3>
+                        <p class="text-sm text-slate-500">Tasks connected to Slack channels. Communication and PM finally in sync.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="py-24 bg-white border-y border-slate-200">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="reveal font-heading text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">From chaos to clarity in 30 days.</h2>
+                    <p class="reveal delay-100 text-lg text-slate-500">A structured sprint designed to extract you from the weeds without disrupting your team's current work.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 relative">
+                    <!-- Connecting Line -->
+                    <div class="hidden md:block absolute top-[3.5rem] left-[15%] right-[15%] h-px bg-slate-100 z-0"></div>
+
+                    <!-- Step 1 -->
+                    <div class="reveal delay-100 relative bg-white border border-slate-200 rounded-2xl p-8 z-10 shadow-sm">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg border border-brand-100 flex items-center justify-center text-brand-700 font-bold font-heading text-xl mb-6 mx-auto md:mx-0 shadow-sm">1</div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 text-center md:text-left">Audit The Chaos</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed text-center md:text-left">We map your active workstreams, discover ownership gaps, and identify exactly where escalations are breaking your operations.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="reveal delay-200 relative bg-white border border-slate-200 rounded-2xl p-8 z-10 shadow-sm">
+                        <div class="w-14 h-14 rounded-full gradient-light-bg border border-brand-100 flex items-center justify-center text-brand-700 font-bold font-heading text-xl mb-6 mx-auto md:mx-0 shadow-sm">2</div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 text-center md:text-left">Build The System</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed text-center md:text-left">We engineer your strategic goals, workflow architecture, and leadership dashboards directly inside your Asana workspace.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="reveal delay-300 relative bg-white border border-slate-200 rounded-2xl p-8 z-10 shadow-sm">
+                        <div class="w-14 h-14 rounded-full gradient-bg border-2 border-transparent flex items-center justify-center text-white font-bold font-heading text-xl mb-6 mx-auto md:mx-0 shadow-md">3</div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 text-center md:text-left">Train The Team</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed text-center md:text-left">We run live onboarding, hand over your custom Operations Playbook, and show you exactly how to step out of the middle.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Table -->
+        <section class="py-24 md:py-32">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="reveal font-heading text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">Why Klarity Ops wins.</h2>
+                </div>
+                
+                <div class="reveal bg-white border border-slate-200 shadow-sm rounded-2xl overflow-x-auto no-scrollbar p-0">
+                    <table class="w-full text-left border-collapse min-w-[700px]">
+                        <thead>
+                            <tr>
+                                <th class="p-6 text-slate-500 font-bold uppercase tracking-wider text-xs border-b border-slate-100">Features</th>
+                                <th class="p-6 bg-brand-50 text-slate-900 font-extrabold font-heading border-b border-brand-100 text-base">Klarity Ops Sprint</th>
+                                <th class="p-6 text-slate-500 font-bold uppercase tracking-wider text-xs border-b border-slate-100">Fractional COO</th>
+                                <th class="p-6 text-slate-500 font-bold uppercase tracking-wider text-xs border-b border-slate-100">Generic Templates</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr>
+                                <td class="p-6 border-b border-slate-100 text-slate-700 font-medium">Solves founder dependency?</td>
+                                <td class="p-6 bg-brand-50 text-slate-900 font-bold border-b border-brand-100">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center shrink-0"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-700"></i></div> 
+                                        Yes, by design
+                                    </div>
+                                </td>
+                                <td class="p-6 border-b border-slate-100 text-slate-500">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="minus-circle" class="w-4 h-4 text-slate-400"></i> Partially
+                                    </div>
+                                </td>
+                                <td class="p-6 border-b border-slate-100 text-slate-500">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="x-circle" class="w-4 h-4 text-slate-400"></i> No
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-6 border-b border-slate-100 text-slate-700 font-medium">Implements directly inside tools?</td>
+                                <td class="p-6 bg-brand-50 text-slate-900 font-bold border-b border-brand-100">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center shrink-0"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-700"></i></div> 
+                                        Yes
+                                    </div>
+                                </td>
+                                <td class="p-6 border-b border-slate-100 text-slate-500">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="x-circle" class="w-4 h-4 text-slate-400"></i> No (They advise)
+                                    </div>
+                                </td>
+                                <td class="p-6 border-b border-slate-100 text-slate-500">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="minus-circle" class="w-4 h-4 text-slate-400"></i> Yes, but generic
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-6 border-b border-slate-100 text-slate-700 font-medium">Leaves a permanent system?</td>
+                                <td class="p-6 bg-brand-50 text-slate-900 font-bold border-b border-brand-100">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center shrink-0"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-700"></i></div> 
+                                        Yes
+                                    </div>
+                                </td>
+                                <td class="p-6 border-b border-slate-100 text-slate-500">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="x-circle" class="w-4 h-4 text-slate-400"></i> No (They leave)
+                                    </div>
+                                </td>
+                                <td class="p-6 border-b border-slate-100 text-slate-500">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="x-circle" class="w-4 h-4 text-slate-400"></i> No (Zero adoption)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-6 text-slate-700 font-medium">Average Cost</td>
+                                <td class="p-6 bg-brand-50 text-slate-900 font-extrabold text-base">
+                                    $3,500 <span class="text-xs text-brand-700 font-medium">/ ONE-TIME</span>
+                                </td>
+                                <td class="p-6 text-slate-500">$5k-$10k <span class="text-xs">/ MO</span></td>
+                                <td class="p-6 text-slate-500">$100 <span class="text-xs">WASTED</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-24 bg-white border-y border-slate-200">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <h2 class="reveal font-heading text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">Simple pricing. Zero retainers.</h2>
+                    <p class="reveal delay-100 text-lg text-slate-500">You pay for a system, not hours. Pick the level of intervention your business needs.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto pt-8">
+                    <!-- Tier 1 -->
+                    <div class="reveal delay-100 flex flex-col bg-[#fafafa] border border-slate-200 rounded-2xl p-8 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center mb-4 border border-slate-300"><i data-lucide="search" class="w-5 h-5 text-slate-600"></i></div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2 font-heading">The Ops Diagnostic</h3>
+                        <div class="text-4xl font-heading font-extrabold text-slate-900 mb-2">$750</div>
+                        <div class="text-xs text-slate-500 mb-8 font-bold uppercase tracking-widest">One-Time</div>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed">Find exactly what's broken in your operations before you commit to a full system build.</p>
+                        <ul class="space-y-4 mb-8 flex-1">
+                            <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 text-slate-400 mt-1 shrink-0"></i> 90-min deep dive founder session</li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 text-slate-400 mt-1 shrink-0"></i> Team workflow & ownership interviews</li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 text-slate-400 mt-1 shrink-0"></i> Visibility gap analysis</li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 text-slate-400 mt-1 shrink-0"></i> Delivery: Operational Breakdown Report</li>
+                        </ul>
+                        <button onclick="openModal()" class="block w-full py-3 px-4 bg-white border border-slate-200 text-slate-900 text-center rounded-xl font-bold transition-colors hover:bg-slate-50 shadow-sm">Book Diagnostic</button>
+                    </div>
+
+                    <!-- Tier 2 (Popular) -->
+                    <div class="reveal delay-200 transform lg:-translate-y-6 relative">
+                        <div class="rounded-2xl gradient-border-wrap p-[2px] shadow-[0_20px_40px_-15px_rgba(15,118,110,0.3)] h-full">
+                            <div class="flex flex-col p-8 pt-10 h-full bg-white rounded-[14px] relative z-10">
+                                <div class="w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center mb-4 border border-brand-100"><i data-lucide="rocket" class="w-5 h-5 text-brand-600"></i></div>
+                                <h3 class="text-xl font-bold text-slate-900 mb-2 font-heading mt-2">Independence Sprint</h3>
+                                <div class="text-4xl font-heading font-extrabold text-slate-900 mb-2">$3,500</div>
+                                <div class="text-xs text-brand-600 mb-8 font-bold uppercase tracking-widest">One-Time</div>
+                                <p class="text-slate-500 text-sm mb-8 leading-relaxed">The complete 30-day transformation to extract you from day-to-day operations.</p>
+                                <ul class="space-y-4 mb-8 flex-1">
+                                    <li class="flex items-start gap-3 text-sm text-slate-900 font-semibold"><i data-lucide="check" class="w-5 h-5 text-brand-600 shrink-0"></i> Everything in Diagnostic</li>
+                                    <li class="flex items-start gap-3 text-sm text-slate-900 font-semibold"><i data-lucide="check" class="w-5 h-5 text-brand-600 shrink-0"></i> Custom Asana Workflow Architecture</li>
+                                    <li class="flex items-start gap-3 text-sm text-slate-900 font-semibold"><i data-lucide="check" class="w-5 h-5 text-brand-600 shrink-0"></i> The Accountability Grid & Logic</li>
+                                    <li class="flex items-start gap-3 text-sm text-slate-900 font-semibold"><i data-lucide="check" class="w-5 h-5 text-brand-600 shrink-0"></i> Leadership Visibility Dashboards</li>
+                                    <li class="flex items-start gap-3 text-sm text-slate-900 font-semibold"><i data-lucide="check" class="w-5 h-5 text-brand-600 shrink-0"></i> Live Team Training & Handover</li>
+                                    <li class="flex items-start gap-3 text-sm text-slate-900 font-semibold"><i data-lucide="check" class="w-5 h-5 text-brand-600 shrink-0"></i> 30-Day Check-in & Optimization</li>
+                                </ul>
+                                <button onclick="openModal()" class="block w-full py-3 px-4 gradient-bg text-white text-center rounded-xl font-bold transition-colors shadow-md">Start the Sprint</button>
+                            </div>
+                        </div>
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 gradient-bg text-white text-[10px] font-extrabold uppercase tracking-widest py-1.5 px-4 rounded-full z-20">
+                            Most Popular
+                        </div>
+                    </div>
+
+                    <!-- Tier 3 -->
+                    <div class="reveal delay-300 flex flex-col bg-[#fafafa] border border-slate-200 rounded-2xl p-8 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center mb-4 border border-slate-300"><i data-lucide="building-2" class="w-5 h-5 text-slate-600"></i></div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2 font-heading">Enterprise Scaling</h3>
+                        <div class="text-4xl font-heading font-extrabold text-slate-900 mb-2">$5,000+</div>
+                        <div class="text-xs text-slate-500 mb-8 font-bold uppercase tracking-widest">Custom Build</div>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed">For complex organizations ($5M+) needing custom multi-tool data flows.</p>
+                        <ul class="space-y-4 mb-8 flex-1">
+                            <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 text-slate-400 mt-1 shrink-0"></i> Everything in Sprint</li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 text-slate-400 mt-1 shrink-0"></i> 30+ team members onboarding</li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 text-slate-400 mt-1 shrink-0"></i> Custom API Integrations (Shopify/ERP)</li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 text-slate-400 mt-1 shrink-0"></i> Advanced capacity planning</li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 text-slate-400 mt-1 shrink-0"></i> Dedicated SLA Support</li>
+                        </ul>
+                        <button onclick="openModal()" class="block w-full py-3 px-4 bg-white border border-slate-200 text-slate-900 text-center rounded-xl font-bold transition-colors hover:bg-slate-50 shadow-sm">Let's Talk</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-24 md:py-32">
+            <div class="max-w-3xl mx-auto px-6">
+                <h2 class="reveal font-heading text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center">Frequently Asked Questions</h2>
+                
+                <div class="space-y-4">
+                    <details class="reveal delay-100 group bg-white border border-slate-200 shadow-sm rounded-2xl [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+                        <summary class="flex items-center justify-between p-6 font-bold text-slate-900 transition-colors">
+                            Is this for my stage of business?
+                            <span class="relative ml-1.5 h-5 w-5 flex-shrink-0 text-slate-400 group-open:text-brand-600">
+                                <i data-lucide="plus" class="absolute inset-0 opacity-100 group-open:opacity-0 transition-opacity duration-300"></i>
+                                <i data-lucide="minus" class="absolute inset-0 opacity-0 group-open:opacity-100 transition-opacity duration-300"></i>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4 mt-2">
+                            If you are a scaling e-com brand doing $1M–$5M with 8-20 people, and you are the bottleneck, yes. If you are under $500k in revenue, you likely need a virtual assistant to take on basic tasks, not a systemic overhaul yet.
+                        </div>
+                    </details>
+                    <details class="reveal delay-200 group bg-white border border-slate-200 shadow-sm rounded-2xl [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+                        <summary class="flex items-center justify-between p-6 font-bold text-slate-900 transition-colors">
+                            What if my team refuses to use it?
+                            <span class="relative ml-1.5 h-5 w-5 flex-shrink-0 text-slate-400 group-open:text-brand-600">
+                                <i data-lucide="plus" class="absolute inset-0 opacity-100 group-open:opacity-0 transition-opacity duration-300"></i>
+                                <i data-lucide="minus" class="absolute inset-0 opacity-0 group-open:opacity-100 transition-opacity duration-300"></i>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4 mt-2">
+                            Tool adoption fails when systems are confusing or add friction. We design the architecture around how your team already communicates (e.g., deep Slack integrations) so updating tasks feels natural. We also lead the live training to ensure zero confusion on day one.
+                        </div>
+                    </details>
+                    <details class="reveal delay-300 group bg-white border border-slate-200 shadow-sm rounded-2xl [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+                        <summary class="flex items-center justify-between p-6 font-bold text-slate-900 transition-colors">
+                            Why shouldn't I just hire a Fractional COO?
+                            <span class="relative ml-1.5 h-5 w-5 flex-shrink-0 text-slate-400 group-open:text-brand-600">
+                                <i data-lucide="plus" class="absolute inset-0 opacity-100 group-open:opacity-0 transition-opacity duration-300"></i>
+                                <i data-lucide="minus" class="absolute inset-0 opacity-0 group-open:opacity-100 transition-opacity duration-300"></i>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4 mt-2">
+                            A Fractional COO typically costs $5,000–$10,000 a month. They give excellent strategic advice, but they rarely get into the weeds to build your Asana workspace. We build the permanent infrastructure that makes a COO unnecessary at this stage, for a one-time fraction of the cost.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="py-24 md:py-32 bg-white border-y border-slate-200">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="reveal relative bg-slate-900 rounded-2xl p-10 md:p-20 text-center overflow-hidden shadow-2xl">
+                    <div class="relative z-10 max-w-2xl mx-auto">
+                        <h2 class="font-heading text-4xl md:text-5xl font-bold text-white mb-6">Stop managing. Start scaling.</h2>
+                        <p class="text-lg text-slate-300 mb-10">Get your time back. Make your business sellable. Kill the 9 PM emergency WhatsApp thread for good.</p>
+                        
+                        <button onclick="openModal()" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white gradient-bg hover:-translate-y-1 rounded-xl shadow-lg transition-all duration-300">
+                            Book Free Diagnostic
+                        </button>
+                        <p class="mt-6 text-sm text-slate-400">30 minutes. No commitment. Just clear advice.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-slate-200 bg-white py-12">
+            <div class="max-w-7xl mx-auto px-6 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <a href="#home" class="font-heading font-extrabold text-xl text-slate-900 tracking-tight">
+                        Klarity<span class="text-brand-600">Ops.</span>
+                    </a>
+                    <p class="text-sm text-slate-500 mt-2">Operational systems for scaling D2C brands.</p>
+                </div>
+                <div class="flex gap-6 text-sm font-semibold text-slate-500">
+                    <a href="#problem" class="hover:text-brand-600 transition-colors">The Problem</a>
+                    <a href="#solution" class="hover:text-brand-600 transition-colors">How it Works</a>
+                    <a href="#pricing" class="hover:text-brand-600 transition-colors">Pricing</a>
+                </div>
+                <div class="text-sm text-slate-400">
+                    &copy; 2026 Klarity Ops. All rights reserved.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- ============================================== -->
+    <!-- TYPEFORM-STYLE MULTI-STEP BOOKING MODAL -->
+    <!-- ============================================== -->
+    <div id="booking-modal" class="fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 items-center justify-center p-4 sm:p-6">
+        <!-- Modal Content Container -->
+        <div class="modal-content bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden transform scale-95 transition-transform duration-300 relative flex flex-col max-h-[95vh]">
+            
+            <!-- Header & Progress -->
+            <div class="bg-white border-b border-slate-100 px-6 py-4 flex items-center justify-between relative z-10 shrink-0">
+                <div class="flex flex-col gap-1.5 w-1/2">
+                    <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest" id="step-indicator">Step 1 of 3</div>
+                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                        <div id="progress-bar" class="gradient-bg h-full w-[33%] transition-all duration-300"></div>
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-50 hover:bg-slate-100 flex items-center justify-center text-slate-500 transition-colors">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <!-- Form Area (Scrollable) -->
+            <div class="p-6 md:p-10 overflow-y-auto flex-1 custom-scrollbar">
+                <form id="klarity-form" onsubmit="handleFormSubmit(event)">
+                    
+                    <!-- STEP 1: Basics -->
+                    <div class="modal-step active" id="step-1">
+                        <h2 class="font-heading text-2xl md:text-3xl font-extrabold text-slate-900 mb-2">Let's get the basics.</h2>
+                        <p class="text-slate-500 text-sm mb-8">Tell us who you are and what brand you're scaling.</p>
+                        
+                        <div class="space-y-5">
+                            <div>
+                                <label for="fullName" class="block text-sm font-semibold text-slate-700 mb-2">Full name</label>
+                                <input id="fullName" type="text" placeholder="John Doe" required class="w-full input-surface text-slate-900 rounded-xl px-4 py-3 outline-none">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-semibold text-slate-700 mb-2">Work email</label>
+                                <input id="email" type="email" placeholder="you@brand.com" required class="w-full input-surface text-slate-900 rounded-xl px-4 py-3 outline-none">
+                            </div>
+                            <div>
+                                <label for="brandName" class="block text-sm font-semibold text-slate-700 mb-2">Brand name</label>
+                                <input id="brandName" type="text" placeholder="Your brand" required class="w-full input-surface text-slate-900 rounded-xl px-4 py-3 outline-none">
+                            </div>
+                            <div>
+                                <label for="website" class="block text-sm font-semibold text-slate-700 mb-2">Website / store URL</label>
+                                <input id="website" type="text" placeholder="yourstore.com" class="w-full input-surface text-slate-900 rounded-xl px-4 py-3 outline-none">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Scale -->
+                    <div class="modal-step" id="step-2">
+                        <h2 class="font-heading text-2xl md:text-3xl font-extrabold text-slate-900 mb-2">What's the scale?</h2>
+                        <p class="text-slate-500 text-sm mb-8">This helps us understand the complexity of your current operations.</p>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <label for="monthlyRevenue" class="block text-sm font-semibold text-slate-700 mb-2">Monthly revenue</label>
+                                <select id="monthlyRevenue" required class="w-full input-surface text-slate-900 rounded-xl px-4 py-3 outline-none appearance-none cursor-pointer bg-no-repeat" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'16\' height=\'16\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%2364748b\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'m6 9 6 6 6-6\'/></svg>'); background-position: right 1rem center;">
+                                    <option value="">Select range</option>
+                                    <option>Under $50k/month</option>
+                                    <option>$50k-$150k/month</option>
+                                    <option>$150k-$500k/month</option>
+                                    <option>$500k-$2M/month</option>
+                                    <option>$2M+/month</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="teamSize" class="block text-sm font-semibold text-slate-700 mb-2">Team size</label>
+                                <select id="teamSize" required class="w-full input-surface text-slate-900 rounded-xl px-4 py-3 outline-none appearance-none cursor-pointer bg-no-repeat" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'16\' height=\'16\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%2364748b\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'m6 9 6 6 6-6\'/></svg>'); background-position: right 1rem center;">
+                                    <option value="">Select size</option>
+                                    <option>1-5 people</option>
+                                    <option>6-15 people</option>
+                                    <option>16-30 people</option>
+                                    <option>31-60 people</option>
+                                    <option>60+ people</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Problems -->
+                    <div class="modal-step" id="step-3">
+                        <h2 class="font-heading text-2xl md:text-3xl font-extrabold text-slate-900 mb-2">Where is it breaking?</h2>
+                        <p class="text-slate-500 text-sm mb-8">We review this before the call to jump straight into solving bottlenecks.</p>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <label for="currentSetup" class="block text-sm font-semibold text-slate-700 mb-2">Current workflow setup?</label>
+                                <select id="currentSetup" required class="w-full input-surface text-slate-900 rounded-xl px-4 py-3 outline-none appearance-none cursor-pointer bg-no-repeat" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'16\' height=\'16\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%2364748b\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'m6 9 6 6 6-6\'/></svg>'); background-position: right 1rem center;">
+                                    <option value="">Select one</option>
+                                    <option>We are already using Asana</option>
+                                    <option>We have Asana, but barely use it</option>
+                                    <option>We use multiple tools with no single system</option>
+                                    <option>We need help setting up from scratch</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="biggestBottleneck" class="block text-sm font-semibold text-slate-700 mb-2">Biggest operational bottleneck right now?</label>
+                                <textarea id="biggestBottleneck" rows="3" placeholder="Example: creative requests are scattered, launches keep slipping, and nobody has full visibility across teams." required class="w-full input-surface text-slate-900 rounded-xl px-4 py-3 outline-none resize-y"></textarea>
+                            </div>
+                            <div>
+                                <label for="timeline" class="block text-sm font-semibold text-slate-700 mb-2">When do you want to fix this?</label>
+                                <select id="timeline" required class="w-full input-surface text-slate-900 rounded-xl px-4 py-3 outline-none appearance-none cursor-pointer bg-no-repeat" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'16\' height=\'16\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%2364748b\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'m6 9 6 6 6-6\'/></svg>'); background-position: right 1rem center;">
+                                    <option value="">Select timeline</option>
+                                    <option>Immediately</option>
+                                    <option>Within 30 days</option>
+                                    <option>Within this quarter</option>
+                                    <option>Just exploring for now</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Footer & Controls -->
+            <div class="bg-slate-50 border-t border-slate-100 px-6 py-4 flex items-center justify-between shrink-0">
+                <button type="button" id="btn-back" onclick="prevStep()" class="px-5 py-2.5 text-sm font-bold text-slate-500 hover:text-slate-900 transition-colors hidden">
+                    Back
+                </button>
+                <div class="ml-auto">
+                    <button type="button" id="btn-next" onclick="nextStep()" class="inline-flex items-center justify-center px-8 py-3 text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-xl shadow-md transition-all">
+                        Continue <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </button>
+                    <button type="button" id="btn-submit" onclick="document.getElementById('klarity-form').dispatchEvent(new Event('submit'))" class="hidden items-center justify-center px-8 py-3 text-sm font-bold text-white gradient-bg rounded-xl shadow-lg transition-all hover:-translate-y-0.5">
+                        Submit & Book Time
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // ----------------------------------------------------
+        // MULTI-STEP MODAL LOGIC
+        // ----------------------------------------------------
+        let currentStep = 1;
+        const totalSteps = 3;
+        const modal = document.getElementById('booking-modal');
+        
+        function openModal() {
+            // Reset to step 1 on open
+            currentStep = 1;
+            updateStepView();
+            // Show modal
+            modal.style.display = 'flex';
+            // Slight delay to trigger opacity transition
+            setTimeout(() => modal.classList.add('show'), 10);
+            window.location.hash = '#book';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300); // matches transition duration
+            window.location.hash = '#home';
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateStepView() {
+            // Update Indicator & Progress
+            document.getElementById('step-indicator').innerText = `Step ${currentStep} of ${totalSteps}`;
+            document.getElementById('progress-bar').style.width = `${(currentStep / totalSteps) * 100}%`;
+
+            // Hide all steps, show active
+            for(let i = 1; i <= totalSteps; i++) {
+                document.getElementById(`step-${i}`).classList.remove('active');
+            }
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+
+            // Update buttons
+            const btnBack = document.getElementById('btn-back');
+            const btnNext = document.getElementById('btn-next');
+            const btnSubmit = document.getElementById('btn-submit');
+
+            if(currentStep === 1) {
+                btnBack.classList.add('hidden');
+                btnNext.classList.remove('hidden');
+                btnSubmit.classList.add('hidden');
+                btnNext.style.display = 'inline-flex';
+            } else if(currentStep === totalSteps) {
+                btnBack.classList.remove('hidden');
+                btnNext.style.display = 'none';
+                btnSubmit.classList.remove('hidden');
+                btnSubmit.style.display = 'inline-flex';
+            } else {
+                btnBack.classList.remove('hidden');
+                btnNext.classList.remove('hidden');
+                btnSubmit.classList.add('hidden');
+                btnNext.style.display = 'inline-flex';
+            }
+        }
+
+        function validateCurrentStep() {
+            const stepContainer = document.getElementById(`step-${currentStep}`);
+            const inputs = stepContainer.querySelectorAll('input, select, textarea');
+            let isValid = true;
+            
+            for(let input of inputs) {
+                if(!input.checkValidity()) {
+                    input.reportValidity();
+                    isValid = false;
+                    break; // Stop checking and show first error
+                }
+            }
+            return isValid;
+        }
+
+        function nextStep() {
+            if(validateCurrentStep()) {
+                currentStep++;
+                updateStepView();
+            }
+        }
+
+        function prevStep() {
+            currentStep--;
+            updateStepView();
+        }
+
+        // Close modal when clicking outside content
+        modal.addEventListener('click', function(e) {
+            if(e.target === modal) {
+                closeModal();
+            }
+        });
+
+
+        // ----------------------------------------------------
+        // WEBHOOK & REDIRECT LOGIC
+        // ----------------------------------------------------
+        function handleFormSubmit(event){
+            event.preventDefault();
+            
+            if(!validateCurrentStep()) return; // Final check
+
+            const websiteInput = document.getElementById('website');
+            const submitBtn = document.getElementById('btn-submit');
+            const originalText = submitBtn.innerHTML;
+            
+            // Loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Redirecting...`;
+            submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
+            
+            if(websiteInput){
+                const rawValue = websiteInput.value.trim();
+                if(rawValue && !/^https?:\/\//i.test(rawValue)) websiteInput.value = 'https://' + rawValue;
+            }
+
+            const payload = {
+                fullName: document.getElementById('fullName').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                brandName: document.getElementById('brandName').value.trim(),
+                website: document.getElementById('website').value.trim(),
+                monthlyRevenue: document.getElementById('monthlyRevenue').value,
+                teamSize: document.getElementById('teamSize').value,
+                currentSetup: document.getElementById('currentSetup').value,
+                biggestBottleneck: document.getElementById('biggestBottleneck').value.trim(),
+                timeline: document.getElementById('timeline').value
+            };
+
+            const fullName = encodeURIComponent(payload.fullName);
+            const email = encodeURIComponent(payload.email);
+            const bookingUrl = `https://thexponent.neetocal.com/discovery-call?name=${fullName}&email=${email}`;
+            
+            // Send to Webhook -> Redirect
+            fetch('https://script.google.com/macros/s/AKfycbx0QbhMiJfHxfd3g6AssZZ-mDCbJnSEf6ViPBtAEJriBhjNSkQ758HxY9R7OXTLoP7W/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {'Content-Type': 'text/plain;charset=utf-8'},
+                body: JSON.stringify(payload)
+            }).then(() => {
+                window.location.href = bookingUrl;
+            }).catch((error) => {
+                console.error('Webhook error:', error);
+                window.location.href = bookingUrl;
+            });
+            
+            // Safety fallback timeout to redirect if fetch hangs
+            setTimeout(() => {
+                window.location.href = bookingUrl;
+            }, 2500);
+        }
+
+
+        // ----------------------------------------------------
+        // SCROLL REVEAL & ROUTING
+        // ----------------------------------------------------
+        function routeFromHash(){
+            var hash = (window.location.hash || '#home').toLowerCase();
+            if(hash === '#book'){ 
+                openModal(); 
+                return; 
+            }
+            
+            const sectionHashes = ['#problem', '#solution', '#pricing', '#faq', '#home'];
+            if(sectionHashes.includes(hash)){
+                if(modal.classList.contains('show')) closeModal();
+                requestAnimationFrame(() => {
+                    const target = document.querySelector(hash);
+                    if(target){
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - 80;
+                        window.scrollTo({top, behavior: 'smooth'});
+                    }
+                });
+            }
+        }
+        window.addEventListener('hashchange', routeFromHash);
+        
+        // Init reveals
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach((el) => observer.observe(el));
+            
+            // Check initial hash
+            routeFromHash();
+        });
+    </script>
+</body>
+</html>
