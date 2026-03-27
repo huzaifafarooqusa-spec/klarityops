@@ -222,6 +222,10 @@
 
                     <!-- Lightweight Visuals (Right) - Asana, Slack, Dashboards Floating Nodes -->
                     <div class="reveal delay-200 hidden lg:flex relative w-full h-[450px] items-center justify-center ml-auto">
+                        
+                        <!-- Center Glow/Orb -->
+                        <div class="absolute w-64 h-64 gradient-bg rounded-full blur-[80px] opacity-20"></div>
+
                         <!-- Central Hub -->
                         <div class="relative z-10 bg-white border border-slate-200 p-6 rounded-2xl shadow-xl flex flex-col items-center justify-center gap-3 animate-float w-40 hover-glow">
                             <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center shadow-md">
@@ -616,7 +620,7 @@
 
                 <div class="grid lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto pt-8">
                     <!-- Tier 1 -->
-                    <div class="reveal delay-100 flex flex-col bg-[#fafafa] border border-slate-200 rounded-2xl p-8 shadow-sm hover-glow">
+                    <div class="reveal delay-100 flex flex-col bg-[#fafafa] border border-slate-200 rounded-2xl p-8">
                         <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center mb-4 border border-slate-300"><i data-lucide="search" class="w-5 h-5 text-slate-600"></i></div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2 font-heading">The Ops Diagnostic</h3>
                         <div class="text-4xl font-heading font-extrabold text-slate-900 mb-2">$750</div>
@@ -632,10 +636,8 @@
                     </div>
 
                     <!-- Tier 2 (Popular) -->
-                    <div class="reveal delay-200 transform lg:-translate-y-6 relative hover-glow rounded-2xl">
-                        <!-- Subtle background pulse behind popular card -->
-                        <div class="absolute inset-0 gradient-bg rounded-2xl blur-md opacity-20 animate-pulse-slow z-0"></div>
-                        <div class="rounded-2xl gradient-border-wrap p-[2px] shadow-[0_20px_40px_-15px_rgba(15,118,110,0.3)] h-full relative z-10">
+                    <div class="reveal delay-200 transform lg:-translate-y-6 relative rounded-2xl">
+                        <div class="rounded-2xl gradient-border-wrap p-[2px] h-full relative z-10">
                             <div class="flex flex-col p-8 pt-10 h-full bg-white rounded-[14px] relative z-10">
                                 <div class="w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center mb-4 border border-brand-100"><i data-lucide="rocket" class="w-5 h-5 text-brand-600"></i></div>
                                 <h3 class="text-xl font-bold text-slate-900 mb-2 font-heading mt-2">Independence Sprint</h3>
@@ -653,13 +655,13 @@
                                 <button onclick="openModal()" class="block w-full py-3 px-4 gradient-bg text-white text-center rounded-xl font-bold transition-all shadow-md hover:shadow-lg">Start the Sprint</button>
                             </div>
                         </div>
-                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 gradient-bg text-white text-[10px] font-extrabold uppercase tracking-widest py-1.5 px-4 rounded-full z-20 shadow-sm">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 gradient-bg text-white text-[10px] font-extrabold uppercase tracking-widest py-1.5 px-4 rounded-full z-20">
                             Most Popular
                         </div>
                     </div>
 
                     <!-- Tier 3 -->
-                    <div class="reveal delay-300 flex flex-col bg-[#fafafa] border border-slate-200 rounded-2xl p-8 shadow-sm hover-glow">
+                    <div class="reveal delay-300 flex flex-col bg-[#fafafa] border border-slate-200 rounded-2xl p-8">
                         <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center mb-4 border border-slate-300"><i data-lucide="building-2" class="w-5 h-5 text-slate-600"></i></div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2 font-heading">Enterprise Scaling</h3>
                         <div class="text-4xl font-heading font-extrabold text-slate-900 mb-2">$5,000+</div>
@@ -914,6 +916,28 @@
                         Submit & Book Time
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================== -->
+    <!-- THANK YOU VIEW (Fallback/Redirected) -->
+    <!-- ============================================== -->
+    <div id="pg-thanks" class="page-view min-h-screen items-center justify-center bg-[#fafafa] px-6">
+        <div class="max-w-md w-full text-center bg-white border border-slate-200 shadow-sm rounded-2xl p-12">
+            <div class="w-20 h-20 bg-brand-50 border border-brand-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="check" class="w-10 h-10 text-brand-600"></i>
+            </div>
+            <h2 class="font-heading text-3xl font-extrabold text-slate-900 mb-4">Taking you to the calendar...</h2>
+            <p class="text-slate-500 mb-8 leading-relaxed">If you are not redirected automatically to book your time slot, please click below.</p>
+            <a id="manual-redirect-btn" href="#" class="inline-block w-full px-6 py-3 font-semibold text-slate-700 bg-[#fafafa] border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors">
+                Book My Time Slot
+            </a>
+            <div class="mt-6 pt-6 border-t border-slate-100">
+                <a href="#home" class="text-sm font-semibold text-slate-500 hover:text-brand-600 transition-colors">
+                    Return to Homepage
+                </a>
             </div>
         </div>
     </div>
