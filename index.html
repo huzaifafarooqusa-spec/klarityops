@@ -2233,3 +2233,29 @@
     </script>
 </body>
 </html>
+<script>
+  const scriptURL = "PASTE_YOUR_WEB_APP_URL_HERE";
+
+  async function submitLeadForm(formData) {
+    try {
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        window.location.href = "https://your-booking-page.com";
+      } else {
+        alert("Something went wrong: " + result.message);
+      }
+    } catch (error) {
+      alert("Form submission failed");
+      console.error(error);
+    }
+  }
+</script>
