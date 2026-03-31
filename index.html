@@ -100,6 +100,90 @@
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
         }
 
+        .mobile-nav-toggle {
+            width: 2.85rem;
+            height: 2.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(228, 228, 231, 0.95);
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 10px 24px -18px rgba(24, 24, 27, 0.38);
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+        .mobile-nav-toggle:active { transform: scale(0.96); }
+
+        .mobile-nav-panel {
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            border-radius: 1.5rem;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(228, 228, 231, 0.92);
+            box-shadow: 0 26px 54px -26px rgba(24, 24, 27, 0.28);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-10px);
+            transition: opacity 0.22s ease, visibility 0.22s ease, transform 0.22s ease;
+        }
+        .mobile-nav-panel.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 0.95rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #27272a;
+            background: #ffffff;
+            border: 1px solid rgba(228, 228, 231, 0.95);
+            transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+        .mobile-nav-link:hover,
+        .mobile-nav-link:focus-visible {
+            background: #fff7ed;
+            border-color: rgba(180, 83, 9, 0.22);
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        .mobile-brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(228, 228, 231, 0.96);
+            box-shadow: 0 16px 28px -18px rgba(24, 24, 27, 0.32);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .mobile-brand-badge span {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            color: #18181b;
+            line-height: 1;
+            white-space: nowrap;
+        }
+        .mobile-brand-badge .dot {
+            width: 0.42rem;
+            height: 0.42rem;
+            border-radius: 999px;
+            background: #B45309;
+            flex-shrink: 0;
+        }
+
         /* Form styling Light */
         .fg { margin-bottom: 1.5rem; }
         .fg label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.5rem; color: #18181b; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -350,23 +434,29 @@
 
         @media (max-width: 768px) {
             html { font-size: 15.5px; }
-            .nav-pill { padding: 0.8rem 1rem; }
+            .nav-pill { padding: 0.8rem 1rem; border-radius: 1.35rem; }
             .bento-card { border-radius: 1.5rem !important; }
             .results-strip { padding-top: 1rem; padding-bottom: 1rem; }
             .results-marquee { gap: 2.25rem !important; }
             .case-visual { min-height: 210px; padding: 2.75rem 1.5rem !important; }
             #booking-modal .modal-panel { border-radius: 1.5rem; }
             footer { padding-top: 4.5rem !important; padding-bottom: 4.5rem !important; }
+            .cs-card-body { padding: 1.35rem; }
+            .cs-card-body h3 { font-size: 1.05rem; line-height: 1.35; }
+            .cs-card-body p { font-size: 0.92rem; line-height: 1.55; }
+            .cs-read-more { font-size: 0.73rem; padding-top: 1rem; }
+            .reveal { transition-duration: 0.55s; }
+            .ambient-blob-a, .ambient-blob-b { animation-duration: 28s; }
         }
 
         @media (max-width: 640px) {
             .reveal { transform: translateY(12px); }
             #home { min-height: auto; padding-top: 7rem; padding-bottom: 10rem; padding-left: 1.25rem; padding-right: 1.25rem; }
-            #home h1 { font-size: clamp(2.55rem, 12vw, 3.55rem); line-height: 0.98; margin-bottom: 1.15rem; }
-            #home p { font-size: 1rem; margin-bottom: 1.9rem; }
-            section { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
-            .nav-pill .font-heading { font-size: 1.35rem; }
-            .nav-pill button { padding: 0.8rem 1rem; font-size: 0.8rem; }
+            #home h1 { font-size: clamp(2.35rem, 11vw, 3.2rem); line-height: 0.98; margin-bottom: 1.1rem; }
+            #home p { font-size: 0.98rem; margin-bottom: 1.75rem; }
+            section { padding-left: 1.1rem !important; padding-right: 1.1rem !important; }
+            .nav-pill .font-heading { font-size: 1.28rem; }
+            .hero-badge { padding: 0.68rem 0.85rem !important; gap: 0.55rem !important; font-size: 0.62rem !important; letter-spacing: 0.12em !important; }
             .results-marquee { gap: 1.65rem !important; animation-duration: 26s; }
             .results-marquee .text-3xl { font-size: 1.55rem !important; }
             .results-marquee .text-sm { font-size: 0.64rem !important; letter-spacing: 0.15em; }
@@ -380,6 +470,16 @@
             .case-visual img { width: 9rem !important; }
             .fg { margin-bottom: 1rem; }
             .fg input, .fg select, .fg textarea { padding: 0.82rem 0.9rem; border-radius: 0.95rem; }
+            .cs-card { border-radius: 1.45rem; }
+            .cs-card-visual { aspect-ratio: 1.25 / 1; }
+            .cs-card-body { padding: 1.15rem; }
+            .cs-card-body .flex.gap-6 { gap: 1rem; }
+            .cs-card-body .text-xl { font-size: 1.05rem !important; }
+            .cs-card-body .text-xs { font-size: 0.64rem !important; line-height: 1.25; }
+            .cs-modal-visual { aspect-ratio: 1.35 / 1; }
+            .cs-modal-panel .p-7 { padding: 1.25rem !important; }
+            .cs-modal-panel .grid.grid-cols-2 { gap: 0.65rem; }
+            .cta-animated::before { animation-duration: 8.5s; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -503,9 +603,9 @@
         <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-orange-400/5 blur-[120px] ambient-blob-b"></div>
     </div>
 
-    <div class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-5xl">
+    <div id="site-nav-wrap" class="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-5xl">
         <nav class="nav-pill px-4 py-3 md:px-6 md:py-4 rounded-full flex items-center justify-between gap-3">
-            <a href="#" onclick="showView('home')" class="font-heading font-extrabold text-2xl text-zinc-900 tracking-tight flex items-center gap-1">
+            <a href="#" onclick="showView('home'); closeMobileNav();" class="font-heading font-extrabold text-2xl text-zinc-900 tracking-tight flex items-center gap-1 shrink-0">
                 Klarity<span class="text-accent italic">Ops.</span>
             </a>
             <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-500">
@@ -514,12 +614,45 @@
                 <a href="#methodology" onclick="showView('home')" class="hover:text-zinc-900 transition-colors">Methodology</a>
                 <a href="#engagement" onclick="showView('home')" class="hover:text-zinc-900 transition-colors">Pricing</a>
             </div>
-            <button onclick="openBookingModal('navigation_top','Free Strategy Call')" class="cta-animated bg-zinc-900 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-zinc-800 transition-all shadow-xl shadow-zinc-900/20 active:scale-95">
+            <button onclick="openBookingModal('navigation_top','Free Strategy Call')" class="hidden md:inline-flex cta-animated bg-zinc-900 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-zinc-800 transition-all shadow-xl shadow-zinc-900/20 active:scale-95">
                 Book a Strategy Call
             </button>
+            <div class="md:hidden flex items-center gap-2 ml-auto">
+                <button onclick="openBookingModal('navigation_top_mobile','Free Strategy Call')" class="mobile-nav-toggle flex items-center justify-center text-zinc-700" aria-label="Book a strategy call">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3.5 9.5h17"/><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 13h4"/></svg>
+                </button>
+                <button id="mobile-nav-toggle" class="mobile-nav-toggle flex items-center justify-center text-zinc-700" type="button" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open mobile navigation">
+                    <svg class="pointer-events-none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+                </button>
+            </div>
         </nav>
-    <!-- Review note: The only area where we still lag is conventional mobile navigation, so please review that carefully. -->
-
+        <div id="mobile-nav-panel" class="mobile-nav-panel md:hidden" hidden>
+            <div class="flex flex-col gap-2">
+                <a href="#friction" onclick="closeMobileNav()" class="mobile-nav-link">
+                    <span>The Problem</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#system" onclick="closeMobileNav()" class="mobile-nav-link">
+                    <span>The Build</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#methodology" onclick="closeMobileNav()" class="mobile-nav-link">
+                    <span>Methodology</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#case-studies" onclick="closeMobileNav()" class="mobile-nav-link">
+                    <span>Case Studies</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#engagement" onclick="closeMobileNav()" class="mobile-nav-link">
+                    <span>Pricing</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <button onclick="closeMobileNav(); openBookingModal('mobile_nav_panel','Systems Audit');" class="cta-animated mt-2 w-full rounded-[1.15rem] bg-zinc-900 px-5 py-4 text-sm font-bold text-white shadow-xl shadow-zinc-900/15 active:scale-[0.99]">
+                    Book Your Systems Audit
+                </button>
+            </div>
+        </div>
     </div>
 
     <div id="view-home" class="view active relative z-0">
@@ -553,7 +686,7 @@
                 </p>
                 
                 <div class="reveal delay-300 flex flex-col items-center justify-center">
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full">
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-[22rem] sm:max-w-none mx-auto">
                         <button onclick="openBookingModal('hero_primary','Systems Audit')" class="cta-animated w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold transition-all shadow-[0_15px_30px_-10px_rgba(180,83,9,0.4)] hover:-translate-y-1 active:scale-95">
                             Book Your Systems Audit
                         </button>
@@ -878,6 +1011,7 @@
                     <!-- Card 1 — Solawave -->
                     <div class="reveal cs-card" onclick="openCaseStudy('solawave')" role="button" tabindex="0" aria-label="Read Solawave case study">
                         <div class="cs-card-visual p-5 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute top-3 left-3 z-20 sm:hidden mobile-brand-badge"><span class="dot"></span><span>Solawave</span></div>
                             <!-- Subtle dot grid -->
                             <div class="absolute inset-0 opacity-[0.35]" style="background-image: radial-gradient(circle, #d4d4d8 1px, transparent 1px); background-size: 22px 22px;"></div>
                             <!-- Warm radial glow -->
@@ -944,6 +1078,7 @@
                     <!-- Card 2 — Roostys -->
                     <div class="reveal delay-100 cs-card" onclick="openCaseStudy('roostys')" role="button" tabindex="0" aria-label="Read Roostys case study">
                         <div class="cs-card-visual p-5 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute top-3 left-3 z-20 sm:hidden mobile-brand-badge"><span class="dot"></span><span>Roostys</span></div>
                             <!-- Subtle dot grid -->
                             <div class="absolute inset-0 opacity-[0.35]" style="background-image: radial-gradient(circle, #d4d4d8 1px, transparent 1px); background-size: 22px 22px;"></div>
                             <!-- Warm radial glow -->
@@ -1012,6 +1147,7 @@
                     <!-- Card 3 — Pridola -->
                     <div class="reveal delay-200 cs-card" onclick="openCaseStudy('pridola')" role="button" tabindex="0" aria-label="Read Pridola case study">
                         <div class="cs-card-visual p-5 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute top-3 left-3 z-20 sm:hidden mobile-brand-badge"><span class="dot"></span><span>Pridola</span></div>
                             <!-- Subtle dot grid -->
                             <div class="absolute inset-0 opacity-[0.35]" style="background-image: radial-gradient(circle, #d4d4d8 1px, transparent 1px); background-size: 22px 22px;"></div>
                             <!-- Warm radial glow -->
@@ -1750,6 +1886,7 @@
         const BOOKING_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbz6dYZ9_8NqeFTLUEQDHn81egKhN_m21qKl6rSCMek/dev';
 
         function showView(viewId) {
+            closeMobileNav();
             if (viewId === 'book') {
                 openBookingModal('generic_cta', 'Systems Audit');
                 return;
@@ -1807,6 +1944,7 @@
         }
 
         function openBookingModal(source, offer) {
+            closeMobileNav();
             setBookingContext(source, offer);
             currentFormStep = 1;
             updateStepUI();
@@ -1909,13 +2047,79 @@
             observer.observe(el);
         });
 
+        // Mobile Navigation
+        const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+        const mobileNavPanel = document.getElementById('mobile-nav-panel');
+
+        function openMobileNav() {
+            if (!mobileNavPanel) return;
+            mobileNavPanel.hidden = false;
+            requestAnimationFrame(() => mobileNavPanel.classList.add('active'));
+            mobileNavToggle?.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeMobileNav() {
+            if (!mobileNavPanel) return;
+            mobileNavPanel.classList.remove('active');
+            mobileNavToggle?.setAttribute('aria-expanded', 'false');
+            window.setTimeout(() => {
+                if (!mobileNavPanel.classList.contains('active')) mobileNavPanel.hidden = true;
+            }, 220);
+        }
+
+        function toggleMobileNav() {
+            if (!mobileNavPanel) return;
+            if (mobileNavPanel.classList.contains('active')) {
+                closeMobileNav();
+            } else {
+                openMobileNav();
+            }
+        }
+
+        mobileNavToggle?.addEventListener('click', toggleMobileNav);
+
+        document.addEventListener('click', (event) => {
+            if (!mobileNavPanel || mobileNavPanel.hidden) return;
+            const navWrap = document.getElementById('site-nav-wrap');
+            if (navWrap && !navWrap.contains(event.target)) {
+                closeMobileNav();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) closeMobileNav();
+        });
+
+        function escapeSvgText(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function buildWordmarkDataUri(wordmark, options = {}) {
+            const bg = options.bg || '#FFFFFF';
+            const textColor = options.text || '#18181B';
+            const border = options.border || '#E4E4E7';
+            const accent = options.accent || '#B45309';
+            const label = escapeSvgText(wordmark);
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="520" height="170" viewBox="0 0 520 170" fill="none">
+                <rect x="2" y="2" width="516" height="166" rx="42" fill="${bg}" stroke="${border}" stroke-width="4"/>
+                <circle cx="82" cy="85" r="12" fill="${accent}"/>
+                <text x="276" y="101" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800" fill="${textColor}">${label}</text>
+            </svg>`;
+            return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+        }
+
         // ── Case Study Modal Logic ──
         const csData = {
             solawave: {
                 industry: 'Beauty',
                 client: 'Solawave',
                 headline: 'How Solawave Optimized D2C Marketing Operations & Cut Delays by 66%.',
-                logo: 'logos/Solawave-logo_1.svg',
+                logo: buildWordmarkDataUri('Solawave', { bg: '#FFF7ED', text: '#18181B', border: '#FED7AA', accent: '#B45309' }),
                 challenge: 'Solawave\'s cross-functional team across Marketing, Ops & CX was operating in silos. Every product launch hit the same bottlenecks: approvals delayed in email, status buried in Slack, and leadership with zero real-time visibility into what was actually blocked.',
                 solution: 'We audited every active workstream, mapped ownership gaps, and rebuilt the entire Asana architecture — separating campaign management, creative production, and ops tracking into dedicated portfolios with automated escalation rules. A live executive dashboard gave leadership instant visibility for the first time.',
                 results: [
@@ -1930,7 +2134,7 @@
                 industry: 'Wellness',
                 client: "Roosty's",
                 headline: 'Scaling Wellness Supply Chain Operations & Sunsetting ClickUp for Roostys.',
-                logo: 'logos/roostyslogo.svg',
+                logo: buildWordmarkDataUri(`Roosty's`, { bg: '#FFFBEB', text: '#18181B', border: '#FDE68A', accent: '#D97706' }),
                 challenge: 'Revenue scaled past $10M/year but operations were fracturing. Tasks lived across ClickUp, Notion, email, and Slack simultaneously. Creative brief standardization was absent. Supply chain inventory had no executive visibility layer, and the ops team was running on tribal knowledge.',
                 solution: 'We unified all operational workstreams into a single Asana architecture — standardized creative intake briefs, built a live inventory & reorder tracker, migrated and closed ClickUp entirely, and deployed an ops playbook so the team could self-manage.',
                 results: [
@@ -1945,7 +2149,7 @@
                 industry: 'E-Commerce',
                 client: 'Pridola',
                 headline: 'Building an E-Commerce Operations Dashboard for Pridola to Eliminate Meetings.',
-                logo: 'logos/pridola_design.svg',
+                logo: buildWordmarkDataUri('Pridola', { bg: '#FAFAFA', text: '#18181B', border: '#E4E4E7', accent: '#B45309' }),
                 challenge: 'The business logic was solid but execution was bottlenecked. Weekly status meetings consumed leadership time without generating decisions. Delegation was unstructured, accountability was unclear, and there was no automated reporting layer to surface issues before they escalated.',
                 solution: 'We built a custom Asana ops dashboard with automated task-level reporting — surfacing blockers, deadlines, and capacity issues mathematically. Every team member got a defined swim lane. Every manager got a live portfolio view. Status meetings were permanently cancelled.',
                 results: [
@@ -1962,6 +2166,7 @@
         const csPanel = document.getElementById('cs-modal-panel');
 
         function openCaseStudy(key) {
+            closeMobileNav();
             const d = csData[key];
             if (!d) return;
             const resultsHTML = d.results.map(r =>
@@ -1976,7 +2181,7 @@
             csPanel.innerHTML = `
                 <div class="cs-modal-visual">
                     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(180,83,9,0.10),transparent_60%)]"></div>
-                    <img src="${d.logo}" class="w-40 sm:w-52 opacity-75 filter brightness-0 relative z-10" alt="${d.client}">
+                    <img src="${d.logo}" class="relative z-10 h-auto max-h-[72px] w-40 object-contain opacity-90 sm:w-52 sm:max-h-[84px]" alt="${d.client} logo" loading="eager" decoding="async">
                 </div>
                 <div class="p-7 sm:p-10">
                     <div class="flex flex-wrap gap-2 mb-5">
