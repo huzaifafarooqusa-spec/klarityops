@@ -606,7 +606,7 @@
 
     <div id="site-nav-wrap" class="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-5xl">
         <nav class="nav-pill px-4 py-3 md:px-6 md:py-4 rounded-full flex items-center justify-between gap-3">
-            <a href="#" onclick="showView('home'); closeMobileNav();" class="font-heading font-extrabold text-2xl text-zinc-900 tracking-tight flex items-center gap-1 shrink-0">
+            <a href="./" onclick="showView('home'); closeMobileNav(); window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" aria-label="Klarity Ops homepage" class="font-heading font-extrabold text-2xl text-zinc-900 tracking-tight flex items-center gap-1 shrink-0">
                 Klarity<span class="text-accent italic">Ops.</span>
             </a>
             <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-500">
@@ -1734,17 +1734,23 @@
         </section>
 
         <footer class="py-20 sm:py-24 px-5 sm:px-6 border-t border-zinc-200 bg-white">
-            <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
-                <div class="font-heading font-extrabold text-3xl text-zinc-900 tracking-tighter">
-                    Klarity<span class="text-accent italic">Ops</span><span class="text-zinc-400">.</span>
+            <div class="max-w-6xl mx-auto grid gap-10 md:grid-cols-[minmax(0,1.2fr)_auto_auto] md:items-center">
+                <div class="text-center md:text-left">
+                    <a href="./" onclick="showView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" aria-label="Klarity Ops homepage" class="inline-flex items-center gap-1 font-heading font-extrabold text-3xl text-zinc-900 tracking-tighter">
+                        Klarity<span class="text-accent italic">Ops</span><span class="text-zinc-400">.</span>
+                    </a>
+                    <p class="mt-3 max-w-md text-sm leading-relaxed text-zinc-500 md:text-base">
+                        Fractional BizOps systems and Asana architecture for scaling D2C brands.
+                    </p>
                 </div>
-                <div class="flex gap-8 text-sm font-bold text-zinc-500 uppercase tracking-widest">
-                    <a href="#" class="hover:text-zinc-900 transition-colors">Privacy</a>
-                    <a href="#" class="hover:text-zinc-900 transition-colors">OS Docs</a>
-                    <a href="#" onclick="openBookingModal('footer_audit_form','Systems Audit'); return false;" class="hover:text-zinc-900 transition-colors">Audit Form</a>
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-bold uppercase tracking-[0.18em] text-zinc-500 md:justify-start">
+                    <a href="#friction" onclick="showView('home')" class="hover:text-zinc-900 transition-colors">Problem</a>
+                    <a href="#system" onclick="showView('home')" class="hover:text-zinc-900 transition-colors">Build</a>
+                    <a href="#engagement" onclick="showView('home')" class="hover:text-zinc-900 transition-colors">Pricing</a>
+                    <a href="#" onclick="openBookingModal('footer_audit_form','Systems Audit'); return false;" class="hover:text-zinc-900 transition-colors">Book Audit</a>
                 </div>
-                <div class="text-sm text-zinc-500 font-mono font-medium">
-                    &copy; 2026 Klarity Ops. Systemic Scaling for D2C.
+                <div class="text-center md:text-right text-sm text-zinc-500 font-mono font-medium">
+                    <div>&copy; 2026 Klarity Ops.</div>
                 </div>
             </div>
         </footer>
