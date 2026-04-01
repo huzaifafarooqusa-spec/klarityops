@@ -1757,7 +1757,7 @@
                     <div>
                         <div class="text-[11px] font-mono text-accent mb-2 uppercase tracking-[0.22em] font-bold">Free Systems Audit</div>
                         <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-zinc-900 leading-tight">Tell us what is breaking, then book the call.</h2>
-                        <p class="text-sm sm:text-base text-zinc-600 mt-2 font-medium">Quick 3-step popup. We push the lead to Google Sheets and keep the CTA source so you can see which offer or button converted.</p>
+                        
                     </div>
                     <button type="button" onclick="closeBookingModal()" class="shrink-0 inline-flex items-center justify-center w-11 h-11 rounded-2xl border border-zinc-200 bg-white text-zinc-700 hover:text-zinc-900 hover:border-zinc-300 transition-colors" aria-label="Close popup">
                         <i data-lucide="x" class="w-5 h-5"></i>
@@ -1772,19 +1772,25 @@
                     <span class="step-pill inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] sm:text-xs font-black uppercase tracking-[0.18em]" data-step-pill="3">03 Main bottleneck</span>
                 </div>
 
-                <div class="flex flex-wrap gap-2 mb-6" id="booking-context-wrap">
-                    <span id="context-offer" class="context-chip">Offer · Systems Audit</span>
-                    <span id="context-source" class="context-chip">Source · General CTA</span>
-                </div>
-
                 <form id="klarity-intake" onsubmit="submitForm(event)">
                     <input type="hidden" id="ctaSource" value="general_cta">
                     <input type="hidden" id="selectedOffer" value="Systems Audit">
+                    <input type="hidden" id="originOffer" value="Systems Audit">
                     <input type="hidden" id="pageUrl">
                     <input type="hidden" id="pageTitle">
 
                     <div class="form-step active" data-step="1">
                         <div class="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                            <div class="fg sm:col-span-2">
+                                <label>Select Offer</label>
+                                <select id="selectedOfferDisplay" onchange="handleOfferChange(this.value)" class="font-mono text-sm text-zinc-900">
+                                    <option>Free Strategy Call</option>
+                                    <option selected>Systems Audit</option>
+                                    <option>Independence Sprint</option>
+                                    <option>Enterprise OS Build</option>
+                                    <option>Fractional Governance</option>
+                                </select>
+                            </div>
                             <div class="fg sm:col-span-2">
                                 <label>Business / Brand Name</label>
                                 <input type="text" id="brand" required placeholder="Your Company" class="font-mono text-sm">
@@ -1832,15 +1838,8 @@
 
                     <div class="form-step" data-step="3">
                         <div class="fg">
-                            <label>Selected Offer</label>
-                            <input type="text" id="selectedOfferDisplay" readonly value="Systems Audit" class="font-mono text-sm bg-orange-50 border-orange-100 text-zinc-900">
-                        </div>
-                        <div class="fg">
                             <label>Primary Operational Failure Mode</label>
                             <textarea id="pain" required placeholder="e.g. We have tool sprawl, no one owns the final handoff, leadership lacks visibility, and launches keep slipping..." class="font-mono text-sm"></textarea>
-                        </div>
-                        <div class="rounded-2xl bg-zinc-50 border border-zinc-200 px-4 py-4 text-sm text-zinc-600 leading-relaxed font-medium">
-                            After submit, the lead is sent through the webhook to Google Sheets with the offer and source attached, then redirected to your booking calendar.
                         </div>
                     </div>
 
@@ -1884,7 +1883,7 @@
         const stepNextBtn = document.getElementById('stepNextBtn');
         const submitBtn = document.getElementById('submitBtn');
         const totalSteps = 3;
-        const BOOKING_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbz6dYZ9_8NqeFTLUEQDHn81egKhN_m21qKl6rSCMek/dev';
+        const BOOKING_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxD1uWf89A44zFaGfs1tRw40_tiYS-LMuhcUY-sOwGg5mUQI-d26TTJ8EsRDPjlvFnc/exec';
 
         function showView(viewId) {
             closeMobileNav();
@@ -1932,16 +1931,20 @@
             updateStepUI();
         }
 
+        function handleOfferChange(nextOffer) {
+            const normalizedOffer = nextOffer || 'Systems Audit';
+            document.getElementById('selectedOffer').value = normalizedOffer;
+            document.getElementById('selectedOfferDisplay').value = normalizedOffer;
+        }
+
         function setBookingContext(source, offer) {
             const normalizedSource = source || 'generic_cta';
             const normalizedOffer = offer || 'Systems Audit';
             document.getElementById('ctaSource').value = normalizedSource;
-            document.getElementById('selectedOffer').value = normalizedOffer;
-            document.getElementById('selectedOfferDisplay').value = normalizedOffer;
+            document.getElementById('originOffer').value = normalizedOffer;
             document.getElementById('pageUrl').value = window.location.href;
             document.getElementById('pageTitle').value = document.title;
-            document.getElementById('context-offer').textContent = `Offer · ${normalizedOffer}`;
-            document.getElementById('context-source').textContent = `Source · ${normalizedSource.replace(/_/g, ' ')}`;
+            handleOfferChange(normalizedOffer);
         }
 
         function openBookingModal(source, offer) {
@@ -1952,7 +1955,7 @@
             bookingModal.classList.add('active');
             bookingModal.setAttribute('aria-hidden', 'false');
             document.body.classList.add('modal-open');
-            setTimeout(() => document.getElementById('brand')?.focus(), 30);
+            setTimeout(() => document.getElementById('selectedOfferDisplay')?.focus(), 30);
         }
 
         function closeBookingModal() {
@@ -1993,6 +1996,7 @@
                 tools: document.getElementById('tools').value,
                 painPoint: document.getElementById('pain').value,
                 selectedOffer: document.getElementById('selectedOffer').value,
+                originOffer: document.getElementById('originOffer').value,
                 ctaSource: document.getElementById('ctaSource').value,
                 pageUrl: document.getElementById('pageUrl').value || window.location.href,
                 pageTitle: document.getElementById('pageTitle').value || document.title,
@@ -2371,29 +2375,3 @@
     </script>
 </body>
 </html>
-<script>
-  const scriptURL = "PASTE_YOUR_WEB_APP_URL_HERE";
-
-  async function submitLeadForm(formData) {
-    try {
-      const response = await fetch(scriptURL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        window.location.href = "https://your-booking-page.com";
-      } else {
-        alert("Something went wrong: " + result.message);
-      }
-    } catch (error) {
-      alert("Form submission failed");
-      console.error(error);
-    }
-  }
-</script>
