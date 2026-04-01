@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth bg-[#FBF6EC] text-zinc-600">
+<html lang="en" class="scroll-smooth text-zinc-600">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -68,15 +68,57 @@
     </script>
     <style>
         /* Premium Cream Light Theme Aesthetics */
-        body { -webkit-font-smoothing: antialiased; background-color: #FBF6EC; overflow-x: hidden; }
-        
-        ::selection { background: #B45309; color: white; }
+        /* 3D Redesign Base & Glassmorphism */
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-blur: 16px;
+        }
 
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        body.modal-open { height: 100vh; overflow: hidden; }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Luminous Edge Highlight */
+        .glass-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            z-index: 1;
+        }
+
+        .spatial-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            background-color: #FBF6EC; /* Move background here */
+            background-image: radial-gradient(circle at 50% 50%, #fffaf5 0%, #FBF6EC 100%);
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
+        .delay-100 { transition-delay: 150ms; }
+        .delay-200 { transition-delay: 300ms; }
+        .delay-300 { transition-delay: 450ms; }
+
+        /* Magnetic Button Base */
+        .btn-magnetic {
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            display: inline-block;
+        }
 
         /* Bento Card Styling */
         .bento-card {
@@ -589,14 +631,42 @@
         }
         @media (min-width: 640px) { .cs-modal-visual { border-radius: 2rem 2rem 0 0; } }
 
-        /* Dashboard SVG visuals */
-        .dash-bar { animation: dashGrow 1.2s cubic-bezier(0.16,1,0.3,1) forwards; transform-origin: bottom; }
-        @keyframes dashGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+        /* Custom Cursor */
+        .luxury-cursor {
+            width: 8px; height: 8px;
+            background: #B45309;
+            border-radius: 50%;
+            position: fixed;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+        }
+        .luxury-cursor-follower {
+            width: 40px; height: 40px;
+            border: 1px solid rgba(180, 83, 9, 0.3);
+            border-radius: 50%;
+            position: fixed;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease;
+        }
+        @media (max-width: 1024px) { .luxury-cursor, .luxury-cursor-follower { display: none; } }
+
+        /* Split-text animation utility */
+        .char { display: inline-block; }
     </style>
 </head>
 <body class="selection:bg-accent selection:text-white">
+    <div style="position:fixed; top:0; left:0; width:100%; height:3px; background:#B45309; z-index:10000;"></div>
+    
+    <canvas id="spatial-canvas" class="spatial-canvas" style="z-index:-5 !important;"></canvas>
+    <div class="luxury-cursor"></div>
+    <div class="luxury-cursor-follower"></div>
 
-    <div class="fixed inset-0 pointer-events-none z-[100] opacity-[0.03] mix-blend-multiply bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+    <div class="fixed inset-0 pointer-events-none z-[100] opacity-[0.03] mix-blend-multiply bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%20200%20200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cfilter%20id%3D%22noiseFilter%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.65%22%20numOctaves%3D%223%22%20stitchTiles%3D%22stitch%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23noiseFilter)%22%2F%3E%3C%2Fsvg%3E')]"></div>
 
     <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
         <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-amber-500/10 blur-[120px] ambient-blob-a"></div>
@@ -687,10 +757,10 @@
                 
                 <div class="reveal delay-300 flex flex-col items-center justify-center">
                     <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-[22rem] sm:max-w-none mx-auto">
-                        <button onclick="openBookingModal('hero_primary','Systems Audit')" class="cta-animated w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold transition-all shadow-[0_15px_30px_-10px_rgba(180,83,9,0.4)] hover:-translate-y-1 active:scale-95">
+                        <button onclick="openBookingModal('hero_primary','Systems Audit')" class="btn-magnetic cta-animated w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold transition-all shadow-[0_15px_30px_-10px_rgba(180,83,9,0.4)] hover:-translate-y-1 active:scale-95">
                             Book Your Systems Audit
                         </button>
-                        <a href="#friction" class="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border border-zinc-300 bg-white text-zinc-900 rounded-xl font-bold hover:bg-zinc-50 hover:border-zinc-400 transition-colors text-center shadow-sm">
+                        <a href="#friction" class="btn-magnetic w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border border-zinc-300 bg-white text-zinc-900 rounded-xl font-bold hover:bg-zinc-50 hover:border-zinc-400 transition-colors text-center shadow-sm">
                             Explore the Architecture
                         </a>
                     </div>
@@ -2128,13 +2198,61 @@
                     { value: '100%', label: 'Team adoption at week 4' },
                     { value: '0', label: 'Status check-in meetings' }
                 ],
-                tags: ['Cross-functional Coordination', 'Asana Portfolio Architecture', 'Executive Dashboards', 'Launch Operations']
+                tags: ['Cross-functional Coordination', 'Asana Portfolio Architecture', 'Executive Dashboards', 'Launch Operations'],
+                dashboardHtml: `
+                    <div class="w-full h-full flex flex-col p-6 font-sans">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center shadow-sm">
+                                    <i data-lucide="rocket" class="w-5 h-5 text-accent"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] font-black uppercase tracking-widest text-zinc-400">Campaign Readiness</div>
+                                    <div class="text-sm font-bold text-zinc-900">Holiday Launch Q4</div>
+                                </div>
+                            </div>
+                            <div class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-[10px] font-black text-emerald-600 uppercase tracking-widest shadow-sm">Live Status</div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="p-4 rounded-2xl bg-white border border-zinc-200 shadow-sm relative overflow-hidden group hover:border-accent transition-colors">
+                                <div class="text-[10px] font-bold text-zinc-400 uppercase mb-1">Blocker Resolution</div>
+                                <div class="text-2xl font-black text-zinc-900 leading-none mb-2">66%</div>
+                                <div class="flex items-center gap-1.5">
+                                    <svg class="w-12 h-4 text-emerald-500" viewBox="0 0 100 30" fill="none" stroke="currentColor" stroke-width="3" preserveAspectRatio="none"><path d="M0 25 Q 25 10, 50 15 T 100 5"/></svg>
+                                    <span class="text-[9px] font-bold text-emerald-600">+12% vs LY</span>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-white border border-zinc-200 shadow-sm hover:border-accent transition-colors">
+                                <div class="text-[10px] font-bold text-zinc-400 uppercase mb-1">Approval Velocity</div>
+                                <div class="text-2xl font-black text-zinc-900 leading-none mb-2">3.2d</div>
+                                <div class="w-full bg-zinc-100 h-1.5 rounded-full overflow-hidden mt-1">
+                                    <div class="bg-accent h-full w-[78%] rounded-full shadow-[0_0_8px_rgba(180,83,9,0.4)]"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-auto space-y-2">
+                             <div class="flex items-center justify-between p-3 rounded-xl bg-zinc-50 border border-zinc-100">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                                    <span class="text-xs font-bold text-zinc-700">Creative Production</span>
+                                </div>
+                                <span class="text-xs font-black text-zinc-900 uppercase">Complete</span>
+                             </div>
+                             <div class="flex items-center justify-between p-3 rounded-xl bg-orange-50 border border-orange-100">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
+                                    <span class="text-xs font-bold text-zinc-700">Ad Operations</span>
+                                </div>
+                                <span class="text-xs font-black text-accent uppercase">In Flow</span>
+                             </div>
+                        </div>
+                    </div>`
             },
             roostys: {
                 industry: 'Wellness',
                 client: "Roosty's",
                 headline: 'Scaling Wellness Supply Chain Operations & Sunsetting ClickUp for Roostys.',
-                logo: buildWordmarkDataUri(`Roosty's`, { bg: '#FFFBEB', text: '#18181B', border: '#FDE68A', accent: '#D97706' }),
+                logo: buildWordmarkDataUri('Roostys', { bg: '#FFFBEB', text: '#18181B', border: '#FDE68A', accent: '#D97706' }),
                 challenge: 'Revenue scaled past $10M/year but operations were fracturing. Tasks lived across ClickUp, Notion, email, and Slack simultaneously. Creative brief standardization was absent. Supply chain inventory had no executive visibility layer, and the ops team was running on tribal knowledge.',
                 solution: 'We unified all operational workstreams into a single Asana architecture — standardized creative intake briefs, built a live inventory & reorder tracker, migrated and closed ClickUp entirely, and deployed an ops playbook so the team could self-manage.',
                 results: [
@@ -2143,7 +2261,58 @@
                     { value: '3 Wks', label: 'Full migration timeline' },
                     { value: 'Live', label: 'Inventory visibility layer' }
                 ],
-                tags: ['Supply Chain Visibility', 'Tool Consolidation', 'SOP Deployment', 'Creative Brief System']
+                tags: ['Supply Chain Visibility', 'Tool Consolidation', 'SOP Deployment', 'Creative Brief System'],
+                dashboardHtml: `
+                    <div class="w-full h-full flex flex-col p-6 font-sans">
+                        <div class="flex items-center justify-between mb-8">
+                             <div>
+                                <div class="text-[10px] font-black uppercase tracking-widest text-zinc-400 mb-1">Global Inventory OS</div>
+                                <div class="text-sm font-extrabold text-zinc-900">Supply Chain Dashboard</div>
+                             </div>
+                             <div class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-white shadow-lg">
+                                <i data-lucide="database" class="w-5 h-5"></i>
+                             </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="p-5 rounded-2xl bg-white border border-zinc-200 shadow-sm relative group overflow-hidden">
+                                <div class="absolute top-0 right-0 p-3">
+                                    <div class="px-2 py-0.5 rounded bg-zinc-900 text-[8px] font-black text-white uppercase tracking-tighter">100% Migrated</div>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center">
+                                        <i data-lucide="refresh-cw" class="w-6 h-6 text-accent"></i>
+                                    </div>
+                                    <div class="flex-grow">
+                                        <div class="text-[10px] font-bold text-zinc-400 uppercase mb-1">ClickUp Migration Status</div>
+                                        <div class="text-base font-black text-zinc-900 leading-none">System Finalized</div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 w-full h-2 bg-zinc-100 rounded-full overflow-hidden">
+                                    <div class="bg-accent h-full w-full rounded-full shadow-[0_0_8px_rgba(180,83,9,0.3)]"></div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="p-4 rounded-2xl bg-white border border-zinc-200 shadow-sm flex flex-col items-center text-center">
+                                    <i data-lucide="layers" class="w-5 h-5 text-zinc-400 mb-2"></i>
+                                    <div class="text-lg font-black text-zinc-900">42</div>
+                                    <div class="text-[9px] font-bold text-zinc-500 uppercase tracking-widest">Active SOPs</div>
+                                </div>
+                                <div class="p-4 rounded-2xl bg-white border border-zinc-200 shadow-sm flex flex-col items-center text-center">
+                                    <i data-lucide="package-check" class="w-5 h-5 text-zinc-400 mb-2"></i>
+                                    <div class="text-lg font-black text-zinc-900">Real-Time</div>
+                                    <div class="text-[9px] font-bold text-zinc-500 uppercase tracking-widest">Stock Sync</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-auto pt-4 border-t border-dashed border-zinc-200 flex items-center justify-between">
+                            <span class="text-[10px] font-bold text-zinc-400 uppercase">System Integrity</span>
+                            <div class="flex gap-1">
+                                <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                            </div>
+                        </div>
+                    </div>`
             },
             pridola: {
                 industry: 'E-Commerce',
@@ -2158,7 +2327,45 @@
                     { value: '100%', label: 'Delegation structured' },
                     { value: '30d', label: 'Full system deployment' }
                 ],
-                tags: ['Asana Dashboards', 'Delegation Architecture', 'Automated Reporting', 'Meeting Elimination']
+                tags: ['Asana Dashboards', 'Delegation Architecture', 'Automated Reporting', 'Meeting Elimination'],
+                dashboardHtml: `
+                    <div class="w-full h-full flex flex-col p-6 font-sans">
+                        <div class="flex items-center gap-4 mb-8">
+                             <div class="w-12 h-12 rounded-2xl bg-zinc-950 flex items-center justify-center text-white shadow-xl rotate-3">
+                                <i data-lucide="eye" class="w-6 h-6 text-accent"></i>
+                             </div>
+                             <div>
+                                <div class="text-[10px] font-black uppercase tracking-widest text-zinc-400 mb-0.5">Exec Monitoring OS</div>
+                                <div class="text-base font-extrabold text-zinc-900 leading-tight">Operational Visibility Layer</div>
+                             </div>
+                        </div>
+                        <div class="grid grid-cols-5 gap-2 mb-6">
+                            <div class="h-10 rounded-lg bg-emerald-50 border border-emerald-100"></div>
+                            <div class="h-10 rounded-lg bg-emerald-50 border border-emerald-100"></div>
+                            <div class="h-10 rounded-lg bg-emerald-50 border border-emerald-100"></div>
+                            <div class="h-10 rounded-lg bg-emerald-100 border border-emerald-200"></div>
+                            <div class="h-10 rounded-lg bg-zinc-100 border border-zinc-200"></div>
+                        </div>
+                        <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-4 mb-4 flex items-center justify-between shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-white border border-zinc-200 flex items-center justify-center">
+                                    <i data-lucide="user-check" class="w-4 h-4 text-zinc-400"></i>
+                                </div>
+                                <span class="text-xs font-bold text-zinc-700">Accountability Gap</span>
+                            </div>
+                            <span class="text-xs font-black text-rose-500 uppercase tracking-widest">Solved</span>
+                        </div>
+                        <div class="mt-auto grid grid-cols-2 gap-4">
+                            <div class="p-4 rounded-2xl bg-[#FBF6EC] border border-orange-100 flex flex-col">
+                                <span class="text-[9px] font-black uppercase text-accent mb-2">Meetings Today</span>
+                                <span class="text-3xl font-black text-zinc-900">0</span>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-zinc-950 flex flex-col">
+                                <span class="text-[9px] font-black uppercase text-zinc-500 mb-2">Resolution Time</span>
+                                <span class="text-2xl font-black text-white">4.2h</span>
+                            </div>
+                        </div>
+                    </div>`
             }
         };
 
@@ -2169,19 +2376,26 @@
             closeMobileNav();
             const d = csData[key];
             if (!d) return;
+
             const resultsHTML = d.results.map(r =>
                 `<div class="text-center p-4 bg-[#FBF6EC] rounded-2xl">
                     <div class="text-3xl font-heading font-black text-gradient mb-1">${r.value}</div>
                     <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest font-bold">${r.label}</div>
                 </div>`
             ).join('');
+
             const tagsHTML = d.tags.map(t =>
                 `<span class="px-3 py-1 bg-zinc-100 border border-zinc-200 rounded-lg text-xs font-mono text-zinc-600 font-semibold">${t}</span>`
             ).join('');
+
+            const topVisualHTML = d.dashboardHtml || `
+                <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(180,83,9,0.10),transparent_60%)]"></div>
+                <img src="${d.logo}" class="relative z-10 h-auto max-h-[72px] w-40 object-contain opacity-90 sm:w-52 sm:max-h-[84px]" alt="${d.client} logo" loading="eager" decoding="async">
+            `;
+
             csPanel.innerHTML = `
-                <div class="cs-modal-visual">
-                    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(180,83,9,0.10),transparent_60%)]"></div>
-                    <img src="${d.logo}" class="relative z-10 h-auto max-h-[72px] w-40 object-contain opacity-90 sm:w-52 sm:max-h-[84px]" alt="${d.client} logo" loading="eager" decoding="async">
+                <div class="cs-modal-visual border-b border-zinc-100 min-h-[300px] flex items-center justify-center p-2">
+                    ${topVisualHTML}
                 </div>
                 <div class="p-7 sm:p-10">
                     <div class="flex flex-wrap gap-2 mb-5">
@@ -2231,31 +2445,295 @@
             card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') card.click(); });
         });
     </script>
+
+    <!-- ── 3D DESIGN STACK (GSAP + Three.js) ── -->
+    <script src="https://unpkg.com/three@0.170.0/build/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <script>
+        // ── THE SPATIAL REDESIGN ENGINE ──
+        window.onerror = function(msg, url, line) {
+            const errDiv = document.createElement('div');
+            errDiv.style = "position:fixed; bottom:0; left:0; background:red; color:white; padding:10px; z-index:10002; font-family:monospace;";
+            errDiv.innerText = "JS Error: " + msg + " at " + line;
+            document.body.appendChild(errDiv);
+        };
+
+        console.log("🚀 3D Engine: Initializing System...");
+        if (typeof THREE === 'undefined') {
+            console.error("❌ Three.js failed to load!");
+            alert("Three.js failed to load. Please check your internet connection or CDN permissions.");
+        }
+        gsap.registerPlugin(ScrollTrigger);
+
+        const canvas = document.getElementById('spatial-canvas');
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 7;
+
+        // Visual Accents: High Fidelity Lighting
+        const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffaf7b, 0.8);
+        scene.add(hemiLight);
+
+        const pointLight1 = new THREE.PointLight(0xB45309, 30);
+        pointLight1.position.set(5, 5, 5);
+        scene.add(pointLight1);
+
+        const pointLight2 = new THREE.PointLight(0xFDBA74, 25);
+        pointLight2.position.set(-5, -5, 5);
+        scene.add(pointLight2);
+
+        // Crystal Architecture: High Poly Icosahedrons
+        const coreGroup = new THREE.Group();
+        const pivotGroup = new THREE.Group(); // For mouse parallax
+        scene.add(pivotGroup);
+        pivotGroup.add(coreGroup);
+
+        const crystalMat = new THREE.MeshPhysicalMaterial({
+            color: 0xffffff,
+            metalness: 0.1,
+            roughness: 0.05,
+            transmission: 0.95,
+            thickness: 0.5,
+            ior: 1.5,
+            iridescence: 0.3,
+            iridescenceIOR: 1.3,
+            emissive: 0xB45309,
+            emissiveIntensity: 0.1
+        });
+
+        const nodes = [];
+        const nodeCount = 64; // Increased density
+        const geom = new THREE.IcosahedronGeometry(0.25, 0); // TRIPLED SIZE for visibility
+        
+        for (let i = 0; i < nodeCount; i++) {
+            const mesh = new THREE.Mesh(geom, crystalMat);
+            // Chaotic Initial Distribution with broader spread
+            mesh.position.set(
+                (Math.random() - 0.5) * 12,
+                (Math.random() - 0.5) * 12,
+                (Math.random() - 0.5) * 12
+            );
+            mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
+            coreGroup.add(mesh);
+            nodes.push(mesh);
+        }
+
+        // Connection Lines: Neural Web
+        const lineMat = new THREE.LineBasicMaterial({ 
+            color: 0xB45309, 
+            transparent: true, 
+            opacity: 0.1,
+            blending: THREE.AdditiveBlending 
+        });
+        let connectionLines = new THREE.LineSegments(new THREE.BufferGeometry(), lineMat);
+        scene.add(connectionLines);
+
+        function updateLines() {
+            const positions = [];
+            const threshold = 2.5;
+            for (let i = 0; i < nodes.length; i++) {
+                let count = 0;
+                for (let j = i + 1; j < nodes.length && count < 3; j++) { // Limit connections per node for performance
+                    const dist = nodes[i].position.distanceTo(nodes[j].position);
+                    if (dist < threshold) {
+                        positions.push(
+                            nodes[i].position.x, nodes[i].position.y, nodes[i].position.z,
+                            nodes[j].position.x, nodes[j].position.y, nodes[j].position.z
+                        );
+                        count++;
+                    }
+                }
+            }
+            connectionLines.geometry.dispose();
+            connectionLines.geometry = new THREE.BufferGeometry();
+            connectionLines.geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        }
+
+        // ── MOUSE INTERACTIVITY ──
+        let mouseX = 0, mouseY = 0;
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX - window.innerWidth / 2) / 100;
+            mouseY = (e.clientY - window.innerHeight / 2) / 100;
+        });
+
+        // ── SCROLL-TRIGGERED SYSTEM EVOLUTION ──
+        
+        // 1. Entrance Sequence
+        gsap.from(coreGroup.position, { z: -15, duration: 2.5, ease: "expo.out" });
+        gsap.from(nodes.map(n => n.scale), { x: 0, y: 0, z: 0, stagger: 0.01, duration: 2, ease: "back.out(2)" });
+
+        // 2. Section-Specific 3D Narratives
+        // Sequence: Chaos (Hero) -> Friction (Problem) -> Matrix (Build) -> Stability (Methodology)
+
+        // Hero to Friction: Increasing Chaos and Color Shift
+        gsap.to(crystalMat, {
+            scrollTrigger: {
+                trigger: "#friction",
+                start: "top bottom",
+                end: "top center",
+                scrub: true
+            },
+            emissiveIntensity: 0.8,
+            emissive: new THREE.Color(0xef4444), // Red for chaos/friction
+        });
+
+        // Friction to Build: Forming the Grid
+        nodes.forEach((node, i) => {
+            const gridX = ((i % 8) - 3.5) * 1.3;
+            const gridY = (Math.floor(i / 8) - 2.5) * 1.3;
+            const gridZ = 0;
+            
+            gsap.to(node.position, {
+                scrollTrigger: {
+                    trigger: "#system",
+                    start: "top bottom",
+                    end: "top top",
+                    scrub: 1.2
+                },
+                x: gridX,
+                y: gridY,
+                z: gridZ,
+                ease: "power2.inOut"
+            });
+
+            gsap.to(crystalMat, {
+                scrollTrigger: {
+                    trigger: "#system",
+                    start: "top center",
+                    end: "bottom center",
+                    scrub: true
+                },
+                emissiveIntensity: 0.2,
+                emissive: new THREE.Color(0xB45309), // Back to amber for clarity
+            });
+        });
+
+        // Global Rotation Dynamics
+        gsap.to(coreGroup.rotation, {
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 0.5
+            },
+            y: Math.PI * 4,
+            x: Math.PI * 0.5,
+            ease: "none"
+        });
+
+        // ── MAGNETIC BUTTONS & CURSOR ──
+        const cursor = document.querySelector('.luxury-cursor');
+        const follower = document.querySelector('.luxury-cursor-follower');
+        
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0, ease: "none" });
+            gsap.to(follower, { x: e.clientX - 20, y: e.clientY - 20, duration: 0.3, ease: "power2.out" });
+        });
+
+        document.querySelectorAll('.btn-magnetic, .cs-card, .logo-marquee-item').forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                gsap.to(el, { x: x * 0.2, y: y * 0.2, duration: 0.4, ease: "power2.out" });
+                gsap.to(follower, { scale: 1.4, borderColor: 'rgba(180, 83, 9, 0.5)', duration: 0.3 });
+            });
+            el.addEventListener('mouseleave', () => {
+                gsap.to(el, { x: 0, y: 0, duration: 0.8, ease: "elastic.out(1, 0.3)" });
+                gsap.to(follower, { scale: 1, borderColor: 'rgba(180, 83, 9, 0.3)', duration: 0.3 });
+            });
+        });
+
+        // ── STAGGERED TEXT REVEALS ──
+        const heroTitle = document.querySelector('h1');
+        if (heroTitle) {
+            const text = heroTitle.innerText;
+            heroTitle.innerHTML = text.split(' ').map(word => `<span class="char">${word}&nbsp;</span>`).join('');
+            gsap.from('.char', {
+                opacity: 0,
+                y: 50,
+                rotateX: -60,
+                stagger: 0.08,
+                duration: 1.5,
+                ease: "expo.out",
+                delay: 0.3
+            });
+        }
+
+        // Section Reveal Handlers
+        document.querySelectorAll('.reveal').forEach(el => {
+            ScrollTrigger.create({
+                trigger: el,
+                start: "top 92%",
+                onEnter: () => el.classList.add('active'),
+                onLeaveBack: () => el.classList.remove('active')
+            });
+        });
+
+        // Optimization: Reduce processing on mobile
+        const isMobile = window.innerWidth < 768;
+        if (isMobile) {
+            // Further reduce node count or complexity if needed
+        }
+
+        // Loop Dynamics
+        function loop() {
+            pivotGroup.rotation.y += (mouseX * 0.03 - pivotGroup.rotation.y) * 0.05;
+            pivotGroup.rotation.x += (mouseY * 0.03 - pivotGroup.rotation.x) * 0.05;
+
+            nodes.forEach((node, i) => {
+                node.position.y += Math.sin(Date.now() * 0.001 + i) * 0.0005;
+                node.rotation.x += 0.002;
+                node.rotation.y += 0.002;
+            });
+
+            updateLines();
+            renderer.render(scene, camera);
+            requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Fixed Modal Logic - Robust Body Lock
+        function lockScroll() {
+            window.lastScrollPos = window.scrollY;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${window.lastScrollPos}px`;
+            document.body.style.width = '100%';
+            gsap.to('.spatial-canvas', { filter: 'blur(10px)', duration: 0.5 });
+        }
+
+        function unlockScroll() {
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, window.lastScrollPos);
+            gsap.to('.spatial-canvas', { filter: 'blur(0px)', duration: 0.5 });
+        }
+
+        const _origOpen = openCaseStudy;
+        window.openCaseStudy = function(slug) {
+            lockScroll();
+            _origOpen(slug);
+        };
+
+        const _origClose = closeCaseStudy;
+        window.closeCaseStudy = function(e) {
+            if (e && e.target !== document.querySelector('.cs-modal-overlay') && !e.target.closest('button')) return;
+            unlockScroll();
+            _origClose(e);
+        };
+    </script>
 </body>
 </html>
-<script>
-  const scriptURL = "PASTE_YOUR_WEB_APP_URL_HERE";
-
-  async function submitLeadForm(formData) {
-    try {
-      const response = await fetch(scriptURL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        window.location.href = "https://your-booking-page.com";
-      } else {
-        alert("Something went wrong: " + result.message);
-      }
-    } catch (error) {
-      alert("Form submission failed");
-      console.error(error);
-    }
-  }
-</script>
