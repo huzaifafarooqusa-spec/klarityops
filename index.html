@@ -657,16 +657,25 @@
         .cs-card:hover .cs-read-more { gap: 0.7rem; }
 
 
+        .method-step, .cs-tab { cursor: pointer; }
+        .method-step .step-chev { color:#d4d4d8; transition: color 0.2s, transform 0.2s; }
+        .method-step:hover .step-chev { color:#B45309; transform: translateX(3px); }
+        .method-step.active .step-chev { color:#B45309; }
         .method-step .step-dot { background:#fff; border-color:#e4e4e7; color:#a1a1aa; }
         .method-step .step-eyebrow { color:#a1a1aa; }
         .method-step:hover { background:#fafafa; }
         .method-step.active { background:#FFF7ED; }
         .method-step.active .step-dot { background:#B45309; border-color:#B45309; color:#fff; box-shadow:0 8px 18px -6px rgba(180,83,9,0.5); }
         .method-step.active .step-eyebrow { color:#B45309; }
+.method-acc { display:none; }
+        .method-acc.active { display:block; animation: csFade 0.3s ease; }
+        @media (min-width:1024px){ .method-acc { display:none !important; } }
         .method-panel { display:none; }
         .method-panel.active { display:block; animation: csFade 0.35s ease; }
         /* ── Case Study Browser ── */
-        .cs-tab { background:#fff; border-color:#e4e4e7; color:#71717a; }
+        .cs-tab { background:#fff; border-color:#e4e4e7; color:#71717a; flex-shrink:0; white-space:nowrap; }
+        .no-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
+        .no-scrollbar::-webkit-scrollbar { display:none; }
         .cs-tab:hover { border-color:#B45309; color:#18181b; }
         .cs-tab.active { background:#18181b; border-color:#18181b; color:#fff; box-shadow:0 8px 20px -8px rgba(24,24,27,0.4); }
         .cs-panel { display:none; }
@@ -1036,6 +1045,7 @@
                 <div class="reveal grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.5fr)] gap-8 lg:gap-12 items-start" id="method-stepper">
                     <!-- stepper -->
                     <div class="space-y-1">
+                        <div class="px-4 pb-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 flex items-center gap-2"><i data-lucide="mouse-pointer-click" class="w-3.5 h-3.5 text-accent"></i>Click a stage to explore</div>
                         <button onclick="methodTab('1')" data-mstep="1" class="method-step active relative w-full text-left flex items-start gap-4 p-4 rounded-2xl transition-all">
                             <span class="method-rail absolute left-[1.45rem] top-12 bottom-0 w-px bg-zinc-200"></span>
                             <span class="step-dot relative z-10 w-12 h-12 rounded-full border-2 flex items-center justify-center font-mono text-sm font-bold shrink-0 transition-all">01</span>
@@ -1043,7 +1053,28 @@
                                 <span class="block font-mono text-[10px] font-bold uppercase tracking-[0.2em] step-eyebrow transition-colors">Stage 01 · Clarity</span>
                                 <span class="block font-heading text-base font-bold text-zinc-900 leading-snug mt-1">Map before you build.</span>
                             </span>
+                        <svg class="step-chev ml-auto self-center shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
                         </button>
+                        <div class="method-acc lg:hidden active" data-macc="1">
+                            <div class="bento-card rounded-2xl bg-white p-5 mt-1 mb-3">
+                            <h3 class="font-heading text-2xl md:text-3xl font-extrabold text-zinc-900 mb-3">Map before you build.</h3>
+                            <p class="text-zinc-600 leading-relaxed mb-7">We learn how the business actually runs, and where it breaks, before we touch the tool. The tool is the easy part.</p>
+                            <div class="grid sm:grid-cols-2 gap-3">
+                            <div class="flex items-start gap-3.5 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
+                                <div class="w-9 h-9 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="git-merge" class="w-4 h-4 text-accent"></i></div>
+                                <div><div class="font-heading text-sm font-bold text-zinc-900 leading-tight">Workstream Map</div><div class="text-xs text-zinc-500 leading-snug mt-1">Every active workstream documented, end to end, no more plans living in someone's head.</div></div>
+                            </div>
+                            <div class="flex items-start gap-3.5 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
+                                <div class="w-9 h-9 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="users" class="w-4 h-4 text-accent"></i></div>
+                                <div><div class="font-heading text-sm font-bold text-zinc-900 leading-tight">Ownership Audit</div><div class="text-xs text-zinc-500 leading-snug mt-1">Where ownership is ambiguous, we surface it and assign a single accountable name.</div></div>
+                            </div>
+                            <div class="flex items-start gap-3.5 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
+                                <div class="w-9 h-9 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="alert-triangle" class="w-4 h-4 text-accent"></i></div>
+                                <div><div class="font-heading text-sm font-bold text-zinc-900 leading-tight">Escalation Diagnosis</div><div class="text-xs text-zinc-500 leading-snug mt-1">We pinpoint exactly where handoffs drop and escalations break under load.</div></div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
                         <button onclick="methodTab('2')" data-mstep="2" class="method-step relative w-full text-left flex items-start gap-4 p-4 rounded-2xl transition-all">
                             <span class="method-rail absolute left-[1.45rem] top-12 bottom-0 w-px bg-zinc-200"></span>
                             <span class="step-dot relative z-10 w-12 h-12 rounded-full border-2 flex items-center justify-center font-mono text-sm font-bold shrink-0 transition-all">02</span>
@@ -1051,7 +1082,36 @@
                                 <span class="block font-mono text-[10px] font-bold uppercase tracking-[0.2em] step-eyebrow transition-colors">Stage 02 · Control</span>
                                 <span class="block font-heading text-base font-bold text-zinc-900 leading-snug mt-1">Install the infrastructure.</span>
                             </span>
+                        <svg class="step-chev ml-auto self-center shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
                         </button>
+                        <div class="method-acc lg:hidden" data-macc="2">
+                            <div class="bento-card rounded-2xl bg-white p-5 mt-1 mb-3">
+                            <h3 class="font-heading text-2xl md:text-3xl font-extrabold text-zinc-900 mb-3">Install the infrastructure.</h3>
+                            <p class="text-zinc-600 leading-relaxed mb-7">The build stage. We engineer and deploy the structural components of your operating system, directly inside your Asana workspace.</p>
+                            <div class="grid sm:grid-cols-2 gap-3">
+                            <div class="flex items-start gap-3.5 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
+                                <div class="w-9 h-9 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="network" class="w-4 h-4 text-accent"></i></div>
+                                <div><div class="font-heading text-sm font-bold text-zinc-900 leading-tight">Asana IA Master</div><div class="text-xs text-zinc-500 leading-snug mt-1">Logical portfolios, naming conventions, custom fields. One source of truth your team actually adopts.</div></div>
+                            </div>
+                            <div class="flex items-start gap-3.5 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
+                                <div class="w-9 h-9 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="git-merge" class="w-4 h-4 text-accent"></i></div>
+                                <div><div class="font-heading text-sm font-bold text-zinc-900 leading-tight">Workflow Architecture</div><div class="text-xs text-zinc-500 leading-snug mt-1">Intake forms, approval gates, and deterministic handoffs. Assets ship on time, every time.</div></div>
+                            </div>
+                            <div class="flex items-start gap-3.5 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
+                                <div class="w-9 h-9 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="zap" class="w-4 h-4 text-accent"></i></div>
+                                <div><div class="font-heading text-sm font-bold text-zinc-900 leading-tight">Automations & Rules</div><div class="text-xs text-zinc-500 leading-snug mt-1">Recurring work that reminds itself, and meetings that turn into tracked, owned tasks.</div></div>
+                            </div>
+                            <div class="flex items-start gap-3.5 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
+                                <div class="w-9 h-9 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="layout-dashboard" class="w-4 h-4 text-accent"></i></div>
+                                <div><div class="font-heading text-sm font-bold text-zinc-900 leading-tight">Visibility Dashboards</div><div class="text-xs text-zinc-500 leading-snug mt-1">Live capacity, velocity, and blocker telemetry for leadership, no status-chasing.</div></div>
+                            </div>
+                            <div class="flex items-start gap-3.5 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
+                                <div class="w-9 h-9 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="target" class="w-4 h-4 text-accent"></i></div>
+                                <div><div class="font-heading text-sm font-bold text-zinc-900 leading-tight">KPI & OKR Cadence</div><div class="text-xs text-zinc-500 leading-snug mt-1">Defined metrics, named owners, and a documented weekly review rhythm.</div></div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
                         <button onclick="methodTab('3')" data-mstep="3" class="method-step relative w-full text-left flex items-start gap-4 p-4 rounded-2xl transition-all">
                             
                             <span class="step-dot relative z-10 w-12 h-12 rounded-full border-2 flex items-center justify-center font-mono text-sm font-bold shrink-0 transition-all">03</span>
@@ -1059,14 +1119,35 @@
                                 <span class="block font-mono text-[10px] font-bold uppercase tracking-[0.2em] step-eyebrow transition-colors">Stage 03 · Compounding</span>
                                 <span class="block font-heading text-base font-bold text-zinc-900 leading-snug mt-1">It gets stronger after we leave.</span>
                             </span>
+                        <svg class="step-chev ml-auto self-center shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
                         </button>
+                        <div class="method-acc lg:hidden" data-macc="3">
+                            <div class="bento-card rounded-2xl bg-white p-5 mt-1 mb-3">
+                            <h3 class="font-heading text-2xl md:text-3xl font-extrabold text-zinc-900 mb-3">It gets stronger after we leave.</h3>
+                            <p class="text-zinc-600 leading-relaxed mb-7">Founder dependency drops by design. The tenth launch runs smoother than the first, without us in the room.</p>
+                            <div class="grid sm:grid-cols-2 gap-3">
+                            <div class="flex items-start gap-3.5 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
+                                <div class="w-9 h-9 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="book-open-check" class="w-4 h-4 text-accent"></i></div>
+                                <div><div class="font-heading text-sm font-bold text-zinc-900 leading-tight">Operations Playbook</div><div class="text-xs text-zinc-500 leading-snug mt-1">A centralized SOP library for every repeatable process, cutting onboarding time by 80%.</div></div>
+                            </div>
+                            <div class="flex items-start gap-3.5 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
+                                <div class="w-9 h-9 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="graduation-cap" class="w-4 h-4 text-accent"></i></div>
+                                <div><div class="font-heading text-sm font-bold text-zinc-900 leading-tight">Role-Based Training</div><div class="text-xs text-zinc-500 leading-snug mt-1">Every person trained for the seat they sit in, to four levels of fluency. <a href="#training" class="text-accent font-semibold hover:underline">See how &darr;</a></div></div>
+                            </div>
+                            <div class="flex items-start gap-3.5 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
+                                <div class="w-9 h-9 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="layers" class="w-4 h-4 text-accent"></i></div>
+                                <div><div class="font-heading text-sm font-bold text-zinc-900 leading-tight">Phased Rollout</div><div class="text-xs text-zinc-500 leading-snug mt-1">Shipped in stages your team can absorb, not dumped on them all at once.</div></div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
                         <div class="mt-5 ml-4 flex items-center gap-2.5 text-xs font-semibold text-zinc-500">
                             <i data-lucide="key" class="w-3.5 h-3.5 text-accent shrink-0"></i> Built in your workspace. Yours forever.
                         </div>
                     </div>
 
                     <!-- detail panel -->
-                    <div class="bento-card rounded-3xl bg-white p-7 md:p-10 min-h-[24rem]">
+                    <div class="hidden lg:block bento-card rounded-3xl bg-white p-7 md:p-10 min-h-[24rem]">
                         <div class="method-panel active" data-mpanel="1">
                             <h3 class="font-heading text-2xl md:text-3xl font-extrabold text-zinc-900 mb-3">Map before you build.</h3>
                             <p class="text-zinc-600 leading-relaxed mb-7">We learn how the business actually runs, and where it breaks, before we touch the tool. The tool is the easy part.</p>
@@ -1293,9 +1374,10 @@
                 </div>
 
                 <!-- ── Case Study Browser ── -->
-                <div class="reveal" id="cs-browser">
+                <div class="reveal scroll-mt-28" id="cs-browser">
                     <!-- tabs -->
-                    <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10" role="tablist" aria-label="Case studies">
+                    <div class="text-center mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400"><i data-lucide="mouse-pointer-click" class="w-3.5 h-3.5 text-accent inline-block align-[-2px] mr-1.5"></i>Select a client</div>
+                    <div class="cs-tabbar flex lg:flex-wrap lg:justify-center gap-2 sm:gap-3 mb-10 overflow-x-auto lg:overflow-visible no-scrollbar sticky lg:static top-[4.75rem] z-30 py-2.5 lg:py-0 -mx-5 px-5 lg:mx-0 lg:px-0 bg-white/92 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-0" role="tablist" aria-label="Case studies">
                         <button onclick="csTab('sola')" data-cstab="sola" class="cs-tab active px-5 py-2.5 rounded-full border text-sm font-bold font-mono uppercase tracking-widest transition-all">Solawave</button>
                         <button onclick="csTab('roos')" data-cstab="roos" class="cs-tab px-5 py-2.5 rounded-full border text-sm font-bold font-mono uppercase tracking-widest transition-all">Roosty's</button>
                         <button onclick="csTab('prid')" data-cstab="prid" class="cs-tab px-5 py-2.5 rounded-full border text-sm font-bold font-mono uppercase tracking-widest transition-all">Pridola</button>
@@ -1328,6 +1410,12 @@
                                 </div>
                                 <blockquote class="border-l-[3px] border-accent pl-4 text-sm italic text-zinc-600 leading-relaxed">"Before KlarityOps, every team ran on its own logic and I genuinely had no idea what was happening day to day. Now I open one dashboard and the whole company is right there."</blockquote>
                             </div>
+                            <div class="lg:hidden px-6 pb-6 -mt-2">
+                                <button onclick="csNext('roos')" class="w-full flex items-center justify-between px-5 py-4 rounded-2xl bg-zinc-900 text-white font-heading font-bold text-sm active:scale-[0.99] transition-transform">
+                                    <span><span class="block text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-zinc-400 mb-0.5">Next case study</span>Roosty's</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </button>
+                            </div>
                         </div>
 
                         <div class="cs-panel lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]" data-cspanel="roos">
@@ -1352,6 +1440,12 @@
                                     <div class="bg-white rounded-2xl border border-zinc-200 p-5 text-center"><div class="font-heading text-3xl font-black text-gradient">1 Hub</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 mt-1">Centralized execution</div></div>
                                 </div>
                                 <blockquote class="border-l-[3px] border-accent pl-4 text-sm italic text-zinc-600 leading-relaxed">"We had everything scattered across four tools and about a hundred Slack threads. KlarityOps pulled all of it into one place in three weeks."</blockquote>
+                            </div>
+                            <div class="lg:hidden px-6 pb-6 -mt-2">
+                                <button onclick="csNext('prid')" class="w-full flex items-center justify-between px-5 py-4 rounded-2xl bg-zinc-900 text-white font-heading font-bold text-sm active:scale-[0.99] transition-transform">
+                                    <span><span class="block text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-zinc-400 mb-0.5">Next case study</span>Pridola</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </button>
                             </div>
                         </div>
 
@@ -1378,6 +1472,12 @@
                                 </div>
                                 <blockquote class="border-l-[3px] border-accent pl-4 text-sm italic text-zinc-600 leading-relaxed">"We deleted our weekly status meeting and never looked back. Everything I used to chase people for just... shows up on the dashboard now."</blockquote>
                             </div>
+                            <div class="lg:hidden px-6 pb-6 -mt-2">
+                                <button onclick="csNext('bnb')" class="w-full flex items-center justify-between px-5 py-4 rounded-2xl bg-zinc-900 text-white font-heading font-bold text-sm active:scale-[0.99] transition-transform">
+                                    <span><span class="block text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-zinc-400 mb-0.5">Next case study</span>Black &amp; Black</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </button>
+                            </div>
                         </div>
 
                         <div class="cs-panel lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]" data-cspanel="bnb">
@@ -1402,6 +1502,12 @@
                                     <div class="bg-white rounded-2xl border border-zinc-200 p-5 text-center"><div class="font-heading text-3xl font-black text-gradient">Optimal</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 mt-1">Project workflows</div></div>
                                 </div>
                                 <blockquote class="border-l-[3px] border-accent pl-4 text-sm italic text-zinc-600 leading-relaxed">"Our delivery used to be held together with willpower and late nights. KlarityOps gave us a system the whole team actually uses. We ship cleaner and faster now, without the chaos."</blockquote>
+                            </div>
+                            <div class="lg:hidden px-6 pb-6 -mt-2">
+                                <button onclick="csNext('sola')" class="w-full flex items-center justify-between px-5 py-4 rounded-2xl bg-zinc-900 text-white font-heading font-bold text-sm active:scale-[0.99] transition-transform">
+                                    <span><span class="block text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-zinc-400 mb-0.5">Next case study</span>Solawave</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -2471,8 +2577,12 @@
 
 
         function methodTab(n) {
-            document.querySelectorAll('#method-stepper .method-step').forEach(b => b.classList.toggle('active', b.dataset.mstep === n));
+            const isMobile = window.matchMedia('(max-width: 1023px)').matches;
+            const acc = document.querySelector('#method-stepper .method-acc[data-macc="' + n + '"]');
+            const willCollapse = isMobile && acc && acc.classList.contains('active');
+            document.querySelectorAll('#method-stepper .method-step').forEach(b => b.classList.toggle('active', !willCollapse && b.dataset.mstep === n));
             document.querySelectorAll('#method-stepper .method-panel').forEach(p => p.classList.toggle('active', p.dataset.mpanel === n));
+            document.querySelectorAll('#method-stepper .method-acc').forEach(a => a.classList.toggle('active', !willCollapse && a.dataset.macc === n));
             if (window.lucide) lucide.createIcons();
         }
         function csTab(key) {
@@ -2480,6 +2590,40 @@
             document.querySelectorAll('#cs-browser .cs-panel').forEach(p => p.classList.toggle('active', p.dataset.cspanel === key));
             if (window.lucide) lucide.createIcons();
         }
+
+        function csNext(key) {
+            csTab(key);
+            document.getElementById('cs-browser').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Auto-advance tabs/steps until first interaction (desktop, motion-safe only)
+        function setupAutoCycle(rootSel, keys, applyFn) {
+            const root = document.querySelector(rootSel);
+            if (!root) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            if (window.matchMedia('(max-width: 1023px)').matches) return;
+            let i = 0, stopped = false, hovered = false, timer = null;
+            root.addEventListener('pointerdown', () => { stopped = true; if (timer) { clearInterval(timer); timer = null; } }, { capture: true });
+            root.addEventListener('mouseenter', () => hovered = true);
+            root.addEventListener('mouseleave', () => hovered = false);
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (stopped) { io.disconnect(); return; }
+                    if (e.isIntersecting && !timer) {
+                        timer = setInterval(() => {
+                            if (stopped || hovered) return;
+                            i = (i + 1) % keys.length;
+                            applyFn(keys[i]);
+                        }, 5000);
+                    } else if (!e.isIntersecting && timer) {
+                        clearInterval(timer); timer = null;
+                    }
+                });
+            }, { threshold: 0.35 });
+            io.observe(root);
+        }
+        setupAutoCycle('#method-stepper', ['1','2','3'], methodTab);
+        setupAutoCycle('#cs-browser', ['sola','roos','prid','bnb'], csTab);
         // ── Case Study Modal Logic ──
         const csData = {
             solawave: {
