@@ -890,6 +890,12 @@
         .csa-stage{position:absolute;left:0;top:0;width:600px;height:338px;transform-origin:top left;transform:scale(var(--s,.61));}
         @media (prefers-reduced-motion:reduce){.csa-stage *{animation:none !important;}}
 
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #FBF6EC; }
+        ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #B45309; }
+
         /* Custom Cursor Styles */
         @media (pointer: fine) {
             body { cursor: none; }
@@ -908,6 +914,7 @@
     </style>
 </head>
 <body class="selection:bg-accent selection:text-white">
+    <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-accent z-[9999] transition-all duration-75 pointer-events-none" style="width: 0%;"></div>
 
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-5 focus:py-3 focus:rounded-xl focus:bg-zinc-900 focus:text-white focus:font-bold focus:text-sm focus:shadow-xl">Skip to content</a>
 
@@ -2945,6 +2952,17 @@
             }, { threshold: 0.5 });
             
             counters.forEach(counter => countObserver.observe(counter));
+
+            // Scroll Progress Bar Logic
+            const progressBar = document.getElementById('scroll-progress');
+            if (progressBar) {
+                window.addEventListener('scroll', () => {
+                    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const scrolled = (winScroll / height) * 100;
+                    progressBar.style.width = scrolled + "%";
+                }, { passive: true });
+            }
         });
 
         function openCaseStudy(key) {
