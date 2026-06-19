@@ -140,8 +140,8 @@
         
         ::selection { background: #B45309; color: white; }
 
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal { opacity: 0; transform: translate3d(0, 24px, 0) scale(0.98); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: opacity, transform; }
+        .reveal.active { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
         .delay-100 { transition-delay: 100ms; }
         .delay-200 { transition-delay: 200ms; }
         .delay-300 { transition-delay: 300ms; }
@@ -150,13 +150,15 @@
         .bento-card {
             background: #ffffff;
             border: 1px solid #e4e4e7; /* zinc-200 */
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+            will-change: transform, box-shadow;
+            transform: translateZ(0); /* force hardware acceleration */
         }
         .bento-card:hover { 
             border-color: #d4d4d8; /* zinc-300 */
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            transform: translate3d(0, -6px, 0) scale(1.01);
+            box-shadow: 0 24px 32px -8px rgba(180, 83, 9, 0.06), 0 12px 16px -4px rgba(180, 83, 9, 0.03);
         }
 
         /* Nav pill Light */
@@ -434,9 +436,25 @@
             will-change: transform;
         }
 
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .grid-mask-parent { overflow: hidden; position: relative; }
+        @keyframes gridMove {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(4rem, 4rem, 0); }
+        }
+
         @keyframes floatY {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(0, -8px, 0); }
         }
         @keyframes driftA {
             0%, 100% { transform: translate3d(0,0,0) scale(1); }
@@ -468,10 +486,11 @@
             position: absolute;
             inset: -20%;
             background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.28) 50%, transparent 65%);
-            transform: translateX(-135%);
+            transform: translate3d(-135%, 0, 0);
             animation: shine 6.8s linear infinite;
             pointer-events: none;
             z-index: 0;
+            will-change: transform;
         }
         .cta-animated > * { position: relative; z-index: 1; }
 
@@ -867,6 +886,22 @@
         .csa-host{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;}
         .csa-stage{position:absolute;left:0;top:0;width:600px;height:338px;transform-origin:top left;transform:scale(var(--s,.61));}
         @media (prefers-reduced-motion:reduce){.csa-stage *{animation:none !important;}}
+
+        /* Custom Cursor Styles */
+        @media (pointer: fine) {
+            body { cursor: none; }
+            a, button, [role="button"], input, select, textarea { cursor: none; }
+            #custom-cursor {
+                position: fixed; top: 0; left: 0; width: 14px; height: 14px;
+                background: #B45309; border-radius: 50%; pointer-events: none;
+                z-index: 9999; transform: translate(-50%, -50%);
+                transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1), height 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border 0.2s ease;
+            }
+            #custom-cursor.hovering {
+                width: 44px; height: 44px; background: rgba(180, 83, 9, 0.1);
+                border: 1px solid rgba(180, 83, 9, 0.5); backdrop-filter: blur(2px);
+            }
+        }
     </style>
 </head>
 <body class="selection:bg-accent selection:text-white">
@@ -926,10 +961,6 @@
                 <a href="#roadmap" onclick="closeMobileNav()" class="mobile-nav-link">
                     <span>Roadmap</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-                    <span>Training</span>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
                 <a href="#case-studies" onclick="closeMobileNav()" class="mobile-nav-link">
                     <span>Case Studies</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -954,8 +985,10 @@
     </div>
 
     <main id="main-content">
-    <div id="view-home" class="view active relative z-0">
-        <div class="absolute top-0 left-0 w-full h-[110vh] bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_40%,transparent_100%)] pointer-events-none z-[-1]"></div>
+    <div id="view-home" class="view active relative z-0 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-[110vh] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_40%,transparent_100%)] pointer-events-none z-[-1]">
+             <div class="absolute -inset-[4rem] bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:4rem_4rem]" style="animation: gridMove 25s linear infinite; will-change: transform;"></div>
+        </div>
 
         <section id="home" class="min-h-[100svh] sm:min-h-[100vh] flex flex-col items-center justify-center pt-36 sm:pt-40 pb-10 sm:pb-24 px-5 sm:px-6 relative">
             <div class="max-w-5xl mx-auto w-full text-center">
@@ -2073,25 +2106,21 @@
             </div>
         </section>
 
-        <footer class="py-20 sm:py-24 px-5 sm:px-6 border-t border-zinc-200 bg-white">
-            <div class="max-w-6xl mx-auto grid gap-10 md:grid-cols-[minmax(0,1.2fr)_auto_auto] md:items-center">
-                <div class="text-center md:text-left">
-                    <a href="./" onclick="showView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" aria-label="Klarity Ops homepage" class="inline-flex items-center gap-1 font-heading font-extrabold text-3xl text-zinc-900 tracking-tighter">
-                        Klarity<span class="text-accent italic">Ops</span><span class="text-zinc-400">.</span>
-                    </a>
-                    <p class="mt-3 max-w-md text-sm leading-relaxed text-zinc-500 md:text-base">
-                        Fractional BizOps systems and Asana architecture for scaling D2C brands.
-                    </p>
-                </div>
-                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-bold uppercase tracking-[0.18em] text-zinc-500 md:justify-start">
+        <footer class="py-8 px-5 sm:px-6 border-t border-zinc-200 bg-white">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+                <a href="./" onclick="showView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" aria-label="Klarity Ops homepage" class="inline-flex items-center gap-1 font-heading font-extrabold text-xl text-zinc-900 tracking-tighter hover:opacity-80 transition-opacity shrink-0">
+                    Klarity<span class="text-accent italic">Ops</span><span class="text-zinc-400">.</span>
+                </a>
+                
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] sm:text-xs font-bold uppercase tracking-[0.15em] text-zinc-500 flex-grow md:justify-center">
                     <a href="#friction" onclick="showView('home')" class="hover:text-zinc-900 transition-colors">Problem</a>
-                    <a href="#system" onclick="showView('home')" class="hover:text-zinc-900 transition-colors">Build</a>
+                    <a href="#system" onclick="showView('home')" class="hover:text-zinc-900 transition-colors">Method</a>
                     <a href="#engagement" onclick="showView('home')" class="hover:text-zinc-900 transition-colors">Pricing</a>
                     <a href="https://portfolio.klarityops.com" target="_blank" rel="noopener" class="hover:text-zinc-900 transition-colors">Portfolio</a>
-                    <a href="#" onclick="openBookingModal('footer_audit_form','Systems Audit & Roadmap'); return false;" class="hover:text-zinc-900 transition-colors">Book Audit</a>
                 </div>
-                <div class="text-center md:text-right text-sm text-zinc-500 font-mono font-medium">
-                    <div>&copy; 2026 Klarity Ops.</div>
+                
+                <div class="text-center md:text-right text-[11px] sm:text-xs text-zinc-500 font-mono font-medium shrink-0">
+                    &copy; 2026 Klarity Ops.
                 </div>
             </div>
         </footer>
@@ -2849,6 +2878,43 @@
 
         const csOverlay = document.getElementById('cs-modal');
         const csPanel = document.getElementById('cs-modal-panel');
+
+        // Custom Cursor Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.matchMedia("(pointer: fine)").matches) {
+                const cursor = document.createElement('div');
+                cursor.id = 'custom-cursor';
+                document.body.appendChild(cursor);
+                
+                document.addEventListener('mousemove', e => {
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                });
+                
+                const addHover = () => cursor.classList.add('hovering');
+                const removeHover = () => cursor.classList.remove('hovering');
+                
+                const attachCursorEvents = () => {
+                    document.querySelectorAll('a, button, [role="button"], input, select, textarea, .cs-card').forEach(el => {
+                        el.addEventListener('mouseenter', addHover);
+                        el.addEventListener('mouseleave', removeHover);
+                    });
+                };
+                attachCursorEvents();
+                // Re-attach if DOM changes (optional, useful for modals)
+                const observer = new MutationObserver(attachCursorEvents);
+                observer.observe(document.body, { childList: true, subtree: true });
+            }
+        });
+
+        // Swap Team and Testimonials Sections
+        document.addEventListener("DOMContentLoaded", function() {
+            const teamSection = document.getElementById("team-section");
+            const testimonialsSection = document.getElementById("testimonials");
+            if (teamSection && testimonialsSection && teamSection.parentNode === testimonialsSection.parentNode) {
+                testimonialsSection.parentNode.insertBefore(teamSection, testimonialsSection);
+            }
+        });
 
         function openCaseStudy(key) {
             closeMobileNav();
