@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth bg-[#FBF6EC] text-zinc-600">
 <head>
@@ -822,6 +823,50 @@
         /* Dashboard SVG visuals */
         .dash-bar { animation: dashGrow 1.2s cubic-bezier(0.16,1,0.3,1) forwards; transform-origin: bottom; }
         @keyframes dashGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+        /* ── Animated case-study visuals v2 (staggered, connectors, glow; 9s) ── */
+        /* Solawave */
+        @keyframes ksHub{0%,38%{opacity:0;transform:translateY(-8px) scale(.92)}54%,82%{opacity:1;transform:translateY(0) scale(1)}94%,100%{opacity:0;transform:translateY(-8px) scale(.92)}}
+        @keyframes ksGlow{0%,54%{box-shadow:0 10px 26px -14px rgba(180,83,9,0)}68%{box-shadow:0 14px 34px -10px rgba(180,83,9,.5)}82%{box-shadow:0 10px 26px -14px rgba(180,83,9,.18)}100%{box-shadow:0 10px 26px -14px rgba(180,83,9,0)}}
+        @keyframes ksBar{0%,58%{transform:scaleX(0)}76%,82%{transform:scaleX(1)}94%,100%{transform:scaleX(0)}}
+        @keyframes ksDot{0%,52%{opacity:.25;transform:scale(.8)}64%{opacity:1;transform:scale(1)}82%{opacity:1}90%,100%{opacity:.25;transform:scale(.8)}}
+        @keyframes ksChipA{0%,8%{opacity:0;transform:translateY(72px) scale(.92)}24%,82%{opacity:1;transform:translateY(0) scale(1)}96%,100%{opacity:0;transform:translateY(72px) scale(.92)}}
+        @keyframes ksChipB{0%,13%{opacity:0;transform:translateY(72px) scale(.92)}29%,82%{opacity:1;transform:translateY(0) scale(1)}96%,100%{opacity:0;transform:translateY(72px) scale(.92)}}
+        @keyframes ksChipC{0%,18%{opacity:0;transform:translateY(72px) scale(.92)}34%,82%{opacity:1;transform:translateY(0) scale(1)}96%,100%{opacity:0;transform:translateY(72px) scale(.92)}}
+        @keyframes ksDraw{0%,32%{stroke-dashoffset:1;opacity:0}38%{opacity:1}52%,82%{stroke-dashoffset:0;opacity:1}92%{opacity:1}96%,100%{stroke-dashoffset:1;opacity:0}}
+        /* Roosty's */
+        @keyframes krHub{0%,30%{opacity:0;transform:scale(.84)}46%,82%{opacity:1;transform:scale(1)}94%,100%{opacity:0;transform:scale(.84)}}
+        @keyframes krGlow{0%,64%{box-shadow:0 10px 26px -14px rgba(180,83,9,0)}74%{box-shadow:0 16px 38px -10px rgba(180,83,9,.55)}86%{box-shadow:0 10px 26px -14px rgba(180,83,9,.18)}100%{box-shadow:0 10px 26px -14px rgba(180,83,9,0)}}
+        @keyframes krBar{0%,62%{transform:scaleX(0)}78%,82%{transform:scaleX(1)}94%,100%{transform:scaleX(0)}}
+        @keyframes krToolA{0%,8%{opacity:0;transform:translate(-26px,-26px) scale(.9)}26%,56%{opacity:1;transform:translate(0,0) scale(1)}76%,82%{opacity:0;transform:translate(190px,108px) scale(.35)}94%,100%{opacity:0;transform:translate(-26px,-26px) scale(.9)}}
+        @keyframes krToolB{0%,11%{opacity:0;transform:translate(26px,-26px) scale(.9)}29%,56%{opacity:1;transform:translate(0,0) scale(1)}76%,82%{opacity:0;transform:translate(-190px,108px) scale(.35)}94%,100%{opacity:0;transform:translate(26px,-26px) scale(.9)}}
+        @keyframes krToolC{0%,14%{opacity:0;transform:translate(-26px,26px) scale(.9)}32%,56%{opacity:1;transform:translate(0,0) scale(1)}76%,82%{opacity:0;transform:translate(190px,-108px) scale(.35)}94%,100%{opacity:0;transform:translate(-26px,26px) scale(.9)}}
+        @keyframes krToolD{0%,17%{opacity:0;transform:translate(26px,26px) scale(.9)}35%,56%{opacity:1;transform:translate(0,0) scale(1)}76%,82%{opacity:0;transform:translate(-190px,-108px) scale(.35)}94%,100%{opacity:0;transform:translate(26px,26px) scale(.9)}}
+        @keyframes krFlow{0%,30%{stroke-dashoffset:1;opacity:0}36%{opacity:1}52%,68%{stroke-dashoffset:0;opacity:1}78%{opacity:0}100%{stroke-dashoffset:1;opacity:0}}
+        /* Pridola */
+        @keyframes kpRow1{0%,6%{opacity:0;transform:translateX(-24px)}18%,44%{opacity:1;transform:translateX(0)}56%,82%{opacity:0;transform:translateX(-34px)}94%,100%{opacity:0;transform:translateX(-24px)}}
+        @keyframes kpRow2{0%,10%{opacity:0;transform:translateX(-24px)}22%,46%{opacity:1;transform:translateX(0)}58%,82%{opacity:0;transform:translateX(-34px)}94%,100%{opacity:0;transform:translateX(-24px)}}
+        @keyframes kpRow3{0%,14%{opacity:0;transform:translateX(-24px)}26%,48%{opacity:1;transform:translateX(0)}60%,82%{opacity:0;transform:translateX(-34px)}94%,100%{opacity:0;transform:translateX(-24px)}}
+        @keyframes kpRow4{0%,18%{opacity:0;transform:translateX(-24px)}30%,50%{opacity:1;transform:translateX(0)}62%,82%{opacity:0;transform:translateX(-34px)}94%,100%{opacity:0;transform:translateX(-24px)}}
+        @keyframes kpStrike1{0%,30%{transform:scaleX(0)}42%,54%{transform:scaleX(1)}58%,100%{transform:scaleX(0)}}
+        @keyframes kpStrike2{0%,33%{transform:scaleX(0)}45%,56%{transform:scaleX(1)}60%,100%{transform:scaleX(0)}}
+        @keyframes kpStrike3{0%,36%{transform:scaleX(0)}48%,58%{transform:scaleX(1)}62%,100%{transform:scaleX(0)}}
+        @keyframes kpStrike4{0%,39%{transform:scaleX(0)}51%,60%{transform:scaleX(1)}64%,100%{transform:scaleX(0)}}
+        @keyframes kpDash{0%,52%{opacity:0;transform:translateY(24px) scale(.96)}68%,82%{opacity:1;transform:translateY(0) scale(1)}94%,100%{opacity:0;transform:translateY(24px) scale(.96)}}
+        @keyframes kpZero{0%,58%{opacity:0;transform:scale(.3)}70%{opacity:1;transform:scale(1.18)}76%,82%{opacity:1;transform:scale(1)}94%,100%{opacity:0;transform:scale(.3)}}
+        @keyframes kpLive{0%,68%{opacity:.25}79%{opacity:1}88%{opacity:.5}100%{opacity:.25}}
+        @keyframes kpSq{0%,64%{background:#27272A}74%,82%{background:#16A34A}94%,100%{background:#27272A}}
+        /* refinements: flowing dots + pulse ring */
+        @keyframes caMarch{to{stroke-dashoffset:-32}}
+        @keyframes ksFlowOp{0%,46%{opacity:0}56%,82%{opacity:.85}90%,100%{opacity:0}}
+        @keyframes krFlowOp{0%,38%{opacity:0}50%,70%{opacity:.85}80%,100%{opacity:0}}
+        @keyframes kpRing{0%,60%{opacity:0;transform:scale(.55)}72%{opacity:.45;transform:scale(1)}86%,100%{opacity:0;transform:scale(1.5)}}
+        @keyframes ksConnect{0%,42%{background:#D4D4D8}56%,82%{background:#B45309}92%,100%{background:#D4D4D8}}
+        @keyframes nodePop{0%,46%{opacity:0}58%,82%{opacity:1}92%,100%{opacity:0}}
+        @keyframes krLive{0%,46%{opacity:.25}60%{opacity:1}82%{opacity:1}90%,100%{opacity:.25}}
+        @keyframes krCheck{0%,52%{opacity:0;transform:scale(.4)}66%{opacity:1;transform:scale(1.1)}74%,82%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(.4)}}
+        .csa-host{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;}
+        .csa-stage{position:absolute;left:0;top:0;width:600px;height:338px;transform-origin:top left;transform:scale(var(--s,.61));}
+        @media (prefers-reduced-motion:reduce){.csa-stage *{animation:none !important;}}
     </style>
 </head>
 <body class="selection:bg-accent selection:text-white">
@@ -829,7 +874,8 @@
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-5 focus:py-3 focus:rounded-xl focus:bg-zinc-900 focus:text-white focus:font-bold focus:text-sm focus:shadow-xl">Skip to content</a>
 
     <noscript>
-        <style>.view { display: block !important; } #site-nav-wrap .hidden { display: none !important; }</style>
+        <style>.view { display: block !important; } #site-nav-wrap .hidden { display: none !important; }
+</style>
         <div style="position:fixed;bottom:0;left:0;right:0;background:#18181b;color:#fff;text-align:center;padding:12px 16px;font-size:14px;font-family:sans-serif;z-index:9999;">
             For the best experience, please enable JavaScript. <a href="mailto:hello@klarityops.com" style="color:#B45309;font-weight:bold;">Email us directly</a> to book a call.
         </div>
@@ -881,7 +927,6 @@
                     <span>Roadmap</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
-                <a href="#training" onclick="closeMobileNav()" class="mobile-nav-link">
                     <span>Training</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
@@ -1331,272 +1376,74 @@
             </div>
         </section>
 
-        <style>
-        /* ── Adoption · Elevated Classic ── */
-        .adopt-section { background: #FBF6EC; position: relative; overflow: hidden; }
-        .adopt-section::before { content: ""; position: absolute; inset: 0; pointer-events: none;
-            background-image: linear-gradient(rgba(180,83,9,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(180,83,9,0.04) 1px, transparent 1px);
-            background-size: 36px 36px;
-            -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 35%, black 25%, transparent 72%);
-            mask-image: radial-gradient(ellipse 80% 55% at 50% 35%, black 25%, transparent 72%); }
-
-        .adopt-flag { display: inline-flex; align-items: center; justify-content: center; font-family: 'Space Mono', monospace;
-            font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #52525b;
-            background: #ffffff; border: 1px solid #e4e4e7; border-radius: 99px; padding: 0.5rem 1.25rem; box-shadow: 0 1px 2px rgba(0,0,0,0.02); }
-
-        .h-4\.5 { height: 1.125rem; }
-        </style>
-
-        <section id="training" class="adopt-section py-24 sm:py-32 px-5 sm:px-6 border-y border-zinc-200">
-            <div class="max-w-6xl mx-auto relative" style="z-index:1;">
-                <div class="text-center mb-14 sm:mb-16 max-w-3xl mx-auto">
-                    <div class="text-xs font-mono text-accent mb-4 uppercase tracking-widest font-bold">Adoption</div>
-                    <h2 class="reveal font-heading text-4xl md:text-5xl font-extrabold text-zinc-900 mb-6 leading-[1.05]">A great system nobody uses is <span class="text-gradient">worthless.</span></h2>
-                    <p class="reveal delay-100 text-zinc-600 text-lg leading-relaxed">A system is only as good as the people running it. That's why training isn't an add-on here. Every person is trained at the right level, so the system gets used and ownership is unambiguous.</p>
-                </div>
-
-                <div class="reveal text-center mb-10"><span class="adopt-flag">Four levels of fluency</span></div>
-
-                <!-- Fluency Cards -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-[70rem] mx-auto mb-20">
-                    
-                    <!-- Card 1 -->
-                    <div class="reveal rounded-[2rem] bg-white border border-zinc-200 p-8 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all">
-                        <div class="flex items-center gap-3 mb-5">
-                            <!-- Signal 1 -->
-                            <div class="flex items-end gap-[3px] h-4.5">
-                                <div class="w-[4px] h-1.5 bg-accent rounded-full"></div>
-                                <div class="w-[4px] h-2.5 bg-zinc-200 rounded-full"></div>
-                                <div class="w-[4px] h-3.5 bg-zinc-200 rounded-full"></div>
-                                <div class="w-[4px] h-4.5 bg-zinc-200 rounded-full"></div>
-                            </div>
-                            <div class="text-[9px] font-mono font-bold text-zinc-400 uppercase tracking-[0.2em] pt-0.5">Lvl 1 &middot; Beginner</div>
-                        </div>
-                        <h3 class="font-heading text-[1.35rem] font-bold text-zinc-900 mb-3 tracking-tight">Daily confidence</h3>
-                        <p class="text-sm text-zinc-500 leading-relaxed font-medium">Find my tasks, update status, comment, and know where things live.</p>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="reveal delay-100 rounded-[2rem] bg-white border border-zinc-200 p-8 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all">
-                        <div class="flex items-center gap-3 mb-5">
-                            <!-- Signal 2 -->
-                            <div class="flex items-end gap-[3px] h-4.5">
-                                <div class="w-[4px] h-1.5 bg-accent rounded-full"></div>
-                                <div class="w-[4px] h-2.5 bg-accent rounded-full"></div>
-                                <div class="w-[4px] h-3.5 bg-zinc-200 rounded-full"></div>
-                                <div class="w-[4px] h-4.5 bg-zinc-200 rounded-full"></div>
-                            </div>
-                            <div class="text-[9px] font-mono font-bold text-zinc-400 uppercase tracking-[0.2em] pt-0.5">Lvl 2 &middot; Intermediate</div>
-                        </div>
-                        <h3 class="font-heading text-[1.35rem] font-bold text-zinc-900 mb-3 tracking-tight">Fluent operator</h3>
-                        <p class="text-sm text-zinc-500 leading-relaxed font-medium">Custom fields, filters, views, dependencies, and following SOPs correctly.</p>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="reveal delay-200 rounded-[2rem] bg-white border border-zinc-200 p-8 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all">
-                        <div class="flex items-center gap-3 mb-5">
-                            <!-- Signal 3 -->
-                            <div class="flex items-end gap-[3px] h-4.5">
-                                <div class="w-[4px] h-1.5 bg-accent rounded-full"></div>
-                                <div class="w-[4px] h-2.5 bg-accent rounded-full"></div>
-                                <div class="w-[4px] h-3.5 bg-accent rounded-full"></div>
-                                <div class="w-[4px] h-4.5 bg-zinc-200 rounded-full"></div>
-                            </div>
-                            <div class="text-[9px] font-mono font-bold text-zinc-400 uppercase tracking-[0.2em] pt-0.5">Lvl 3 &middot; Advanced</div>
-                        </div>
-                        <h3 class="font-heading text-[1.35rem] font-bold text-zinc-900 mb-3 tracking-tight">System builder</h3>
-                        <p class="text-sm text-zinc-500 leading-relaxed font-medium">Build and maintain projects, run dashboards and reporting for their area.</p>
-                    </div>
-
-                    <!-- Card 4 (Dark) -->
-                    <div class="reveal delay-300 rounded-[2rem] bg-zinc-950 border border-zinc-900 p-8 shadow-xl hover:-translate-y-1 hover:shadow-2xl hover:border-zinc-800 transition-all relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div class="flex items-center gap-3 mb-5 relative z-10">
-                            <!-- Signal 4 -->
-                            <div class="flex items-end gap-[3px] h-4.5">
-                                <div class="w-[4px] h-1.5 bg-accent rounded-full"></div>
-                                <div class="w-[4px] h-2.5 bg-accent rounded-full"></div>
-                                <div class="w-[4px] h-3.5 bg-accent rounded-full"></div>
-                                <div class="w-[4px] h-4.5 bg-accent rounded-full"></div>
-                            </div>
-                            <div class="text-[9px] font-mono font-bold text-accent uppercase tracking-[0.2em] pt-0.5">Lvl 4 &middot; Power User</div>
-                        </div>
-                        <h3 class="font-heading text-[1.35rem] font-bold text-white mb-3 tracking-tight relative z-10">Internal champion</h3>
-                        <p class="text-sm text-zinc-400 leading-relaxed font-medium relative z-10">Automations, templates, troubleshooting, and training others.</p>
-                    </div>
-
-                </div>
-
-                <div class="reveal text-center mt-20 mb-10"><span class="adopt-flag">Everyone trained for the seat they sit in</span></div>
-
-                <!-- Role List -->
-                <div class="reveal max-w-4xl mx-auto bg-white border border-zinc-200 rounded-[2rem] shadow-sm overflow-hidden">
-                    <!-- Row 1 -->
-                    <div class="flex flex-col md:flex-row md:items-center gap-5 p-7 md:p-8 md:px-10 border-b border-zinc-100 hover:bg-[#fafafa] transition-colors">
-                        <div class="w-12 h-12 rounded-2xl bg-orange-50 text-accent flex items-center justify-center shrink-0 border border-orange-100/50">
-                            <i data-lucide="user" class="w-[1.1rem] h-[1.1rem]"></i>
-                        </div>
-                        <div class="md:w-1/4 shrink-0">
-                            <h4 class="font-heading text-lg font-bold text-zinc-900 tracking-tight">End User</h4>
-                        </div>
-                        <div class="md:w-3/4 text-zinc-500 text-[0.95rem] font-medium leading-relaxed">
-                            How to do daily work cleanly inside the system.
-                        </div>
-                    </div>
-                    
-                    <!-- Row 2 -->
-                    <div class="flex flex-col md:flex-row md:items-center gap-5 p-7 md:p-8 md:px-10 border-b border-zinc-100 hover:bg-[#fafafa] transition-colors">
-                        <div class="w-12 h-12 rounded-2xl bg-orange-50 text-accent flex items-center justify-center shrink-0 border border-orange-100/50">
-                            <i data-lucide="users" class="w-[1.1rem] h-[1.1rem]"></i>
-                        </div>
-                        <div class="md:w-1/4 shrink-0">
-                            <h4 class="font-heading text-lg font-bold text-zinc-900 tracking-tight">Team Lead</h4>
-                        </div>
-                        <div class="md:w-3/4 text-zinc-500 text-[0.95rem] font-medium leading-relaxed">
-                            Dashboards, capacity and triage, running the weekly cadence, holding the priority queue.
-                        </div>
-                    </div>
-
-                    <!-- Row 3 -->
-                    <div class="flex flex-col md:flex-row md:items-center gap-5 p-7 md:p-8 md:px-10 hover:bg-[#fafafa] transition-colors">
-                        <div class="w-12 h-12 rounded-2xl bg-orange-50 text-accent flex items-center justify-center shrink-0 border border-orange-100/50">
-                            <i data-lucide="shield-check" class="w-[1.1rem] h-[1.1rem]"></i>
-                        </div>
-                        <div class="md:w-1/4 shrink-0">
-                            <h4 class="font-heading text-lg font-bold text-zinc-900 tracking-tight">Admin / Champion</h4>
-                        </div>
-                        <div class="md:w-3/4 text-zinc-500 text-[0.95rem] font-medium leading-relaxed">
-                            Governance, automations, template management, keeping the system clean as it scales.
-                        </div>
-                    </div>
-            </div>
-        </section>
         <section id="case-studies" class="py-24 sm:py-32 px-5 sm:px-6 bg-white border-y border-zinc-200">
             <div class="max-w-6xl mx-auto">
                 <div class="text-center mb-16 max-w-2xl mx-auto">
                     <div class="text-xs font-mono text-accent mb-4 uppercase tracking-widest font-bold">Proof of Architecture</div>
                     <h2 class="reveal font-heading text-4xl md:text-5xl font-extrabold text-zinc-900 mb-6">Execution unlocked.</h2>
-                    <p class="reveal delay-100 text-zinc-600 text-lg">Four engagements. Four different challenges. One consistent outcome.</p>
+                    <p class="reveal delay-100 text-zinc-600 text-lg">Every card runs the engagement in miniature &mdash; scattered operations resolving into one system. Open one for the full story.</p>
                 </div>
 
-                <!-- ── Case Studies Stack ── -->
-                <div class="reveal scroll-mt-28" id="cs-browser">
-                    <div class="space-y-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                        <!-- Solawave -->
-                        <div class="bento-card rounded-[2rem] bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-zinc-200">
-                            <div class="lg:flex">
-                                <div class="p-8 md:p-12 lg:w-[60%] shrink-0">
-                                    <div class="text-[11px] font-mono text-accent font-bold uppercase tracking-[0.2em] mb-4">Asana Case Study &middot; D2C Skincare</div>
-                                    <h3 class="font-heading text-3xl md:text-4xl font-extrabold text-zinc-900 leading-tight mb-2">One Dashboard, Whole Company</h3>
-                                    <p class="text-sm font-bold text-zinc-400 mb-5">Solawave &middot; D2C Skincare</p>
-                                    <p class="text-zinc-600 leading-relaxed mb-7 text-lg">A scaling skincare brand seeking operational consistency across cross-functional teams with zero executive visibility. We built a company-wide Asana operating system, OKR structures, and standardized delivery workflows across marketing, product, and operations.</p>
-                                    <ul class="space-y-3 mb-8">
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>Company-wide Asana operating system</li>
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>Standardized delivery workflows</li>
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>Full executive visibility, end to end</li>
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>Half of routine work automated</li>
-                                    </ul>
-                                    <a href="https://portfolio.klarityops.com/#solawave" target="_blank" rel="noopener" class="cs-read-more inline-flex items-center gap-2">View Full Case Study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                                </div>
-                                <div class="bg-[#FBF6EC] border-t lg:border-t-0 lg:border-l border-zinc-200 p-8 md:p-12 lg:w-[40%] flex flex-col justify-center">
-                                    <div class="grid grid-cols-2 gap-4 mb-8">
-                                        <div class="bg-white rounded-2xl border border-zinc-200 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-gradient">90%</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 mt-2">Errors reduced</div></div>
-                                        <div class="bg-white rounded-2xl border border-zinc-200 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-gradient">25%</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 mt-2">Speed improved</div></div>
-                                        <div class="bg-white rounded-2xl border border-zinc-200 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-gradient">50%</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 mt-2">Work automated</div></div>
-                                        <div class="bg-zinc-950 rounded-2xl border border-zinc-900 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-white">100%</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-400 mt-2">Exec visibility</div></div>
-                                    </div>
-                                    <blockquote class="border-l-[3px] border-accent pl-5 text-sm italic text-zinc-600 leading-relaxed font-medium">"Before KlarityOps, every team ran on its own logic and I genuinely had no idea what was happening day to day. Now I open one dashboard and the whole company is right there."</blockquote>
-                                </div>
-                            </div>
+                    <div class="reveal cs-card" onclick="openCaseStudy('solawave')" role="button" tabindex="0" aria-label="Read Solawave case study">
+                        <div class="cs-card-visual">
+                            <div class="csa-host" data-anim="solawave"></div>
                         </div>
-
-                        <!-- Roosty's -->
-                        <div class="bento-card rounded-[2rem] bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-zinc-200">
-                            <div class="lg:flex lg:flex-row-reverse">
-                                <div class="p-8 md:p-12 lg:w-[60%] shrink-0">
-                                    <div class="text-[11px] font-mono text-accent font-bold uppercase tracking-[0.2em] mb-4">Asana Case Study &middot; Supplements &middot; $10M+</div>
-                                    <h3 class="font-heading text-3xl md:text-4xl font-extrabold text-zinc-900 leading-tight mb-2">Four Tools to One, in Three Weeks</h3>
-                                    <p class="text-sm font-bold text-zinc-400 mb-5">Roosty's &middot; $10M+ Supplements</p>
-                                    <p class="text-zinc-600 leading-relaxed mb-7 text-lg">Tasks lived across ClickUp, Notion, email, and Slack. Supply chain had no executive visibility layer, and the operations team ran entirely on tribal knowledge. We consolidated the entire stack into a single Asana OS.</p>
-                                    <ul class="space-y-3 mb-8">
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>Entire tech stack consolidated into Asana</li>
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>Live supply-chain visibility layer</li>
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>Tribal knowledge turned into living systems</li>
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>100% of operations now run in Asana</li>
-                                    </ul>
-                                    <a href="https://portfolio.klarityops.com/#roostys" target="_blank" rel="noopener" class="cs-read-more inline-flex items-center gap-2">View Full Case Study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                                </div>
-                                <div class="bg-[#FBF6EC] border-t lg:border-t-0 lg:border-r border-zinc-200 p-8 md:p-12 lg:w-[40%] flex flex-col justify-center">
-                                    <div class="grid grid-cols-2 gap-4 mb-8">
-                                        <div class="bg-white rounded-2xl border border-zinc-200 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-gradient">3 Wks</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 mt-2">Full migration</div></div>
-                                        <div class="bg-white rounded-2xl border border-zinc-200 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-gradient">100%</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 mt-2">Ops in Asana</div></div>
-                                        <div class="bg-zinc-950 rounded-2xl border border-zinc-900 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-white">Live</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-400 mt-2">Inventory dashboards</div></div>
-                                        <div class="bg-white rounded-2xl border border-zinc-200 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-gradient">1 Hub</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 mt-2">Centralized execution</div></div>
-                                    </div>
-                                    <blockquote class="border-r-[3px] border-accent pr-5 text-sm italic text-zinc-600 leading-relaxed font-medium text-right">"We had everything scattered across four tools and about a hundred Slack threads. KlarityOps pulled all of it into one place in three weeks."</blockquote>
-                                </div>
+                        <div class="cs-card-body">
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="w-2 h-2 rounded-full bg-accent shrink-0"></span>
+                                <span class="font-heading font-bold text-zinc-900 text-[15px]">Solawave</span>
+                                <span class="ml-auto font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-400 bg-zinc-50 border border-zinc-100 px-2.5 py-1 rounded-full">Beauty</span>
                             </div>
-                        </div>
-
-                        <!-- Pridola -->
-                        <div class="bento-card rounded-[2rem] bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-zinc-200">
-                            <div class="lg:flex">
-                                <div class="p-8 md:p-12 lg:w-[60%] shrink-0">
-                                    <div class="text-[11px] font-mono text-accent font-bold uppercase tracking-[0.2em] mb-4">Asana Case Study &middot; E-Commerce &middot; Shopify Plus</div>
-                                    <h3 class="font-heading text-3xl md:text-4xl font-extrabold text-zinc-900 leading-tight mb-2">The Last Status Meeting</h3>
-                                    <p class="text-sm font-bold text-zinc-400 mb-5">Pridola &middot; Shopify Plus E-Commerce</p>
-                                    <p class="text-zinc-600 leading-relaxed mb-7 text-lg">An e-commerce brand that permanently eliminated weekly status meetings. We built a custom Asana ops dashboard with automated task-level reporting: every team member got a defined swim lane, every manager a live portfolio view.</p>
-                                    <ul class="space-y-3 mb-8">
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>Zero weekly status meetings</li>
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>Live operational dashboard</li>
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>Automated task-level reporting</li>
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>A defined swim lane for every person</li>
-                                    </ul>
-                                    <a href="https://portfolio.klarityops.com/#pridola" target="_blank" rel="noopener" class="cs-read-more inline-flex items-center gap-2">View Full Case Study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                                </div>
-                                <div class="bg-[#FBF6EC] border-t lg:border-t-0 lg:border-l border-zinc-200 p-8 md:p-12 lg:w-[40%] flex flex-col justify-center">
-                                    <div class="grid grid-cols-2 gap-4 mb-8">
-                                        <div class="bg-zinc-950 rounded-2xl border border-zinc-900 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-white">0</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-400 mt-2">Status meetings / wk</div></div>
-                                        <div class="bg-white rounded-2xl border border-zinc-200 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-gradient">6+ hr</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 mt-2">Exec time saved</div></div>
-                                        <div class="bg-white rounded-2xl border border-zinc-200 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-gradient">42%</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 mt-2">Delivery improvement</div></div>
-                                        <div class="bg-white rounded-2xl border border-zinc-200 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-gradient">100%</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 mt-2">Updates automated</div></div>
-                                    </div>
-                                    <blockquote class="border-l-[3px] border-accent pl-5 text-sm italic text-zinc-600 leading-relaxed font-medium">"We deleted our weekly status meeting and never looked back. Everything I used to chase people for just... shows up on the dashboard now."</blockquote>
-                                </div>
+                            <h3 class="font-heading text-lg font-bold text-zinc-900 leading-snug mb-5">Cut blocker time 66% across a siloed launch team.</h3>
+                            <div class="flex gap-6 pt-4 border-t border-zinc-100 mt-auto">
+                                <div><div class="text-xl font-heading font-black text-gradient leading-none">66%</div><div class="text-[11px] text-zinc-400 font-bold uppercase tracking-wide mt-1.5">Blocker time</div></div>
+                                <div><div class="text-xl font-heading font-black text-gradient leading-none">30%</div><div class="text-[11px] text-zinc-400 font-bold uppercase tracking-wide mt-1.5">Faster to market</div></div>
                             </div>
+                            <div class="cs-read-more">View Case Study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
                         </div>
+                    </div>
 
-                        <!-- Black & Black -->
-                        <div class="bento-card rounded-[2rem] bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-zinc-200">
-                            <div class="lg:flex lg:flex-row-reverse">
-                                <div class="p-8 md:p-12 lg:w-[60%] shrink-0">
-                                    <div class="text-[11px] font-mono text-accent font-bold uppercase tracking-[0.2em] mb-4">Asana Case Study &middot; Digital Commerce Agency</div>
-                                    <h3 class="font-heading text-3xl md:text-4xl font-extrabold text-zinc-900 leading-tight mb-2">From Willpower to System</h3>
-                                    <p class="text-sm font-bold text-zinc-400 mb-5">Black &amp; Black &middot; Digital Commerce Agency</p>
-                                    <p class="text-zinc-600 leading-relaxed mb-7 text-lg">A digital commerce agency improving internal delivery efficiency and client project outcomes. We led dedicated project management and deeply optimized Asana workflows to streamline delivery and coordination for complex Shopify builds.</p>
-                                    <ul class="space-y-3 mb-8">
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>Optimized end-to-end delivery workflows</li>
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>Streamlined client coordination</li>
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>Noticeably faster project timelines</li>
-                                        <li class="flex items-start gap-3 text-sm font-semibold text-zinc-800"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>40% less manual effort</li>
-                                    </ul>
-                                    <a href="https://portfolio.klarityops.com/#bnb" target="_blank" rel="noopener" class="cs-read-more inline-flex items-center gap-2">View Full Case Study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                                </div>
-                                <div class="bg-[#FBF6EC] border-t lg:border-t-0 lg:border-r border-zinc-200 p-8 md:p-12 lg:w-[40%] flex flex-col justify-center">
-                                    <div class="grid grid-cols-2 gap-4 mb-8">
-                                        <div class="bg-white rounded-2xl border border-zinc-200 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-gradient">40%</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 mt-2">Manual effort cut</div></div>
-                                        <div class="bg-zinc-950 rounded-2xl border border-zinc-900 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-white">95%</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-400 mt-2">Client satisfaction</div></div>
-                                        <div class="bg-white rounded-2xl border border-zinc-200 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-gradient">Faster</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 mt-2">Delivery timelines</div></div>
-                                        <div class="bg-white rounded-2xl border border-zinc-200 p-6 text-center shadow-sm"><div class="font-heading text-4xl font-black text-gradient">Optimal</div><div class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 mt-2">Project workflows</div></div>
-                                    </div>
-                                    <blockquote class="border-r-[3px] border-accent pr-5 text-sm italic text-zinc-600 leading-relaxed font-medium text-right">"Our delivery used to be held together with willpower and late nights. KlarityOps gave us a system the whole team actually uses. We ship cleaner and faster now, without the chaos."</blockquote>
-                                </div>
+                    <div class="reveal cs-card" onclick="openCaseStudy('roostys')" role="button" tabindex="0" aria-label="Read Roosty's case study">
+                        <div class="cs-card-visual">
+                            <div class="csa-host" data-anim="roostys"></div>
+                        </div>
+                        <div class="cs-card-body">
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="w-2 h-2 rounded-full bg-accent shrink-0"></span>
+                                <span class="font-heading font-bold text-zinc-900 text-[15px]">Roosty's</span>
+                                <span class="ml-auto font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-400 bg-zinc-50 border border-zinc-100 px-2.5 py-1 rounded-full">Wellness</span>
                             </div>
+                            <h3 class="font-heading text-lg font-bold text-zinc-900 leading-snug mb-5">Four tools, one Asana hub — migrated in 3 weeks.</h3>
+                            <div class="flex gap-6 pt-4 border-t border-zinc-100 mt-auto">
+                                <div><div class="text-xl font-heading font-black text-gradient leading-none">4 → 1</div><div class="text-[11px] text-zinc-400 font-bold uppercase tracking-wide mt-1.5">Tools</div></div>
+                                <div><div class="text-xl font-heading font-black text-gradient leading-none">3 Wks</div><div class="text-[11px] text-zinc-400 font-bold uppercase tracking-wide mt-1.5">Migration</div></div>
+                            </div>
+                            <div class="cs-read-more">View Case Study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
                         </div>
+                    </div>
 
+                    <div class="reveal cs-card" onclick="openCaseStudy('pridola')" role="button" tabindex="0" aria-label="Read Pridola case study">
+                        <div class="cs-card-visual">
+                            <div class="csa-host" data-anim="pridola"></div>
+                        </div>
+                        <div class="cs-card-body">
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="w-2 h-2 rounded-full bg-accent shrink-0"></span>
+                                <span class="font-heading font-bold text-zinc-900 text-[15px]">Pridola</span>
+                                <span class="ml-auto font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-400 bg-zinc-50 border border-zinc-100 px-2.5 py-1 rounded-full">E-Commerce</span>
+                            </div>
+                            <h3 class="font-heading text-lg font-bold text-zinc-900 leading-snug mb-5">Deleted the weekly status meeting for good.</h3>
+                            <div class="flex gap-6 pt-4 border-t border-zinc-100 mt-auto">
+                                <div><div class="text-xl font-heading font-black text-gradient leading-none">0</div><div class="text-[11px] text-zinc-400 font-bold uppercase tracking-wide mt-1.5">Status meetings</div></div>
+                                <div><div class="text-xl font-heading font-black text-gradient leading-none">Live</div><div class="text-[11px] text-zinc-400 font-bold uppercase tracking-wide mt-1.5">Exec dashboard</div></div>
+                            </div>
+                            <div class="cs-read-more">View Case Study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                        </div>
                     </div>
                 </div>
+
 
                 <!-- ── Asana Badge Marquee (unchanged) ── -->
                 <div class="reveal mt-20 border-t border-zinc-200 pt-10 overflow-hidden" style="mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%);">
@@ -1620,7 +1467,9 @@
                             <svg class="w-5 h-5 shrink-0" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="27" r="18" fill="#F06A6A"/><circle cx="23" cy="72" r="18" fill="#F06A6A"/><circle cx="77" cy="72" r="18" fill="#F06A6A"/></svg>
                             <span class="text-xs font-bold text-zinc-600">Product Specialist</span>
                         </span>
+                        </span>
                         <div class="w-1.5 h-1.5 rounded-full bg-zinc-300 shrink-0 mx-4"></div>
+                        
                         <span class="inline-flex items-center gap-3 shrink-0 bg-white border border-zinc-200 rounded-full px-5 py-2.5 shadow-sm">
                             <svg class="w-5 h-5 shrink-0" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="27" r="18" fill="#F06A6A"/><circle cx="23" cy="72" r="18" fill="#F06A6A"/><circle cx="77" cy="72" r="18" fill="#F06A6A"/></svg>
                             <span class="text-xs font-bold text-zinc-600">Asana AI for Work</span>
@@ -1636,7 +1485,6 @@
 
             </div>
         </section>
-
         <!-- ── Case Study Detail Modal ── -->
         <div id="cs-modal" class="cs-modal-overlay" onclick="closeCaseStudy(event)" role="dialog" aria-modal="true" aria-labelledby="cs-modal-title">
             <div class="cs-modal-panel" id="cs-modal-panel">
@@ -2739,7 +2587,6 @@
             io.observe(root);
         }
         setupAutoCycle('#method-stepper', ['1','2','3'], methodTab);
-        setupAutoCycle('#cs-browser', ['sola','roos','prid','bnb'], csTab);
         // ── Case Study Modal Logic ──
         const csData = {
             solawave: {
@@ -2945,6 +2792,61 @@
             }
         };
 
+        /* ── Animated case-study stage builder ── */
+        const CSA = (function(){
+          const sChip = (x,anim,label) => `<div style="position:absolute;left:${x}px;top:242px;width:170px;height:46px;background:#fff;border:1px solid #E4E4E7;border-radius:11px;display:flex;align-items:center;gap:9px;padding:0 14px;box-sizing:border-box;box-shadow:0 6px 16px -10px rgba(0,0,0,.18);animation:${anim} 9s cubic-bezier(.2,.8,.2,1) infinite;"><span style="width:8px;height:8px;border-radius:50%;background:#D4D4D8;flex:none;animation:ksConnect 9s cubic-bezier(.2,.8,.2,1) infinite;"></span><span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:#27272A;">${label}</span></div>`;
+          const rTool = (x,y,anim,label) => `<div style="position:absolute;left:${x}px;top:${y}px;width:120px;height:42px;background:#fff;border:1px solid #E4E4E7;border-radius:10px;display:flex;align-items:center;gap:9px;padding:0 13px;box-sizing:border-box;box-shadow:0 6px 16px -10px rgba(0,0,0,.18);animation:${anim} 9s cubic-bezier(.2,.8,.2,1) infinite;"><span style="width:7px;height:7px;border-radius:50%;background:#A1A1AA;flex:none;"></span><span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:#27272A;">${label}</span></div>`;
+          const pRow = (y,ra,sa,d,t) => `<div style="position:absolute;left:30px;top:${y}px;width:290px;height:40px;background:#fff;border:1px solid #E4E4E7;border-radius:10px;display:flex;align-items:center;gap:10px;padding:0 14px;box-sizing:border-box;animation:${ra} 9s cubic-bezier(.2,.8,.2,1) infinite;"><span style="font-family:'Space Mono',monospace;font-size:11px;color:#A1A1AA;">${d}</span><span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:#27272A;">${t}</span><div style="position:absolute;left:14px;right:14px;height:2px;background:#B45309;transform-origin:left;animation:${sa} 9s cubic-bezier(.2,.8,.2,1) infinite;"></div></div>`;
+          const draw = (d) => `<path d="${d}" pathLength="1" stroke="#E0C19A" stroke-width="2" stroke-linecap="round" stroke-dasharray="1" style="animation:ksDraw 9s cubic-bezier(.2,.8,.2,1) infinite;"/>`;
+          const flow = (d,op) => `<path d="${d}" fill="none" stroke="#B45309" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.5 13" style="animation:caMarch 1.1s linear infinite, ${op} 9s cubic-bezier(.2,.8,.2,1) infinite;"/>`;
+          const STAGE = {
+            solawave:
+              `<svg width="600" height="338" style="position:absolute;left:0;top:0;overflow:visible;" fill="none">`+
+              draw("M115 244 C 150 178, 250 150, 300 100")+draw("M300 244 L300 100")+draw("M485 244 C 450 178, 350 150, 300 100")+
+              flow("M115 244 C 150 178, 250 150, 300 100","ksFlowOp")+flow("M300 244 L300 100","ksFlowOp")+flow("M485 244 C 450 178, 350 150, 300 100","ksFlowOp")+`<circle cx="300" cy="100" r="4.5" fill="#B45309" style="animation:nodePop 9s ease-in-out infinite;"/><circle cx="115" cy="243" r="3.5" fill="#B45309" style="animation:nodePop 9s ease-in-out infinite;"/><circle cx="300" cy="243" r="3.5" fill="#B45309" style="animation:nodePop 9s ease-in-out infinite;"/><circle cx="485" cy="243" r="3.5" fill="#B45309" style="animation:nodePop 9s ease-in-out infinite;"/>`+
+              `</svg>`+
+              `<div style="position:absolute;left:185px;top:14px;width:230px;height:86px;animation:ksHub 9s cubic-bezier(.2,.8,.2,1) infinite;"><div style="width:100%;height:100%;background:#fff;border:1px solid #E4E4E7;border-radius:14px;padding:13px 16px;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;animation:ksGlow 9s ease-in-out infinite;"><div style="display:flex;align-items:center;gap:8px;"><span style="width:8px;height:8px;border-radius:50%;background:#B45309;animation:ksDot 9s ease-in-out infinite;"></span><span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:14px;color:#18181B;">Launch Control</span><span style="margin-left:auto;display:inline-flex;align-items:center;gap:4px;font-family:'Space Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.1em;color:#16A34A;"><span style="width:5px;height:5px;border-radius:50%;background:#16A34A;"></span>Q4 LIVE</span></div><div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#71717A;">3 teams &middot; one launch board</div><div style="margin-top:auto;width:100%;height:7px;background:#F4F4F5;border-radius:99px;overflow:hidden;"><div style="width:100%;height:100%;background:linear-gradient(90deg,#D97706,#B45309);border-radius:99px;transform-origin:left;animation:ksBar 9s cubic-bezier(.2,.8,.2,1) infinite;"></div></div></div></div>`+
+              sChip(30,'ksChipA','Marketing')+sChip(215,'ksChipB','Operations')+sChip(400,'ksChipC','Customer Care'),
+            roostys:
+              `<svg width="600" height="338" style="position:absolute;left:0;top:0;overflow:visible;" fill="none">`+
+              `<path d="M100 61 L300 169" pathLength="1" stroke="#E0C19A" stroke-width="2" stroke-linecap="round" stroke-dasharray="1" style="animation:krFlow 9s cubic-bezier(.2,.8,.2,1) infinite;"/>`+
+              `<path d="M500 61 L300 169" pathLength="1" stroke="#E0C19A" stroke-width="2" stroke-linecap="round" stroke-dasharray="1" style="animation:krFlow 9s cubic-bezier(.2,.8,.2,1) infinite;"/>`+
+              `<path d="M100 279 L300 169" pathLength="1" stroke="#E0C19A" stroke-width="2" stroke-linecap="round" stroke-dasharray="1" style="animation:krFlow 9s cubic-bezier(.2,.8,.2,1) infinite;"/>`+
+              `<path d="M500 279 L300 169" pathLength="1" stroke="#E0C19A" stroke-width="2" stroke-linecap="round" stroke-dasharray="1" style="animation:krFlow 9s cubic-bezier(.2,.8,.2,1) infinite;"/>`+
+              flow("M100 61 L300 169","krFlowOp")+flow("M500 61 L300 169","krFlowOp")+flow("M100 279 L300 169","krFlowOp")+flow("M500 279 L300 169","krFlowOp")+
+              `</svg>`+
+              `<div style="position:absolute;left:196px;top:111px;width:208px;height:116px;animation:krHub 9s cubic-bezier(.2,.8,.2,1) infinite;"><div style="width:100%;height:100%;background:#fff;border:1px solid #E4E4E7;border-radius:16px;padding:16px 18px;box-sizing:border-box;display:flex;flex-direction:column;gap:9px;animation:krGlow 9s ease-in-out infinite;"><div style="display:flex;align-items:center;gap:9px;"><svg width="18" height="18" viewBox="0 0 100 100" fill="none" style="flex:none;"><circle cx="50" cy="27" r="17" fill="#F06A6A"/><circle cx="23" cy="72" r="17" fill="#F06A6A"/><circle cx="77" cy="72" r="17" fill="#F06A6A"/></svg><span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;letter-spacing:-.4px;color:#18181B;">Asana</span><span style="margin-left:auto;display:inline-flex;align-items:center;gap:4px;font-family:'Space Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#16A34A;animation:krLive 9s ease-in-out infinite;"><span style="width:5px;height:5px;border-radius:50%;background:#16A34A;"></span>Live</span></div><div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#71717A;">4 sources &middot; one operating hub</div><div style="margin-top:auto;width:100%;height:7px;background:#F4F4F5;border-radius:99px;overflow:hidden;"><div style="width:100%;height:100%;background:linear-gradient(90deg,#D97706,#B45309);border-radius:99px;transform-origin:left;animation:krBar 9s cubic-bezier(.2,.8,.2,1) infinite;"></div></div></div></div>`+
+              rTool(40,40,'krToolA','ClickUp')+rTool(440,40,'krToolB','Notion')+rTool(40,258,'krToolC','Email')+rTool(440,258,'krToolD','Slack'),
+            pridola:
+              pRow(40,'kpRow1','kpStrike1','MON','Status sync · 30m')+pRow(86,'kpRow2','kpStrike2','TUE','Pipeline review · 45m')+pRow(132,'kpRow3','kpStrike3','WED','Team check-in · 30m')+pRow(178,'kpRow4','kpStrike4','THU','Ops standup · 30m')+
+              `<div style="position:absolute;left:344px;top:60px;width:228px;height:184px;background:#fff;border:1px solid #E4E4E7;border-radius:16px;padding:16px 18px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 16px 40px -18px rgba(180,83,9,.28);animation:kpDash 9s cubic-bezier(.2,.8,.2,1) infinite;"><div style="display:flex;align-items:center;gap:7px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2.2"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span style="font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#A1A1AA;">Live Dashboard</span><span style="margin-left:auto;display:inline-flex;align-items:center;gap:4px;font-family:'Space Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.1em;color:#16A34A;animation:kpLive 9s ease-in-out infinite;"><span style="width:5px;height:5px;border-radius:50%;background:#16A34A;"></span>LIVE</span></div><div style="display:flex;align-items:flex-end;gap:14px;"><div style="position:relative;display:inline-block;"><div style="position:absolute;left:50%;top:50%;width:78px;height:78px;margin:-39px 0 0 -39px;border-radius:50%;border:2px solid #B45309;animation:kpRing 9s ease-out infinite;"></div><div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:56px;line-height:.9;letter-spacing:-2px;color:#B45309;animation:kpZero 9s cubic-bezier(.2,.8,.2,1) infinite;">0</div></div><div style="padding-bottom:7px;"><div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:17px;line-height:1;color:#18181B;">6+ hrs</div><div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:500;color:#71717A;margin-top:2px;">saved / week</div></div></div><div style="display:flex;align-items:center;justify-content:space-between;"><div style="display:flex;gap:5px;"><div style="width:15px;height:15px;border-radius:4px;animation:kpSq 9s ease-in-out infinite;"></div><div style="width:15px;height:15px;border-radius:4px;animation:kpSq 9s ease-in-out infinite;"></div><div style="width:15px;height:15px;border-radius:4px;animation:kpSq 9s ease-in-out infinite;"></div><div style="width:15px;height:15px;border-radius:4px;animation:kpSq 9s ease-in-out infinite;"></div><div style="width:15px;height:15px;border-radius:4px;background:#D4D4D8;"></div></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:#71717A;">status meetings &rarr; 0</span></div></div>`,
+          };
+          function scale(host){
+            const stage = host.querySelector('.csa-stage'); if(!stage) return;
+            let r = host.getBoundingClientRect(), w = r.width;
+            if(!w){ const p = host.parentElement && host.parentElement.getBoundingClientRect(); if(p) w = p.width; }
+            if(!w) return;
+            stage.style.transform = 'scale(' + (w/600) + ')';
+          }
+          function fill(root){
+            (root||document).querySelectorAll('.csa-host[data-anim]').forEach(host=>{
+              if(host.dataset.filled) { scale(host); return; }
+              const key = host.dataset.anim; if(!STAGE[key]) return;
+              host.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;';
+              host.innerHTML = `<div class="csa-stage" style="position:absolute;left:0;top:0;width:600px;height:338px;transform-origin:top left;">${STAGE[key]}</div>`;
+              host.dataset.filled = '1';
+              scale(host);
+              requestAnimationFrame(()=>scale(host));
+              if(window.ResizeObserver){ const ro=new ResizeObserver(()=>scale(host)); ro.observe(host); }
+            });
+          }
+          return { fill, scale, STAGE };
+        })();
+        document.addEventListener('DOMContentLoaded', ()=>CSA.fill());
+        window.addEventListener('load', ()=>CSA.fill());
+        CSA.fill();
+
+
         const csOverlay = document.getElementById('cs-modal');
         const csPanel = document.getElementById('cs-modal-panel');
 
@@ -2962,9 +2864,8 @@
                 `<span class="px-3 py-1 bg-zinc-100 border border-zinc-200 rounded-lg text-xs font-mono text-zinc-600 font-semibold">${t}</span>`
             ).join('');
             csPanel.innerHTML = `
-                <div class="cs-modal-visual">
-                    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(180,83,9,0.10),transparent_60%)]"></div>
-                    ${d.dashboardHtml ? `<div class="relative z-10 h-full w-full p-3 sm:p-4">${d.dashboardHtml}</div>` : `<img src="${d.logo}" class="relative z-10 h-auto max-h-[72px] w-40 object-contain opacity-90 sm:w-52 sm:max-h-[84px]" alt="${d.client} logo" loading="eager" decoding="async">`}
+                <div class="cs-modal-visual" style="aspect-ratio:16/8;background:linear-gradient(180deg,#F7EFDE 0%,#FBF6EC 100%);">
+                    <div class="csa-host" data-anim="${key}"></div>
                 </div>
                 <div class="p-7 sm:p-10">
                     <div class="flex flex-wrap gap-2 mb-5">
@@ -2992,6 +2893,7 @@
                     class="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 rounded-full bg-white/96 backdrop-blur border border-zinc-200 flex items-center justify-center text-zinc-500 hover:text-zinc-900 hover:border-zinc-400 transition-all shadow-sm z-30">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
                 </button>`;
+            CSA.fill(csPanel);
             csPanel.style.position = 'relative';
             csOverlay.classList.add('active');
             document.body.classList.add('modal-open');
