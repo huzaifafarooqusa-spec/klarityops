@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth bg-[#FBF6EC] text-zinc-600">
 <head>
@@ -10,6 +11,102 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "wos5f145fn");
 </script>
+
+    <!-- ================= Google tag — GA4 + Google Ads =================
+         ONE snippet serves both products.
+         Replace  G-XXXXXXXXXX   with the GA4 Measurement ID
+         Replace  AW-XXXXXXXXXX  with the Google Ads Conversion ID
+         (3 places total: the src URL and the two config lines)          -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');                                     // GA4
+        gtag('config', 'AW-XXXXXXXXXX', { allow_enhanced_conversions: true }); // Google Ads
+    </script>
+
+    <!-- ================= Meta Pixel =================
+         Replace  YOUR_PIXEL_ID  with the Pixel ID (2 places)             -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'YOUR_PIXEL_ID');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1" alt="" /></noscript>
+
+    <!-- ================= Supabase client ================= -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://soapcwmhstmpcmfeennk.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_a92FcYF2qy0AnEKMt64VFQ_bD3bL60z';
+        const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // ---- Ad platform IDs. Fill these in, then conversions start firing. ----
+        // Google Ads conversion target, format: 'AW-1234567890/AbC-D_efGhIjKlMnOp'
+        // Get it from: Google Ads → Goals → Conversions → your action → Tag setup
+        // → "Install the tag yourself" → copy the send_to value.
+        const GOOGLE_ADS_CONVERSION = '';
+
+        // Meta Pixel ID, digits only, e.g. '1234567890123456'
+        // Get it from: Meta Events Manager → Data sources → your pixel.
+        // Only used for Advanced Matching on the Lead event; the base pixel
+        // above needs the same ID pasted over YOUR_PIXEL_ID.
+        const META_PIXEL_ID = '';
+    </script>
+
+    <!-- ================= Ad attribution capture =================
+         Persists gclid / fbclid / UTMs from the first landing so every lead row
+         can be matched back to the exact ad click. This is what makes offline
+         conversion import possible — do not remove.                          -->
+    <script>
+        (function captureAttribution() {
+            const ATTR_KEYS = [
+                'gclid', 'wbraid', 'gbraid', 'fbclid', 'msclkid', 'ttclid', 'li_fat_id',
+                'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'
+            ];
+            let store;
+            try { store = window.localStorage; } catch (e) { return; }
+
+            const params = new URLSearchParams(window.location.search);
+            ATTR_KEYS.forEach(function (k) {
+                const v = params.get(k);
+                if (v) store.setItem('attr_' + k, v);
+            });
+
+            if (!store.getItem('attr_first_landing')) {
+                store.setItem('attr_first_landing', window.location.href);
+                store.setItem('attr_referrer', document.referrer || 'direct');
+            }
+        })();
+
+        // Returns only keys that exist as columns on public.leads.
+        function getAttribution() {
+            const keys = [
+                'gclid', 'wbraid', 'gbraid', 'fbclid',
+                'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
+                'first_landing', 'referrer'
+            ];
+            const out = {};
+            try {
+                keys.forEach(function (k) {
+                    out[k] = window.localStorage.getItem('attr_' + k) || null;
+                });
+            } catch (e) {
+                keys.forEach(function (k) { out[k] = null; });
+            }
+            return out;
+        }
+    </script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -798,11 +895,11 @@
                 <a href="#team-section" onclick="showView('home')" class="whitespace-nowrap hover:text-zinc-900 transition-colors">Team</a>
                 <a href="https://portfolio.klarityops.com" target="_blank" rel="noopener" class="whitespace-nowrap hover:text-zinc-900 transition-colors">Portfolio</a>
             </div>
-            <button onclick="openBookingModal('navigation_top','Systems Audit & Roadmap')" class="hidden lg:inline-flex cta-animated whitespace-nowrap bg-zinc-900 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-zinc-800 transition-all shadow-xl shadow-zinc-900/20 active:scale-95">
+            <button onclick="openBookingModal('navigation_top', 'Free 20-Min Fit Call')" class="hidden lg:inline-flex cta-animated whitespace-nowrap bg-zinc-900 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-zinc-800 transition-all shadow-xl shadow-zinc-900/20 active:scale-95">
                 Book Your Systems Audit
             </button>
             <div class="lg:hidden flex items-center gap-2 ml-auto">
-                <button onclick="openBookingModal('navigation_top_mobile','Systems Audit & Roadmap')" class="mobile-nav-toggle flex items-center justify-center text-zinc-700" aria-label="Book your systems audit">
+                <button onclick="openBookingModal('navigation_top_mobile', 'Free 20-Min Fit Call')" class="mobile-nav-toggle flex items-center justify-center text-zinc-700" aria-label="Book your systems audit">
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3.5 9.5h17"/><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 13h4"/></svg>
                 </button>
                 <button id="mobile-nav-toggle" class="mobile-nav-toggle flex items-center justify-center text-zinc-700" type="button" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open mobile navigation">
@@ -840,7 +937,7 @@
                     <span>Portfolio</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
-                <button onclick="closeMobileNav(); openBookingModal('mobile_nav_panel','Systems Audit & Roadmap');" class="cta-animated mt-2 w-full rounded-[1.15rem] bg-zinc-900 px-5 py-4 text-sm font-bold text-white shadow-xl shadow-zinc-900/15 active:scale-[0.99]">
+                <button onclick="closeMobileNav(); openBookingModal('mobile_nav_panel', 'Free 20-Min Fit Call');" class="cta-animated mt-2 w-full rounded-[1.15rem] bg-zinc-900 px-5 py-4 text-sm font-bold text-white shadow-xl shadow-zinc-900/15 active:scale-[0.99]">
                     Book Your Systems Audit
                 </button>
             </div>
@@ -874,7 +971,7 @@
                 
                 <div class="reveal delay-300 flex flex-col items-center justify-center">
                     <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-[22rem] sm:max-w-none mx-auto">
-                        <button onclick="openBookingModal('hero_primary','Systems Audit & Roadmap')" class="cta-animated w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold transition-all shadow-[0_15px_30px_-10px_rgba(180,83,9,0.4)] hover:-translate-y-1 active:scale-95">
+                        <button onclick="openBookingModal('hero_primary', 'Free 20-Min Fit Call')" class="cta-animated w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold transition-all shadow-[0_15px_30px_-10px_rgba(180,83,9,0.4)] hover:-translate-y-1 active:scale-95">
                             Book Your Systems Audit
                         </button>
                         <a href="#friction" class="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border border-zinc-300 bg-white text-zinc-900 rounded-xl font-bold hover:bg-zinc-50 hover:border-zinc-400 transition-colors text-center shadow-sm">
@@ -2003,7 +2100,7 @@
                 </div>
 
                 <div class="reveal flex flex-col items-center text-center">
-                    <button onclick="openBookingModal('final_cta_section','Systems Audit & Roadmap')" class="cta-animated inline-flex items-center justify-center gap-3 px-10 py-5 text-base font-bold text-white bg-accent hover:bg-accent-hover rounded-2xl shadow-[0_10px_30px_rgba(180,83,9,0.4)] hover:-translate-y-1 transition-all duration-300 mb-4">
+                    <button onclick="openBookingModal('final_cta_section', 'Free 20-Min Fit Call')" class="cta-animated inline-flex items-center justify-center gap-3 px-10 py-5 text-base font-bold text-white bg-accent hover:bg-accent-hover rounded-2xl shadow-[0_10px_30px_rgba(180,83,9,0.4)] hover:-translate-y-1 transition-all duration-300 mb-4">
                         Book Your Systems Audit
                         <i data-lucide="arrow-right" class="w-5 h-5"></i>
                     </button>
@@ -2067,8 +2164,8 @@
 
                 <form id="klarity-intake" onsubmit="submitForm(event)">
                     <input type="hidden" id="ctaSource" value="general_cta">
-                    <input type="hidden" id="selectedOffer" value="Systems Audit & Roadmap">
-                    <input type="hidden" id="originOffer" value="Systems Audit & Roadmap">
+                    <input type="hidden" id="selectedOffer" value="Free 20-Min Fit Call">
+                    <input type="hidden" id="originOffer" value="Free 20-Min Fit Call">
                     <input type="hidden" id="pageUrl">
                     <input type="hidden" id="pageTitle">
 
@@ -2077,7 +2174,8 @@
                             <div class="fg sm:col-span-2">
                                 <label for="selectedOfferDisplay">Select Offer</label>
                                 <select id="selectedOfferDisplay" onchange="handleOfferChange(this.value)" class="font-mono text-sm text-zinc-900">
-                                    <option selected>Systems Audit & Roadmap</option>
+                                    <option selected>Free 20-Min Fit Call</option>
+                                    <option>Systems Audit &amp; Roadmap</option>
                                     <option>Systems Audit + AI Audit Combo</option>
                                     <option>One-Off Build</option>
                                     <option>BizOps Retainer</option>
@@ -2181,7 +2279,7 @@
         function showView(viewId) {
             closeMobileNav();
             if (viewId === 'book') {
-                openBookingModal('generic_cta', 'Systems Audit & Roadmap');
+                openBookingModal('generic_cta', 'Free 20-Min Fit Call');
                 return;
             }
             document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
@@ -2236,15 +2334,20 @@
             updateStepUI();
         }
 
+        // Default offer is the free fit call: it is the real entry point to every
+        // engagement, and it is what all paid ads promise. Pricing CTAs still pass
+        // their own specific offer and override this.
+        const DEFAULT_OFFER = 'Free 20-Min Fit Call';
+
         function handleOfferChange(nextOffer) {
-            const normalizedOffer = nextOffer || 'Systems Audit & Roadmap';
+            const normalizedOffer = nextOffer || DEFAULT_OFFER;
             document.getElementById('selectedOffer').value = normalizedOffer;
             document.getElementById('selectedOfferDisplay').value = normalizedOffer;
         }
 
         function setBookingContext(source, offer) {
             const normalizedSource = source || 'generic_cta';
-            const normalizedOffer = offer || 'Systems Audit & Roadmap';
+            const normalizedOffer = offer || DEFAULT_OFFER;
             document.getElementById('ctaSource').value = normalizedSource;
             document.getElementById('originOffer').value = normalizedOffer;
             document.getElementById('pageUrl').value = window.location.href;
@@ -2262,6 +2365,36 @@
             document.body.classList.add('modal-open');
             setTimeout(() => document.getElementById('selectedOfferDisplay')?.focus(), 30);
         }
+
+        // ---- Deep link: open the booking modal straight from a URL ----
+        //   ?book=1                              → opens with the default offer
+        //   ?book=1&offer=BizOps%20Retainer      → opens with that offer preselected
+        //   ?book=1&src=google_ads_bizops        → records where it came from
+        //   #book                                → same as ?book=1
+        // Used by paid ads so the visitor lands with the form already open.
+        window.addEventListener('load', function openFromUrl() {
+            const VALID_OFFERS = [
+                'Free 20-Min Fit Call',
+                'Systems Audit & Roadmap',
+                'Systems Audit + AI Audit Combo',
+                'One-Off Build',
+                'BizOps Retainer',
+                'Build Sprint'
+            ];
+
+            const params = new URLSearchParams(window.location.search);
+            const wantsBooking = params.get('book') === '1' || window.location.hash === '#book';
+            if (!wantsBooking) return;
+
+            const rawOffer = (params.get('offer') || '').trim();
+            const offer = VALID_OFFERS.find(function (o) {
+                return o.toLowerCase() === rawOffer.toLowerCase();
+            }) || DEFAULT_OFFER;
+
+            const src = (params.get('src') || 'url_deeplink').slice(0, 60);
+
+            openBookingModal(src, offer);
+        });
 
         // Focus trap utility for modals
         function trapFocus(modalEl) {
@@ -2298,7 +2431,11 @@
 
         updateStepUI();
 
-        // Form Handler (Google Apps Script Webhook & NeetoCal Redirect)
+        // Form Handler
+        //   1. Supabase insert  — primary store, the only one we can verify
+        //   2. Apps Script POST — mirror into the Google Sheet the team reads
+        //   3. Conversions      — fired before we leave the domain
+        //   4. NeetoCal redirect
         async function submitForm(e) {
             e.preventDefault();
             if (!validateStep(currentFormStep)) return;
@@ -2312,56 +2449,179 @@
             // Remove any prior error banner
             document.getElementById('form-error-msg')?.remove();
 
-            const payload = {
-                fullName: document.getElementById('name').value,
+            // Column names match public.leads exactly.
+            const row = Object.assign({
+                full_name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
-                brandName: document.getElementById('brand').value,
-                monthlyRevenue: document.getElementById('rev').value,
-                teamSize: document.getElementById('team').value,
+                brand_name: document.getElementById('brand').value,
+                monthly_revenue: document.getElementById('rev').value,
+                team_size: document.getElementById('team').value,
                 tools: document.getElementById('tools').value,
-                painPoint: document.getElementById('pain').value,
-                selectedOffer: document.getElementById('selectedOffer').value,
-                originOffer: document.getElementById('originOffer').value,
-                ctaSource: document.getElementById('ctaSource').value,
-                pageUrl: document.getElementById('pageUrl').value || window.location.href,
-                pageTitle: document.getElementById('pageTitle').value || document.title,
-                submittedAt: new Date().toISOString(),
-                userAgent: navigator.userAgent
-            };
+                pain_point: document.getElementById('pain').value,
+                selected_offer: document.getElementById('selectedOffer').value,
+                origin_offer: document.getElementById('originOffer').value,
+                cta_source: document.getElementById('ctaSource').value,
+                page_url: document.getElementById('pageUrl').value || window.location.href,
+                page_title: document.getElementById('pageTitle').value || document.title,
+                user_agent: navigator.userAgent
+            }, getAttribution());
 
-            const nameEnc = encodeURIComponent(payload.fullName);
-            const emailEnc = encodeURIComponent(payload.email);
-            const bookingUrl = `https://thexponent.neetocal.com/discovery-call?name=${nameEnc}&email=${emailEnc}`;
-
-            try {
-                await Promise.race([
-                    fetch(BOOKING_WEBHOOK_URL, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        keepalive: true,
-                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                        body: JSON.stringify(payload)
-                    }),
-                    new Promise(resolve => setTimeout(resolve, 1400))
-                ]);
-            } catch (err) {
-                console.error('Webhook error:', err);
-            }
-
-            try {
-                window.location.href = bookingUrl;
-            } catch (err) {
-                // If redirect fails for any reason, show an inline error
+            const showError = function (html) {
                 const form = document.getElementById('klarity-intake');
                 const errEl = document.createElement('p');
                 errEl.id = 'form-error-msg';
                 errEl.className = 'mt-4 text-sm text-rose-600 font-semibold text-center';
-                errEl.textContent = 'Something went wrong opening the calendar. Please try again or email us directly.';
+                errEl.innerHTML = html;
                 form.appendChild(errEl);
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
                 stepNextBtn.disabled = false;
                 stepBackBtn.disabled = false;
+            };
+
+            // ---- 1. PRIMARY: Supabase. Returns a real error we can act on. ----
+            let saved = false;
+            try {
+                const { error } = await sb.from('leads').insert(row);
+                if (error) {
+                    console.error('Supabase insert failed:', error);
+                } else {
+                    saved = true;
+                }
+            } catch (err) {
+                console.error('Supabase insert threw:', err);
+            }
+
+            // ---- 2. MIRROR: Google Sheet. Fire and forget. ----
+            // The Apps Script expects the original camelCase keys — keep that shape
+            // exactly as it was, or the existing Sheet columns come through blank.
+            // Attribution fields are appended as extra keys the script can ignore.
+            const attr = getAttribution();
+            const sheetPayload = {
+                fullName: row.full_name,
+                email: row.email,
+                brandName: row.brand_name,
+                monthlyRevenue: row.monthly_revenue,
+                teamSize: row.team_size,
+                tools: row.tools,
+                painPoint: row.pain_point,
+                selectedOffer: row.selected_offer,
+                originOffer: row.origin_offer,
+                ctaSource: row.cta_source,
+                pageUrl: row.page_url,
+                pageTitle: row.page_title,
+                submittedAt: new Date().toISOString(),
+                userAgent: row.user_agent,
+                // new attribution fields
+                gclid: attr.gclid,
+                fbclid: attr.fbclid,
+                utmSource: attr.utm_source,
+                utmMedium: attr.utm_medium,
+                utmCampaign: attr.utm_campaign,
+                utmContent: attr.utm_content,
+                utmTerm: attr.utm_term,
+                firstLanding: attr.first_landing,
+                referrer: attr.referrer,
+                savedToSupabase: saved
+            };
+
+            // sendBeacon survives page unload; its boolean is the only delivery
+            // signal we get. The no-cors fetch fallback cannot be confirmed.
+            let mirrorQueued = false;
+            try {
+                const body = JSON.stringify(sheetPayload);
+                if (navigator.sendBeacon) {
+                    mirrorQueued = navigator.sendBeacon(
+                        BOOKING_WEBHOOK_URL,
+                        new Blob([body], { type: 'text/plain;charset=utf-8' })
+                    );
+                }
+                if (!mirrorQueued) {
+                    fetch(BOOKING_WEBHOOK_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        keepalive: true,
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                        body: body
+                    }).catch(function () { /* opaque response, nothing to handle */ });
+                    mirrorQueued = true;
+                }
+            } catch (err) {
+                console.error('Sheet mirror error:', err);
+            }
+
+            // Both destinations dead — do not redirect, the lead would vanish.
+            if (!saved && !mirrorQueued) {
+                showError(
+                    'Something went wrong saving your details. Please email us at ' +
+                    '<a href="mailto:hello@klarityops.com" class="underline">hello@klarityops.com</a> ' +
+                    'and we will get you booked in.'
+                );
+                return;
+            }
+            if (!saved) {
+                console.warn('Lead not in Supabase; relying on the Sheet mirror. Check the project is not paused.');
+            }
+
+            // ---- 3. Conversions, then redirect ----
+            const nameEnc = encodeURIComponent(row.full_name);
+            const emailEnc = encodeURIComponent(row.email);
+            const bookingUrl = `https://thexponent.neetocal.com/discovery-call?name=${nameEnc}&email=${emailEnc}`;
+
+            let redirected = false;
+            const go = function () {
+                if (redirected) return;
+                redirected = true;
+                window.location.href = bookingUrl;
+            };
+
+            // Split the name once, for Enhanced Conversions / Advanced Matching.
+            const nameParts = (row.full_name || '').trim().split(/\s+/);
+            const firstName = (nameParts[0] || '').toLowerCase();
+            const lastName = (nameParts.length > 1 ? nameParts[nameParts.length - 1] : '').toLowerCase();
+            const emailNorm = (row.email || '').trim().toLowerCase();
+
+            // ---- Meta: Lead event + manual Advanced Matching ----
+            // Re-initing with user data lets Meta match the conversion to a person
+            // even when cookies are blocked. Meta hashes it in the browser.
+            try {
+                if (typeof fbq === 'function') {
+                    if (META_PIXEL_ID) {
+                        fbq('init', META_PIXEL_ID, {
+                            em: emailNorm,
+                            fn: firstName,
+                            ln: lastName
+                        });
+                    }
+                    fbq('track', 'Lead', {
+                        content_name: row.selected_offer || 'fit_call',
+                        value: 150,
+                        currency: 'USD'
+                    });
+                }
+            } catch (err) { console.error('fbq error:', err); }
+
+            // ---- Google Ads: conversion + Enhanced Conversions ----
+            try {
+                if (typeof gtag === 'function' && GOOGLE_ADS_CONVERSION) {
+                    // Send raw values; Google hashes them client-side before transmission.
+                    gtag('set', 'user_data', {
+                        email: emailNorm,
+                        address: { first_name: firstName, last_name: lastName }
+                    });
+                    gtag('event', 'conversion', {
+                        send_to: GOOGLE_ADS_CONVERSION,
+                        value: 150.0,
+                        currency: 'USD',
+                        event_callback: go
+                    });
+                    setTimeout(go, 1200);   // safety net if the callback never fires
+                } else {
+                    go();
+                }
+            } catch (err) {
+                console.error('gtag error:', err);
+                go();
             }
         }
 
@@ -2661,7 +2921,7 @@
                     </div>
                     <div class="flex flex-wrap gap-2 mb-8">${tagsHTML}</div>
                     ${d.quote ? `<blockquote class="border-l-4 border-accent pl-5 mb-8 italic text-lg leading-relaxed text-zinc-700">"${d.quote.replace(/^"|"$/g, '')}"</blockquote>` : ``}
-                    <button onclick="closeCaseStudy(); openBookingModal('case_study_modal','Systems Audit & Roadmap');"
+                    <button onclick="closeCaseStudy(); openBookingModal('case_study_modal', 'Free 20-Min Fit Call');"
                         class="w-full py-4 rounded-2xl bg-zinc-900 text-white font-heading font-bold text-base hover:bg-accent transition-colors duration-200">
                         Book Your Systems Audit →
                     </button>
