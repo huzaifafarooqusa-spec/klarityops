@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wos5f145fn");
+    </script>
+
+    <!-- ================= Google tag — GA4 + Google Ads =================
+         Replace  G-XXXXXXXXXX   with the GA4 Measurement ID
+         Replace  AW-XXXXXXXXXX  with the Google Ads Conversion ID
+         (3 places total: the src URL and the two config lines)          -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');                                     // GA4
+        gtag('config', 'AW-XXXXXXXXXX', { allow_enhanced_conversions: true }); // Google Ads
+    </script>
+
+    <!-- ================= Meta Pixel =================
+         Replace  YOUR_PIXEL_ID  with the Pixel ID (2 places)             -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'YOUR_PIXEL_ID');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1" alt="" /></noscript>
+
+    <!-- ================= Ad attribution capture =================
+         Persists gclid / fbclid / UTMs from the first landing so every lead row
+         can be matched back to the exact ad click. Do not remove.            -->
+    <script>
+        (function captureAttribution() {
+            const ATTR_KEYS = [
+                'gclid', 'wbraid', 'gbraid', 'fbclid', 'msclkid', 'ttclid', 'li_fat_id',
+                'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'
+            ];
+            let store;
+            try { store = window.localStorage; } catch (e) { return; }
+            const params = new URLSearchParams(window.location.search);
+            ATTR_KEYS.forEach(function (k) {
+                const v = params.get(k);
+                if (v) store.setItem('attr_' + k, v);
+            });
+            if (!store.getItem('attr_first_landing')) {
+                store.setItem('attr_first_landing', window.location.href);
+                store.setItem('attr_referrer', document.referrer || 'direct');
+            }
+        })();
+
+        // Returns only keys that exist as columns on public.leads.
+        function getAttribution() {
+            const keys = [
+                'gclid', 'wbraid', 'gbraid', 'fbclid',
+                'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
+                'first_landing', 'referrer'
+            ];
+            const out = {};
+            try {
+                keys.forEach(function (k) { out[k] = window.localStorage.getItem('attr_' + k) || null; });
+            } catch (e) {
+                keys.forEach(function (k) { out[k] = null; });
+            }
+            return out;
+        }
+    </script>
+
+    <title>The Team | KlarityOps</title>
+    <meta name="description" content="The people you meet are the people who build it: Hasan Ijaz, Amna Qaisar and Huzaifa Farooq.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="KlarityOps">
+    <meta name="theme-color" content="#2F5BFF">
+    <link rel="canonical" href="https://klarityops.com/team">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KlarityOps">
+    <meta property="og:title" content="The Team | KlarityOps">
+    <meta property="og:description" content="The people you meet are the people who build it: Hasan Ijaz, Amna Qaisar and Huzaifa Farooq.">
+    <meta property="og:url" content="https://klarityops.com/team">
+    <meta property="og:image" content="https://klarityops.com/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Team | KlarityOps">
+    <meta name="twitter:description" content="The people you meet are the people who build it: Hasan Ijaz, Amna Qaisar and Huzaifa Farooq.">
+    <meta name="twitter:image" content="https://klarityops.com/og-image.jpg">
+
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "name": "KlarityOps",
+   "url": "https://klarityops.com/",
+   "logo": "https://klarityops.com/klarityops-logo-512.png",
+   "email": "hello@klarityops.com"
+  },
+  {
+   "@type": "WebSite",
+   "name": "KlarityOps",
+   "url": "https://klarityops.com/"
+  }
+ ]
+}
+    </script>
+
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+    <a class="skip" href="#main-content">Skip to content</a>
+    <header class="nav" id="site-nav-wrap">
+        <div class="wrap">
+            <a href="/" class="logo" aria-label="KlarityOps home"><img src="assets/brand/klarityops-mark.svg" alt="" width="36" height="36"><span>KlarityOps</span></a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="/#system">How it works</a>
+                <a href="/#case-studies">Case studies</a>
+                <a href="/#engagement">Pricing</a>
+            </nav>
+            <div class="nav-right">
+                <button class="btn btn-sm" onclick="openBookingModal('navigation_top', 'Free 20-Min Fit Call')">Book a free 20-min call</button>
+                <button id="mobile-nav-toggle" class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu"><i data-lucide="menu"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-nav-panel" class="mnav" hidden>
+        <div class="mnav-top">
+            <a href="/" class="logo"><img src="assets/brand/klarityops-mark.svg" alt="" width="36" height="36"><span>KlarityOps</span></a>
+            <button class="x-btn" type="button" onclick="closeMobileNav()" aria-label="Close menu"><i data-lucide="x"></i></button>
+        </div>
+        <a class="ml" href="/#system" onclick="closeMobileNav()">How it works <i data-lucide="arrow-right"></i></a>
+        <a class="ml" href="/#case-studies" onclick="closeMobileNav()">Case studies <i data-lucide="arrow-right"></i></a>
+        <a class="ml" href="/#engagement" onclick="closeMobileNav()">Pricing <i data-lucide="arrow-right"></i></a>
+        <button class="btn btn-block" onclick="closeMobileNav(); openBookingModal('mobile_nav_panel', 'Free 20-Min Fit Call');">Book a free 20-min call <i data-lucide="arrow-right"></i></button>
+    </div>
+
+    <main id="main-content">
+        <section class="hero phero">
+            <div class="wrap">
+                
+                <h1 class="rv" style="--d:1">You meet the people <span class="hl">who build it.</span></h1>
+                <p class="lead rv" style="--d:2">You work directly with the people mapping, building and documenting your system. No handing you off after the sales call.</p>
+                <div class="hero-ctas rv" style="--d:3"><button class="btn" onclick="openBookingModal('team_page_hero', 'Free 20-Min Fit Call')">Book a free 20-min call <i data-lucide="arrow-right"></i></button></div>
+            </div>
+        </section>
+        <section class="sec" id="team-section">
+            <div class="wrap">
+                <div class="sec-head rv">
+                    <span class="cred"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="27" r="18" fill="#F06A6A"/><circle cx="23" cy="72" r="18" fill="#F06A6A"/><circle cx="77" cy="72" r="18" fill="#F06A6A"/></svg>4× Asana Certified across the delivery team</span>
+                </div>
+                <div class="team-grid swipe">
+                    <button class="vcard rv" type="button" onclick="openVideoModal()" aria-label="Play a 1 minute 24 second video from Hasan Ijaz">
+                        <img src="assets/posters/hasan-intro.jpg" alt="" loading="lazy">
+                        <span class="vtxt"><span class="play"><i data-lucide="play"></i></span><small><i data-lucide="video"></i>1:24</small><b>Hasan on building processes that actually stick</b><span>Hasan Ijaz, Founder &amp; Strategy Lead</span></span>
+                    </button>
+                        <article class="card person rv" style="--d:1">
+                            <div class="ph"><img src="assets/team/hasan-ijaz.jpg" alt="Hasan Ijaz" width="560" height="700" loading="lazy"></div>
+                            <div class="pb"><h3>Hasan Ijaz</h3><div class="role">Founder &amp; Strategy Lead</div><p>Leads discovery, operating-model design and client decisions.</p><p class="owns"><b>Owns</b> scope, sequence and executive alignment</p></div>
+                        </article>
+                        <article class="card person rv" style="--d:2">
+                            <div class="ph"><img src="assets/team/amna-qaisar.jpg" alt="Amna Qaisar" width="560" height="700" loading="lazy"></div>
+                            <div class="pb"><h3>Amna Qaisar</h3><div class="role">Operations &amp; Asana Specialist</div><p>Builds workspace architecture, automation and reporting.</p><p class="owns"><b>Owns</b> implementation structure and admin handoff</p></div>
+                        </article>
+                        <article class="card person rv" style="--d:3">
+                            <div class="ph"><img src="assets/team/huzaifa-farooq.jpg" alt="Huzaifa Farooq" width="560" height="700" loading="lazy"></div>
+                            <div class="pb"><h3>Huzaifa Farooq</h3><div class="role">Operations &amp; Asana Specialist</div><p>Builds workflows, intake forms, swim lanes and SOPs.</p><p class="owns"><b>Owns</b> documentation, QA and adoption support</p></div>
+                        </article>
+                </div>
+            </div>
+        </section>
+        <section id="book-cta">
+            <div class="wrap">
+                <div class="cta-box rv">
+                    <div class="faces" aria-hidden="true"><img src="assets/team/hasan-ijaz.jpg" alt=""><img src="assets/team/amna-qaisar.jpg" alt=""><img src="assets/team/huzaifa-farooq.jpg" alt=""></div>
+                    <h2>Get the business out of your head.</h2>
+                    <p>No prep and no pitch deck. Tell us what’s breaking and we’ll point out where to start.</p>
+                    <div class="btns"><button class="btn btn-white" onclick="openBookingModal('team_page_cta', 'Free 20-Min Fit Call')">Book a free 20-min call <i data-lucide="arrow-right"></i></button></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="mbar" id="mbar" aria-hidden="true">
+        <div><b>Free 20-min call</b><small>No pitch deck. Audit fee credited.</small></div>
+        <button class="btn btn-sm" tabindex="-1" onclick="openBookingModal('mobile_sticky_bar', 'Free 20-Min Fit Call')">Book now <i data-lucide="arrow-right"></i></button>
+    </div>
+
+    <footer>
+        <div class="wrap">
+            <div class="foot">
+                <div><a href="/" class="logo"><img src="assets/brand/klarityops-mark.svg" alt="" width="36" height="36"><span>KlarityOps</span></a><p>Asana operating systems for D2C brands.</p></div>
+                <div><h4>Company</h4><a href="/#system">How it works</a><a href="case-studies.html">Case studies</a><a href="/#engagement">Pricing</a><a href="team.html">Team</a></div>
+                <div><h4>Resources</h4><a href="asana.html">Asana systems</a><a href="clickup.html">ClickUp systems</a><a href="roadmap.html">Roadmap</a><a href="faq.html">FAQ</a><a href="https://portfolio.klarityops.com" target="_blank" rel="noopener">Portfolio ↗</a></div>
+                <div><h4>Get in touch</h4><a href="mailto:hello@klarityops.com">hello@klarityops.com</a><a href="#book" onclick="openBookingModal('footer', 'Free 20-Min Fit Call'); return false;">Book a free 20-min call</a></div>
+            </div>
+            <div class="foot-bot"><span>© 2026 KlarityOps. All rights reserved.</span><span>The Klarity Method: diagnose, build, hand over.</span></div>
+        </div>
+    </footer>
+
+    <!-- ================= CASE STUDY MODAL ================= -->
+    <div id="cs-modal" class="modal-overlay" onclick="closeCaseStudy(event)" role="dialog" aria-modal="true" aria-labelledby="cs-modal-title" aria-hidden="true">
+        <div class="modal-panel cs-panel" id="cs-modal-panel"></div>
+    </div>
+
+    <!-- ================= SCREENSHOT LIGHTBOX ================= -->
+    <div id="lightbox" class="modal-overlay lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview" aria-hidden="true">
+        <button class="x-btn" type="button" onclick="closeLightbox()" aria-label="Close preview"><i data-lucide="x"></i></button>
+        <button class="lb-nav prev" type="button" onclick="lbStep(-1)" aria-label="Previous screen"><i data-lucide="chevron-left"></i></button>
+        <figure><img id="lightbox-img" src="data:," alt=""><figcaption id="lightbox-cap"></figcaption></figure>
+        <button class="lb-nav next" type="button" onclick="lbStep(1)" aria-label="Next screen"><i data-lucide="chevron-right"></i></button>
+    </div>
+
+    <!-- ================= VIDEO MODAL ================= -->
+    <div id="video-modal" class="modal-overlay vmodal" role="dialog" aria-modal="true" aria-label="Video from Hasan Ijaz" aria-hidden="true">
+        <button class="x-btn" type="button" onclick="closeVideoModal()" aria-label="Close video"><i data-lucide="x"></i></button>
+        <video id="hasan-video" controls playsinline preload="none" poster="assets/posters/hasan-intro.jpg" data-src="assets/video/hasan-intro.mp4"></video>
+    </div>
+
+    <!-- ================= BOOKING MODAL ================= -->
+    <div id="booking-modal" class="modal-overlay" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="booking-modal-title">
+        <div class="modal-panel">
+            <div class="mp-head">
+                <div>
+                    <span class="label"><i></i>Free 20-minute call</span>
+                    <h2 id="booking-modal-title">Tell us what’s breaking, then pick a time.</h2>
+                </div>
+                <button type="button" class="x-btn" onclick="closeBookingModal()" aria-label="Close booking form"><i data-lucide="x"></i></button>
+            </div>
+            <div class="mp-body">
+                <div class="steps">
+                    <span class="step-pill active" data-step-pill="1">1. About you</span>
+                    <span class="step-pill" data-step-pill="2">2. Your company</span>
+                    <span class="step-pill" data-step-pill="3">3. What’s breaking</span>
+                </div>
+                <form id="klarity-intake" onsubmit="submitForm(event)">
+                    <input type="hidden" id="ctaSource" value="general_cta">
+                    <input type="hidden" id="selectedOffer" value="Free 20-Min Fit Call">
+                    <input type="hidden" id="originOffer" value="Free 20-Min Fit Call">
+                    <input type="hidden" id="pageUrl">
+                    <input type="hidden" id="pageTitle">
+
+                    <div class="form-step active" data-step="1">
+                        <div class="fgrid">
+                            <div class="fg full">
+                                <label for="selectedOfferDisplay">What are you interested in?</label>
+                                <select id="selectedOfferDisplay" onchange="handleOfferChange(this.value)">
+                                    <option selected>Free 20-Min Fit Call</option>
+                                    <option>Systems Audit &amp; Roadmap</option>
+                                    <option>Systems Audit + AI Audit Combo</option>
+                                    <option>One-Off Build</option>
+                                    <option>BizOps Retainer</option>
+                                    <option>Build Sprint</option>
+                                </select>
+                            </div>
+                            <div class="fg full">
+                                <label for="brand">Business / brand name</label>
+                                <input type="text" id="brand" required placeholder="Your company" autocomplete="organization">
+                            </div>
+                            <div class="fg">
+                                <label for="name">Full name</label>
+                                <input type="text" id="name" required placeholder="Jane Doe" autocomplete="name">
+                            </div>
+                            <div class="fg">
+                                <label for="email">Work email</label>
+                                <input type="email" id="email" required placeholder="jane@brand.com" autocomplete="email">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-step" data-step="2">
+                        <div class="fgrid">
+                            <div class="fg">
+                                <label for="rev">Current monthly revenue</label>
+                                <select id="rev" required>
+                                    <option value="">Select range…</option>
+                                    <option>Under $400k</option>
+                                    <option>$400k - $1M</option>
+                                    <option>$1M - $5M</option>
+                                    <option>$5M - $10M</option>
+                                    <option>$10M+</option>
+                                </select>
+                            </div>
+                            <div class="fg">
+                                <label for="team">Team size</label>
+                                <select id="team" required>
+                                    <option value="">Select size…</option>
+                                    <option>Under 15 people</option>
+                                    <option>15-30 people</option>
+                                    <option>30-75 people</option>
+                                    <option>75+ people</option>
+                                </select>
+                            </div>
+                            <div class="fg full">
+                                <label for="tools">Current tool stack</label>
+                                <input type="text" id="tools" required placeholder="Asana, Slack, Notion, ClickUp…" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-step" data-step="3">
+                        <div class="fg">
+                            <label for="pain">What’s breaking most often?</label>
+                            <textarea id="pain" required placeholder="e.g. Tool sprawl, nobody owns the final handoff, leadership can’t see status, and launches keep slipping…"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="stepBackBtn" onclick="prevFormStep()" class="btn btn-ghost hidden"><i data-lucide="arrow-left"></i>Back</button>
+                        <div class="right">
+                            <button type="button" id="stepNextBtn" onclick="nextFormStep()" class="btn">Continue <i data-lucide="arrow-right"></i></button>
+                            <button type="submit" id="submitBtn" class="btn hidden">Submit &amp; pick a time</button>
+                        </div>
+                    </div>
+                    <p class="form-note"><i data-lucide="lock"></i>Takes about a minute. Next, you’ll choose a time on our calendar.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Supabase client ================= -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://soapcwmhstmpcmfeennk.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_a92FcYF2qy0AnEKMt64VFQ_bD3bL60z';
+        const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // ---- Ad platform IDs. Fill these in, then conversions start firing. ----
+        // Google Ads conversion target, format: 'AW-1234567890/AbC-D_efGhIjKlMnOp'
+        const GOOGLE_ADS_CONVERSION = '';
+        // Meta Pixel ID, digits only, e.g. '1234567890123456'
+        const META_PIXEL_ID = '';
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+
+    <script src="assets/js/site.js"></script>
+</body>
+</html>
