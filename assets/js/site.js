@@ -746,7 +746,7 @@ async function submitForm(e) {
             });
             setTimeout(go, 1200);   // safety net if the callback never fires
         } else {
-            go();
+            setTimeout(go, 600);    // let the Meta Lead hit leave before the page changes
         }
     } catch (err) {
         console.error('gtag error:', err);
