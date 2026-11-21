@@ -1368,3 +1368,23 @@ footer { background: var(--navy); color: #AEBADA; margin-top: 104px; padding: 64
 }
 @media (prefers-reduced-motion: reduce) { .app-ic, .app-b { opacity: 1 !important; transform: none !important; animation: none !important; } }
 @media (max-width: 700px) { .hs-y { display: none; } .hs-h { text-transform: capitalize; } }
+
+/* v5.4: three real pain points, editorial rows */
+.pp { background: #fff; }
+.pp-head { max-width: 760px; }
+.pp-head .h2 { margin-top: 4px; }
+.pp-list { margin-top: 56px; border-top: 1px solid var(--line-2); }
+.pp-row { display: grid; grid-template-columns: 88px minmax(0, 1fr) minmax(0, 1fr); gap: 20px 48px; align-items: start; padding: 44px 0; border-bottom: 1px solid var(--line-2); }
+.pp-n { font: 800 1.1rem/1.6 var(--display); color: var(--blue); letter-spacing: .02em; }
+.pp-row h3 { font-size: clamp(1.7rem, 2.6vw, 2.35rem); line-height: 1.12; letter-spacing: -.015em; text-wrap: balance; }
+.pp-b p { font-size: 1.12rem; line-height: 1.6; color: var(--text); }
+.pp-see { margin-top: 14px; font-size: 15.5px !important; color: var(--muted) !important; }
+.pp-see b { color: var(--ink); font-weight: 700; margin-right: 4px; }
+.pp-see i { font-style: normal; color: var(--line-2); margin: 0 6px; }
+.pp-close { margin-top: 40px; font-size: 1.15rem; font-weight: 700; color: var(--ink); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.pp-close a { display: inline-flex; align-items: center; gap: 6px; color: var(--blue); text-decoration: none; }
+.pp-close .lucide { width: 18px; height: 18px; transition: transform .2s var(--ease); }
+.pp-close a:hover .lucide { transform: translateX(3px); }
+@media (max-width: 900px) { .pp-row { grid-template-columns: 1fr; gap: 12px; padding: 34px 0; } .pp-n { line-height: 1; } }
+.pp-row, .pp-row h3, .pp-head { text-align: left; }
+.pp-head { margin: 0; }
