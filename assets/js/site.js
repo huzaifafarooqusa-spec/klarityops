@@ -357,6 +357,8 @@ videoModal.addEventListener('click', (e) => { if (e.target === videoModal) close
 const csData = {
     pridola: {
         client: 'Pridola', industry: 'E-commerce · Shopify Plus', logo: 'assets/logos/pridola-design.png', badge: 'Client-reported result',
+        route: { nodes: ['', '', '', '', '', '', '', ''], before: 'Weekly status meeting', after: 'Live Asana dashboard', bcap: '8 people, 60 minutes, every week, to learn status.', acap: 'Status lives on one dashboard. Nobody has to ask.' },
+        steps: [ 'Mapped what the weekly meeting was really used for, person by person.', 'Built a live dashboard, automated task status and a swim lane per contributor.', 'Launched it with the team, then retired the meeting.' ],
         headline: 'The weekly status meeting was deleted',
         lead: 'Eight people spent sixty minutes every week reporting status that was already stale by the time the meeting ended.',
         shot: { src: 'assets/cases/pridola-dashboard.jpg', cap: 'Illustrative: a live operations dashboard of the same type, shown in our demo workspace.', real: false },
@@ -367,6 +369,8 @@ const csData = {
     },
     solawave: {
         client: 'Solawave', industry: 'Beauty · D2C skincare', logo: 'assets/logos/solawave.png', badge: 'Delivered system',
+        route: { nodes: ['Marketing', 'Product', 'Operations'], before: 'Leadership check-ins', after: 'One operating model', bcap: 'Three teams, three definitions of done. Leadership chased status by hand.', acap: 'One shared workflow and one dashboard leadership reads.' },
+        steps: [ 'Mapped how marketing, product and operations each ran and defined done.', 'Built one company-wide Asana architecture, shared workflows and OKRs.', 'Added an executive dashboard and recurring-work automation, inside 30 days.' ],
         headline: 'Three teams. One operating model.',
         lead: 'Marketing, product and operations each had their own way of working, and leadership rebuilt status through repeated check-ins.',
         shot: { src: 'assets/cases/solawave-board.jpg', cap: 'Illustrative: a shared delivery board of the same type, shown in our demo workspace.', real: false },
@@ -377,6 +381,8 @@ const csData = {
     },
     roostys: {
         client: 'Roosty’s', industry: 'Wellness · Supplements', logo: 'assets/logos/roostys.svg', badge: 'Implementation scope',
+        route: { nodes: ['ClickUp', 'Notion', 'Slack', 'Email'], before: 'A few key people', after: 'One Asana system', bcap: 'Four tools. Inventory status lived with a few people.', acap: 'One place for work, stock and manufacturing orders.' },
+        steps: [ 'Mapped work across ClickUp, Notion, Slack and email, and who held what knowledge.', 'Designed one central Asana architecture with inventory and order views.', 'Wrote the migration plan, SOPs and training structure, in a 3-week sprint.' ],
         headline: 'Four tools mapped into one system',
         lead: 'Work was spread across ClickUp, Notion, Slack and email, and supply-chain knowledge sat with a few individuals.',
         shot: { src: 'assets/cases/roostys-mo-dashboard.jpg', cap: 'Roosty’s workspace: the manufacturing orders dashboard in Asana. Sensitive details blurred.', real: true },
@@ -387,6 +393,8 @@ const csData = {
     },
     bnb: {
         client: 'Black & Black', industry: 'Digital commerce agency', logo: 'assets/logos/black-and-black.png', badge: 'Founder experience',
+        route: { nodes: ['Strategy', 'Design', 'Development', 'QA'], before: 'Manual follow-up', after: 'Automated stage gates', bcap: 'Every handoff depended on memory and chasing.', acap: 'Each stage hands over to the next on its own.' },
+        steps: [ 'Mapped how strategy, design, development and QA handed work over.', 'Standardised delivery stages with automated phase handoffs.', 'Added reusable project templates and QA gates before every launch.' ],
         headline: 'Shopify delivery on stage gates, not heroics',
         lead: 'Complex Shopify builds depended on manual coordination between strategy, design, development and QA.',
         shot: { src: 'assets/cases/bnb-handoff-rule.jpg', cap: 'Illustrative: an automated handoff rule of the same type, shown in our demo workspace.', real: false },
@@ -400,29 +408,57 @@ const csData = {
 const csOverlay = document.getElementById('cs-modal');
 const csPanel = document.getElementById('cs-modal-panel');
 let csReturn = null;
+function routeSVG(r, after) {
+    const n = r.nodes.length, cx = 170, cy = 116, R = n > 4 ? 88 : 92, uid = (after ? 'a' : 'b') + Math.random().toString(36).slice(2, 7);
+    const pts = r.nodes.map((t, i) => { const ang = -Math.PI / 2 + (i + (n === 3 ? 0 : .5)) * 2 * Math.PI / n; return [cx + Math.cos(ang) * R * 1.45, cy + Math.sin(ang) * R, t]; });
+    const lines = pts.map(([x, y], i) => `<path id="${uid}${i}" class="rt-l" style="--i:${i}" d="M${x.toFixed(1)} ${y.toFixed(1)} L${cx} ${cy}"/>`).join('');
+    const dots = after ? '' : pts.map((_, i) => `<circle r="3.4" class="rt-p"><animateMotion dur="${(1.6 + (i % 3) * .35).toFixed(2)}s" begin="${(i * .23).toFixed(2)}s" repeatCount="indefinite"><mpath href="#${uid}${i}"/></animateMotion></circle>`).join('');
+    const nodes = pts.map(([x, y, t], i) => t ? `<g class="rt-n" style="--i:${i}"><rect x="${(x - 44).toFixed(1)}" y="${(y - 13).toFixed(1)}" width="88" height="26" rx="13"/><text x="${x.toFixed(1)}" y="${(y + 4.5).toFixed(1)}">${t}</text></g>` : `<g class="rt-n" style="--i:${i}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="11"/><circle class="rt-head" cx="${x.toFixed(1)}" cy="${(y - 3).toFixed(1)}" r="3.6"/><path class="rt-body" d="M${(x - 6).toFixed(1)} ${(y + 6).toFixed(1)} q6 -7 12 0"/></g>`).join('');
+    const hubW = Math.max(120, r[after ? 'after' : 'before'].length * 7.4 + 30);
+    return `<svg viewBox="0 0 340 232" class="rt-svg ${after ? 'is-after' : 'is-before'}" aria-hidden="true">${lines}${dots}${nodes}<g class="rt-hub"><rect x="${cx - hubW / 2}" y="${cy - 17}" width="${hubW}" height="34" rx="10"/><text x="${cx}" y="${cy + 5}">${r[after ? 'after' : 'before']}</text></g></svg>`;
+}
+function countFacts(root) {
+    root.querySelectorAll('[data-cv]').forEach((el, k) => {
+        const raw = el.dataset.cv, m = raw.match(/^(\d+)(.*)$/);
+        if (!m || REDUCED) { el.textContent = raw; return; }
+        const to = +m[1], rest = m[2], t0 = performance.now() + 250 + k * 160, dur = 1100;
+        el.textContent = (to > 1 ? 0 : to) + rest;
+        const tick = (now) => { const q = Math.max(0, Math.min(1, (now - t0) / dur)); el.textContent = Math.round(to * (1 - Math.pow(1 - q, 3))) + rest; if (q < 1) requestAnimationFrame(tick); };
+        requestAnimationFrame(tick);
+    });
+}
 function openCaseStudy(key) {
     closeMobileNav();
     const d = csData[key];
     if (!d) return;
     csReturn = document.activeElement;
+    const names = ['Klarity', 'Kontrol', 'Kompound'], subs = ['Map it', 'Build it', 'Hand it over'];
     csPanel.innerHTML = `
         <div class="cs-top"><img src="${d.logo}" alt="${d.client}"><div class="cs-top-r"><span class="tag">${d.industry}</span><button class="x-btn" onclick="closeCaseStudy()" aria-label="Close case study"><i data-lucide="x"></i></button></div></div>
-        <figure class="cs-shot"><button type="button" class="zoomable" data-full="${d.shot.src}" data-title="${d.client}: ${d.shot.real ? 'real workspace' : 'illustrative view'}"><img src="${d.shot.src}" alt="${d.shot.cap}"><span class="shot-tag${d.shot.real ? ' real' : ''}">${d.shot.real ? 'Real screen · data blurred' : 'Demo workspace view'}</span></button><figcaption>${d.shot.cap}</figcaption></figure>
-        <div class="cs-body">
+        <div class="cs-body cs-v2">
             <span class="ev-badge"><i data-lucide="shield-check"></i>${d.badge}</span>
             <h2 id="cs-modal-title">${d.headline}</h2>
             <p class="cs-lead">${d.lead}</p>
-            <div class="cs-res">${d.facts.map(r => `<div><b>${r.v}</b><span>${r.l}</span></div>`).join('')}</div>
+            <div class="cs-res">${d.facts.map((r, i) => `<div style="--i:${i}"><b data-cv="${r.v}">${r.v}</b><span>${r.l}</span></div>`).join('')}</div>
+            <div class="cs-route">
+                <div class="rt-card rt-b"><span class="rt-tag"><i data-lucide="circle-x"></i>Before</span>${routeSVG(d.route, false)}<p>${d.route.bcap}</p></div>
+                <div class="rt-arrow" aria-hidden="true"><i data-lucide="arrow-right"></i></div>
+                <div class="rt-card rt-a"><span class="rt-tag"><i data-lucide="circle-check"></i>After</span>${routeSVG(d.route, true)}<p>${d.route.acap}</p></div>
+            </div>
             <div class="cs-cols">
-                <div class="cs-block"><h3>Why it mattered</h3><ul class="cs-why">${d.why.map(w => `<li><i data-lucide="circle-alert"></i>${w}</li>`).join('')}</ul></div>
+                <div class="cs-block"><h3>What it was costing</h3><ul class="cs-why">${d.why.map(w => `<li><i data-lucide="circle-alert"></i>${w}</li>`).join('')}</ul></div>
                 <div class="cs-block"><h3>What we built</h3><ol class="cs-built">${d.built.map((b, n) => `<li><span>${n + 1}</span>${b}</li>`).join('')}</ol></div>
             </div>
-            <p class="cs-note"><i data-lucide="info"></i><span><b>Evidence note.</b> ${d.note}</span></p>
-            <button class="btn btn-block" onclick="closeCaseStudy(); openBookingModal('case_study_modal', 'Free 20-Min Fit Call');">Book a free 20-min call <i data-lucide="arrow-right"></i></button>
+            <div class="cs-steps"><h3>How we worked</h3><ol>${d.steps.map((t, i) => `<li style="--i:${i}"><span class="st-dot">${i + 1}</span><b>${names[i]}</b><small>${subs[i]}</small><p>${t}</p></li>`).join('')}</ol></div>
+            <figure class="cs-shot"><button type="button" class="zoomable" data-full="${d.shot.src}" data-title="${d.client}: ${d.shot.real ? 'real workspace' : 'illustrative view'}"><img src="${d.shot.src}" alt="${d.shot.cap}"><span class="shot-tag${d.shot.real ? ' real' : ''}">${d.shot.real ? 'Real screen · data blurred' : 'Demo workspace view'}</span></button><figcaption>${d.shot.cap}</figcaption></figure>
+            <p class="cs-note"><i data-lucide="info"></i><span>${d.note}</span></p>
+            <div class="cs-cta"><div><b>Is something in your business still routing through you?</b><span>20 minutes. You leave with the first three fixes.</span></div><button class="btn" onclick="closeCaseStudy(); openBookingModal('case_study_modal', 'Free 20-Min Fit Call');">Book a free 20-min call <i data-lucide="arrow-right"></i></button></div>
         </div>`;
     if (window.lucide) lucide.createIcons();
     csPanel.scrollTop = 0;
     openOverlay(csOverlay);
+    csPanel.classList.remove('play'); void csPanel.offsetWidth; csPanel.classList.add('play');
+    countFacts(csPanel);
 }
 function closeCaseStudy(event) {
     if (event && event.target !== csOverlay) return;
@@ -527,11 +563,9 @@ function openBookingModal(source, offer) {
 window.addEventListener('load', function openFromUrl() {
     const VALID_OFFERS = [
         'Free 20-Min Fit Call',
-        'Systems Audit & Roadmap',
-        'Systems Audit + AI Audit Combo',
-        'One-Off Build',
-        'BizOps Retainer',
-        'Build Sprint'
+        'Ops X-Ray',
+        'The 30-Day Brand OS',
+        'Ops Partner'
     ];
     const params = new URLSearchParams(window.location.search);
     const wantsBooking = params.get('book') === '1' || window.location.hash === '#book';
@@ -760,3 +794,43 @@ async function submitForm(e) {
     if (MOVED[location.hash]) location.replace(MOVED[location.hash]);
 })();
 
+
+
+/* ---------------- Builds dropdown ---------------- */
+document.querySelectorAll('.nav-dd').forEach((dd) => {
+    const btn = dd.querySelector('.nav-dd-btn');
+    const set = (on) => { dd.classList.toggle('open', on); btn.setAttribute('aria-expanded', on ? 'true' : 'false'); };
+    btn.addEventListener('click', (e) => { e.stopPropagation(); set(!dd.classList.contains('open')); });
+    dd.addEventListener('mouseenter', () => set(true));
+    dd.addEventListener('mouseleave', () => set(false));
+    dd.addEventListener('focusout', (e) => { if (!dd.contains(e.relatedTarget)) set(false); });
+    document.addEventListener('click', () => set(false));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+});
+
+/* ---------------- What-you-get tabs (Asana / ClickUp pages) ---------------- */
+document.querySelectorAll('.art').forEach((art) => {
+    const tabs = [...art.querySelectorAll('.art-tab')];
+    const img = art.querySelector('#art-img'), shot = art.querySelector('#art-shot');
+    const B = art.querySelector('#art-b'), A = art.querySelector('#art-a');
+    let cur = 0;
+    function show(i, focus) {
+        cur = (i + tabs.length) % tabs.length;
+        const t = tabs[cur];
+        tabs.forEach((x, n) => { x.setAttribute('aria-selected', n === cur ? 'true' : 'false'); x.tabIndex = n === cur ? 0 : -1; });
+        img.style.opacity = .35;
+        const pre = new Image();
+        pre.onload = () => { img.src = pre.src; img.alt = t.dataset.alt; img.style.opacity = 1; };
+        pre.src = t.dataset.img;
+        shot.dataset.full = t.dataset.img; shot.dataset.title = t.querySelector('b').textContent;
+        B.textContent = t.dataset.b; A.textContent = t.dataset.a;
+        if (focus) t.focus();
+    }
+    tabs.forEach((t, i) => {
+        t.addEventListener('click', () => show(i));
+        t.addEventListener('keydown', (e) => {
+            if (['ArrowDown', 'ArrowRight'].includes(e.key)) { e.preventDefault(); show(cur + 1, true); }
+            if (['ArrowUp', 'ArrowLeft'].includes(e.key)) { e.preventDefault(); show(cur - 1, true); }
+        });
+    });
+});

@@ -81,8 +81,8 @@
         }
     </script>
 
-    <title>ClickUp Consultants for D2C Brands | KlarityOps</title>
-    <meta name="description" content="Already on ClickUp? We build workload views, automated content pipelines and creative reporting there, documented for your team and handed over.">
+    <title>ClickUp Builds for $5M–$25M DTC Brands | KlarityOps</title>
+    <meta name="description" content="Your brand's operating system, built in ClickUp: weekly scorecard, onboarding by phase, SOP register and team hubs. Live in 30 days, adoption guaranteed.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
     <link rel="icon" href="/favicon.ico" sizes="any">
@@ -93,15 +93,15 @@
     <link rel="canonical" href="https://klarityops.com/clickup">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="KlarityOps">
-    <meta property="og:title" content="ClickUp systems for D2C brands | KlarityOps">
-    <meta property="og:description" content="Already on ClickUp? We build workload views, automated content pipelines and creative reporting there, documented for your team and handed over.">
+    <meta property="og:title" content="ClickUp builds for DTC brands | KlarityOps">
+    <meta property="og:description" content="Your brand's operating system, built in ClickUp: weekly scorecard, onboarding by phase, SOP register and team hubs. Live in 30 days, adoption guaranteed.">
     <meta property="og:url" content="https://klarityops.com/clickup">
     <meta property="og:image" content="https://klarityops.com/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ClickUp systems for D2C brands | KlarityOps">
-    <meta name="twitter:description" content="Already on ClickUp? We build workload views, automated content pipelines and creative reporting there, documented for your team and handed over.">
+    <meta name="twitter:title" content="ClickUp builds for DTC brands | KlarityOps">
+    <meta name="twitter:description" content="Your brand's operating system, built in ClickUp: weekly scorecard, onboarding by phase, SOP register and team hubs. Live in 30 days, adoption guaranteed.">
     <meta name="twitter:image" content="https://klarityops.com/og-image.jpg">
 
     <script type="application/ld+json">
@@ -119,6 +119,35 @@
    "@type": "WebSite",
    "name": "KlarityOps",
    "url": "https://klarityops.com/"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Our ClickUp is a mess. Do we start over?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Usually not. We keep what works, merge duplicate statuses and lists, and archive the rest. Your team keeps working while we rebuild around owners and dates."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Should we be on Asana instead?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "If your team already lives in ClickUp, we build there. A tool switch costs months of adoption. We only suggest moving if something you need truly isn’t possible in ClickUp."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do we need a paid ClickUp plan?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Custom fields and automations have limits on the free plan. We tell you on the call what your build needs and whether an upgrade is worth it."
+     }
+    }
+   ]
   }
  ]
 }
@@ -137,7 +166,14 @@
             <a href="/" class="logo" aria-label="KlarityOps home"><img src="assets/brand/klarityops-mark.svg" alt="" width="36" height="36"><span>KlarityOps</span></a>
             <nav class="nav-links" aria-label="Primary">
                 <a href="/#system">How it works</a>
-                <a href="/#case-studies">Case studies</a>
+                <div class="nav-dd">
+                    <button type="button" class="nav-dd-btn" aria-expanded="false" aria-controls="builds-menu">Builds <i data-lucide="chevron-down"></i></button>
+                    <div class="nav-dd-menu" id="builds-menu">
+                        <a href="asana.html"><span class="dd-ic asana"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="27" r="18" fill="#F06A6A"/><circle cx="23" cy="72" r="18" fill="#F06A6A"/><circle cx="77" cy="72" r="18" fill="#F06A6A"/></svg></span><span><b>Asana builds</b><small>Your operating system, built in Asana</small></span></a>
+                        <a href="clickup.html"><span class="dd-ic clickup"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16.5l3.2-2.5c1.6 2.1 3.2 3.1 4.9 3.1s3.2-1 4.8-3.1l3.2 2.5c-2.3 3-5 4.5-8 4.5s-5.8-1.5-8.1-4.5z" fill="#7B68EE"/><path d="M12 7.3l-5.3 4.5L4.6 9.4 12 3l7.4 6.4-2.1 2.4z" fill="#FF02F0"/></svg></span><span><b>ClickUp builds</b><small>Your operating system, built in ClickUp</small></span></a>
+                    </div>
+                </div>
+                <a href="case-studies.html">Case studies</a>
                 <a href="/#engagement">Pricing</a>
             </nav>
             <div class="nav-right">
@@ -153,65 +189,106 @@
             <button class="x-btn" type="button" onclick="closeMobileNav()" aria-label="Close menu"><i data-lucide="x"></i></button>
         </div>
         <a class="ml" href="/#system" onclick="closeMobileNav()">How it works <i data-lucide="arrow-right"></i></a>
-        <a class="ml" href="/#case-studies" onclick="closeMobileNav()">Case studies <i data-lucide="arrow-right"></i></a>
+        <span class="ml-group">Builds</span>
+        <a class="ml ml-sub" href="asana.html" onclick="closeMobileNav()">Asana builds <i data-lucide="arrow-right"></i></a>
+        <a class="ml ml-sub" href="clickup.html" onclick="closeMobileNav()">ClickUp builds <i data-lucide="arrow-right"></i></a>
+        <a class="ml" href="case-studies.html" onclick="closeMobileNav()">Case studies <i data-lucide="arrow-right"></i></a>
         <a class="ml" href="/#engagement" onclick="closeMobileNav()">Pricing <i data-lucide="arrow-right"></i></a>
         <button class="btn btn-block" onclick="closeMobileNav(); openBookingModal('mobile_nav_panel', 'Free 20-Min Fit Call');">Book a free 20-min call <i data-lucide="arrow-right"></i></button>
     </div>
 
     <main id="main-content">
-        <section class="hero phero">
+        <section class="hero phero bhero">
             <div class="wrap">
-                <span class="chip rv"><span class="asana"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16.5l3.2-2.5c1.6 2.1 3.2 3.1 4.9 3.1s3.2-1 4.8-3.1l3.2 2.5c-2.3 3-5 4.5-8 4.5s-5.8-1.5-8.1-4.5z" fill="#7B68EE"/><path d="M12 7.3l-5.3 4.5L4.6 9.4 12 3l7.4 6.4-2.1 2.4z" fill="#FF02F0"/></svg></span>ClickUp systems for D2C brands</span>
-                <h1 class="rv" style="--d:1">Already on ClickUp? <span class="hl">We build there too.</span></h1>
-                <p class="lead rv" style="--d:2">Same method and same handoff as our Asana builds, configured in your ClickUp and documented for your team.</p>
-                <div class="hero-ctas rv" style="--d:3"><button class="btn" onclick="openBookingModal('clickup_page_hero', 'Free 20-Min Fit Call')">Book a free 20-min call <i data-lucide="arrow-right"></i></button></div>
+                <span class="chip rv"><span class="asana"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16.5l3.2-2.5c1.6 2.1 3.2 3.1 4.9 3.1s3.2-1 4.8-3.1l3.2 2.5c-2.3 3-5 4.5-8 4.5s-5.8-1.5-8.1-4.5z" fill="#7B68EE"/><path d="M12 7.3l-5.3 4.5L4.6 9.4 12 3l7.4 6.4-2.1 2.4z" fill="#FF02F0"/></svg></span>ClickUp builds</span>
+                <h1 class="rv" style="--d:1">Your brand’s operating system, <span class="hl">built in ClickUp.</span></h1>
+                <p class="lead rv" style="--d:2">Same method, same guarantees as our Asana builds. We set ClickUp up around owners, dates and one weekly scorecard, so your team stops bringing every question to you.</p>
+                <div class="hero-ctas rv" style="--d:3"><button class="btn" onclick="openBookingModal('clickup_page_hero', 'Free 20-Min Fit Call')">Book a free 20-min call <i data-lucide="arrow-right"></i></button><a class="btn btn-ghost" href="#get">See what you get</a></div>
+                <ul class="trust-row rv" style="--d:4">
+                    <li><i data-lucide="badge-check"></i><span><b>ClickUp certified</b> builders</span></li>
+                    <li><i data-lucide="store"></i><span>We run ops inside a <b>$100M DTC brand</b> today</span></li>
+                    <li><i data-lucide="calendar-check"></i><span><b>Live in 30 days</b>, fixed price</span></li>
+                    <li><i data-lucide="shield-check"></i><span><b>Adoption guaranteed</b> by day 60</span></li>
+                </ul>
             </div>
         </section>
-        <section class="sec" id="builds">
+
+        <section class="sec" id="get">
             <div class="wrap">
-                <div class="sec-head rv"><span class="label"><i></i>By problem</span><h2 class="h2">What we fix in ClickUp</h2></div>
-                <div class="cu-grid">
-                    <article class="card cu-card rv"><button type="button" class="zoomable" data-full="assets/clickup/clickup-01.jpg" data-title="ClickUp workload dashboard"><img src="assets/clickup/clickup-01.jpg" alt="ClickUp workload dashboard, names blurred" loading="lazy"></button><div class="cb"><h3>See who’s overloaded before work slips</h3><p><b>Before:</b> you find out someone is overloaded when a deadline is missed.</p><p><b>After:</b> workload views show capacity by person.</p></div></article>
-                    <article class="card cu-card rv"><button type="button" class="zoomable" data-full="assets/clickup/clickup-07.jpg" data-title="ClickUp pipeline automations"><img src="assets/clickup/clickup-07.jpg" alt="ClickUp pipeline automations, names blurred" loading="lazy"></button><div class="cb"><h3>Content that moves itself to the next stage</h3><p><b>Before:</b> someone chases every handoff by hand.</p><p><b>After:</b> automations move content between stages.</p></div></article>
-                    <article class="card cu-card rv"><button type="button" class="zoomable" data-full="assets/clickup/clickup-05.jpg" data-title="ClickUp creative output report"><img src="assets/clickup/clickup-05.jpg" alt="ClickUp creative output report, names blurred" loading="lazy"></button><div class="cb"><h3>Creative reporting nobody rebuilds</h3><p><b>Before:</b> someone rebuilds the same report every week.</p><p><b>After:</b> creative output reports stay up to date.</p></div></article>
+                <div class="sec-head rv">
+                    <span class="label"><i></i>What you get</span>
+                    <h2 class="h2">Five pieces. <span class="hl">Each one answers a question you answer today.</span></h2>
+                    <p class="sub">Screens from our ClickUp demo workspace for an e-commerce brand, built the way we build for clients.</p>
+                </div>
+                <div class="art art-dark rv" id="art">
+                    <div class="art-tabs" role="tablist" aria-label="What we build">
+                        <button class="art-tab" role="tab" aria-selected="true" data-i="0" data-img="assets/clickup/cu-scorecard.jpg" data-alt="ClickUp KPI scorecard list inside an e-commerce space with Marketing, Operations, Fulfillment and Leadership folders" data-b="You learn how the week went in a status meeting, or when something breaks." data-a="A KPI scorecard list: overdue work, on-time delivery, cycle time and creative turnaround, each with an owner and a priority."><span class="art-q">“How are we doing?”</span><b>Weekly Scorecard</b></button>
+                        <button class="art-tab" role="tab" aria-selected="false" tabindex="-1" data-i="1" data-img="assets/clickup/cu-onboarding.jpg" data-alt="ClickUp onboarding list grouped by phase, from pre-boarding to week one" data-b="Every new hire asks you what to do next." data-a="Onboarding grouped by phase, from pre-boarding to day 60. Every step has an owner and a date, so new hires ask the list, not you."><span class="art-q">“What do I do on day one?”</span><b>Onboarding by phase</b></button>
+                        <button class="art-tab" role="tab" aria-selected="false" tabindex="-1" data-i="2" data-img="assets/clickup/cu-sop-register.jpg" data-alt="ClickUp SOP register with department, owner and next review date on every SOP" data-b="SOPs are old, unowned and impossible to find." data-a="An SOP register: every process has a department, an owner, a status and a next review date."><span class="art-q">“Is this still how we do it?”</span><b>SOP Register</b></button>
+                        <button class="art-tab" role="tab" aria-selected="false" tabindex="-1" data-i="3" data-img="assets/clickup/cu-sop-page.jpg" data-alt="ClickUp doc: returns and refund SOP with owner, trigger and a quick-reference table" data-b="Every refund question still reaches the founder." data-a="One-page SOPs with an owner, a trigger and a quick-reference table. The CX team decides without asking."><span class="art-q">“Can we refund this?”</span><b>One-page SOPs</b></button>
+                        <button class="art-tab" role="tab" aria-selected="false" tabindex="-1" data-i="4" data-img="assets/clickup/cu-hub.jpg" data-alt="ClickUp creative hub page listing where the work lives and the team's SOPs" data-b="Each team keeps its own docs, links and habits." data-a="A hub per department: who leads, where the work lives and the SOPs that team owns."><span class="art-q">“Where does this live?”</span><b>Team hubs</b></button>
+                    </div>
+                    <div class="art-view" role="tabpanel" aria-live="polite">
+                        <button type="button" class="art-shot zoomable" id="art-shot" data-full="assets/clickup/cu-scorecard.jpg" data-title="Weekly Scorecard"><img id="art-img" src="assets/clickup/cu-scorecard.jpg" alt="ClickUp KPI scorecard list inside an e-commerce space" width="1286" height="560"><span class="zoom"><i data-lucide="maximize-2"></i><span>Enlarge</span></span></button>
+                        <div class="art-ba">
+                            <div class="b4"><small>Before</small><p id="art-b">You learn how the week went in a status meeting, or when something breaks.</p></div>
+                            <div class="af"><small>After</small><p id="art-a">A KPI scorecard list: overdue work, on-time delivery, cycle time and creative turnaround, each with an owner and a priority.</p></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        <section class="sec sec-tint" id="delivery">
+
+        <section class="sec sec-tint" id="how">
             <div class="wrap">
-                <div class="sec-head rv"><span class="label"><i></i>The handoff</span><h2 class="h2">Every build ships three things</h2><p class="sub">Your team gets the system and everything needed to run it without us.</p></div>
+                <div class="sec-head rv">
+                    <span class="label"><i></i>How it works</span>
+                    <h2 class="h2">Built with your team, <span class="hl">not handed to them.</span></h2>
+                </div>
                 <div class="grid-3 ships">
-                    <article class="card ship rv"><span class="ship-n">1</span><span class="ib"><i data-lucide="settings-2"></i></span><h3>Working system</h3><p>Configured in your workspace and tested against the workflow we agreed with you.</p></article>
-                    <article class="card ship rv" style="--d:1"><span class="ship-n">2</span><span class="ib"><i data-lucide="file-text"></i></span><h3>Written SOP</h3><p>Owners, fields, rules, exceptions and review cadence, documented for the team.</p></article>
-                    <article class="card ship rv" style="--d:2"><span class="ship-n">3</span><span class="ib"><i data-lucide="clapperboard"></i></span><h3>Video guide</h3><p>A short recorded walkthrough for admins and day-to-day users.</p></article>
+                    <article class="card ship rv"><span class="ship-n">1</span><span class="ib"><i data-lucide="search"></i></span><h3>Klarity</h3><span class="wk">Week 1</span><p>We map every workstream and everything that still routes through you. Day 7: you see the blueprint. Don’t like it? Full refund.</p></article>
+                    <article class="card ship rv" style="--d:1"><span class="ship-n">2</span><span class="ib"><i data-lucide="settings-2"></i></span><h3>Kontrol</h3><span class="wk">Weeks 2–3</span><p>We build spaces, lists, statuses, automations and dashboards in your ClickUp, with the people who will use them.</p></article>
+                    <article class="card ship rv" style="--d:2"><span class="ship-n">3</span><span class="ib"><i data-lucide="key-round"></i></span><h3>Kompound</h3><span class="wk">Week 4 on</span><p>Training by role, an SOP and a video for every workflow, and 30 days of support after go-live.</p></article>
                 </div>
             </div>
         </section>
+
+        <section class="sec" id="faq">
+            <div class="wrap">
+                <div class="sec-head rv"><span class="label"><i></i>ClickUp questions</span><h2 class="h2">Before you book</h2></div>
+                <div class="faq rv">
+                    <details><summary>Our ClickUp is a mess. Do we start over?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">Usually not. We keep what works, merge duplicate statuses and lists, and archive the rest. Your team keeps working while we rebuild around owners and dates.</p></details>
+                    <details><summary>Should we be on Asana instead?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">If your team already lives in ClickUp, we build there. A tool switch costs months of adoption. We only suggest moving if something you need truly isn’t possible in ClickUp.</p></details>
+                    <details><summary>Do we need a paid ClickUp plan?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">Custom fields and automations have limits on the free plan. We tell you on the call what your build needs and whether an upgrade is worth it.</p></details>
+                </div>
+            </div>
+        </section>
+
         <section id="book-cta">
             <div class="wrap">
                 <div class="cta-box rv">
                     <div class="faces" aria-hidden="true"><img src="assets/team/hasan-ijaz.jpg" alt=""><img src="assets/team/amna-qaisar.jpg" alt=""><img src="assets/team/huzaifa-farooq.jpg" alt=""></div>
-                    <h2>Want this in your ClickUp?</h2>
-                    <p>No prep and no pitch deck. Tell us what’s breaking and we’ll point out where to start.</p>
+                    <h2>Want your ClickUp to answer instead of you?</h2>
+                    <p>20 minutes, no pitch deck. You leave with the first three things to fix.</p>
                     <div class="btns"><button class="btn btn-white" onclick="openBookingModal('clickup_page_cta', 'Free 20-Min Fit Call')">Book a free 20-min call <i data-lucide="arrow-right"></i></button></div>
                 </div>
             </div>
         </section>
     </main>
     <div class="mbar" id="mbar" aria-hidden="true">
-        <div><b>Free 20-min call</b><small>No pitch deck. Audit fee credited.</small></div>
+        <div><b>Free 20-min call</b><small>Leave with the first 3 fixes.</small></div>
         <button class="btn btn-sm" tabindex="-1" onclick="openBookingModal('mobile_sticky_bar', 'Free 20-Min Fit Call')">Book now <i data-lucide="arrow-right"></i></button>
     </div>
 
     <footer>
         <div class="wrap">
             <div class="foot">
-                <div><a href="/" class="logo"><img src="assets/brand/klarityops-mark.svg" alt="" width="36" height="36"><span>KlarityOps</span></a><p>Asana operating systems for D2C brands.</p></div>
-                <div><h4>Company</h4><a href="/#system">How it works</a><a href="case-studies.html">Case studies</a><a href="/#engagement">Pricing</a><a href="team.html">Team</a></div>
-                <div><h4>Resources</h4><a href="asana.html">Asana systems</a><a href="clickup.html">ClickUp systems</a><a href="roadmap.html">Roadmap</a><a href="faq.html">FAQ</a><a href="https://portfolio.klarityops.com" target="_blank" rel="noopener">Portfolio ↗</a></div>
+                <div><a href="/" class="logo"><img src="assets/brand/klarityops-mark.svg" alt="" width="36" height="36"><span>KlarityOps</span></a><p>Operating systems for founder-led DTC brands, built in Asana or ClickUp.</p></div>
+                <div><h4>Company</h4><a href="/#system">How it works</a><a href="case-studies.html">Case studies</a><a href="/#free">Free templates</a><a href="/#engagement">Pricing</a><a href="team.html">Team</a></div>
+                <div><h4>Resources</h4><a href="asana.html">Asana builds</a><a href="clickup.html">ClickUp builds</a><a href="roadmap.html">Roadmap</a><a href="faq.html">FAQ</a><a href="https://hasan-ijaz-portfolio.vercel.app/" target="_blank" rel="noopener">Hasan’s portfolio ↗</a></div>
                 <div><h4>Get in touch</h4><a href="mailto:hello@klarityops.com">hello@klarityops.com</a><a href="#book" onclick="openBookingModal('footer', 'Free 20-Min Fit Call'); return false;">Book a free 20-min call</a></div>
             </div>
-            <div class="foot-bot"><span>© 2026 KlarityOps. All rights reserved.</span><span>The Klarity Method: diagnose, build, hand over.</span></div>
+            <div class="foot-bot"><span>© 2026 KlarityOps. All rights reserved.</span><span>Klarity, Kontrol, Kompound. Out of the middle in 30 days.</span></div>
         </div>
     </footer>
 
@@ -263,11 +340,9 @@
                                 <label for="selectedOfferDisplay">What are you interested in?</label>
                                 <select id="selectedOfferDisplay" onchange="handleOfferChange(this.value)">
                                     <option selected>Free 20-Min Fit Call</option>
-                                    <option>Systems Audit &amp; Roadmap</option>
-                                    <option>Systems Audit + AI Audit Combo</option>
-                                    <option>One-Off Build</option>
-                                    <option>BizOps Retainer</option>
-                                    <option>Build Sprint</option>
+                                    <option>Ops X-Ray</option>
+                                    <option>The 30-Day Brand OS</option>
+                                    <option>Ops Partner</option>
                                 </select>
                             </div>
                             <div class="fg full">
@@ -317,8 +392,8 @@
 
                     <div class="form-step" data-step="3">
                         <div class="fg">
-                            <label for="pain">What’s breaking most often?</label>
-                            <textarea id="pain" required placeholder="e.g. Tool sprawl, nobody owns the final handoff, leadership can’t see status, and launches keep slipping…"></textarea>
+                            <label for="pain">What still lands on you?</label>
+                            <textarea id="pain" required placeholder="e.g. Every approval still comes to me, launches keep slipping, and nobody uses our Asana…"></textarea>
                         </div>
                     </div>
 

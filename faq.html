@@ -160,7 +160,7 @@
      "name": "Do you work with tools other than Asana?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Yes. Asana is where we go deepest, and we also build complete systems in ClickUp: workload views, automated pipelines and reporting. Around either one we integrate Slack, Google Workspace, Notion and reporting tools, and we’ve moved teams off ClickUp, Trello and Airtable into one Asana workspace when that was the better fit. The Systems Audit maps the right path for your stack."
+      "text": "Yes. Asana is where we go deepest, and we also build complete systems in ClickUp: workload views, automated pipelines and reporting. Around either one we integrate Slack, Google Workspace, Notion and reporting tools, and we’ve moved teams off ClickUp, Trello and Airtable into one Asana workspace when that was the better fit. The Ops X-Ray maps the right path for your stack."
      }
     },
     {
@@ -168,7 +168,7 @@
      "name": "What happens on the free 20-minute call?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "You tell us what’s breaking and we ask how work moves today. By the end we’ll point out where the bottleneck is and who should own it. If there’s a fit, we’ll recommend a starting point, usually the Systems Audit, whose fee is credited to your first build. If there isn’t, we’ll say so."
+      "text": "You tell us what’s breaking and we ask how work moves today. By the end we’ll point out where the bottleneck is and who should own it. If there’s a fit, we’ll usually suggest the 5-day Ops X-Ray, whose fee is credited to the build. If there isn’t, we’ll say so."
      }
     },
     {
@@ -176,7 +176,15 @@
      "name": "Who owns what you build?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "You do. Everything is built inside your own Asana or ClickUp workspace, and every build is handed over with a written SOP and a video guide. There’s no lock-in: keep the retainer only while it’s useful."
+      "text": "You do. Everything is built inside your own Asana or ClickUp workspace, and every build is handed over with a written SOP and a video guide. There’s no lock-in."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What exactly do you guarantee?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Three things on the 30-Day Brand OS. If you don’t like the plan we show you on day 7, you get a full refund and keep the plan. If the system isn’t live by day 30, we keep building at no cost. If fewer than 80% of your team are using it weekly by day 60, we keep working free for up to 30 more days, as long as you’ve named an internal owner and the team attended two trainings."
      }
     }
    ]
@@ -198,7 +206,14 @@
             <a href="/" class="logo" aria-label="KlarityOps home"><img src="assets/brand/klarityops-mark.svg" alt="" width="36" height="36"><span>KlarityOps</span></a>
             <nav class="nav-links" aria-label="Primary">
                 <a href="/#system">How it works</a>
-                <a href="/#case-studies">Case studies</a>
+                <div class="nav-dd">
+                    <button type="button" class="nav-dd-btn" aria-expanded="false" aria-controls="builds-menu">Builds <i data-lucide="chevron-down"></i></button>
+                    <div class="nav-dd-menu" id="builds-menu">
+                        <a href="asana.html"><span class="dd-ic asana"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="27" r="18" fill="#F06A6A"/><circle cx="23" cy="72" r="18" fill="#F06A6A"/><circle cx="77" cy="72" r="18" fill="#F06A6A"/></svg></span><span><b>Asana builds</b><small>Your operating system, built in Asana</small></span></a>
+                        <a href="clickup.html"><span class="dd-ic clickup"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16.5l3.2-2.5c1.6 2.1 3.2 3.1 4.9 3.1s3.2-1 4.8-3.1l3.2 2.5c-2.3 3-5 4.5-8 4.5s-5.8-1.5-8.1-4.5z" fill="#7B68EE"/><path d="M12 7.3l-5.3 4.5L4.6 9.4 12 3l7.4 6.4-2.1 2.4z" fill="#FF02F0"/></svg></span><span><b>ClickUp builds</b><small>Your operating system, built in ClickUp</small></span></a>
+                    </div>
+                </div>
+                <a href="case-studies.html">Case studies</a>
                 <a href="/#engagement">Pricing</a>
             </nav>
             <div class="nav-right">
@@ -214,7 +229,10 @@
             <button class="x-btn" type="button" onclick="closeMobileNav()" aria-label="Close menu"><i data-lucide="x"></i></button>
         </div>
         <a class="ml" href="/#system" onclick="closeMobileNav()">How it works <i data-lucide="arrow-right"></i></a>
-        <a class="ml" href="/#case-studies" onclick="closeMobileNav()">Case studies <i data-lucide="arrow-right"></i></a>
+        <span class="ml-group">Builds</span>
+        <a class="ml ml-sub" href="asana.html" onclick="closeMobileNav()">Asana builds <i data-lucide="arrow-right"></i></a>
+        <a class="ml ml-sub" href="clickup.html" onclick="closeMobileNav()">ClickUp builds <i data-lucide="arrow-right"></i></a>
+        <a class="ml" href="case-studies.html" onclick="closeMobileNav()">Case studies <i data-lucide="arrow-right"></i></a>
         <a class="ml" href="/#engagement" onclick="closeMobileNav()">Pricing <i data-lucide="arrow-right"></i></a>
         <button class="btn btn-block" onclick="closeMobileNav(); openBookingModal('mobile_nav_panel', 'Free 20-Min Fit Call');">Book a free 20-min call <i data-lucide="arrow-right"></i></button>
     </div>
@@ -223,7 +241,7 @@
         <section class="hero phero">
             <div class="wrap">
                 
-                <h1 class="rv" style="--d:1">Questions we hear <span class="hl">on almost every call.</span></h1>
+                <h1 class="rv" style="--d:1">Questions founders ask <span class="hl">before they book.</span></h1>
                 <p class="lead rv" style="--d:2">If yours isn’t here, email hello@klarityops.com.</p>
                 <div class="hero-ctas rv" style="--d:3"><button class="btn" onclick="openBookingModal('faq_page_hero', 'Free 20-Min Fit Call')">Book a free 20-min call <i data-lucide="arrow-right"></i></button></div>
             </div>
@@ -236,9 +254,10 @@
                     <details><summary>How long does setup take for an e-commerce brand?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">A complete, custom Asana setup usually takes about 30 days from audit to launch. That covers mapping your current workflows, building portfolios and automated rules, and live training so the whole team can run it on their own.</p></details>
                     <details><summary>Why not just hire a fractional COO?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">A fractional COO typically costs $8,000–$15,000 a month. They give good strategic advice but rarely build your workspace, document your processes or train your team. We build the permanent infrastructure that makes a fractional COO unnecessary at this stage, for a fraction of the annual cost.</p></details>
                     <details><summary>What if my team resists the new system?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">Adoption is built in from day one. We design workflows around how your team already communicates, roll out in phases people can absorb, and train everyone to the level their role needs. Before we hand over, we agree who inside your team owns adoption, so the system keeps running after we step back.</p></details>
-                    <details><summary>Do you work with tools other than Asana?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">Yes. Asana is where we go deepest, and we also build complete systems in ClickUp: workload views, automated pipelines and reporting. Around either one we integrate Slack, Google Workspace, Notion and reporting tools, and we’ve moved teams off ClickUp, Trello and Airtable into one Asana workspace when that was the better fit. The Systems Audit maps the right path for your stack.</p></details>
-                    <details><summary>What happens on the free 20-minute call?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">You tell us what’s breaking and we ask how work moves today. By the end we’ll point out where the bottleneck is and who should own it. If there’s a fit, we’ll recommend a starting point, usually the Systems Audit, whose fee is credited to your first build. If there isn’t, we’ll say so.</p></details>
-                    <details><summary>Who owns what you build?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">You do. Everything is built inside your own Asana or ClickUp workspace, and every build is handed over with a written SOP and a video guide. There’s no lock-in: keep the retainer only while it’s useful.</p></details>
+                    <details><summary>Do you work with tools other than Asana?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">Yes. Asana is where we go deepest, and we also build complete systems in ClickUp: workload views, automated pipelines and reporting. Around either one we integrate Slack, Google Workspace, Notion and reporting tools, and we’ve moved teams off ClickUp, Trello and Airtable into one Asana workspace when that was the better fit. The Ops X-Ray maps the right path for your stack.</p></details>
+                    <details><summary>What happens on the free 20-minute call?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">You tell us what’s breaking and we ask how work moves today. By the end we’ll point out where the bottleneck is and who should own it. If there’s a fit, we’ll usually suggest the 5-day Ops X-Ray, whose fee is credited to the build. If there isn’t, we’ll say so.</p></details>
+                    <details><summary>Who owns what you build?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">You do. Everything is built inside your own Asana or ClickUp workspace, and every build is handed over with a written SOP and a video guide. There’s no lock-in.</p></details>
+                    <details><summary>What exactly do you guarantee?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">Three things on the 30-Day Brand OS. If you don’t like the plan we show you on day 7, you get a full refund and keep the plan. If the system isn’t live by day 30, we keep building at no cost. If fewer than 80% of your team are using it weekly by day 60, we keep working free for up to 30 more days, as long as you’ve named an internal owner and the team attended two trainings.</p></details>
                 </div>
                 <p class="faq-more">Something else on your mind? Email <a href="mailto:hello@klarityops.com">hello@klarityops.com</a></p>
             </div>
@@ -254,8 +273,8 @@
                     <article class="fit-card good rv">
                         <h3><span class="fi"><i data-lucide="check"></i></span>A strong fit</h3>
                         <ul>
-                            <li><i data-lucide="check"></i>A scaling D2C or e-commerce team, past the scrappy stage</li>
-                            <li><i data-lucide="check"></i>30+ people, or the operating complexity of a team that size</li>
+                            <li><i data-lucide="check"></i>A DTC brand doing roughly $5M to $25M a year</li>
+                            <li><i data-lucide="check"></i>The founder is still where most questions and approvals land</li>
                             <li><i data-lucide="check"></i>Ready to standardise how work runs in Asana or ClickUp</li>
                             <li><i data-lucide="check"></i>Leadership wants visibility without another reporting layer</li>
                         </ul>
@@ -277,27 +296,27 @@
             <div class="wrap">
                 <div class="cta-box rv">
                     <div class="faces" aria-hidden="true"><img src="assets/team/hasan-ijaz.jpg" alt=""><img src="assets/team/amna-qaisar.jpg" alt=""><img src="assets/team/huzaifa-farooq.jpg" alt=""></div>
-                    <h2>Get the business out of your head.</h2>
-                    <p>No prep and no pitch deck. Tell us what’s breaking and we’ll point out where to start.</p>
+                    <h2>Find out where the business runs through you.</h2>
+                    <p>20 minutes, no pitch deck. You leave with the first three things to fix, whether you work with us or not.</p>
                     <div class="btns"><button class="btn btn-white" onclick="openBookingModal('faq_page_cta', 'Free 20-Min Fit Call')">Book a free 20-min call <i data-lucide="arrow-right"></i></button></div>
                 </div>
             </div>
         </section>
     </main>
     <div class="mbar" id="mbar" aria-hidden="true">
-        <div><b>Free 20-min call</b><small>No pitch deck. Audit fee credited.</small></div>
+        <div><b>Free 20-min call</b><small>Leave with the first 3 fixes.</small></div>
         <button class="btn btn-sm" tabindex="-1" onclick="openBookingModal('mobile_sticky_bar', 'Free 20-Min Fit Call')">Book now <i data-lucide="arrow-right"></i></button>
     </div>
 
     <footer>
         <div class="wrap">
             <div class="foot">
-                <div><a href="/" class="logo"><img src="assets/brand/klarityops-mark.svg" alt="" width="36" height="36"><span>KlarityOps</span></a><p>Asana operating systems for D2C brands.</p></div>
-                <div><h4>Company</h4><a href="/#system">How it works</a><a href="case-studies.html">Case studies</a><a href="/#engagement">Pricing</a><a href="team.html">Team</a></div>
-                <div><h4>Resources</h4><a href="asana.html">Asana systems</a><a href="clickup.html">ClickUp systems</a><a href="roadmap.html">Roadmap</a><a href="faq.html">FAQ</a><a href="https://portfolio.klarityops.com" target="_blank" rel="noopener">Portfolio ↗</a></div>
+                <div><a href="/" class="logo"><img src="assets/brand/klarityops-mark.svg" alt="" width="36" height="36"><span>KlarityOps</span></a><p>Operating systems for founder-led DTC brands, built in Asana or ClickUp.</p></div>
+                <div><h4>Company</h4><a href="/#system">How it works</a><a href="case-studies.html">Case studies</a><a href="/#free">Free templates</a><a href="/#engagement">Pricing</a><a href="team.html">Team</a></div>
+                <div><h4>Resources</h4><a href="asana.html">Asana builds</a><a href="clickup.html">ClickUp builds</a><a href="roadmap.html">Roadmap</a><a href="faq.html">FAQ</a><a href="https://hasan-ijaz-portfolio.vercel.app/" target="_blank" rel="noopener">Hasan’s portfolio ↗</a></div>
                 <div><h4>Get in touch</h4><a href="mailto:hello@klarityops.com">hello@klarityops.com</a><a href="#book" onclick="openBookingModal('footer', 'Free 20-Min Fit Call'); return false;">Book a free 20-min call</a></div>
             </div>
-            <div class="foot-bot"><span>© 2026 KlarityOps. All rights reserved.</span><span>The Klarity Method: diagnose, build, hand over.</span></div>
+            <div class="foot-bot"><span>© 2026 KlarityOps. All rights reserved.</span><span>Klarity, Kontrol, Kompound. Out of the middle in 30 days.</span></div>
         </div>
     </footer>
 
@@ -349,11 +368,9 @@
                                 <label for="selectedOfferDisplay">What are you interested in?</label>
                                 <select id="selectedOfferDisplay" onchange="handleOfferChange(this.value)">
                                     <option selected>Free 20-Min Fit Call</option>
-                                    <option>Systems Audit &amp; Roadmap</option>
-                                    <option>Systems Audit + AI Audit Combo</option>
-                                    <option>One-Off Build</option>
-                                    <option>BizOps Retainer</option>
-                                    <option>Build Sprint</option>
+                                    <option>Ops X-Ray</option>
+                                    <option>The 30-Day Brand OS</option>
+                                    <option>Ops Partner</option>
                                 </select>
                             </div>
                             <div class="fg full">
@@ -403,8 +420,8 @@
 
                     <div class="form-step" data-step="3">
                         <div class="fg">
-                            <label for="pain">What’s breaking most often?</label>
-                            <textarea id="pain" required placeholder="e.g. Tool sprawl, nobody owns the final handoff, leadership can’t see status, and launches keep slipping…"></textarea>
+                            <label for="pain">What still lands on you?</label>
+                            <textarea id="pain" required placeholder="e.g. Every approval still comes to me, launches keep slipping, and nobody uses our Asana…"></textarea>
                         </div>
                     </div>
 

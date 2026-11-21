@@ -81,8 +81,8 @@
         }
     </script>
 
-    <title>Asana Consultants for D2C Brands | KlarityOps</title>
-    <meta name="description" content="Real Asana builds for D2C brands: creative pipelines, live dashboards, production boards, SOPs and onboarding. Built in your workspace and handed over.">
+    <title>Asana Builds for $5M–$25M DTC Brands | KlarityOps</title>
+    <meta name="description" content="Your brand's operating system, built in Asana: owner map, launch board, request intake, weekly scorecard and team wiki. Live in 30 days, adoption guaranteed.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
     <link rel="icon" href="/favicon.ico" sizes="any">
@@ -93,15 +93,15 @@
     <link rel="canonical" href="https://klarityops.com/asana">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="KlarityOps">
-    <meta property="og:title" content="Asana systems for D2C brands | KlarityOps">
-    <meta property="og:description" content="Real Asana builds for D2C brands: creative pipelines, live dashboards, production boards, SOPs and onboarding. Built in your workspace and handed over.">
+    <meta property="og:title" content="Asana builds for DTC brands | KlarityOps">
+    <meta property="og:description" content="Your brand's operating system, built in Asana: owner map, launch board, request intake, weekly scorecard and team wiki. Live in 30 days, adoption guaranteed.">
     <meta property="og:url" content="https://klarityops.com/asana">
     <meta property="og:image" content="https://klarityops.com/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Asana systems for D2C brands | KlarityOps">
-    <meta name="twitter:description" content="Real Asana builds for D2C brands: creative pipelines, live dashboards, production boards, SOPs and onboarding. Built in your workspace and handed over.">
+    <meta name="twitter:title" content="Asana builds for DTC brands | KlarityOps">
+    <meta name="twitter:description" content="Your brand's operating system, built in Asana: owner map, launch board, request intake, weekly scorecard and team wiki. Live in 30 days, adoption guaranteed.">
     <meta name="twitter:image" content="https://klarityops.com/og-image.jpg">
 
     <script type="application/ld+json">
@@ -119,6 +119,35 @@
    "@type": "WebSite",
    "name": "KlarityOps",
    "url": "https://klarityops.com/"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "We already use Asana. Why isn’t it working?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Most brands have Asana, not a system in Asana. Projects exist, but there are no owners, no dates and no weekly scorecard, so the team goes back to Slack. We build around who decides what, so Asana answers the questions that come to you today."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do we need a higher Asana plan?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Not always. We build on the plan you have and tell you on the call if something you need sits on a higher tier, and whether it’s worth paying for."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can you move us from Sheets, Notion, Monday or ClickUp?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Migration of active work is part of the 30-Day Brand OS. We move what’s live, archive what isn’t, and run both side by side for a short overlap so nothing drops."
+     }
+    }
+   ]
   }
  ]
 }
@@ -137,7 +166,14 @@
             <a href="/" class="logo" aria-label="KlarityOps home"><img src="assets/brand/klarityops-mark.svg" alt="" width="36" height="36"><span>KlarityOps</span></a>
             <nav class="nav-links" aria-label="Primary">
                 <a href="/#system">How it works</a>
-                <a href="/#case-studies">Case studies</a>
+                <div class="nav-dd">
+                    <button type="button" class="nav-dd-btn" aria-expanded="false" aria-controls="builds-menu">Builds <i data-lucide="chevron-down"></i></button>
+                    <div class="nav-dd-menu" id="builds-menu">
+                        <a href="asana.html"><span class="dd-ic asana"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="27" r="18" fill="#F06A6A"/><circle cx="23" cy="72" r="18" fill="#F06A6A"/><circle cx="77" cy="72" r="18" fill="#F06A6A"/></svg></span><span><b>Asana builds</b><small>Your operating system, built in Asana</small></span></a>
+                        <a href="clickup.html"><span class="dd-ic clickup"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16.5l3.2-2.5c1.6 2.1 3.2 3.1 4.9 3.1s3.2-1 4.8-3.1l3.2 2.5c-2.3 3-5 4.5-8 4.5s-5.8-1.5-8.1-4.5z" fill="#7B68EE"/><path d="M12 7.3l-5.3 4.5L4.6 9.4 12 3l7.4 6.4-2.1 2.4z" fill="#FF02F0"/></svg></span><span><b>ClickUp builds</b><small>Your operating system, built in ClickUp</small></span></a>
+                    </div>
+                </div>
+                <a href="case-studies.html">Case studies</a>
                 <a href="/#engagement">Pricing</a>
             </nav>
             <div class="nav-right">
@@ -153,226 +189,121 @@
             <button class="x-btn" type="button" onclick="closeMobileNav()" aria-label="Close menu"><i data-lucide="x"></i></button>
         </div>
         <a class="ml" href="/#system" onclick="closeMobileNav()">How it works <i data-lucide="arrow-right"></i></a>
-        <a class="ml" href="/#case-studies" onclick="closeMobileNav()">Case studies <i data-lucide="arrow-right"></i></a>
+        <span class="ml-group">Builds</span>
+        <a class="ml ml-sub" href="asana.html" onclick="closeMobileNav()">Asana builds <i data-lucide="arrow-right"></i></a>
+        <a class="ml ml-sub" href="clickup.html" onclick="closeMobileNav()">ClickUp builds <i data-lucide="arrow-right"></i></a>
+        <a class="ml" href="case-studies.html" onclick="closeMobileNav()">Case studies <i data-lucide="arrow-right"></i></a>
         <a class="ml" href="/#engagement" onclick="closeMobileNav()">Pricing <i data-lucide="arrow-right"></i></a>
         <button class="btn btn-block" onclick="closeMobileNav(); openBookingModal('mobile_nav_panel', 'Free 20-Min Fit Call');">Book a free 20-min call <i data-lucide="arrow-right"></i></button>
     </div>
 
     <main id="main-content">
-        <section class="hero phero">
+        <section class="hero phero bhero">
             <div class="wrap">
-                <span class="chip rv"><span class="asana"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="27" r="18" fill="#F06A6A"/><circle cx="23" cy="72" r="18" fill="#F06A6A"/><circle cx="77" cy="72" r="18" fill="#F06A6A"/></svg></span>Asana systems for D2C brands</span>
-                <h1 class="rv" style="--d:1">Asana systems that <span class="hl">actually get used.</span></h1>
-                <p class="lead rv" style="--d:2">Real screens from client builds, organised by the problem each one fixes. Names and client data are blurred.</p>
-                <div class="hero-ctas rv" style="--d:3"><button class="btn" onclick="openBookingModal('asana_page_hero', 'Free 20-Min Fit Call')">Book a free 20-min call <i data-lucide="arrow-right"></i></button></div>
+                <span class="chip rv"><span class="asana"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="27" r="18" fill="#F06A6A"/><circle cx="23" cy="72" r="18" fill="#F06A6A"/><circle cx="77" cy="72" r="18" fill="#F06A6A"/></svg></span>Asana builds</span>
+                <h1 class="rv" style="--d:1">Your brand’s operating system, <span class="hl">built in Asana.</span></h1>
+                <p class="lead rv" style="--d:2">For $5M–$25M DTC brands that already pay for Asana, or are ready to. We set it up around owners, dates and one weekly scorecard, then train your team until it runs without you in the middle.</p>
+                <div class="hero-ctas rv" style="--d:3"><button class="btn" onclick="openBookingModal('asana_page_hero', 'Free 20-Min Fit Call')">Book a free 20-min call <i data-lucide="arrow-right"></i></button><a class="btn btn-ghost" href="#get">See what you get</a></div>
+                <ul class="trust-row rv" style="--d:4">
+                    <li><i data-lucide="award"></i><span><b>Asana Ambassador</b> since 2021</span></li>
+                    <li><i data-lucide="badge-check"></i><span><b>4× Asana certified</b> delivery team</span></li>
+                    <li><i data-lucide="store"></i><span>We run ops inside a <b>$100M DTC brand</b> today</span></li>
+                    <li><i data-lucide="shield-check"></i><span><b>Adoption guaranteed</b> by day 60</span></li>
+                </ul>
             </div>
         </section>
-        <section class="sec demo" id="demo">
-            <div class="wrap">
-                <div class="sec-head rv">
-                    <span class="label"><i></i>See it in action</span>
-                    <h2 class="h2">A real Asana build, start to finish</h2>
-                    <p class="sub">Real screens from live client builds, names blurred, with captions so you can follow along. No mockups.</p>
-                </div>
-                <div class="film rv">
-                    <video id="film-b-m" class="v-m" muted loop playsinline preload="none" poster="assets/posters/film-b-m.jpg" data-src="assets/video/film-b-m.mp4" aria-label="Walkthrough of real client builds: a process map, one request board, a launch template, a routing rule, a live leadership dashboard and goals"></video>
-                    <video id="film-b" class="v-d" muted loop playsinline preload="none" poster="assets/posters/film-b.jpg" data-src="assets/video/film-b.mp4" aria-label="Walkthrough of real client builds: a process map, one request board, a launch template, a routing rule, a live leadership dashboard and goals"></video>
-                    <div class="film-ctrl">
-                        <button type="button" id="film-toggle" aria-label="Pause video"><i data-lucide="pause"></i></button>
-                        <button type="button" id="film-full" aria-label="Watch full screen"><i data-lucide="maximize"></i></button>
-                    </div>
-                </div>
-                <div class="film-points">
-                    <div class="fpt rv"><span class="ib"><i data-lucide="list-checks"></i></span><div class="tx"><b>One list for every request</b><span>Type, priority and channel on every task, so nothing hides in DMs.</span></div></div>
-                    <div class="fpt rv" style="--d:1"><span class="ib"><i data-lucide="zap"></i></span><div class="tx"><b>Rules and AI do the busywork</b><span>Work moves stage to stage, and briefs draft themselves.</span></div></div>
-                    <div class="fpt rv" style="--d:2"><span class="ib"><i data-lucide="gauge"></i></span><div class="tx"><b>A dashboard instead of a meeting</b><span>Leadership sees progress live, without asking anyone.</span></div></div>
-                </div>
-                <div class="demo-cta rv"><button class="btn btn-white" onclick="openBookingModal('demo_section', 'Free 20-Min Fit Call')">Book a free 20-min call <i data-lucide="arrow-right"></i></button></div>
-            </div>
-        </section>
-        <section class="sec" id="builds">
+
+        <section class="sec" id="get">
             <div class="wrap">
                 <div class="sec-head rv">
-                    <span class="label"><i></i>By problem</span>
-                    <h2 class="h2">The problems these systems fix</h2>
-                    <p class="sub">24 real screens from client workspaces across six systems. Names, logos, photos and client data are blurred.</p>
+                    <span class="label"><i></i>What you get</span>
+                    <h2 class="h2">Five pieces. <span class="hl">Each one answers a question you answer today.</span></h2>
+                    <p class="sub">Real screens from client builds, with names and data blurred.</p>
                 </div>
-                <div class="gal rv">
-                    <div class="gal-tabs" role="tablist" aria-label="Systems">
-                        <button class="gtab" role="tab" aria-selected="true" data-cat="0"><span class="ib"><i data-lucide="palette"></i></span><span class="gt-t"><b>Creative pipeline from brief to live ad</b><small>Creative production</small></span><span class="gt-n">4</span></button>
-                        <button class="gtab" role="tab" aria-selected="false" tabindex="-1" data-cat="1"><span class="ib"><i data-lucide="gauge"></i></span><span class="gt-t"><b>Leadership sees it without asking</b><small>Dashboards &amp; reporting</small></span><span class="gt-n">4</span></button>
-                        <button class="gtab" role="tab" aria-selected="false" tabindex="-1" data-cat="2"><span class="ib"><i data-lucide="factory"></i></span><span class="gt-t"><b>Every order, every stage, one board</b><small>Production pipelines</small></span><span class="gt-n">4</span></button>
-                        <button class="gtab" role="tab" aria-selected="false" tabindex="-1" data-cat="3"><span class="ib"><i data-lucide="user-plus"></i></span><span class="gt-t"><b>New hires ready on day one</b><small>Onboarding &amp; wiki</small></span><span class="gt-n">4</span></button>
-                        <button class="gtab" role="tab" aria-selected="false" tabindex="-1" data-cat="4"><span class="ib"><i data-lucide="book-open"></i></span><span class="gt-t"><b>How work gets done, written down</b><small>SOP system</small></span><span class="gt-n">3</span></button>
-                        <button class="gtab" role="tab" aria-selected="false" tabindex="-1" data-cat="5"><span class="ib"><i data-lucide="target"></i></span><span class="gt-t"><b>Launch plans and goals that stay live</b><small>OKRs &amp; process maps</small></span><span class="gt-n">5</span></button>
+                <div class="art rv" id="art">
+                    <div class="art-tabs" role="tablist" aria-label="What we build">
+                        <button class="art-tab" role="tab" aria-selected="true" data-i="0" data-img="assets/shots/process-swimlanes.jpg" data-alt="Swimlane map of who owns each step of a launch, names blurred" data-b="Nobody is sure who decides, so it all comes back to you." data-a="Every workstream and every step has one named owner. Your team checks the map, not you."><span class="art-q">“Who owns this?”</span><b>Owner Map</b></button>
+                        <button class="art-tab" role="tab" aria-selected="false" tabindex="-1" data-i="1" data-img="assets/shots/launch-template.jpg" data-alt="Product launch template with every step timed from kickoff" data-b="Launch steps live in five Slack threads and one person’s memory." data-a="One launch template: every step, owner and date, timed from kickoff. Retail and ads plan around a real date."><span class="art-q">“When does it launch?”</span><b>Launch Board</b></button>
+                        <button class="art-tab" role="tab" aria-selected="false" tabindex="-1" data-i="2" data-img="assets/shots/creative-intake.jpg" data-alt="Creative board where requests move from intake to live, names blurred" data-b="Requests arrive in DMs, half-briefed, and land on you to sort." data-a="One intake form. Every request arrives complete, gets an owner and moves through review on its own."><span class="art-q">“Did you get my request?”</span><b>Request Intake</b></button>
+                        <button class="art-tab" role="tab" aria-selected="false" tabindex="-1" data-i="3" data-img="assets/shots/scorecard.jpg" data-alt="Weekly company scorecard with an owner and a target per KPI, names blurred" data-b="You learn how the week went in a status meeting, or when something breaks." data-a="One weekly scorecard: every number has an owner and a target. Problems show up on Monday, not at month end."><span class="art-q">“How are we doing?”</span><b>Weekly Scorecard</b></button>
+                        <button class="art-tab" role="tab" aria-selected="false" tabindex="-1" data-i="4" data-img="assets/shots/wiki-home.jpg" data-alt="Company wiki with team hubs and onboarding, names blurred" data-b="How work gets done lives in a few heads, and leaves when they do." data-a="A team wiki with an SOP for every repeatable process. New hires start from it, not from you."><span class="art-q">“How do we do this?”</span><b>Team Wiki &amp; SOPs</b></button>
                     </div>
-                    <div class="gal-view" role="tabpanel" aria-live="polite">
-                        <div class="gal-stage">
-                            <button type="button" class="gal-main" id="gal-main" aria-label="Enlarge screenshot"><img id="gal-img" src="assets/shots/creative-intake.jpg" alt="" width="1800" height="1034"><span class="zoom"><i data-lucide="maximize-2"></i><span>Enlarge</span></span><span class="gal-count" id="gal-count">1 / 4</span></button>
-                            <button type="button" class="gal-nav prev" id="gal-prev" aria-label="Previous screen"><i data-lucide="chevron-left"></i></button>
-                            <button type="button" class="gal-nav next" id="gal-next" aria-label="Next screen"><i data-lucide="chevron-right"></i></button>
+                    <div class="art-view" role="tabpanel" aria-live="polite">
+                        <button type="button" class="art-shot zoomable" id="art-shot" data-full="assets/shots/process-swimlanes.jpg" data-title="Owner Map"><img id="art-img" src="assets/shots/process-swimlanes.jpg" alt="Swimlane map of who owns each step of a launch, names blurred" width="1800" height="1034"><span class="zoom"><i data-lucide="maximize-2"></i><span>Enlarge</span></span></button>
+                        <div class="art-ba">
+                            <div class="b4"><small>Before</small><p id="art-b">Nobody is sure who decides, so it all comes back to you.</p></div>
+                            <div class="af"><small>After</small><p id="art-a">Every workstream and every step has one named owner. Your team checks the map, not you.</p></div>
                         </div>
-                        <p class="gal-cap" id="gal-cap"></p>
-                        <div class="gal-thumbs" id="gal-thumbs"></div>
-                        <div class="ba">
-                            <div class="b4"><small><i data-lucide="circle-x"></i>Before</small><p id="gal-before"></p></div>
-                            <div class="af"><small><i data-lucide="circle-check"></i>After</small><p id="gal-after"></p></div>
-                        </div>
-                        <p class="gal-fact" id="gal-fact" hidden><i data-lucide="badge-check"></i><span></span></p>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="sec" id="how">
+
+        <section class="sec sec-tint" id="how">
             <div class="wrap">
                 <div class="sec-head rv">
                     <span class="label"><i></i>How it works</span>
-                    <h2 class="h2">From scattered to systemized in 30 days</h2>
-                    <p class="sub">Three stages, built inside your own Asana workspace. Each one ships something your team keeps.</p>
+                    <h2 class="h2">Built with your team, <span class="hl">not handed to them.</span></h2>
                 </div>
-                <div id="flow" class="rv">
-                    <div class="flow-steps" role="tablist" aria-label="The three stages">
-                        <button class="fstep" role="tab" id="fs-1" aria-controls="fp-1" aria-selected="true"><span class="num">1</span><span><b>Diagnose</b><small>Week 1</small></span><span class="prog"></span></button>
-                        <button class="fstep" role="tab" id="fs-2" aria-controls="fp-2" aria-selected="false" tabindex="-1"><span class="num">2</span><span><b>Build</b><small>Weeks 2–3</small></span><span class="prog"></span></button>
-                        <button class="fstep" role="tab" id="fs-3" aria-controls="fp-3" aria-selected="false" tabindex="-1"><span class="num">3</span><span><b>Hand over</b><small>Week 4 onward</small></span><span class="prog"></span></button>
-                    </div>
-
-                    <div class="flow-panel" id="fp-1" role="tabpanel" aria-labelledby="fs-1">
-                        <div class="fp-head"><span class="fp-num">1/3</span>
-                            <span class="kick">Week 1</span>
-                            <h3>We map how work really moves, and where it breaks</h3>
-                        </div>
-                        <div class="fp-viz" aria-hidden="true">
-                            <div class="viz vz-card">
-                                <div class="vz-title">Workstream map <small>Audit</small></div>
-                                <ul class="ws">
-                                    <li style="--i:0"><span class="nm">Product launches</span><span class="ln"></span><span class="own"><span class="q">?</span><span class="av" style="background:#0A1A3F">HM</span></span></li>
-                                    <li style="--i:1"><span class="nm">Creative production</span><span class="ln"></span><span class="own"><span class="q">?</span><span class="av" style="background:#7B4DDB">JS</span></span></li>
-                                    <li style="--i:2"><span class="nm">Retail onboarding</span><span class="ln"></span><span class="own"><span class="q">?</span><span class="av" style="background:#2F5BFF">DK</span></span><span class="flag"><i></i><span class="fl-a">Handoff&nbsp;</span>breaks here</span></li>
-                                    <li style="--i:3"><span class="nm">Inventory &amp; POs</span><span class="ln"></span><span class="own"><span class="q">?</span><span class="av" style="background:#0F9F6E">AR</span></span></li>
-                                    <li style="--i:4"><span class="nm">Weekly reporting</span><span class="ln"></span><span class="own"><span class="q">?</span><span class="av" style="background:#E9A800"><i data-lucide="zap"></i></span></span></li>
-                                </ul>
-                                <div class="vz-foot"><span>Workstreams mapped <b>5</b></span><span>Owners named <b data-to="5">0</b>/5</span></div>
-                            </div>
-                        </div>
-                        <div class="fp-body">
-                            <p>Before we touch Asana, we learn how your business actually runs: who owns what, where handoffs fail, and what keeps landing on you.</p>
-                            <ul class="checks">
-                                <li><i data-lucide="check"></i>Every active workstream mapped end to end</li>
-                                <li><i data-lucide="check"></i>One accountable owner named for each</li>
-                                <li><i data-lucide="check"></i>Bottlenecks and broken handoffs found</li>
-                            </ul>
-                            <div class="getchip"><i data-lucide="gift"></i><span><b>You keep:</b> the workstream map and ownership audit, even if you stop here.</span></div>
-                        </div>
-                    </div>
-
-                    <div class="flow-panel" id="fp-2" role="tabpanel" aria-labelledby="fs-2" hidden>
-                        <div class="fp-head"><span class="fp-num">2/3</span>
-                            <span class="kick">Weeks 2–3</span>
-                            <h3>We build the system inside your Asana</h3>
-                        </div>
-                        <div class="fp-viz" aria-hidden="true">
-                            <div class="viz vz-card">
-                                <div class="mb-head"><span class="ic">Q4</span><b>Holiday launch</b><span class="tg">Board</span></div>
-                                <div class="mb-cols">
-                                    <div class="mb-col"><h5><i style="background:#98A2B8"></i>To do</h5>
-                                        <div class="mc" style="--i:0">PO for SKU-204<div class="r"><span class="av" style="background:#0F9F6E">AR</span><span><span class="pl ok">On track</span></span></div></div>
-                                        <div class="mc" style="--i:3">Holiday launch plan<div class="r"><span class="av" style="background:#0A1A3F">HM</span><span><span class="pl ok">On track</span></span></div></div></div>
-                                    <div class="mb-col"><h5><i style="background:#E9A800"></i>Review</h5>
-                                        <div class="mc mv" style="--i:1">Q4 creative approval<div class="r"><span class="av" style="background:#7B4DDB">JS</span><span><span class="pl rv">In review</span><span class="pl ok late">Done ✓</span></span></div></div>
-                                        <div class="mc" style="--i:4">Landing page copy<div class="r"><span class="av" style="background:#E07A1F">LP</span><span><span class="pl rv">In review</span></span></div></div></div>
-                                    <div class="mb-col"><h5><i style="background:#0F9F6E"></i>Done</h5>
-                                        <div class="mc" style="--i:2">Launch date set<div class="r"><span class="av" style="background:#0A1A3F">HM</span><span><span class="pl ok">Done</span></span></div></div>
-                                        <div class="mc" style="--i:5">Weekly KPI report<div class="r"><span class="av" style="background:#E9A800"><i data-lucide="zap"></i></span><span><span class="pl au">Auto</span></span></div></div></div>
-                                </div>
-                                <div class="chips">
-                                    <div class="chip2 rule"><i data-lucide="zap"></i>When approved → move to Done → notify the team</div>
-                                    <div class="chip2 form"><i data-lucide="inbox"></i>Intake form: new requests routed automatically</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="fp-body">
-                            <p>Projects, boards, intake forms, rules and dashboards, designed around how your team already talks, not how a template thinks they should.</p>
-                            <ul class="checks">
-                                <li><i data-lucide="check"></i>Boards with clear stages and owners</li>
-                                <li><i data-lucide="check"></i>Intake forms so requests stop arriving in DMs</li>
-                                <li><i data-lucide="check"></i>Rules that move work and remind people</li>
-                                <li><i data-lucide="check"></i>Live dashboards for leadership</li>
-                            </ul>
-                            <div class="getchip"><i data-lucide="gift"></i><span><b>You keep:</b> a working system your team can use on day one.</span></div>
-                        </div>
-                    </div>
-
-                    <div class="flow-panel" id="fp-3" role="tabpanel" aria-labelledby="fs-3" hidden>
-                        <div class="fp-head"><span class="fp-num">3/3</span>
-                            <span class="kick">Week 4 onward</span>
-                            <h3>Your team learns it, owns it and runs it</h3>
-                        </div>
-                        <div class="fp-viz" aria-hidden="true">
-                            <div class="viz">
-                                <div class="vz-card sop">
-                                    <div class="vz-title"><span style="display:flex;gap:8px;align-items:center"><i data-lucide="file-text" style="color:var(--blue)"></i>SOP: Launching a product</span><small>v1.0</small></div>
-                                    <ol><li><span>1</span>Submit the launch brief through the intake form</li><li><span>2</span>Owner confirms dates and approvers in Asana</li><li><span>3</span>Rules notify creative, ops and CX automatically</li></ol>
-                                </div>
-                                <div class="vz-card train">
-                                    <div class="vz-title">Team training</div>
-                                    <ul>
-                                        <li style="--i:0"><span class="av" style="background:#0A1A3F">HM</span><span class="rl">Founder</span><span class="tk"><i data-lucide="check"></i></span></li>
-                                        <li style="--i:1"><span class="av" style="background:#E07A1F">LP</span><span class="rl">Marketing</span><span class="tk"><i data-lucide="check"></i></span></li>
-                                        <li style="--i:2"><span class="av" style="background:#0F9F6E">AR</span><span class="rl">Operations</span><span class="tk"><i data-lucide="check"></i></span></li>
-                                        <li style="--i:3"><span class="av" style="background:#7B4DDB">JS</span><span class="rl">Creative</span><span class="tk"><i data-lucide="check"></i></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="fp-body">
-                            <p>We roll out in phases your people can absorb, train each role, and document every process. The tenth launch runs smoother than the first, without us in the room.</p>
-                            <ul class="checks">
-                                <li><i data-lucide="check"></i>SOP playbook for every repeatable process</li>
-                                <li><i data-lucide="check"></i>Training for each role, not one big demo</li>
-                                <li><i data-lucide="check"></i>Phased rollout so adoption sticks</li>
-                            </ul>
-                            <div class="getchip"><i data-lucide="gift"></i><span><b>You keep:</b> everything. No lock-in, and support only while it’s useful.</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="sec sec-tint" id="delivery">
-            <div class="wrap">
-                <div class="sec-head rv"><span class="label"><i></i>The handoff</span><h2 class="h2">Every build ships three things</h2><p class="sub">Your team gets the system and everything needed to run it without us.</p></div>
                 <div class="grid-3 ships">
-                    <article class="card ship rv"><span class="ship-n">1</span><span class="ib"><i data-lucide="settings-2"></i></span><h3>Working system</h3><p>Configured in your workspace and tested against the workflow we agreed with you.</p></article>
-                    <article class="card ship rv" style="--d:1"><span class="ship-n">2</span><span class="ib"><i data-lucide="file-text"></i></span><h3>Written SOP</h3><p>Owners, fields, rules, exceptions and review cadence, documented for the team.</p></article>
-                    <article class="card ship rv" style="--d:2"><span class="ship-n">3</span><span class="ib"><i data-lucide="clapperboard"></i></span><h3>Video guide</h3><p>A short recorded walkthrough for admins and day-to-day users.</p></article>
+                    <article class="card ship rv"><span class="ship-n">1</span><span class="ib"><i data-lucide="search"></i></span><h3>Klarity</h3><span class="wk">Week 1</span><p>We map every workstream and everything that still routes through you. Day 7: you see the blueprint. Don’t like it? Full refund.</p></article>
+                    <article class="card ship rv" style="--d:1"><span class="ship-n">2</span><span class="ib"><i data-lucide="settings-2"></i></span><h3>Kontrol</h3><span class="wk">Weeks 2–3</span><p>We build the five pieces in your Asana with the people who will use them, one team at a time.</p></article>
+                    <article class="card ship rv" style="--d:2"><span class="ship-n">3</span><span class="ib"><i data-lucide="key-round"></i></span><h3>Kompound</h3><span class="wk">Week 4 on</span><p>Training by role, an SOP and a video for every workflow, and 30 days of support after go-live.</p></article>
                 </div>
             </div>
         </section>
+
+        <section class="sec" id="proof">
+            <div class="wrap">
+                <div class="proof-split rv">
+                    <div class="ps-copy">
+                        <span class="label"><i></i>Asana build · Shopify Plus brand</span>
+                        <h2 class="h2">The weekly status meeting, retired.</h2>
+                        <p class="sub">Eight people spent an hour every week reporting status. We built one live Asana dashboard with a swim lane per person. The meeting was cancelled.</p>
+                        <div class="ps-nums"><div><b>8 → 0</b><span>people in a weekly status meeting</span></div><div><b>8 hrs</b><span>team time back every week</span></div></div>
+                        <button class="btn btn-ghost" onclick="openCaseStudy('pridola')">Read the case study <i data-lucide="arrow-right"></i></button>
+                    </div>
+                    <button type="button" class="ps-shot zoomable" data-full="assets/cases/pridola-dashboard.jpg" data-title="Live operations dashboard (demo workspace view)"><img src="assets/cases/pridola-dashboard.jpg" alt="A live operations dashboard of the same type, shown in our demo workspace" loading="lazy"><span class="shot-tag">Demo workspace view</span></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="sec sec-tint" id="faq">
+            <div class="wrap">
+                <div class="sec-head rv"><span class="label"><i></i>Asana questions</span><h2 class="h2">Before you book</h2></div>
+                <div class="faq rv">
+                    <details><summary>We already use Asana. Why isn’t it working?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">Most brands have Asana, not a system in Asana. Projects exist, but there are no owners, no dates and no weekly scorecard, so the team goes back to Slack. We build around who decides what, so Asana answers the questions that come to you today.</p></details>
+                    <details><summary>Do we need a higher Asana plan?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">Not always. We build on the plan you have and tell you on the call if something you need sits on a higher tier, and whether it’s worth paying for.</p></details>
+                    <details><summary>Can you move us from Sheets, Notion, Monday or ClickUp?<span class="pm"><i data-lucide="plus"></i></span></summary><p class="ans">Yes. Migration of active work is part of the 30-Day Brand OS. We move what’s live, archive what isn’t, and run both side by side for a short overlap so nothing drops.</p></details>
+                </div>
+            </div>
+        </section>
+
         <section id="book-cta">
             <div class="wrap">
                 <div class="cta-box rv">
                     <div class="faces" aria-hidden="true"><img src="assets/team/hasan-ijaz.jpg" alt=""><img src="assets/team/amna-qaisar.jpg" alt=""><img src="assets/team/huzaifa-farooq.jpg" alt=""></div>
-                    <h2>Want this in your Asana?</h2>
-                    <p>No prep and no pitch deck. Tell us what’s breaking and we’ll point out where to start.</p>
+                    <h2>Want your Asana to answer instead of you?</h2>
+                    <p>20 minutes, no pitch deck. You leave with the first three things to fix.</p>
                     <div class="btns"><button class="btn btn-white" onclick="openBookingModal('asana_page_cta', 'Free 20-Min Fit Call')">Book a free 20-min call <i data-lucide="arrow-right"></i></button></div>
                 </div>
             </div>
         </section>
     </main>
     <div class="mbar" id="mbar" aria-hidden="true">
-        <div><b>Free 20-min call</b><small>No pitch deck. Audit fee credited.</small></div>
+        <div><b>Free 20-min call</b><small>Leave with the first 3 fixes.</small></div>
         <button class="btn btn-sm" tabindex="-1" onclick="openBookingModal('mobile_sticky_bar', 'Free 20-Min Fit Call')">Book now <i data-lucide="arrow-right"></i></button>
     </div>
 
     <footer>
         <div class="wrap">
             <div class="foot">
-                <div><a href="/" class="logo"><img src="assets/brand/klarityops-mark.svg" alt="" width="36" height="36"><span>KlarityOps</span></a><p>Asana operating systems for D2C brands.</p></div>
-                <div><h4>Company</h4><a href="/#system">How it works</a><a href="case-studies.html">Case studies</a><a href="/#engagement">Pricing</a><a href="team.html">Team</a></div>
-                <div><h4>Resources</h4><a href="asana.html">Asana systems</a><a href="clickup.html">ClickUp systems</a><a href="roadmap.html">Roadmap</a><a href="faq.html">FAQ</a><a href="https://portfolio.klarityops.com" target="_blank" rel="noopener">Portfolio ↗</a></div>
+                <div><a href="/" class="logo"><img src="assets/brand/klarityops-mark.svg" alt="" width="36" height="36"><span>KlarityOps</span></a><p>Operating systems for founder-led DTC brands, built in Asana or ClickUp.</p></div>
+                <div><h4>Company</h4><a href="/#system">How it works</a><a href="case-studies.html">Case studies</a><a href="/#free">Free templates</a><a href="/#engagement">Pricing</a><a href="team.html">Team</a></div>
+                <div><h4>Resources</h4><a href="asana.html">Asana builds</a><a href="clickup.html">ClickUp builds</a><a href="roadmap.html">Roadmap</a><a href="faq.html">FAQ</a><a href="https://hasan-ijaz-portfolio.vercel.app/" target="_blank" rel="noopener">Hasan’s portfolio ↗</a></div>
                 <div><h4>Get in touch</h4><a href="mailto:hello@klarityops.com">hello@klarityops.com</a><a href="#book" onclick="openBookingModal('footer', 'Free 20-Min Fit Call'); return false;">Book a free 20-min call</a></div>
             </div>
-            <div class="foot-bot"><span>© 2026 KlarityOps. All rights reserved.</span><span>The Klarity Method: diagnose, build, hand over.</span></div>
+            <div class="foot-bot"><span>© 2026 KlarityOps. All rights reserved.</span><span>Klarity, Kontrol, Kompound. Out of the middle in 30 days.</span></div>
         </div>
     </footer>
 
@@ -424,11 +355,9 @@
                                 <label for="selectedOfferDisplay">What are you interested in?</label>
                                 <select id="selectedOfferDisplay" onchange="handleOfferChange(this.value)">
                                     <option selected>Free 20-Min Fit Call</option>
-                                    <option>Systems Audit &amp; Roadmap</option>
-                                    <option>Systems Audit + AI Audit Combo</option>
-                                    <option>One-Off Build</option>
-                                    <option>BizOps Retainer</option>
-                                    <option>Build Sprint</option>
+                                    <option>Ops X-Ray</option>
+                                    <option>The 30-Day Brand OS</option>
+                                    <option>Ops Partner</option>
                                 </select>
                             </div>
                             <div class="fg full">
@@ -478,8 +407,8 @@
 
                     <div class="form-step" data-step="3">
                         <div class="fg">
-                            <label for="pain">What’s breaking most often?</label>
-                            <textarea id="pain" required placeholder="e.g. Tool sprawl, nobody owns the final handoff, leadership can’t see status, and launches keep slipping…"></textarea>
+                            <label for="pain">What still lands on you?</label>
+                            <textarea id="pain" required placeholder="e.g. Every approval still comes to me, launches keep slipping, and nobody uses our Asana…"></textarea>
                         </div>
                     </div>
 
