@@ -857,3 +857,97 @@ document.querySelectorAll('.art').forEach((art) => {
         });
     });
 });
+
+/* ---------------- Free template kits: one short form unlocks all 12 ----------------
+   Saves to the same Supabase table and Sheet mirror as the call form, tagged
+   "Template kit: <name>", and fires a Meta CompleteRegistration event for ad audiences. */
+(function kitGate() {
+    const modal = document.getElementById('kit-modal');
+    if (!modal) return;
+    const KEY = 'ko_kits_unlocked';
+    const unlocked = () => { try { return localStorage.getItem(KEY) === '1'; } catch (e) { return false; } };
+    const form = document.getElementById('kit-form'), done = document.getElementById('kit-done');
+    const btn = document.getElementById('kit-submit'), err = document.getElementById('kit-err');
+    let kitName = '', kitUrl = '', kitReturn = null;
+
+    function openKit(name, url, from) {
+        kitName = name; kitUrl = url; kitReturn = from;
+        document.getElementById('kit-name').textContent = name;
+        form.hidden = false; done.hidden = true; err.hidden = true;
+        modal.classList.add('active'); modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        setTimeout(() => document.getElementById('kit-fullname').focus(), 40);
+    }
+    window.closeKitModal = function () {
+        modal.classList.remove('active'); modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        kitReturn?.focus?.();
+    };
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeKitModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeKitModal(); });
+
+    document.querySelectorAll('a.kit').forEach((a) => {
+        a.addEventListener('click', (e) => {
+            if (unlocked()) return;               // already signed up: open the kit straight away
+            e.preventDefault();
+            openKit(a.querySelector('.kit-t b').textContent, a.href, a);
+        });
+    });
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        btn.disabled = true; btn.textContent = 'Saving…'; err.hidden = true;
+        const role = document.getElementById('kit-role').value;
+        const row = Object.assign({
+            full_name: document.getElementById('kit-fullname').value,
+            email: document.getElementById('kit-mail').value,
+            brand_name: document.getElementById('kit-brand').value,
+            monthly_revenue: document.getElementById('kit-rev').value,
+            team_size: '',
+            tools: '',
+            pain_point: `Template kit: ${kitName} | Role: ${role}`,
+            selected_offer: 'Free Template Kit',
+            origin_offer: `Template kit: ${kitName}`,
+            cta_source: 'free_kits',
+            page_url: window.location.href,
+            page_title: document.title,
+            user_agent: navigator.userAgent
+        }, getAttribution());
+
+        let saved = false;
+        try { const { error } = await sb.from('leads').insert(row); if (error) console.error('Supabase insert failed:', error); else saved = true; }
+        catch (x) { console.error('Supabase insert threw:', x); }
+
+        let mirrored = false;
+        try {
+            const attr = getAttribution();
+            const body = JSON.stringify({
+                fullName: row.full_name, email: row.email, brandName: row.brand_name, monthlyRevenue: row.monthly_revenue,
+                teamSize: '', tools: '', painPoint: row.pain_point, selectedOffer: row.selected_offer, originOffer: row.origin_offer,
+                ctaSource: row.cta_source, pageUrl: row.page_url, pageTitle: row.page_title, submittedAt: new Date().toISOString(),
+                userAgent: row.user_agent, gclid: attr.gclid, fbclid: attr.fbclid, utmSource: attr.utm_source, utmMedium: attr.utm_medium,
+                utmCampaign: attr.utm_campaign, utmContent: attr.utm_content, utmTerm: attr.utm_term, firstLanding: attr.first_landing,
+                referrer: attr.referrer, savedToSupabase: saved
+            });
+            mirrored = navigator.sendBeacon ? navigator.sendBeacon(BOOKING_WEBHOOK_URL, new Blob([body], { type: 'text/plain;charset=utf-8' })) : false;
+            if (!mirrored) { fetch(BOOKING_WEBHOOK_URL, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body }).catch(() => {}); mirrored = true; }
+        } catch (x) { console.error('Sheet mirror error:', x); }
+
+        btn.disabled = false; btn.textContent = 'Unlock all 12 kits';
+        if (!saved && !mirrored) { err.hidden = false; return; }
+
+        try {
+            if (typeof fbq === 'function') {
+                const parts = row.full_name.trim().split(/\s+/);
+                if (META_PIXEL_ID) fbq('init', META_PIXEL_ID, { em: row.email.trim().toLowerCase(), fn: (parts[0] || '').toLowerCase(), ln: (parts.length > 1 ? parts[parts.length - 1] : '').toLowerCase() });
+                fbq('track', 'CompleteRegistration', { content_name: 'template_kit', content_category: kitName, status: role });
+            }
+        } catch (x) { console.error('fbq error:', x); }
+
+        try { localStorage.setItem(KEY, '1'); } catch (x) { /* private mode: the link below still works */ }
+        document.getElementById('kit-open').href = kitUrl;
+        form.hidden = true; done.hidden = false;
+        document.getElementById('kit-open').focus();
+    });
+})();

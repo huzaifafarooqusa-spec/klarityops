@@ -1288,3 +1288,17 @@ footer { background: var(--navy); color: #AEBADA; margin-top: 104px; padding: 64
 .loom-thanks .lt-ic .lucide { width: 30px; height: 30px; }
 .loom-thanks h3 { font-size: 1.5rem; }
 .loom-thanks p { margin: 12px auto 24px; max-width: 460px; color: var(--text); font-size: 16.5px; }
+
+/* v5.2: nine short lines in three groups, kit form */
+.p9 { gap: 34px; }
+.p9-g h3 { display: flex; align-items: center; gap: 14px; color: #fff; font-size: 1.4rem; line-height: 1.1; }
+.p9-g .p3-ic { width: 44px; height: 44px; border-radius: 12px; }
+.p9-g .p3-ic .lucide { width: 22px; height: 22px; }
+.p9-g ul { margin: 12px 0 0 58px; display: grid; gap: 8px; }
+.p9-g li { position: relative; padding-left: 18px; font-size: 1.06rem; color: #C9D3EA; line-height: 1.4; }
+.p9-g li::before { content: ""; position: absolute; left: 0; top: .58em; width: 7px; height: 7px; border-radius: 50%; background: #FF7A7F; }
+.p9 .p3-link { margin-left: 58px; }
+@media (max-width: 560px) { .p9-g ul, .p9 .p3-link { margin-left: 0; } .p9-g h3 { font-size: 1.25rem; } }
+.kit-panel { max-width: 560px; }
+.kit-panel .btn-block { margin-top: 18px; }
+.kit-err { margin-top: 12px; color: var(--red); font-size: 14.5px; font-weight: 700; }

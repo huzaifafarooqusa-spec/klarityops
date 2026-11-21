@@ -311,6 +311,41 @@
         <video id="hasan-video" controls playsinline preload="none" poster="assets/posters/hasan-intro.jpg" data-src="assets/video/hasan-intro.mp4"></video>
     </div>
 
+    <!-- ================= FREE KIT MODAL ================= -->
+    <div id="kit-modal" class="modal-overlay" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="kit-title">
+        <div class="modal-panel kit-panel">
+            <div class="mp-head">
+                <div>
+                    <span class="label"><i></i>Free template kit</span>
+                    <h2 id="kit-title">Get <span id="kit-name">the kit</span>, plus the other 11.</h2>
+                </div>
+                <button type="button" class="x-btn" onclick="closeKitModal()" aria-label="Close"><i data-lucide="x"></i></button>
+            </div>
+            <div class="mp-body">
+                <form id="kit-form" novalidate>
+                    <div class="fgrid">
+                        <div class="fg"><label for="kit-fullname">Full name</label><input type="text" id="kit-fullname" required placeholder="Jane Doe" autocomplete="name"></div>
+                        <div class="fg"><label for="kit-mail">Work email</label><input type="email" id="kit-mail" required placeholder="jane@brand.com" autocomplete="email"></div>
+                        <div class="fg"><label for="kit-brand">Brand</label><input type="text" id="kit-brand" required placeholder="Your brand" autocomplete="organization"></div>
+                        <div class="fg"><label for="kit-role">Your role</label>
+                            <select id="kit-role" required><option value="">Select…</option><option>Founder / CEO</option><option>COO / Head of Ops</option><option>Marketing / Growth</option><option>Ops or project manager</option><option>Other</option></select></div>
+                        <div class="fg full"><label for="kit-rev">Monthly revenue</label>
+                            <select id="kit-rev" required><option value="">Select range…</option><option>Under $400k</option><option>$400k - $1M</option><option>$1M - $5M</option><option>$5M - $10M</option><option>$10M+</option></select></div>
+                    </div>
+                    <p id="kit-err" class="kit-err" hidden>Something went wrong. Please try again in a minute.</p>
+                    <button type="submit" id="kit-submit" class="btn btn-block">Unlock all 12 kits</button>
+                    <p class="form-note"><i data-lucide="lock"></i>One form unlocks every kit. We never share your details.</p>
+                </form>
+                <div id="kit-done" class="loom-thanks" hidden>
+                    <span class="lt-ic"><i data-lucide="check"></i></span>
+                    <h3>Unlocked. All 12 kits are yours.</h3>
+                    <p>Open this one now. Every other kit on the page now opens straight away.</p>
+                    <a id="kit-open" class="btn" href="#" target="_blank" rel="noopener">Open the kit <i data-lucide="arrow-up-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= BOOKING MODAL ================= -->
     <div id="booking-modal" class="modal-overlay" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="booking-modal-title">
         <div class="modal-panel">
