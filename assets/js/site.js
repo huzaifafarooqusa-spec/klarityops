@@ -360,7 +360,7 @@ const csData = {
         steps: [ 'Mapped what the weekly meeting was really used for, person by person.', 'Built a live dashboard, automated task status and a swim lane per contributor.', 'Launched it with the team, then retired the meeting.' ],
         headline: 'The weekly status meeting was deleted',
         lead: 'Eight people spent sixty minutes every week reporting status that was already stale by the time the meeting ended.',
-        shot: { src: 'assets/cases/pridola-dashboard.jpg', cap: 'Illustrative: a live operations dashboard of the same type, shown in our demo workspace.', real: false },
+        shot: { src: 'assets/shots/dashboard-workload.jpg', cap: 'Illustrative: a live Asana dashboard of the same type, names blurred.', real: false },
         facts: [ { v: '8', l: 'people in the weekly meeting' }, { v: '60 min', l: 'every single week' }, { v: '0', l: 'status meetings after launch' } ],
         why: [ 'Eight team-hours went into one recurring meeting.', 'Updates expired soon after the meeting ended.', 'Leadership time went to collecting status instead of deciding.' ],
         built: [ 'Live Asana operations dashboard', 'Automated task-level status reporting', 'A defined swim lane for each contributor', 'Portfolio view for manager review' ],
@@ -471,7 +471,7 @@ const bookingModal = document.getElementById('booking-modal');
 const stepBackBtn = document.getElementById('stepBackBtn');
 const stepNextBtn = document.getElementById('stepNextBtn');
 const submitBtn = document.getElementById('submitBtn');
-const totalSteps = 3;
+const totalSteps = 1;
 const BOOKING_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxD1uWf89A44zFaGfs1tRw40_tiYS-LMuhcUY-sOwGg5mUQI-d26TTJ8EsRDPjlvFnc/exec';
 let bookingReturn = null;
 
@@ -531,7 +531,7 @@ function handleOfferChange(nextOffer) {
     document.getElementById('selectedOffer').value = normalizedOffer;
     document.getElementById('selectedOfferDisplay').value = normalizedOffer;
     const loom = normalizedOffer === 'Free 5-Min Loom';
-    submitBtn.textContent = loom ? 'Send me my Loom' : 'Submit & pick a time';
+    submitBtn.textContent = loom ? 'Send me my Loom' : 'Continue to pick a time';
     const note = document.querySelector('#klarity-intake .form-note');
     if (note) note.lastChild.textContent = loom ? ' Takes about a minute. No call needed: we send the video to your inbox.' : ' Takes about a minute. Next, you’ll choose a time on our calendar.';
 }

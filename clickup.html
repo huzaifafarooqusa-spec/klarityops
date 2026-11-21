@@ -225,7 +225,7 @@
                         <button class="art-tab" role="tab" aria-selected="true" data-i="0" data-img="assets/clickup/cu-scorecard.jpg" data-alt="ClickUp KPI scorecard list inside an e-commerce space with Marketing, Operations, Fulfillment and Leadership folders" data-b="You learn how the week went in a status meeting, or when something breaks." data-a="A KPI scorecard list: overdue work, on-time delivery, cycle time and creative turnaround, each with an owner and a priority."><span class="art-q">“How are we doing?”</span><b>Weekly Scorecard</b></button>
                         <button class="art-tab" role="tab" aria-selected="false" tabindex="-1" data-i="1" data-img="assets/clickup/cu-onboarding.jpg" data-alt="ClickUp onboarding list grouped by phase, from pre-boarding to week one" data-b="Every new hire asks you what to do next." data-a="Onboarding grouped by phase, from pre-boarding to day 60. Every step has an owner and a date, so new hires ask the list, not you."><span class="art-q">“What do I do on day one?”</span><b>Onboarding by phase</b></button>
                         <button class="art-tab" role="tab" aria-selected="false" tabindex="-1" data-i="2" data-img="assets/clickup/cu-sop-register.jpg" data-alt="ClickUp SOP register with department, owner and next review date on every SOP" data-b="SOPs are old, unowned and impossible to find." data-a="An SOP register: every process has a department, an owner, a status and a next review date."><span class="art-q">“Is this still how we do it?”</span><b>SOP Register</b></button>
-                        <button class="art-tab" role="tab" aria-selected="false" tabindex="-1" data-i="3" data-img="assets/clickup/cu-sop-page.jpg" data-alt="ClickUp doc: returns and refund SOP with owner, trigger and a quick-reference table" data-b="Every refund question still reaches the founder." data-a="One-page SOPs with an owner, a trigger and a quick-reference table. The CX team decides without asking."><span class="art-q">“Can we refund this?”</span><b>One-page SOPs</b></button>
+                        <button class="art-tab" role="tab" aria-selected="false" tabindex="-1" data-i="3" data-img="assets/clickup/cu-dashboard.jpg" data-alt="ClickUp dashboard: creative output over the last 60 days with trend lines per stage" data-b="You find out what slipped when a customer, a retailer or your bank balance tells you." data-a="Live ClickUp dashboards tracking output, cycle time and overdue work for the last 60 days. Leaders read them, so nobody has to ask you."><span class="art-q">“What’s slipping right now?”</span><b>Live Dashboards</b></button>
                         <button class="art-tab" role="tab" aria-selected="false" tabindex="-1" data-i="4" data-img="assets/clickup/cu-hub.jpg" data-alt="ClickUp creative hub page listing where the work lives and the team's SOPs" data-b="Each team keeps its own docs, links and habits." data-a="A hub per department: who leads, where the work lives and the SOPs that team owns."><span class="art-q">“Where does this live?”</span><b>Team hubs</b></button>
                     </div>
                     <div class="art-view" role="tabpanel" aria-live="polite">
@@ -285,7 +285,7 @@
             <div class="foot">
                 <div><a href="/" class="logo"><img src="assets/brand/klarityops-mark.svg" alt="" width="36" height="36"><span>KlarityOps</span></a><p>Operating systems for founder-led DTC brands, built in Asana or ClickUp.</p></div>
                 <div><h4>Company</h4><a href="/#system">How it works</a><a href="case-studies.html">Case studies</a><a href="/#free">Free templates</a><a href="/#engagement">Pricing</a><a href="team.html">Team</a></div>
-                <div><h4>Resources</h4><a href="asana.html">Asana builds</a><a href="clickup.html">ClickUp builds</a><a href="roadmap.html">Roadmap</a><a href="faq.html">FAQ</a><a href="https://hasan-ijaz-portfolio.vercel.app/" target="_blank" rel="noopener">Hasan’s portfolio ↗</a></div>
+                <div><h4>Resources</h4><a href="asana.html">Asana builds</a><a href="clickup.html">ClickUp builds</a><a href="roadmap.html">Roadmap</a><a href="faq.html">FAQ</a><a href="https://hasan-ijaz-portfolio.vercel.app/" target="_blank" rel="noopener">Founder portfolio ↗</a></div>
                 <div><h4>Get in touch</h4><a href="mailto:hello@klarityops.com">hello@klarityops.com</a><a href="#book" onclick="openBookingModal('footer', 'Free 20-Min Fit Call'); return false;">Book a free 20-min call</a></div>
             </div>
             <div class="foot-bot"><span>© 2026 KlarityOps. All rights reserved.</span><span>Klarity, Kontrol, Kompound. Out of the middle in 30 days.</span></div>
@@ -352,27 +352,25 @@
             <div class="mp-head">
                 <div>
                     <span class="label"><i></i>Free 20-minute call</span>
-                    <h2 id="booking-modal-title">Tell us what’s breaking, then pick a time.</h2>
+                    <h2 id="booking-modal-title">Book your free call</h2>
+                    <p class="mp-sub">Four quick fields, then pick a time that suits you.</p>
                 </div>
                 <button type="button" class="x-btn" onclick="closeBookingModal()" aria-label="Close booking form"><i data-lucide="x"></i></button>
             </div>
             <div class="mp-body">
-                <div class="steps">
-                    <span class="step-pill active" data-step-pill="1">1. About you</span>
-                    <span class="step-pill" data-step-pill="2">2. Your company</span>
-                    <span class="step-pill" data-step-pill="3">3. What’s breaking</span>
-                </div>
-                <form id="klarity-intake" onsubmit="submitForm(event)">
+                <form id="klarity-intake" class="bk-form" onsubmit="submitForm(event)">
                     <input type="hidden" id="ctaSource" value="general_cta">
                     <input type="hidden" id="selectedOffer" value="Free 20-Min Fit Call">
                     <input type="hidden" id="originOffer" value="Free 20-Min Fit Call">
                     <input type="hidden" id="pageUrl">
                     <input type="hidden" id="pageTitle">
+                    <input type="hidden" id="team" value="">
+                    <input type="hidden" id="tools" value="">
 
                     <div class="form-step active" data-step="1">
                         <div class="fgrid">
                             <div class="fg full">
-                                <label for="selectedOfferDisplay">What are you interested in?</label>
+                                <label for="selectedOfferDisplay">I’m interested in</label>
                                 <select id="selectedOfferDisplay" onchange="handleOfferChange(this.value)">
                                     <option selected>Free 20-Min Fit Call</option>
                                     <option>Free 5-Min Loom</option>
@@ -380,10 +378,6 @@
                                     <option>The 30-Day Brand OS</option>
                                     <option>Ops Partner</option>
                                 </select>
-                            </div>
-                            <div class="fg full">
-                                <label for="brand">Business / brand name</label>
-                                <input type="text" id="brand" required placeholder="Your company" autocomplete="organization">
                             </div>
                             <div class="fg">
                                 <label for="name">Full name</label>
@@ -393,13 +387,12 @@
                                 <label for="email">Work email</label>
                                 <input type="email" id="email" required placeholder="jane@brand.com" autocomplete="email">
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="form-step" data-step="2">
-                        <div class="fgrid">
                             <div class="fg">
-                                <label for="rev">Current monthly revenue</label>
+                                <label for="brand">Brand</label>
+                                <input type="text" id="brand" required placeholder="Your brand" autocomplete="organization">
+                            </div>
+                            <div class="fg">
+                                <label for="rev">Monthly revenue</label>
                                 <select id="rev" required>
                                     <option value="">Select range…</option>
                                     <option>Under $400k</option>
@@ -409,27 +402,10 @@
                                     <option>$10M+</option>
                                 </select>
                             </div>
-                            <div class="fg">
-                                <label for="team">Team size</label>
-                                <select id="team" required>
-                                    <option value="">Select size…</option>
-                                    <option>Under 15 people</option>
-                                    <option>15-30 people</option>
-                                    <option>30-75 people</option>
-                                    <option>75+ people</option>
-                                </select>
-                            </div>
                             <div class="fg full">
-                                <label for="tools">Current tool stack</label>
-                                <input type="text" id="tools" required placeholder="Asana, Slack, Notion, ClickUp…" autocomplete="off">
+                                <label for="pain">What still lands on you? <span class="opt">Optional</span></label>
+                                <textarea id="pain" rows="2" placeholder="e.g. Every approval still comes to me and launches keep slipping."></textarea>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="form-step" data-step="3">
-                        <div class="fg">
-                            <label for="pain">What still lands on you?</label>
-                            <textarea id="pain" required placeholder="e.g. Every approval still comes to me, launches keep slipping, and nobody uses our Asana…"></textarea>
                         </div>
                     </div>
 
@@ -437,10 +413,10 @@
                         <button type="button" id="stepBackBtn" onclick="prevFormStep()" class="btn btn-ghost hidden"><i data-lucide="arrow-left"></i>Back</button>
                         <div class="right">
                             <button type="button" id="stepNextBtn" onclick="nextFormStep()" class="btn">Continue <i data-lucide="arrow-right"></i></button>
-                            <button type="submit" id="submitBtn" class="btn hidden">Submit &amp; pick a time</button>
+                            <button type="submit" id="submitBtn" class="btn btn-block">Continue to pick a time <i data-lucide="arrow-right"></i></button>
                         </div>
                     </div>
-                    <p class="form-note"><i data-lucide="lock"></i>Takes about a minute. Next, you’ll choose a time on our calendar.</p>
+                    <p class="form-note"><i data-lucide="lock"></i>30 seconds. Next you pick a time. We never share your details.</p>
                 </form>
             </div>
         </div>

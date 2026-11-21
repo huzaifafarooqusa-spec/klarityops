@@ -1490,3 +1490,18 @@ footer { background: var(--navy); color: #AEBADA; margin-top: 104px; padding: 64
     .phero .hero-ctas { order: 4; width: 100%; }
     .phero .trust-row { order: 5; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); display: grid; gap: 10px; justify-items: start; text-align: left; width: 100%; }
 }
+
+/* v5.7 booking form: one step, cleaner */
+#booking-modal .modal-panel{max-width:560px}
+#booking-modal .mp-sub{margin-top:6px;color:var(--muted,#5E6A85);font-size:15px}
+.bk-form .fgrid{gap:14px 14px}
+.bk-form label{font-size:13px;font-weight:600;letter-spacing:.01em;margin-bottom:6px;display:flex;justify-content:space-between}
+.bk-form .opt{font-weight:500;color:#8A95AE}
+.bk-form input,.bk-form select,.bk-form textarea{height:46px;border-radius:10px}
+.bk-form textarea{height:auto;min-height:72px;resize:vertical}
+.bk-form .form-actions{margin-top:18px;display:block}
+.bk-form .form-actions .right{display:block}
+.bk-form #submitBtn{width:100%;justify-content:center}
+.bk-form #stepNextBtn,.bk-form #stepBackBtn{display:none!important}
+@media (max-width:560px){.bk-form .fgrid{grid-template-columns:1fr}}
+.bk-form select{padding-top:0;padding-bottom:0;line-height:44px}

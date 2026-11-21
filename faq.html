@@ -313,7 +313,7 @@
             <div class="foot">
                 <div><a href="/" class="logo"><img src="assets/brand/klarityops-mark.svg" alt="" width="36" height="36"><span>KlarityOps</span></a><p>Operating systems for founder-led DTC brands, built in Asana or ClickUp.</p></div>
                 <div><h4>Company</h4><a href="/#system">How it works</a><a href="case-studies.html">Case studies</a><a href="/#free">Free templates</a><a href="/#engagement">Pricing</a><a href="team.html">Team</a></div>
-                <div><h4>Resources</h4><a href="asana.html">Asana builds</a><a href="clickup.html">ClickUp builds</a><a href="roadmap.html">Roadmap</a><a href="faq.html">FAQ</a><a href="https://hasan-ijaz-portfolio.vercel.app/" target="_blank" rel="noopener">Hasan’s portfolio ↗</a></div>
+                <div><h4>Resources</h4><a href="asana.html">Asana builds</a><a href="clickup.html">ClickUp builds</a><a href="roadmap.html">Roadmap</a><a href="faq.html">FAQ</a><a href="https://hasan-ijaz-portfolio.vercel.app/" target="_blank" rel="noopener">Founder portfolio ↗</a></div>
                 <div><h4>Get in touch</h4><a href="mailto:hello@klarityops.com">hello@klarityops.com</a><a href="#book" onclick="openBookingModal('footer', 'Free 20-Min Fit Call'); return false;">Book a free 20-min call</a></div>
             </div>
             <div class="foot-bot"><span>© 2026 KlarityOps. All rights reserved.</span><span>Klarity, Kontrol, Kompound. Out of the middle in 30 days.</span></div>
@@ -380,27 +380,25 @@
             <div class="mp-head">
                 <div>
                     <span class="label"><i></i>Free 20-minute call</span>
-                    <h2 id="booking-modal-title">Tell us what’s breaking, then pick a time.</h2>
+                    <h2 id="booking-modal-title">Book your free call</h2>
+                    <p class="mp-sub">Four quick fields, then pick a time that suits you.</p>
                 </div>
                 <button type="button" class="x-btn" onclick="closeBookingModal()" aria-label="Close booking form"><i data-lucide="x"></i></button>
             </div>
             <div class="mp-body">
-                <div class="steps">
-                    <span class="step-pill active" data-step-pill="1">1. About you</span>
-                    <span class="step-pill" data-step-pill="2">2. Your company</span>
-                    <span class="step-pill" data-step-pill="3">3. What’s breaking</span>
-                </div>
-                <form id="klarity-intake" onsubmit="submitForm(event)">
+                <form id="klarity-intake" class="bk-form" onsubmit="submitForm(event)">
                     <input type="hidden" id="ctaSource" value="general_cta">
                     <input type="hidden" id="selectedOffer" value="Free 20-Min Fit Call">
                     <input type="hidden" id="originOffer" value="Free 20-Min Fit Call">
                     <input type="hidden" id="pageUrl">
                     <input type="hidden" id="pageTitle">
+                    <input type="hidden" id="team" value="">
+                    <input type="hidden" id="tools" value="">
 
                     <div class="form-step active" data-step="1">
                         <div class="fgrid">
                             <div class="fg full">
-                                <label for="selectedOfferDisplay">What are you interested in?</label>
+                                <label for="selectedOfferDisplay">I’m interested in</label>
                                 <select id="selectedOfferDisplay" onchange="handleOfferChange(this.value)">
                                     <option selected>Free 20-Min Fit Call</option>
                                     <option>Free 5-Min Loom</option>
@@ -408,10 +406,6 @@
                                     <option>The 30-Day Brand OS</option>
                                     <option>Ops Partner</option>
                                 </select>
-                            </div>
-                            <div class="fg full">
-                                <label for="brand">Business / brand name</label>
-                                <input type="text" id="brand" required placeholder="Your company" autocomplete="organization">
                             </div>
                             <div class="fg">
                                 <label for="name">Full name</label>
@@ -421,13 +415,12 @@
                                 <label for="email">Work email</label>
                                 <input type="email" id="email" required placeholder="jane@brand.com" autocomplete="email">
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="form-step" data-step="2">
-                        <div class="fgrid">
                             <div class="fg">
-                                <label for="rev">Current monthly revenue</label>
+                                <label for="brand">Brand</label>
+                                <input type="text" id="brand" required placeholder="Your brand" autocomplete="organization">
+                            </div>
+                            <div class="fg">
+                                <label for="rev">Monthly revenue</label>
                                 <select id="rev" required>
                                     <option value="">Select range…</option>
                                     <option>Under $400k</option>
@@ -437,27 +430,10 @@
                                     <option>$10M+</option>
                                 </select>
                             </div>
-                            <div class="fg">
-                                <label for="team">Team size</label>
-                                <select id="team" required>
-                                    <option value="">Select size…</option>
-                                    <option>Under 15 people</option>
-                                    <option>15-30 people</option>
-                                    <option>30-75 people</option>
-                                    <option>75+ people</option>
-                                </select>
-                            </div>
                             <div class="fg full">
-                                <label for="tools">Current tool stack</label>
-                                <input type="text" id="tools" required placeholder="Asana, Slack, Notion, ClickUp…" autocomplete="off">
+                                <label for="pain">What still lands on you? <span class="opt">Optional</span></label>
+                                <textarea id="pain" rows="2" placeholder="e.g. Every approval still comes to me and launches keep slipping."></textarea>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="form-step" data-step="3">
-                        <div class="fg">
-                            <label for="pain">What still lands on you?</label>
-                            <textarea id="pain" required placeholder="e.g. Every approval still comes to me, launches keep slipping, and nobody uses our Asana…"></textarea>
                         </div>
                     </div>
 
@@ -465,10 +441,10 @@
                         <button type="button" id="stepBackBtn" onclick="prevFormStep()" class="btn btn-ghost hidden"><i data-lucide="arrow-left"></i>Back</button>
                         <div class="right">
                             <button type="button" id="stepNextBtn" onclick="nextFormStep()" class="btn">Continue <i data-lucide="arrow-right"></i></button>
-                            <button type="submit" id="submitBtn" class="btn hidden">Submit &amp; pick a time</button>
+                            <button type="submit" id="submitBtn" class="btn btn-block">Continue to pick a time <i data-lucide="arrow-right"></i></button>
                         </div>
                     </div>
-                    <p class="form-note"><i data-lucide="lock"></i>Takes about a minute. Next, you’ll choose a time on our calendar.</p>
+                    <p class="form-note"><i data-lucide="lock"></i>30 seconds. Next you pick a time. We never share your details.</p>
                 </form>
             </div>
         </div>
