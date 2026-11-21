@@ -1388,3 +1388,44 @@ footer { background: var(--navy); color: #AEBADA; margin-top: 104px; padding: 64
 @media (max-width: 900px) { .pp-row { grid-template-columns: 1fr; gap: 12px; padding: 34px 0; } .pp-n { line-height: 1; } }
 .pp-row, .pp-row h3, .pp-head { text-align: left; }
 .pp-head { margin: 0; }
+
+/* v5.5: pain points with diagrams */
+.pp-row { grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: 32px 72px; align-items: center; padding: 52px 0; }
+.pp-txt { display: grid; gap: 14px; }
+.pp-txt .pp-n { line-height: 1; }
+.pp-txt .pp-b p:first-child { max-width: 34rem; }
+.pp-viz { margin: 0; background: var(--bg-2); border-radius: 22px; padding: 18px 16px 10px; }
+.pp-viz svg { width: 100%; height: auto; display: block; overflow: visible; }
+.pp-viz text { font-family: var(--sans); font-size: 12.5px; font-weight: 700; }
+.pp-viz .ax { fill: none; stroke: var(--line-2); stroke-width: 1.5; }
+.pp-viz .t-ax { fill: var(--muted); font-weight: 500; }
+.pp-viz .cap { fill: none; stroke: var(--navy); stroke-width: 2; stroke-dasharray: 6 6; }
+.pp-viz .t-cap { fill: var(--navy); }
+.pp-viz .ghost { fill: none; stroke: var(--blue-100); stroke-width: 3; stroke-dasharray: 2 7; stroke-linecap: round; }
+.pp-viz .t-ghost { fill: #9AAEEA; font-weight: 500; }
+.pp-viz .ln { fill: none; stroke: var(--blue); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 520; stroke-dashoffset: 520; }
+.pp-viz .ln.navy { stroke: var(--navy); stroke-width: 3; }
+.pp-viz .ln.red { stroke: #EF4E55; }
+.pp-viz .ln.yel { stroke: #E9B800; stroke-dasharray: 520; }
+.pp-viz .hit { fill: #fff; stroke: #EF4E55; stroke-width: 3; opacity: 0; }
+.pp-viz .t-red { fill: #D93B41; }
+.pp-viz .t-navy { fill: var(--navy); }
+.pp-viz .t-yel { fill: #B38A00; }
+.pp-viz .pipe { stroke: var(--blue-100); stroke-width: 10; stroke-linecap: round; }
+.pp-viz .node rect { fill: #fff; stroke: var(--line-2); }
+.pp-viz .node text { fill: var(--ink); font-size: 13px; text-anchor: middle; }
+.pp-viz .floor { stroke: var(--line-2); stroke-width: 1.5; stroke-dasharray: 3 5; }
+.pp-viz .drop { fill: #EF4E55; }
+.pp-viz .leak { transform-box: fill-box; }
+.pp-row.in .ln { animation: ppDraw 1.6s var(--ease) .3s forwards; }
+.pp-row.in .ln.red { animation-delay: .6s; }
+.pp-row.in .ln.yel { animation-delay: .9s; }
+.pp-row.in .hit { animation: ppFade .4s ease 1.6s forwards; }
+.pp-row.in .leak { animation: ppDrip 2.2s cubic-bezier(.5, 0, .9, .6) infinite; }
+.pp-row.in .leak.l2 { animation-delay: .7s; }
+.pp-row.in .leak.l3 { animation-delay: 1.4s; }
+@keyframes ppDraw { to { stroke-dashoffset: 0; } }
+@keyframes ppFade { to { opacity: 1; } }
+@keyframes ppDrip { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(70px); opacity: 0; } }
+@media (max-width: 900px) { .pp-row { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; } }
+@media (prefers-reduced-motion: reduce) { .pp-viz .ln { stroke-dashoffset: 0; animation: none !important; } .pp-viz .hit { opacity: 1; } .pp-viz .leak { animation: none !important; } }
