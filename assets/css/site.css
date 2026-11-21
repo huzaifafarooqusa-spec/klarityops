@@ -1302,3 +1302,69 @@ footer { background: var(--navy); color: #AEBADA; margin-top: 104px; padding: 64
 .kit-panel { max-width: 560px; }
 .kit-panel .btn-block { margin-top: 18px; }
 .kit-err { margin-top: 12px; color: var(--red); font-size: 14.5px; font-weight: 700; }
+
+/* =========================================================
+   v5.3: no dots or pills, hero alignment, home-screen problem section
+   ========================================================= */
+/* Section labels: brand check mark instead of a dot */
+.label i { width: 16px; height: 16px; border-radius: 0; box-shadow: none; background: currentColor;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M2.5 8.6l3.6 3.6L13.6 4' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") center / contain no-repeat;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M2.5 8.6l3.6 3.6L13.6 4' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") center / contain no-repeat; }
+/* Badges and chips become plain text */
+.badge { top: 18px; left: auto; right: 22px; background: none; color: var(--yellow); padding: 0; border-radius: 0; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+.ccase-meta .ev { background: none; padding: 0; border-radius: 0; color: var(--muted); }
+.ccase-meta .ev::before { content: "·"; margin-right: 8px; color: var(--line-2); }
+.ev-badge { background: none; padding: 0; border-radius: 0; }
+.trust-row { gap: 10px 28px; }
+.trust-row li { background: none; border: 0; box-shadow: none; padding: 0; border-radius: 0; }
+.kit-f em { background: none; border: 0; padding: 0; border-radius: 0; color: var(--muted); font-weight: 700; }
+.kit-f em + em::before { content: "·"; margin-right: 6px; }
+.kit-t small { background: none; padding: 0; border-radius: 0; color: var(--yellow); }
+
+/* Hero: wider copy, three-line headline, buttons on one row, facts as a quiet row */
+.hero-grid { grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+.hero h1 { margin-top: 18px; font-size: clamp(2.5rem, 4.3vw, 3.9rem); line-height: 1.05; }
+.hero .lead { max-width: 36rem; }
+.hero-ctas { flex-wrap: nowrap; }
+.hero-ctas .btn-ghost .lucide { width: 18px; height: 18px; }
+.eyebrow-i { display: flex; align-items: center; gap: 9px; font-size: 15.5px; font-weight: 700; color: var(--blue); }
+.eyebrow-i .lucide { width: 19px; height: 19px; }
+.facts { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 10px 28px; }
+.facts li { display: inline-flex; align-items: center; gap: 8px; font-size: 15.5px; font-weight: 700; color: var(--ink); }
+.facts .lucide { width: 19px; height: 19px; color: var(--blue); }
+.hero-visual .film-hero { transform: translateY(6px); }
+@media (max-width: 1040px) { .hero-grid { grid-template-columns: 1fr; gap: 48px; } }
+@media (max-width: 560px) { .hero-ctas { flex-wrap: wrap; } .facts { gap: 10px 18px; } .facts li { font-size: 14.5px; } }
+
+/* Problem: nine app icons on a "home screen" */
+.hs { background: var(--bg-2); }
+.hs-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 56px; max-width: 900px; margin: 0 auto; }
+.hs-col { display: grid; justify-items: center; gap: 34px; }
+.hs-h { display: inline-flex; align-items: center; gap: 8px; font: 800 1.15rem var(--display); color: var(--ink); padding-bottom: 14px; border-bottom: 2px solid var(--line-2); margin-bottom: -6px; }
+.hs-h .lucide { width: 19px; height: 19px; color: var(--blue); }
+.app { display: grid; justify-items: center; gap: 12px; text-align: center; }
+.app-ic { position: relative; width: 88px; height: 88px; border-radius: 26px; display: grid; place-items: center; color: #fff; box-shadow: 0 16px 30px -18px rgba(10, 26, 63, .55); opacity: 0; transform: translateY(14px) scale(.92); }
+.app-ic .lucide { width: 38px; height: 38px; stroke-width: 1.8; }
+.hs-t .app-ic { background: linear-gradient(150deg, #5A7DFF, #2F5BFF); }
+.hs-m .app-ic { background: linear-gradient(150deg, #FFEB7A, #FFD21A); color: var(--navy); }
+.hs-p .app-ic { background: linear-gradient(150deg, #22377A, #0A1A3F); }
+.app-b { position: absolute; top: -8px; right: -8px; min-width: 28px; height: 28px; padding: 0 7px; border-radius: 99px; background: #F03E45; color: #fff; font: 800 14px/28px var(--sans); box-shadow: 0 0 0 4px var(--bg-2); transform: scale(0); }
+.app-l { max-width: 170px; font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+.hs-col.in .app-ic { animation: appIn .6s var(--ease) calc(.1s + var(--k) * .09s) both; }
+.hs-col.in .app-b { animation: nbPop .4s cubic-bezier(.3, 1.6, .5, 1) calc(.9s + var(--k) * .09s) both; }
+@keyframes appIn { to { opacity: 1; transform: none; } }
+.hs-close { margin-top: 56px; text-align: center; font-size: 17.5px; color: var(--text); }
+.hs-close a { display: inline-flex; align-items: center; gap: 6px; margin-left: 6px; font-weight: 700; color: var(--blue); text-decoration: none; }
+.hs-close .lucide { width: 18px; height: 18px; transition: transform .2s var(--ease); }
+.hs-close a:hover .lucide { transform: translateX(3px); }
+@media (max-width: 700px) {
+    .hs-grid { gap: 0 10px; }
+    .hs-col { gap: 26px; }
+    .hs-h { font-size: .98rem; gap: 6px; }
+    .app-ic { width: 64px; height: 64px; border-radius: 19px; }
+    .app-ic .lucide { width: 28px; height: 28px; }
+    .app-b { min-width: 24px; height: 24px; font-size: 12px; line-height: 24px; }
+    .app-l { font-size: 13.5px; }
+}
+@media (prefers-reduced-motion: reduce) { .app-ic, .app-b { opacity: 1 !important; transform: none !important; animation: none !important; } }
+@media (max-width: 700px) { .hs-y { display: none; } .hs-h { text-transform: capitalize; } }
