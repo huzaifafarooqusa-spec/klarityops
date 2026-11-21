@@ -222,7 +222,7 @@
                     <p class="lead rv" style="--d:2">We build the operating system your brand runs on, inside Asana or ClickUp. Every task gets one owner and one date, every week gets one scorecard, and decisions stop waiting on you.</p>
                     <div class="hero-ctas rv" style="--d:3">
                         <button class="btn" onclick="openBookingModal('hero_primary', 'Free 20-Min Fit Call')">Book a free 20-min call <i data-lucide="arrow-right"></i></button>
-                        <a class="btn btn-ghost" href="#free">Get the free templates</a>
+                        <button class="btn btn-ghost" onclick="openBookingModal('hero_loom', 'Free 5-Min Loom')"><i data-lucide="video"></i>Get a free 5-min Loom</button>
                     </div>
                     <div class="proof one rv" style="--d:4"><div><b>Live in 30 days</b><small>fixed price, adoption guaranteed</small></div></div>
                 </div>
@@ -251,42 +251,23 @@
             </div>
         </section>
 
-        <section class="sec pain nb" id="friction">
+        <section class="sec pain p3sec" id="friction">
             <div class="wrap">
                 <div class="sec-head rv">
                     <span class="label"><i></i>The problem</span>
-                    <h2 class="h2">Nine messages that mean <span class="y">the business runs through you.</span></h2>
-                    <p class="sub">If you run a $5M–$25M brand, at least three of these hit your phone this week. Each one costs you hours, money, or both.</p>
+                    <h2 class="h2">Sound familiar? <span class="y">It all comes back to you.</span></h2>
                 </div>
-                <div class="nb-grid">
-                    <div class="nb-col rv">
-                        <div class="nb-h"><span class="nb-ic"><i data-lucide="clock-3"></i></span><div><b>Your time</b><small>Every question routes through you</small></div><span class="nb-badge">3</span></div>
-                        <div class="nb-stack">
-                            <article class="nb-n" style="--k:0"><div class="nb-top"><span class="ap" style="--c:#4A154B">S</span><b>Slack</b><time>11:42 PM</time></div><p class="nb-msg">“Quick one, which packaging version did we approve?”</p><p class="nb-cost"><i data-lucide="corner-down-right"></i><span>You’re the only search bar in the company.</span></p></article>
-                            <article class="nb-n" style="--k:1"><div class="nb-top"><span class="ap" style="--c:#4A154B">S</span><b>Slack</b><time>9:03 AM</time></div><p class="nb-msg">“Can you approve this PO? Need it today.”</p><p class="nb-cost"><i data-lucide="corner-down-right"></i><span>Every decision waits in your queue.</span></p></article>
-                            <article class="nb-n" style="--k:2"><div class="nb-top"><span class="ap" style="--c:#2F5BFF">C</span><b>Calendar</b><time>Mon 10:00</time></div><p class="nb-msg">Weekly status sync · 8 guests · 60 min</p><p class="nb-cost"><i data-lucide="corner-down-right"></i><span>Eight people, one hour, for what a dashboard should show.</span></p></article>
-                        </div>
+                <div class="pain-grid">
+                    <div class="feed rv" aria-hidden="true">
+                        <div class="feed-head"><b>Your phone, Tuesday <span class="cnt" id="feed-count">0</span></b><small id="feed-time">8:42 AM</small></div>
+                        <div class="feed-list" id="feed-list"></div>
                     </div>
-                    <div class="nb-col rv" style="--d:1">
-                        <div class="nb-h"><span class="nb-ic"><i data-lucide="badge-dollar-sign"></i></span><div><b>Your money</b><small>Delays and repeats you pay for</small></div><span class="nb-badge">3</span></div>
-                        <div class="nb-stack">
-                            <article class="nb-n" style="--k:0"><div class="nb-top"><span class="ap" style="--c:#C5221F">M</span><b>Gmail</b><time>8:05 AM</time></div><p class="nb-msg">Retail buyer: “Can you confirm the ship date for the spring order?”</p><p class="nb-cost"><i data-lucide="corner-down-right"></i><span>Nobody knows the real date. A slipped launch burns the window ads and retail planned for.</span></p></article>
-                            <article class="nb-n" style="--k:1"><div class="nb-top"><span class="ap" style="--c:#5E8E3E">S</span><b>Shopify</b><time>2:17 PM</time></div><p class="nb-msg">Low stock: your best seller</p><p class="nb-cost"><i data-lucide="corner-down-right"></i><span>Planning lives in a sheet nobody updates. You find out when sales stop.</span></p></article>
-                            <article class="nb-n" style="--k:2"><div class="nb-top"><span class="ap" style="--c:#4A154B">S</span><b>Slack</b><time>4:40 PM</time></div><p class="nb-msg">“Same issue as last launch, the inserts are wrong again.”</p><p class="nb-cost"><i data-lucide="corner-down-right"></i><span>Nothing gets written down, so you pay for the same mistake twice.</span></p></article>
-                        </div>
+                    <div class="p3">
+                        <div class="p3-row rv" style="--d:1"><span class="p3-ic"><i data-lucide="clock-3"></i></span><div><h3>Your time</h3><p>Every question and approval lands on you.</p></div></div>
+                        <div class="p3-row rv" style="--d:2"><span class="p3-ic"><i data-lucide="badge-dollar-sign"></i></span><div><h3>Your money</h3><p>Launches slip. Mistakes repeat. You pay twice.</p></div></div>
+                        <div class="p3-row rv" style="--d:3"><span class="p3-ic"><i data-lucide="users"></i></span><div><h3>Your team</h3><p>Work stops when you step away.</p></div></div>
+                        <a class="p3-link rv" style="--d:4" href="#system">We fix this in 30 days <i data-lucide="arrow-right"></i></a>
                     </div>
-                    <div class="nb-col rv" style="--d:2">
-                        <div class="nb-h"><span class="nb-ic"><i data-lucide="users"></i></span><div><b>Your team</b><small>It only works while you hold it</small></div><span class="nb-badge">3</span></div>
-                        <div class="nb-stack">
-                            <article class="nb-n" style="--k:0"><div class="nb-top"><span class="ap" style="--c:#7B68EE">C</span><b>ClickUp</b><time>Today</time></div><p class="nb-msg">Overdue tasks in lists nobody opened this week</p><p class="nb-cost"><i data-lucide="corner-down-right"></i><span>You paid for the tool. The team went back to DMs.</span></p></article>
-                            <article class="nb-n" style="--k:1"><div class="nb-top"><span class="ap" style="--c:#C5221F">M</span><b>Gmail</b><time>Fri 5:12 PM</time></div><p class="nb-msg">Subject: My last day is the 30th</p><p class="nb-cost"><i data-lucide="corner-down-right"></i><span>Their process lived in their head. It leaves with them.</span></p></article>
-                            <article class="nb-n" style="--k:2"><div class="nb-top"><span class="ap" style="--c:#0A1A3F">↩</span><b>Out of office</b><time>Auto-reply</time></div><p class="nb-msg">“Away until Monday. Reachable on WhatsApp.”</p><p class="nb-cost"><i data-lucide="corner-down-right"></i><span>You can’t take a day off without the business stalling.</span></p></article>
-                        </div>
-                    </div>
-                </div>
-                <div class="nb-close rv">
-                    <p><b>Same cause every time: the business runs through you.</b> That’s what we fix, in 30 days, inside the tools you already pay for.</p>
-                    <a class="btn btn-navy" href="#system">See how we fix it <i data-lucide="arrow-right"></i></a>
                 </div>
             </div>
         </section>
@@ -452,17 +433,17 @@
                 <div class="sec-head rv">
                     <span class="label"><i></i>Pricing</span>
                     <h2 class="h2">One way in. <span class="hl">Fixed prices. Guaranteed.</span></h2>
-                    <p class="sub">Start free, test us for five days, then build the whole system in thirty. Never billed by the hour.</p>
+                    <p class="sub">Start with a free video, test us for five days, then build the whole system in thirty. Never billed by the hour.</p>
                 </div>
                 <div class="plans swipe">
                     <article class="card plan rv">
                         <span class="pl">0 · Start free</span>
-                        <h3>Template kits</h3>
+                        <h3>5-min Loom</h3>
                         <div class="price">$0</div>
-                        <div class="cad">Yours to keep</div>
-                        <p class="pd">The templates we use with clients, each with a setup guide and SOP documents.</p>
-                        <ul><li><i data-lucide="check"></i>12 kits: launches, SOPs, onboarding, stock</li><li><i data-lucide="check"></i>Import files for Asana and ClickUp</li><li><i data-lucide="check"></i>Founder Bottleneck Scorecard</li></ul>
-                        <a class="btn btn-ghost btn-block" href="#free">Get the free kits</a>
+                        <div class="cad">No call needed</div>
+                        <p class="pd">A short video, made for your brand, showing where the business still runs through you.</p>
+                        <ul><li><i data-lucide="check"></i>Where your work and decisions get stuck</li><li><i data-lucide="check"></i>The first 3 fixes, in order</li><li><i data-lucide="check"></i>In your inbox within 2 working days</li></ul>
+                        <button class="btn btn-ghost btn-block" onclick="openBookingModal('pricing_loom','Free 5-Min Loom')">Get my free Loom</button>
                     </article>
                     <article class="card plan rv" style="--d:1">
                         <span class="pl">1 · Test us</span>
@@ -618,6 +599,7 @@
                                 <label for="selectedOfferDisplay">What are you interested in?</label>
                                 <select id="selectedOfferDisplay" onchange="handleOfferChange(this.value)">
                                     <option selected>Free 20-Min Fit Call</option>
+                                    <option>Free 5-Min Loom</option>
                                     <option>Ops X-Ray</option>
                                     <option>The 30-Day Brand OS</option>
                                     <option>Ops Partner</option>

@@ -177,25 +177,42 @@
                 <div class="hero-ctas rv" style="--d:3"><button class="btn" onclick="openBookingModal('team_page_hero', 'Free 20-Min Fit Call')">Book a free 20-min call <i data-lucide="arrow-right"></i></button></div>
             </div>
         </section>
-        <section class="sec" id="team-section">
+        <section class="sec tm-sec" id="team-section">
             <div class="wrap">
-                <div class="sec-head rv">
-                    <span class="cred"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="27" r="18" fill="#F06A6A"/><circle cx="23" cy="72" r="18" fill="#F06A6A"/><circle cx="77" cy="72" r="18" fill="#F06A6A"/></svg>4× Asana Certified across the delivery team</span>
+                <ul class="trust-row rv">
+                    <li><i data-lucide="award"></i><span><b>Asana Ambassador</b> since 2021</span></li>
+                    <li><i data-lucide="badge-check"></i><span><b>4× Asana certified</b> team</span></li>
+                    <li><i data-lucide="badge-check"></i><span><b>ClickUp certified</b></span></li>
+                    <li><i data-lucide="store"></i><span>Ops inside a <b>$100M DTC brand</b> today</span></li>
+                </ul>
+                <div class="tm-grid">
+                    <article class="tm rv">
+                        <div class="tm-ph"><img src="assets/team/hasan-ijaz.jpg" alt="Hasan Ijaz" width="560" height="700" loading="lazy"><span class="tm-stage"><b>1</b>Klarity · maps it</span></div>
+                        <div class="tm-b">
+                            <h3>Hasan Ijaz</h3>
+                            <p class="tm-role">Founder &amp; Strategy Lead</p>
+                            <p class="tm-on">Finds what still runs through you and designs the system around it.</p>
+                            <a class="tm-link" href="https://hasan-ijaz-portfolio.vercel.app/" target="_blank" rel="noopener">See Hasan’s portfolio <i data-lucide="arrow-up-right"></i></a>
+                        </div>
+                    </article>
+                    <article class="tm rv" style="--d:1">
+                        <div class="tm-ph"><img src="assets/team/amna-qaisar.jpg" alt="Amna Qaisar" width="560" height="700" loading="lazy"><span class="tm-stage"><b>2</b>Kontrol · builds it</span></div>
+                        <div class="tm-b">
+                            <h3>Amna Qaisar</h3>
+                            <p class="tm-role">Operations &amp; Asana Specialist</p>
+                            <p class="tm-on">Builds the workspace: structure, automations and the dashboards you read.</p>
+                        </div>
+                    </article>
+                    <article class="tm rv" style="--d:2">
+                        <div class="tm-ph"><img src="assets/team/huzaifa-farooq.jpg" alt="Huzaifa Farooq" width="560" height="700" loading="lazy"><span class="tm-stage"><b>3</b>Kompound · hands it over</span></div>
+                        <div class="tm-b">
+                            <h3>Huzaifa Farooq</h3>
+                            <p class="tm-role">Operations &amp; Asana Specialist</p>
+                            <p class="tm-on">Writes the SOPs, trains your team and stays until they use it.</p>
+                        </div>
+                    </article>
                 </div>
-                <div class="team-grid swipe">
-                        <article class="card person rv" style="--d:1">
-                            <div class="ph"><img src="assets/team/hasan-ijaz.jpg" alt="Hasan Ijaz" width="560" height="700" loading="lazy"></div>
-                            <div class="pb"><h3>Hasan Ijaz</h3><div class="role">Founder &amp; Strategy Lead</div><p>Leads discovery, operating-model design and client decisions.</p><p class="owns"><b>Owns</b> scope, sequence and executive alignment</p></div>
-                        </article>
-                        <article class="card person rv" style="--d:2">
-                            <div class="ph"><img src="assets/team/amna-qaisar.jpg" alt="Amna Qaisar" width="560" height="700" loading="lazy"></div>
-                            <div class="pb"><h3>Amna Qaisar</h3><div class="role">Operations &amp; Asana Specialist</div><p>Builds workspace architecture, automation and reporting.</p><p class="owns"><b>Owns</b> implementation structure and admin handoff</p></div>
-                        </article>
-                        <article class="card person rv" style="--d:3">
-                            <div class="ph"><img src="assets/team/huzaifa-farooq.jpg" alt="Huzaifa Farooq" width="560" height="700" loading="lazy"></div>
-                            <div class="pb"><h3>Huzaifa Farooq</h3><div class="role">Operations &amp; Asana Specialist</div><p>Builds workflows, intake forms, swim lanes and SOPs.</p><p class="owns"><b>Owns</b> documentation, QA and adoption support</p></div>
-                        </article>
-                </div>
+                <p class="tm-note rv">The people on your first call are the people who build your system.</p>
             </div>
         </section>
         <section id="book-cta">
@@ -274,6 +291,7 @@
                                 <label for="selectedOfferDisplay">What are you interested in?</label>
                                 <select id="selectedOfferDisplay" onchange="handleOfferChange(this.value)">
                                     <option selected>Free 20-Min Fit Call</option>
+                                    <option>Free 5-Min Loom</option>
                                     <option>Ops X-Ray</option>
                                     <option>The 30-Day Brand OS</option>
                                     <option>Ops Partner</option>

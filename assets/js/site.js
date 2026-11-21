@@ -103,25 +103,24 @@ if (logoRow) [...logoRow.children].forEach((img) => {
 
 /* ---------------- Problem: notification feed ---------------- */
 (function feed() {
-    const APPS = { S: ['#4A154B', 'Slack'], M: ['#EA4335', 'Email'], W: ['#1FAF55', 'WhatsApp'], C: ['#7B68EE', 'ClickUp'], N: ['#191919', 'Notion'], D: ['#2F5BFF', 'Direct message'], G: ['#0F9D58', 'Sheets'] };
+    const APPS = { S: ['#4A154B', 'Slack'], M: ['#EA4335', 'Email'], W: ['#1FAF55', 'Auto-reply'], C: ['#2F5BFF', 'Calendar'], K: ['#7B68EE', 'ClickUp'], H: ['#5E8E3E', 'Shopify'] };
     const items = [
-        ['S', '#launch', '9:14', 'who owns the Q4 creative??'],
-        ['M', 'Retail partner', '9:16', 'Re: Re: Re: onboarding docs?'],
-        ['W', 'Ops lead', '9:21', 'PO for SKU-204 still not sent'],
-        ['S', '#marketing', '9:26', '@founder can you approve the landing page?'],
-        ['C', 'ClickUp', '9:30', '3 tasks overdue, no assignee'],
-        ['G', 'Sheets', '9:34', 'content_calendar_FINAL_v3 was edited'],
-        ['D', 'Head of growth', '9:41', 'is the KPI deck updated for today?'],
-        ['M', 'Agency', '9:47', 'Still waiting on feedback from Friday'],
-        ['N', 'Notion', '9:52', 'Launch plan (old, check Slack instead)'],
-        ['S', '#cx', '9:58', 'customers asking when the bundle ships']
+        ['S', 'Ops', '8:42 AM', 'quick one, which packaging did we approve?'],
+        ['S', 'Purchasing', '9:03 AM', 'can you approve this PO? need it today'],
+        ['C', 'Status sync', '10:00 AM', '8 people · 60 min · updates only'],
+        ['M', 'Retail buyer', '10:20 AM', 'Can you confirm the ship date?'],
+        ['H', 'Inventory', '10:41 AM', 'Low stock: your best seller'],
+        ['S', '#launch', '11:05 AM', 'inserts are wrong again'],
+        ['K', 'Tasks', '11:30 AM', 'Overdue, no owner'],
+        ['M', 'Team', '11:52 AM', 'My last day is the 30th'],
+        ['W', 'You', '12:10 PM', 'Away till Monday (still on WhatsApp)']
     ];
     const list = document.getElementById('feed-list');
     if (!list) return;
     const cnt = document.getElementById('feed-count'), clock = document.getElementById('feed-time');
     const make = ([a, ch, tm, msg]) => {
         const el = document.createElement('div'); el.className = 'nt';
-        el.innerHTML = `<span class="ap" style="background:${APPS[a][0]}">${APPS[a][1][0]}</span><div class="tx"><div class="mt"><span><b>${APPS[a][1]}</b> · ${ch}</span><span>${tm} AM</span></div><p>${msg}</p></div>`;
+        el.innerHTML = `<span class="ap" style="background:${APPS[a][0]}">${APPS[a][1][0]}</span><div class="tx"><div class="mt"><span><b>${APPS[a][1]}</b> · ${ch}</span><span>${tm}</span></div><p>${msg}</p></div>`;
         return el;
     };
     let i = 0, timer = null, visible = false;
@@ -130,7 +129,7 @@ if (logoRow) [...logoRow.children].forEach((img) => {
         if (i >= items.length) { timer = setTimeout(() => { list.innerHTML = ''; i = 0; cnt.textContent = '0'; step(); }, 3200); return; }
         const el = make(items[i]); el.classList.add('in'); list.prepend(el);
         while (list.children.length > 7) list.lastChild.remove();
-        cnt.textContent = ++i; clock.textContent = items[i - 1][2] + ' AM';
+        cnt.textContent = ++i; clock.textContent = items[i - 1][2];
         timer = setTimeout(step, 1100);
     }
     if (REDUCED) { items.slice(0, 6).reverse().forEach((it) => list.appendChild(make(it))); cnt.textContent = items.length; return; }
@@ -531,6 +530,10 @@ function handleOfferChange(nextOffer) {
     const normalizedOffer = nextOffer || DEFAULT_OFFER;
     document.getElementById('selectedOffer').value = normalizedOffer;
     document.getElementById('selectedOfferDisplay').value = normalizedOffer;
+    const loom = normalizedOffer === 'Free 5-Min Loom';
+    submitBtn.textContent = loom ? 'Send me my Loom' : 'Submit & pick a time';
+    const note = document.querySelector('#klarity-intake .form-note');
+    if (note) note.lastChild.textContent = loom ? ' Takes about a minute. No call needed: we send the video to your inbox.' : ' Takes about a minute. Next, you’ll choose a time on our calendar.';
 }
 
 function setBookingContext(source, offer) {
@@ -545,6 +548,12 @@ function setBookingContext(source, offer) {
 
 function openBookingModal(source, offer) {
     closeMobileNav();
+    const thanks = bookingModal.querySelector('.loom-thanks');
+    if (thanks) {   // a Loom request swapped the form for a thank-you note; bring the form back
+        thanks.remove();
+        bookingModal.querySelectorAll('.mp-body > *').forEach((el) => { el.hidden = false; });
+        document.getElementById('klarity-intake').reset();
+    }
     bookingReturn = document.activeElement;
     setBookingContext(source, offer);
     currentFormStep = 1;
@@ -563,6 +572,7 @@ function openBookingModal(source, offer) {
 window.addEventListener('load', function openFromUrl() {
     const VALID_OFFERS = [
         'Free 20-Min Fit Call',
+        'Free 5-Min Loom',
         'Ops X-Ray',
         'The 30-Day Brand OS',
         'Ops Partner'
@@ -617,6 +627,16 @@ updateStepUI();
 //   2. Apps Script POST — mirror into the Google Sheet the team reads
 //   3. Conversions      — fired before we leave the domain
 //   4. NeetoCal redirect
+function showLoomThanks(addr) {
+    const body = bookingModal.querySelector('.mp-body');
+    const safe = String(addr || '').replace(/[<>&"]/g, '');
+    body.querySelectorAll(':scope > *').forEach((el) => { el.hidden = true; });
+    body.insertAdjacentHTML('beforeend', `<div class="loom-thanks"><span class="lt-ic"><i data-lucide="video"></i></span><h3>Got it. Your Loom is on its way.</h3><p>Within 2 working days we’ll send a 5-minute video to <b>${safe}</b>, showing where your business still runs through you and the first three fixes.</p><button type="button" class="btn btn-ghost" onclick="closeBookingModal()">Close</button></div>`);
+    if (window.lucide) lucide.createIcons();
+    submitBtn.textContent = 'Send me my Loom';
+    [submitBtn, stepNextBtn, stepBackBtn].forEach((b) => { b.disabled = false; });
+}
+
 async function submitForm(e) {
     e.preventDefault();
     if (!validateStep(currentFormStep)) return;
@@ -739,10 +759,13 @@ async function submitForm(e) {
     const emailEnc = encodeURIComponent(row.email);
     const bookingUrl = `https://thexponent.neetocal.com/discovery-call?name=${nameEnc}&email=${emailEnc}`;
 
+    const isLoom = row.selected_offer === 'Free 5-Min Loom';
+
     let redirected = false;
     const go = function () {
         if (redirected) return;
         redirected = true;
+        if (isLoom) { showLoomThanks(row.email); return; }
         window.location.href = bookingUrl;
     };
 
