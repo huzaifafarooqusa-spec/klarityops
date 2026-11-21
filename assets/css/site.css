@@ -1429,3 +1429,64 @@ footer { background: var(--navy); color: #AEBADA; margin-top: 104px; padding: 64
 @keyframes ppDrip { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(70px); opacity: 0; } }
 @media (max-width: 900px) { .pp-row { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; } }
 @media (prefers-reduced-motion: reduce) { .pp-viz .ln { stroke-dashoffset: 0; animation: none !important; } .pp-viz .hit { opacity: 1; } .pp-viz .leak { animation: none !important; } }
+
+/* =========================================================
+   v5.6 mobile pass
+   ========================================================= */
+@media (max-width: 760px) {
+    /* Hero: eyebrow, headline, text, buttons, facts, film */
+    .hero .eyebrow-i { order: 1; justify-content: center; font-size: 14px; }
+    .hero h1 { order: 2; font-size: 2.35rem; line-height: 1.08; }
+    .hero .lead { order: 3; font-size: 1.04rem; }
+    .hero-ctas { order: 4; flex-direction: column; flex-wrap: nowrap; gap: 10px; }
+    .hero .facts { order: 5; justify-content: center; margin-top: 22px; padding-top: 18px; gap: 8px 18px; }
+    .hero-visual { order: 6; margin-top: 28px; }
+
+    /* Pain points: tighter rows, readable diagram labels */
+    .pp-list { margin-top: 32px; }
+    .pp-row { padding: 32px 0; gap: 20px; }
+    .pp-row h3 { font-size: 1.6rem; }
+    .pp-b p { font-size: 1.02rem; }
+    .pp-see { font-size: 14.5px !important; }
+    .pp-viz { padding: 12px 8px 4px; border-radius: 18px; }
+    .pp-viz text { font-size: 15px; }
+    .pp-viz .node text { font-size: 15px; }
+    .pp-close { margin-top: 28px; font-size: 1.05rem; }
+
+    /* How it works: keep the visual and the headline, drop the long lists */
+    #system .flow-panel .checks { display: none; }
+    #system .flow-panel .getchip { margin-top: 14px; font-size: 14px; padding: 12px 14px; }
+    #system .fp-body > p { font-size: 15.5px; }
+
+    /* Case cards: plain tags */
+    .ccase-meta .tag { background: none; border: 0; padding: 0; border-radius: 0; }
+    .ccase-meta { gap: 4px 8px; }
+
+    /* Free kits: compact list rows */
+    .kits { gap: 8px; }
+    .kit { padding: 14px; gap: 2px 12px; border-radius: 14px; align-items: center; }
+    .kit .kit-ic { width: 38px; height: 38px; border-radius: 10px; grid-row: span 1; }
+    .kit .kit-t span { display: none; }
+    .kit .kit-t b { font-size: 1rem; }
+    .kit .kit-f { grid-column: 2; margin-top: 2px; }
+    .kit-feat { padding: 20px; }
+    .kit-feat .kit-t span { display: block; }
+    .kit-feat .kit-ic { width: 46px; height: 46px; }
+
+    /* Section rhythm */
+    .sec { padding: 64px 0; }
+    .sec-head { margin-bottom: 32px; }
+}
+@media (max-width: 380px) { .hero h1 { font-size: 2.1rem; } .pp-row h3 { font-size: 1.45rem; } }
+@media (max-width: 760px) { .hero-grid { gap: 0; } .hero { padding-bottom: 40px; } }
+/* chips everywhere: icon + text, no pill */
+.chip { background: none; border: 0; box-shadow: none; padding: 0; border-radius: 0; font-weight: 700; color: var(--ink); }
+.chip .asana { background: none; width: 22px; height: 22px; }
+@media (max-width: 760px) {
+    .phero .wrap { display: flex; flex-direction: column; align-items: center; }
+    .phero .chip { order: 1; }
+    .phero h1 { order: 2; }
+    .phero .lead { order: 3; }
+    .phero .hero-ctas { order: 4; width: 100%; }
+    .phero .trust-row { order: 5; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); display: grid; gap: 10px; justify-items: start; text-align: left; width: 100%; }
+}
