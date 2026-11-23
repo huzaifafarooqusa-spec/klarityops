@@ -1505,3 +1505,13 @@ footer { background: var(--navy); color: #AEBADA; margin-top: 104px; padding: 64
 .bk-form #stepNextBtn,.bk-form #stepBackBtn{display:none!important}
 @media (max-width:560px){.bk-form .fgrid{grid-template-columns:1fr}}
 .bk-form select{padding-top:0;padding-bottom:0;line-height:44px}
+
+/* v6 Hormozi pass */
+.fitbox{margin-top:40px}
+.proofrow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px 0 8px}
+.proofrow>div{background:#fff;border:1px solid var(--line,#DCE3F1);border-radius:16px;padding:18px 18px 16px}
+.proofrow b{display:block;font-family:var(--fd,inherit);font-size:30px;line-height:1.05;color:var(--navy,#0A1A3F);letter-spacing:-.02em}
+.proofrow span{display:block;margin-top:6px;font-size:14px;line-height:1.4;color:var(--muted,#5E6A85)}
+.plan .bonus{font-size:13px;line-height:1.45;color:var(--muted,#5E6A85);background:#FFF8D6;border-radius:10px;padding:10px 12px;margin:4px 0 14px}
+.plan .bonus b{color:var(--navy,#0A1A3F)}
+@media (max-width:900px){.proofrow{grid-template-columns:repeat(2,1fr)}}

@@ -530,10 +530,10 @@ function handleOfferChange(nextOffer) {
     const normalizedOffer = nextOffer || DEFAULT_OFFER;
     document.getElementById('selectedOffer').value = normalizedOffer;
     document.getElementById('selectedOfferDisplay').value = normalizedOffer;
-    const loom = normalizedOffer === 'Free 5-Min Loom';
+    const loom = normalizedOffer === 'Free Launch Leak Loom';
     submitBtn.textContent = loom ? 'Send me my Loom' : 'Continue to pick a time';
     const note = document.querySelector('#klarity-intake .form-note');
-    if (note) note.lastChild.textContent = loom ? ' Takes about a minute. No call needed: we send the video to your inbox.' : ' Takes about a minute. Next, you’ll choose a time on our calendar.';
+    if (note) note.lastChild.textContent = loom ? ' 30 seconds. No call needed: the video lands in your inbox within 2 working days.' : ' 30 seconds. Next you pick a time. We never share your details.';
 }
 
 function setBookingContext(source, offer) {
@@ -572,10 +572,7 @@ function openBookingModal(source, offer) {
 window.addEventListener('load', function openFromUrl() {
     const VALID_OFFERS = [
         'Free 20-Min Fit Call',
-        'Free 5-Min Loom',
-        'Ops X-Ray',
-        'The 30-Day Brand OS',
-        'Ops Partner'
+        'Free Launch Leak Loom',
     ];
     const params = new URLSearchParams(window.location.search);
     const wantsBooking = params.get('book') === '1' || window.location.hash === '#book';
@@ -759,7 +756,7 @@ async function submitForm(e) {
     const emailEnc = encodeURIComponent(row.email);
     const bookingUrl = `https://thexponent.neetocal.com/discovery-call?name=${nameEnc}&email=${emailEnc}`;
 
-    const isLoom = row.selected_offer === 'Free 5-Min Loom';
+    const isLoom = row.selected_offer === 'Free Launch Leak Loom';
 
     let redirected = false;
     const go = function () {
