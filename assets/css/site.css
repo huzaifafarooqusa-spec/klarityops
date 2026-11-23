@@ -1515,3 +1515,8 @@ footer { background: var(--navy); color: #AEBADA; margin-top: 104px; padding: 64
 .plan .bonus{font-size:13px;line-height:1.45;color:var(--muted,#5E6A85);background:#FFF8D6;border-radius:10px;padding:10px 12px;margin:4px 0 14px}
 .plan .bonus b{color:var(--navy,#0A1A3F)}
 @media (max-width:900px){.proofrow{grid-template-columns:repeat(2,1fr)}}
+
+/* v6.1 hero facts on one line */
+.hero .facts { flex-wrap: nowrap; gap: 22px; white-space: nowrap; }
+.hero .facts li { font-size: 14.5px; }
+@media (max-width: 1100px) { .hero .facts { flex-wrap: wrap; white-space: normal; } }
