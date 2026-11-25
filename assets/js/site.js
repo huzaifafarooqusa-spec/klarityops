@@ -361,10 +361,11 @@ const csData = {
         headline: 'The weekly status meeting was deleted',
         lead: 'Eight people spent sixty minutes every week reporting status that was already stale by the time the meeting ended.',
         shot: { src: 'assets/shots/dashboard-workload.jpg', cap: 'Illustrative: a live Asana dashboard of the same type, names blurred.', real: false },
-        facts: [ { v: '8', l: 'people in the weekly meeting' }, { v: '60 min', l: 'every single week' }, { v: '0', l: 'status meetings after launch' } ],
+        saw: 'Eight people were giving an hour every week to updates that were old before the meeting ended.',
+        facts: [ { v: '416', l: 'team-hours a year (8 hrs × 52 weeks)' }, { v: '60 min', l: 'meeting, 8 people, every week' }, { v: '0', l: 'status meetings after launch' } ],
         why: [ 'Eight team-hours went into one recurring meeting.', 'Updates expired soon after the meeting ended.', 'Leadership time went to collecting status instead of deciding.' ],
         built: [ 'Live Asana operations dashboard', 'Automated task-level status reporting', 'A defined swim lane for each contributor', 'Portfolio view for manager review' ],
-        note: 'The concrete before-and-after: 8 people × 60 minutes, then a retired weekly status meeting. Eight team-hours returned each week, as reported by the client after launch.'
+        note: 'Client-reported: the weekly meeting was retired after launch, returning eight team-hours a week. Over 52 weeks that is up to 416 hours. As an example only, at a $50 loaded hourly cost it is about $20,800 a year; use your own rate.'
     },
     solawave: {
         client: 'Solawave', industry: 'Beauty · D2C skincare', logo: 'assets/logos/solawave.png', badge: 'Delivered system',
@@ -373,18 +374,20 @@ const csData = {
         headline: 'Three teams. One operating model.',
         lead: 'Marketing, product and operations each had their own way of working, and leadership rebuilt status through repeated check-ins.',
         shot: { src: 'assets/cases/solawave-board.jpg', cap: 'Illustrative: a shared delivery board of the same type, shown in our demo workspace.', real: false },
+        saw: 'Three teams, each with its own idea of “done”. Leadership was the only thing connecting them.',
         facts: [ { v: '30 days', l: 'implementation window' }, { v: '3 teams', l: 'marketing, product and operations' }, { v: '1 model', l: 'shared workflow architecture' } ],
         why: [ 'Each team used a different definition of done.', 'Leadership depended on collecting status by hand.', 'Handoffs weren’t governed by one shared workflow.' ],
         built: [ 'Company-wide Asana architecture', 'Standard delivery workflows across three teams', 'OKR structure linking strategy to execution', 'Executive dashboard and recurring-work automation' ],
         note: 'Implementation scope and artifacts are documented. We don’t publish outcome percentages without the baseline and follow-up data to back them.'
     },
-    roostys: {
-        client: 'Roosty’s', industry: 'Wellness · Supplements', logo: 'assets/logos/roostys.svg', badge: 'Implementation scope',
+    supplements: {
+        client: 'Supplements brand', industry: 'Wellness · Supplements', logo: '', badge: 'Implementation scope',
         route: { nodes: ['ClickUp', 'Notion', 'Slack', 'Email'], before: 'A few key people', after: 'One Asana system', bcap: 'Four tools. Inventory status lived with a few people.', acap: 'One place for work, stock and manufacturing orders.' },
         steps: [ 'Mapped work across ClickUp, Notion, Slack and email, and who held what knowledge.', 'Designed one central Asana architecture with inventory and order views.', 'Wrote the migration plan, SOPs and training structure, in a 3-week sprint.' ],
         headline: 'Four tools mapped into one system',
         lead: 'Work was spread across ClickUp, Notion, Slack and email, and supply-chain knowledge sat with a few individuals.',
-        shot: { src: 'assets/cases/roostys-mo-dashboard.jpg', cap: 'Roosty’s workspace: the manufacturing orders dashboard in Asana. Sensitive details blurred.', real: true },
+        shot: { src: 'assets/cases/supplements-mo-dashboard.jpg', cap: 'Client workspace: the manufacturing orders dashboard in Asana. Sensitive details blurred.', real: true },
+        saw: 'To know where stock stood, you had to find the right person, not the right screen.',
         facts: [ { v: '4 tools', l: 'in the original stack' }, { v: '3 weeks', l: 'implementation sprint' }, { v: '1 target', l: 'central Asana architecture' } ],
         why: [ 'Four tools split ownership and execution.', 'Inventory status needed manual chasing.', 'Knowledge was concentrated in a few operators.' ],
         built: [ 'Central Asana workflow architecture', 'Migration plan for active operational work', 'Inventory and manufacturing-order visibility views', 'SOP and training structure' ],
@@ -393,14 +396,15 @@ const csData = {
     bnb: {
         client: 'Black & Black', industry: 'Digital commerce agency', logo: 'assets/logos/black-and-black.png', badge: 'Founder experience',
         route: { nodes: ['Strategy', 'Design', 'Development', 'QA'], before: 'Manual follow-up', after: 'Automated stage gates', bcap: 'Every handoff depended on memory and chasing.', acap: 'Each stage hands over to the next on its own.' },
-        steps: [ 'Mapped how strategy, design, development and QA handed work over.', 'Standardised delivery stages with automated phase handoffs.', 'Added reusable project templates and QA gates before every launch.' ],
+        steps: [ 'I mapped how strategy, design, development and QA handed work over.', 'I standardised the delivery stages and automated the phase handoffs.', 'I added reusable project templates and QA gates before every launch.' ],
         headline: 'Shopify delivery on stage gates, not heroics',
-        lead: 'Complex Shopify builds depended on manual coordination between strategy, design, development and QA.',
+        lead: 'This was my own job before KlarityOps. Complex Shopify builds depended on people coordinating strategy, design, development and QA by hand.',
+        saw: 'Every handoff depended on someone remembering to chase it. A launch went well when somebody stayed late.',
         shot: { src: 'assets/cases/bnb-handoff-rule.jpg', cap: 'Illustrative: an automated handoff rule of the same type, shown in our demo workspace.', real: false },
         facts: [ { v: '1', l: 'shared delivery pipeline' }, { v: 'Auto', l: 'handoffs between phases' }, { v: 'QA', l: 'gates before every launch' } ],
         why: [ 'Each new project added manual coordination.', 'Handoffs depended on memory and follow-up.', 'Delivery quality relied on individual heroics.' ],
         built: [ 'Standardised delivery stages', 'Automated phase handoffs', 'Client-facing milestone coordination', 'Reusable project templates and QA gates' ],
-        note: 'Led by Hasan Ijaz before KlarityOps was founded, and included here as relevant founder experience.'
+        note: 'Founder experience: I (Hasan Ijaz) led this before KlarityOps was founded.'
     }
 };
 
@@ -433,11 +437,12 @@ function openCaseStudy(key) {
     csReturn = document.activeElement;
     const names = ['Klarity', 'Kontrol', 'Kompound'], subs = ['Map it', 'Build it', 'Hand it over'];
     csPanel.innerHTML = `
-        <div class="cs-top"><img src="${d.logo}" alt="${d.client}"><div class="cs-top-r"><span class="tag">${d.industry}</span><button class="x-btn" onclick="closeCaseStudy()" aria-label="Close case study"><i data-lucide="x"></i></button></div></div>
+        <div class="cs-top">${d.logo ? `<img src="${d.logo}" alt="${d.client}">` : `<b>${d.client}</b>`}<div class="cs-top-r"><span class="tag">${d.industry}</span><button class="x-btn" onclick="closeCaseStudy()" aria-label="Close case study"><i data-lucide="x"></i></button></div></div>
         <div class="cs-body cs-v2">
             <span class="ev-badge"><i data-lucide="shield-check"></i>${d.badge}</span>
             <h2 id="cs-modal-title">${d.headline}</h2>
             <p class="cs-lead">${d.lead}</p>
+            <p class="cs-saw"><b>${key === 'bnb' ? 'What I saw walking in' : 'What we saw walking in'}</b>${d.saw}</p>
             <div class="cs-res">${d.facts.map((r, i) => `<div style="--i:${i}"><b data-cv="${r.v}">${r.v}</b><span>${r.l}</span></div>`).join('')}</div>
             <div class="cs-route">
                 <div class="rt-card rt-b"><span class="rt-tag"><i data-lucide="circle-x"></i>Before</span>${routeSVG(d.route, false)}<p>${d.route.bcap}</p></div>
@@ -451,7 +456,7 @@ function openCaseStudy(key) {
             <div class="cs-steps"><h3>How we worked</h3><ol>${d.steps.map((t, i) => `<li style="--i:${i}"><span class="st-dot">${i + 1}</span><b>${names[i]}</b><small>${subs[i]}</small><p>${t}</p></li>`).join('')}</ol></div>
             <figure class="cs-shot"><button type="button" class="zoomable" data-full="${d.shot.src}" data-title="${d.client}: ${d.shot.real ? 'real workspace' : 'illustrative view'}"><img src="${d.shot.src}" alt="${d.shot.cap}"><span class="shot-tag${d.shot.real ? ' real' : ''}">${d.shot.real ? 'Real screen · data blurred' : 'Demo workspace view'}</span></button><figcaption>${d.shot.cap}</figcaption></figure>
             <p class="cs-note"><i data-lucide="info"></i><span>${d.note}</span></p>
-            <div class="cs-cta"><div><b>Is something in your business still routing through you?</b><span>20 minutes. You leave with the first three fixes.</span></div><button class="btn" onclick="closeCaseStudy(); openBookingModal('case_study_modal', 'Free 20-Min Fit Call');">Book a free 20-min call <i data-lucide="arrow-right"></i></button></div>
+            <div class="cs-cta"><div><b>Where do your launches leak?</b><span>20 minutes. You leave with the first three fixes.</span></div><button class="btn" onclick="closeCaseStudy(); openBookingModal('case_study_modal', 'Free 20-Min Fit Call');">Book a free 20-min call <i data-lucide="arrow-right"></i></button></div>
         </div>`;
     if (window.lucide) lucide.createIcons();
     csPanel.scrollTop = 0;
@@ -628,7 +633,7 @@ function showLoomThanks(addr) {
     const body = bookingModal.querySelector('.mp-body');
     const safe = String(addr || '').replace(/[<>&"]/g, '');
     body.querySelectorAll(':scope > *').forEach((el) => { el.hidden = true; });
-    body.insertAdjacentHTML('beforeend', `<div class="loom-thanks"><span class="lt-ic"><i data-lucide="video"></i></span><h3>Got it. Your Loom is on its way.</h3><p>Within 2 working days we’ll send a 5-minute video to <b>${safe}</b>, showing where your business still runs through you and the first three fixes.</p><button type="button" class="btn btn-ghost" onclick="closeBookingModal()">Close</button></div>`);
+    body.insertAdjacentHTML('beforeend', `<div class="loom-thanks"><span class="lt-ic"><i data-lucide="video"></i></span><h3>Got it. Your Loom is on its way.</h3><p>Within 2 working days we’ll send a 5-minute video to <b>${safe}</b>, showing where your launches are likely to leak and the first three fixes.</p><button type="button" class="btn btn-ghost" onclick="closeBookingModal()">Close</button></div>`);
     if (window.lucide) lucide.createIcons();
     submitBtn.textContent = 'Send me my Loom';
     [submitBtn, stepNextBtn, stepBackBtn].forEach((b) => { b.disabled = false; });
