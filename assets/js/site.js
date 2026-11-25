@@ -207,6 +207,19 @@ if (logoRow) [...logoRow.children].forEach((img) => {
     applyMode();
 })();
 
+/* ---------------- Beliefs: the row being read is in focus ---------------- */
+(function beliefsFocus() {
+    const sec = document.querySelector('.beliefs');
+    if (!sec || REDUCED) return;
+    const rows = [...sec.querySelectorAll('li')];
+    sec.classList.add('focus');
+    rows[0].classList.add('on');
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+        if (e.isIntersecting) rows.forEach((r) => r.classList.toggle('on', r === e.target));
+    }), { rootMargin: '-45% 0px -45% 0px' });
+    rows.forEach((r) => io.observe(r));
+})();
+
 /* ---------------- Swipe carousels (mobile) ---------------- */
 document.querySelectorAll('.swipe').forEach((track) => {
     const items = [...track.children];
